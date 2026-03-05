@@ -1,0 +1,31 @@
+{
+  "jonesbeach": {
+    "name": "Jones Beach",
+    "years": [
+      "2025",
+      "2024",
+      "2023"
+    ]
+  },
+  "northcarolina": {
+    "name": "North Carolina",
+    "years": [
+      "2025",
+      "2024",
+      "2023",
+      "2022",
+      "2021",
+      "2019",
+      "2017",
+      "2016"
+    ]
+  },
+  "westernmass": {
+    "name": "Western Mass",
+    "years": [
+      "2025",
+      "2024",
+      "2023"
+    ]
+  }
+}

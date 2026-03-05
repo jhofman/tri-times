@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare Races - Ironman 70.3</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav">
+            <a href="index.html">Single Race</a>
+            <a href="compare.html" class="active">Compare</a>
+        </nav>
+
+        <h1>Compare Races</h1>
+        <p class="subtitle">Overlay distributions from two races</p>
+        <p class="comparison" id="comparison"></p>
+
+        <div class="controls compare-controls">
+            <div class="race-selector">
+                <div class="race-label">Race A</div>
+                <div class="race-inputs">
+                    <div class="control-group">
+                        <label for="race-a-select">Race</label>
+                        <select id="race-a-select"></select>
+                    </div>
+                    <div class="control-group">
+                        <label for="year-a-select">Year</label>
+                        <select id="year-a-select"></select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="race-selector">
+                <div class="race-label race-label-b">Race B</div>
+                <div class="race-inputs">
+                    <div class="control-group">
+                        <label for="race-b-select">Race</label>
+                        <select id="race-b-select"></select>
+                    </div>
+                    <div class="control-group">
+                        <label for="year-b-select">Year</label>
+                        <select id="year-b-select"></select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label for="division-select">Division</label>
+                <select id="division-select"></select>
+            </div>
+        </div>
+
+        <div class="legend">
+            <span class="legend-item"><span class="legend-color legend-a"></span> Race A</span>
+            <span class="legend-item"><span class="legend-color legend-b"></span> Race B</span>
+        </div>
+
+        <div class="charts-grid">
+            <div class="chart-container" id="swim-chart">
+                <h3>Swim</h3>
+            </div>
+            <div class="chart-container" id="t1-chart">
+                <h3>T1</h3>
+            </div>
+            <div class="chart-container" id="bike-chart">
+                <h3>Bike</h3>
+            </div>
+            <div class="chart-container" id="t2-chart">
+                <h3>T2</h3>
+            </div>
+            <div class="chart-container" id="run-chart">
+                <h3>Run</h3>
+            </div>
+            <div class="chart-container" id="finish-chart">
+                <h3>Overall</h3>
+            </div>
+        </div>
+
+        <div class="tooltip" id="tooltip"></div>
+    </div>
+
+    <button id="theme-toggle" class="theme-toggle"><i class="fas fa-moon"></i></button>
+    <script src="js/shared.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/compare.js"></script>
+</body>
+</html>

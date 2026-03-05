@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ironman 70.3 Results</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav">
+            <a href="index.html" class="active">Single Race</a>
+            <a href="compare.html">Compare</a>
+        </nav>
+
+        <h1>Ironman 70.3 Results</h1>
+        <p class="subtitle">Split Time Distributions</p>
+
+        <div class="controls">
+            <div class="control-group">
+                <label for="race-select">Race</label>
+                <select id="race-select"></select>
+            </div>
+            <div class="control-group">
+                <label for="year-select">Year</label>
+                <select id="year-select"></select>
+            </div>
+            <div class="control-group">
+                <label for="division-select">Division</label>
+                <select id="division-select"></select>
+            </div>
+            <div class="control-group athlete-search">
+                <label for="athlete-input">Highlight Athlete</label>
+                <input type="text" id="athlete-input" placeholder="Search by name..." autocomplete="off">
+                <div class="athlete-dropdown" id="athlete-dropdown"></div>
+            </div>
+            <div class="stats" id="stats"></div>
+        </div>
+
+        <div class="charts-grid">
+            <div class="chart-container" id="swim-chart">
+                <h3>Swim</h3>
+            </div>
+            <div class="chart-container" id="t1-chart">
+                <h3>T1</h3>
+            </div>
+            <div class="chart-container" id="bike-chart">
+                <h3>Bike</h3>
+            </div>
+            <div class="chart-container" id="t2-chart">
+                <h3>T2</h3>
+            </div>
+            <div class="chart-container" id="run-chart">
+                <h3>Run</h3>
+            </div>
+            <div class="chart-container" id="finish-chart">
+                <h3>Overall</h3>
+            </div>
+        </div>
+
+        <div class="tooltip" id="tooltip"></div>
+    </div>
+
+    <button id="theme-toggle" class="theme-toggle"><i class="fas fa-moon"></i></button>
+    <script src="js/shared.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
