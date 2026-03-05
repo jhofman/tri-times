@@ -61,6 +61,16 @@ function filterData(division) {
     d3.select('#stats').text(`${currentData.length} athletes`);
 }
 
+function updateUrl() {
+    const params = new URLSearchParams();
+    params.set('race', currentRace);
+    params.set('year', currentYear);
+    const division = document.getElementById('division-select').value;
+    if (division && division !== 'ALL') params.set('division', division);
+    if (selectedAthlete) params.set('athlete', selectedAthlete['Athlete Name']);
+    history.replaceState(null, '', '?' + params.toString());
+}
+
 // Load data for a race/year and update display
 async function loadAndDisplayRace(race, year) {
     d3.select('#stats').text('Loading...');
@@ -71,6 +81,7 @@ async function loadAndDisplayRace(race, year) {
     clearAthlete();
     filterData('ALL');
     drawCharts();
+    updateUrl();
 }
 
 // Draw a histogram
@@ -253,6 +264,7 @@ function selectAthleteByIndex(index) {
     if (index === '' || index === null) {
         selectedAthlete = null;
         drawCharts();
+        updateUrl();
         return;
     }
 
@@ -262,6 +274,7 @@ function selectAthleteByIndex(index) {
         divisionChoices.setChoiceByValue(athlete.division);
         filterData(athlete.division);
         drawCharts();
+        updateUrl();
     }
 }
 
@@ -269,6 +282,7 @@ function clearAthlete() {
     selectedAthlete = null;
     athleteChoices.removeActiveItems();
     drawCharts();
+    updateUrl();
 }
 
 function handleResize() {
@@ -323,6 +337,7 @@ async function init() {
     document.getElementById('division-select').addEventListener('change', function() {
         filterData(this.value);
         drawCharts();
+        updateUrl();
     });
 
     // Initialize Choices.js on athlete dropdown
@@ -371,15 +386,36 @@ async function init() {
         selectAthleteByIndex(this.value);
     });
 
-    // Check for ?race= query param, otherwise default to New York
+    // Check for query params, otherwise default to New York
     const params = new URLSearchParams(window.location.search);
     const initialRace = params.get('race') || 'new-york';
     raceChoices.setChoiceByValue(initialRace);
     updateYears(initialRace);
+    const yearParam = params.get('year');
+    if (yearParam) yearChoices.setChoiceByValue(yearParam);
     const initialYear = document.getElementById('year-select').value;
 
     // Load initial race data
     await loadAndDisplayRace(initialRace, initialYear);
+
+    // Restore division and athlete from params
+    const divisionParam = params.get('division');
+    if (divisionParam) {
+        divisionChoices.setChoiceByValue(divisionParam);
+        filterData(divisionParam);
+        drawCharts();
+    }
+    const athleteParam = params.get('athlete');
+    if (athleteParam) {
+        const q = athleteParam.toLowerCase();
+        const idx = currentRaceData.findIndex(a => a['Athlete Name'].toLowerCase() === q);
+        if (idx >= 0) {
+            const results = searchAthletes(athleteParam);
+            athleteChoices.setChoices(results, 'value', 'label', true);
+            athleteChoices.setChoiceByValue(String(idx));
+            selectAthleteByIndex(idx);
+        }
+    }
 
     window.addEventListener('resize', debounce(handleResize, 150));
 }

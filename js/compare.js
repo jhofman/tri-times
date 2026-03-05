@@ -76,6 +76,16 @@ async function loadComparisonData() {
     ]);
 
     updateDivisions();
+    updateUrl(raceA, yearA, raceB, yearB);
+}
+
+function updateUrl(raceA, yearA, raceB, yearB) {
+    const params = new URLSearchParams();
+    params.set('race_a', raceA);
+    params.set('year_a', yearA);
+    params.set('race_b', raceB);
+    params.set('year_b', yearB);
+    history.replaceState(null, '', '?' + params.toString());
 }
 
 // Filter data by division
@@ -352,13 +362,22 @@ async function init() {
         shouldSort: false
     });
 
-    // Set default races
-    raceAChoices.setChoiceByValue('north-carolina');
-    raceBChoices.setChoiceByValue('new-york');
+    // Set races from query params or defaults
+    const params = new URLSearchParams(window.location.search);
+    const initialRaceA = params.get('race_a') || 'north-carolina';
+    const initialRaceB = params.get('race_b') || 'new-york';
+    raceAChoices.setChoiceByValue(initialRaceA);
+    raceBChoices.setChoiceByValue(initialRaceB);
 
     // Initialize year dropdowns
     updateYears('race-a-select', 'year-a-select');
     updateYears('race-b-select', 'year-b-select');
+
+    // Apply year params if provided
+    const yearA = params.get('year_a');
+    const yearB = params.get('year_b');
+    if (yearA) yearAChoices.setChoiceByValue(yearA);
+    if (yearB) yearBChoices.setChoiceByValue(yearB);
 
     // Event listeners
     document.getElementById('race-a-select').addEventListener('change', async function() {

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compare Races - Ironman 70.3</title>
+    <title>Tri Times</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
@@ -18,16 +18,15 @@
             <a href="races.html">Race List</a>
         </nav>
 
-        <h1>Compare Races</h1>
-        <p class="subtitle">Overlay split time distributions from two races to see how they compare. Dashed lines show median times for each race.</p>
+        <h1>Tri Times</h1>
+        <p class="subtitle">Explore split time distributions for Ironman 70.3 races. <a href="index.html">View a single race</a>, <a href="compare.html">compare two races</a>, or <a href="races.html">browse all races</a>.</p>
         <p class="comparison" id="comparison"></p>
 
         <div class="controls compare-controls">
             <div class="race-selector">
-                <div class="race-label">Race A</div>
                 <div class="race-inputs">
                     <div class="control-group race-select-container">
-                        <label for="race-a-select">Race</label>
+                        <label for="race-a-select" class="label-race-a">Race A</label>
                         <select id="race-a-select"></select>
                     </div>
                     <div class="control-group">
@@ -38,10 +37,9 @@
             </div>
 
             <div class="race-selector">
-                <div class="race-label race-label-b">Race B</div>
                 <div class="race-inputs">
                     <div class="control-group race-select-container">
-                        <label for="race-b-select">Race</label>
+                        <label for="race-b-select" class="label-race-b">Race B</label>
                         <select id="race-b-select"></select>
                     </div>
                     <div class="control-group">
@@ -55,11 +53,6 @@
                 <label for="division-select">Division</label>
                 <select id="division-select"></select>
             </div>
-        </div>
-
-        <div class="legend">
-            <span class="legend-item"><span class="legend-color legend-a"></span> Race A</span>
-            <span class="legend-item"><span class="legend-color legend-b"></span> Race B</span>
         </div>
 
         <div class="charts-grid">

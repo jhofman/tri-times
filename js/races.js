@@ -41,7 +41,7 @@ function renderTable() {
 
     tbody.innerHTML = rows.map(r => `
         <tr>
-            <td><a href="index.html?race=${r.id}">${r.name}</a></td>
+            <td><a href="index.html?race=${r.id}">${r.name}</a> <a href="https://www.ironman.com/races/im703-${r.id}" target="_blank" rel="noopener" class="external-link"><i class="fas fa-external-link-alt"></i></a></td>
             <td>${r.yearCount}</td>
             <td>${formatTime(r.swim)}</td>
             <td>${formatTime(r.t1)}</td>
