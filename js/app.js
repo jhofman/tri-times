@@ -14,10 +14,13 @@ let allData = {};
 let currentRace = null;
 let currentData = [];
 let selectedAthlete = null;
+let raceChoices = null;
+let yearChoices = null;
+let divisionChoices = null;
+let athleteChoices = null;
 
 // Update division dropdown based on selected race/year
 function updateDivisions(race, year) {
-    const select = d3.select('#division-select');
     const divisions = getDivisions(allData[race][year]);
 
     const allOptions = [
@@ -27,27 +30,19 @@ function updateDivisions(race, year) {
         ...divisions.map(d => ({ value: d, label: d }))
     ];
 
-    select.selectAll('option').remove();
-    select.selectAll('option')
-        .data(allOptions)
-        .enter()
-        .append('option')
-        .attr('value', d => d.value)
-        .text(d => d.label);
+    divisionChoices.clearStore();
+    divisionChoices.setChoices(allOptions, 'value', 'label', true);
+    divisionChoices.setChoiceByValue('ALL');
 }
 
 // Update year dropdown based on selected race
 function updateYears(race) {
-    const select = d3.select('#year-select');
     const years = RACES[race].years;
+    const yearOptions = years.map(y => ({ value: y, label: y }));
 
-    select.selectAll('option').remove();
-    select.selectAll('option')
-        .data(years)
-        .enter()
-        .append('option')
-        .attr('value', d => d)
-        .text(d => d);
+    yearChoices.clearStore();
+    yearChoices.setChoices(yearOptions, 'value', 'label', true);
+    yearChoices.setChoiceByValue(years[0]);
 }
 
 // Filter data by race, year, and division
@@ -169,21 +164,23 @@ function drawHistogram(containerId, field, title) {
         .attr('class', 'axis')
         .call(d3.axisLeft(y).ticks(5));
 
-    // Draw quartile lines
-    quartiles.forEach(q => {
+    // Draw quartile lines (stagger y positions to avoid overlap)
+    const labelYPositions = [-2, -12, -2];
+    const lineYPositions = [0, -10, 0];
+    quartiles.forEach((q, i) => {
         const qx = x(q.value);
         if (qx >= 0 && qx <= innerWidth) {
             g.append('line')
                 .attr('class', 'quartile-line')
                 .attr('x1', qx)
                 .attr('x2', qx)
-                .attr('y1', 0)
+                .attr('y1', lineYPositions[i])
                 .attr('y2', innerHeight);
 
             g.append('text')
                 .attr('class', 'quartile-label')
                 .attr('x', qx)
-                .attr('y', 0)
+                .attr('y', labelYPositions[i])
                 .attr('text-anchor', 'middle')
                 .text(formatTimeShort(q.value));
         }
@@ -223,81 +220,51 @@ function drawCharts() {
     drawHistogram('finish-chart', 'finish', 'Overall');
 }
 
-function getAthletes(race, year) {
-    return allData[race]?.[year] || [];
-}
+function searchAthletes(query) {
+    const race = document.getElementById('race-select').value;
+    const year = document.getElementById('year-select').value;
+    const athletes = allData[race]?.[year] || [];
 
-function searchAthletes(query, race, year) {
-    if (!query || query.length < 2) return [];
+    if (!query || query.length < 1) return [];
+
     const q = query.toLowerCase();
-    return getAthletes(race, year)
-        .filter(a => a['Athlete Name'].toLowerCase().includes(q))
-        .slice(0, 10);
-}
-
-function setupAthleteSearch() {
-    const input = d3.select('#athlete-input');
-    const dropdown = d3.select('#athlete-dropdown');
-
-    input.on('input', function() {
-        const query = this.value;
-        const race = d3.select('#race-select').property('value');
-        const year = d3.select('#year-select').property('value');
-        const results = searchAthletes(query, race, year);
-
-        if (results.length === 0) {
-            dropdown.classed('visible', false);
-            return;
-        }
-
-        dropdown.classed('visible', true);
-        dropdown.selectAll('.athlete-option').remove();
-
-        dropdown.selectAll('.athlete-option')
-            .data(results)
-            .enter()
-            .append('div')
-            .attr('class', 'athlete-option')
-            .html(d => `
-                <div class="name">${d['Athlete Name']}</div>
-                <div class="location">${d['City']}, ${d['State']} - ${d['Division'].replace(/"/g, '')}</div>
-            `)
-            .on('click', function(event, d) {
-                selectAthlete(d);
-                input.property('value', d['Athlete Name']);
-                dropdown.classed('visible', false);
-            });
-    });
-
-    input.on('blur', function() {
-        setTimeout(() => dropdown.classed('visible', false), 200);
-    });
-
-    input.on('focus', function() {
-        if (this.value.length >= 2) {
-            const race = d3.select('#race-select').property('value');
-            const year = d3.select('#year-select').property('value');
-            const results = searchAthletes(this.value, race, year);
-            if (results.length > 0) {
-                dropdown.classed('visible', true);
+    return athletes
+        .map((a, i) => ({ athlete: a, index: i }))
+        .filter(({ athlete }) => athlete['Athlete Name'].toLowerCase().includes(q))
+        .slice(0, 20)
+        .map(({ athlete, index }) => ({
+            value: String(index),
+            label: athlete['Athlete Name'],
+            customProperties: {
+                name: athlete['Athlete Name'],
+                location: `${athlete['City']}, ${athlete['State']} - ${athlete.division}`
             }
-        }
-    });
+        }));
 }
 
-function selectAthlete(athlete) {
-    selectedAthlete = athlete;
-    const race = d3.select('#race-select').property('value');
-    const year = d3.select('#year-select').property('value');
+function selectAthleteByIndex(index) {
+    const race = document.getElementById('race-select').value;
+    const year = document.getElementById('year-select').value;
+    const athletes = allData[race]?.[year] || [];
 
-    d3.select('#division-select').property('value', athlete.division);
-    filterData(race, year, athlete.division);
-    drawCharts();
+    if (index === '' || index === null) {
+        selectedAthlete = null;
+        drawCharts();
+        return;
+    }
+
+    const athlete = athletes[parseInt(index)];
+    if (athlete) {
+        selectedAthlete = athlete;
+        divisionChoices.setChoiceByValue(athlete.division);
+        filterData(race, year, athlete.division);
+        drawCharts();
+    }
 }
 
 function clearAthlete() {
     selectedAthlete = null;
-    d3.select('#athlete-input').property('value', '');
+    athleteChoices.removeActiveItems();
     drawCharts();
 }
 
@@ -311,55 +278,116 @@ async function init() {
     await loadRaces();
     allData = await loadAllData();
 
-    // Populate race dropdown
-    const raceSelect = d3.select('#race-select');
-    raceSelect.selectAll('option')
-        .data(Object.entries(RACES))
-        .enter()
-        .append('option')
-        .attr('value', d => d[0])
-        .text(d => d[1].name);
+    // Initialize Choices.js on race dropdown
+    raceChoices = new Choices('#race-select', {
+        searchEnabled: true,
+        searchPlaceholderValue: 'Search races...',
+        itemSelectText: '',
+        shouldSort: false,
+        choices: Object.entries(RACES).map(([id, race]) => ({
+            value: id,
+            label: race.name
+        }))
+    });
 
-    raceSelect.on('change', function() {
+    // Initialize Choices.js on year dropdown
+    yearChoices = new Choices('#year-select', {
+        searchEnabled: false,
+        itemSelectText: '',
+        shouldSort: false
+    });
+
+    // Initialize Choices.js on division dropdown
+    divisionChoices = new Choices('#division-select', {
+        searchEnabled: true,
+        searchPlaceholderValue: 'Search divisions...',
+        itemSelectText: '',
+        shouldSort: false
+    });
+
+    document.getElementById('race-select').addEventListener('change', function() {
         const race = this.value;
         currentRace = race;
         updateYears(race);
-        const year = d3.select('#year-select').property('value');
+        const year = document.getElementById('year-select').value;
         updateDivisions(race, year);
         clearAthlete();
-        const division = d3.select('#division-select').property('value');
+        const division = document.getElementById('division-select').value;
         filterData(race, year, division);
         drawCharts();
     });
 
-    d3.select('#year-select').on('change', function() {
-        const race = d3.select('#race-select').property('value');
+    document.getElementById('year-select').addEventListener('change', function() {
+        const race = document.getElementById('race-select').value;
         const year = this.value;
         updateDivisions(race, year);
         clearAthlete();
-        const division = d3.select('#division-select').property('value');
+        const division = document.getElementById('division-select').value;
         filterData(race, year, division);
         drawCharts();
     });
 
-    d3.select('#division-select').on('change', function() {
-        const race = d3.select('#race-select').property('value');
-        const year = d3.select('#year-select').property('value');
+    document.getElementById('division-select').addEventListener('change', function() {
+        const race = document.getElementById('race-select').value;
+        const year = document.getElementById('year-select').value;
         filterData(race, year, this.value);
         drawCharts();
     });
 
-    setupAthleteSearch();
+    // Initialize Choices.js on athlete dropdown
+    athleteChoices = new Choices('#athlete-select', {
+        searchEnabled: true,
+        searchPlaceholderValue: 'Type to search athletes...',
+        placeholderValue: 'Type to search...',
+        itemSelectText: '',
+        shouldSort: false,
+        allowHTML: true,
+        removeItemButton: true,
+        searchFloor: 1,
+        searchResultLimit: 20,
+        noResultsText: 'Type to search athletes...',
+        noChoicesText: 'Type to search athletes...',
+        callbackOnCreateTemplates: function(template) {
+            return {
+                choice: (classNames, data) => {
+                    return template(`
+                        <div class="${classNames.item} ${classNames.itemChoice} ${data.disabled ? classNames.itemDisabled : classNames.itemSelectable} athlete-choice"
+                             data-select-text="${this.config.itemSelectText}"
+                             data-choice
+                             data-id="${data.id}"
+                             data-value="${data.value}"
+                             ${data.disabled ? 'data-choice-disabled aria-disabled="true"' : 'data-choice-selectable'}
+                             role="option">
+                            ${data.customProperties ? `
+                                <div class="athlete-choice-name">${data.customProperties.name}</div>
+                                <div class="athlete-choice-details">${data.customProperties.location}</div>
+                            ` : data.label}
+                        </div>
+                    `);
+                }
+            };
+        }
+    });
 
-    // Initialize with Jones Beach 2025
+    // Handle search input to dynamically load athlete choices
+    athleteChoices.passedElement.element.addEventListener('search', function(event) {
+        const results = searchAthletes(event.detail.value);
+        athleteChoices.clearChoices();
+        athleteChoices.setChoices(results, 'value', 'label', true);
+    });
+
+    document.getElementById('athlete-select').addEventListener('change', function() {
+        selectAthleteByIndex(this.value);
+    });
+
+    // Initialize with New York 2025
     const initialRace = 'new-york';
-    d3.select('#race-select').property('value', initialRace);
+    raceChoices.setChoiceByValue(initialRace);
     currentRace = initialRace;
     updateYears(initialRace);
-    const initialYear = '2025';
+    const initialYear = document.getElementById('year-select').value;
     updateDivisions(initialRace, initialYear);
 
-    d3.select('#division-select').property('value', 'ALL');
     filterData(initialRace, initialYear, 'ALL');
     drawCharts();
 

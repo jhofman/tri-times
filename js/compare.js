@@ -9,6 +9,11 @@ const COMPARE_COLORS = {
 let allData = {}; // allData[race][year] = [...]
 let dataA = [];
 let dataB = [];
+let raceAChoices = null;
+let raceBChoices = null;
+let yearAChoices = null;
+let yearBChoices = null;
+let divisionChoices = null;
 
 // Get unique divisions from both datasets, sorted
 function getCombinedDivisions() {
@@ -26,25 +31,20 @@ function getCombinedDivisions() {
 
 // Update year dropdown based on selected race
 function updateYears(raceSelectId, yearSelectId) {
-    const race = d3.select(`#${raceSelectId}`).property('value');
-    const select = d3.select(`#${yearSelectId}`);
+    const race = document.getElementById(raceSelectId).value;
     const years = RACES[race].years;
+    const yearOptions = years.map(y => ({ value: y, label: y }));
 
-    select.selectAll('option').remove();
-    select.selectAll('option')
-        .data(years)
-        .enter()
-        .append('option')
-        .attr('value', d => d)
-        .text(d => d);
+    const choicesInstance = yearSelectId === 'year-a-select' ? yearAChoices : yearBChoices;
+    choicesInstance.clearStore();
+    choicesInstance.setChoices(yearOptions, 'value', 'label', true);
+    choicesInstance.setChoiceByValue(years[0]);
 }
 
 // Update division dropdown
 function updateDivisions() {
-    const select = d3.select('#division-select');
     const divisions = getCombinedDivisions();
-
-    const currentValue = select.property('value');
+    const currentValue = document.getElementById('division-select').value;
 
     const allOptions = [
         { value: 'ALL', label: 'Everyone' },
@@ -53,17 +53,14 @@ function updateDivisions() {
         ...divisions.map(d => ({ value: d, label: d }))
     ];
 
-    select.selectAll('option').remove();
-    select.selectAll('option')
-        .data(allOptions)
-        .enter()
-        .append('option')
-        .attr('value', d => d.value)
-        .text(d => d.label);
+    divisionChoices.clearStore();
+    divisionChoices.setChoices(allOptions, 'value', 'label', true);
 
     // Restore previous value if still valid
     if (allOptions.some(o => o.value === currentValue)) {
-        select.property('value', currentValue);
+        divisionChoices.setChoiceByValue(currentValue);
+    } else {
+        divisionChoices.setChoiceByValue('ALL');
     }
 }
 
@@ -254,7 +251,7 @@ function drawComparisonHistogram(containerId, field) {
             .attr('class', 'median-line')
             .attr('x1', medianBX)
             .attr('x2', medianBX)
-            .attr('y1', 0)
+            .attr('y1', -10)
             .attr('y2', innerHeight)
             .attr('stroke', COMPARE_COLORS.raceB.stroke)
             .attr('stroke-width', 2)
@@ -312,63 +309,86 @@ async function init() {
     await loadRaces();
     allData = await loadAllData();
 
-    // Populate race dropdowns
-    const raceOptions = Object.entries(RACES);
+    // Initialize Choices.js on race dropdowns
+    const raceOptions = Object.entries(RACES).map(([id, race]) => ({
+        value: id,
+        label: race.name
+    }));
 
-    d3.select('#race-a-select').selectAll('option')
-        .data(raceOptions)
-        .enter()
-        .append('option')
-        .attr('value', d => d[0])
-        .text(d => d[1].name);
+    raceAChoices = new Choices('#race-a-select', {
+        searchEnabled: true,
+        searchPlaceholderValue: 'Search races...',
+        itemSelectText: '',
+        shouldSort: false,
+        choices: raceOptions
+    });
 
-    d3.select('#race-b-select').selectAll('option')
-        .data(raceOptions)
-        .enter()
-        .append('option')
-        .attr('value', d => d[0])
-        .text(d => d[1].name);
+    raceBChoices = new Choices('#race-b-select', {
+        searchEnabled: true,
+        searchPlaceholderValue: 'Search races...',
+        itemSelectText: '',
+        shouldSort: false,
+        choices: raceOptions
+    });
 
-    // Set default: first two different races
-    d3.select('#race-a-select').property('value', 'north-carolina');
-    d3.select('#race-b-select').property('value', 'new-york');
+    // Initialize Choices.js on year dropdowns
+    yearAChoices = new Choices('#year-a-select', {
+        searchEnabled: false,
+        itemSelectText: '',
+        shouldSort: false
+    });
+
+    yearBChoices = new Choices('#year-b-select', {
+        searchEnabled: false,
+        itemSelectText: '',
+        shouldSort: false
+    });
+
+    // Initialize Choices.js on division dropdown
+    divisionChoices = new Choices('#division-select', {
+        searchEnabled: true,
+        searchPlaceholderValue: 'Search divisions...',
+        itemSelectText: '',
+        shouldSort: false
+    });
+
+    // Set default races
+    raceAChoices.setChoiceByValue('north-carolina');
+    raceBChoices.setChoiceByValue('new-york');
 
     // Initialize year dropdowns
     updateYears('race-a-select', 'year-a-select');
     updateYears('race-b-select', 'year-b-select');
 
     // Event listeners
-    d3.select('#race-a-select').on('change', function() {
+    document.getElementById('race-a-select').addEventListener('change', function() {
         updateYears('race-a-select', 'year-a-select');
         loadRaceData();
         drawCharts();
     });
 
-    d3.select('#year-a-select').on('change', function() {
+    document.getElementById('year-a-select').addEventListener('change', function() {
         loadRaceData();
         drawCharts();
     });
 
-    d3.select('#race-b-select').on('change', function() {
+    document.getElementById('race-b-select').addEventListener('change', function() {
         updateYears('race-b-select', 'year-b-select');
         loadRaceData();
         drawCharts();
     });
 
-    d3.select('#year-b-select').on('change', function() {
+    document.getElementById('year-b-select').addEventListener('change', function() {
         loadRaceData();
         drawCharts();
     });
 
-    d3.select('#division-select').on('change', function() {
+    document.getElementById('division-select').addEventListener('change', function() {
         drawCharts();
     });
 
     // Load initial data
     loadRaceData();
-
-    // Default to Everyone
-    d3.select('#division-select').property('value', 'ALL');
 
     drawCharts();
 

@@ -6,7 +6,9 @@
     <title>Ironman 70.3 Results</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
     <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -19,7 +21,7 @@
         <p class="subtitle">Explore split time distributions for a single race. Hover over bars to see percentiles, and search for an athlete to highlight their position in each chart.</p>
 
         <div class="controls">
-            <div class="control-group">
+            <div class="control-group race-select-container">
                 <label for="race-select">Race</label>
                 <select id="race-select"></select>
             </div>
@@ -31,10 +33,9 @@
                 <label for="division-select">Division</label>
                 <select id="division-select"></select>
             </div>
-            <div class="control-group athlete-search">
-                <label for="athlete-input">Highlight Athlete</label>
-                <input type="text" id="athlete-input" placeholder="Search by name..." autocomplete="off">
-                <div class="athlete-dropdown" id="athlete-dropdown"></div>
+            <div class="control-group" id="athlete-select-container">
+                <label for="athlete-select">Highlight Athlete</label>
+                <select id="athlete-select"></select>
             </div>
             <div class="stats" id="stats"></div>
         </div>

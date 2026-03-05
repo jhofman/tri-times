@@ -6,7 +6,9 @@
     <title>Compare Races - Ironman 70.3</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
     <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -23,7 +25,7 @@
             <div class="race-selector">
                 <div class="race-label">Race A</div>
                 <div class="race-inputs">
-                    <div class="control-group">
+                    <div class="control-group race-select-container">
                         <label for="race-a-select">Race</label>
                         <select id="race-a-select"></select>
                     </div>
@@ -37,7 +39,7 @@
             <div class="race-selector">
                 <div class="race-label race-label-b">Race B</div>
                 <div class="race-inputs">
-                    <div class="control-group">
+                    <div class="control-group race-select-container">
                         <label for="race-b-select">Race</label>
                         <select id="race-b-select"></select>
                     </div>
