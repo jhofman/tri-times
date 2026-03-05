@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Race List - Ironman 70.3</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav">
+            <a href="index.html">Single Race</a>
+            <a href="compare.html">Compare Races</a>
+            <a href="races.html" class="active">Race List</a>
+        </nav>
+
+        <h1>Race List</h1>
+        <p class="subtitle">Split times across all years for each race. Click a column header to sort.</p>
+        <p class="subtitle" id="percentile-description">Showing typical (median) split times for each race.</p>
+
+        <div class="controls">
+            <div class="control-group">
+                <label for="percentile-select">Percentile</label>
+                <select id="percentile-select">
+                    <option value="10">10th (fastest)</option>
+                    <option value="20">20th</option>
+                    <option value="30">30th</option>
+                    <option value="40">40th</option>
+                    <option value="50" selected>50th (median)</option>
+                    <option value="60">60th</option>
+                    <option value="70">70th</option>
+                    <option value="80">80th</option>
+                    <option value="90">90th (slowest)</option>
+                </select>
+            </div>
+            <div class="stats" id="stats"></div>
+        </div>
+
+        <div class="table-wrapper">
+            <table class="race-table" id="race-table">
+                <thead>
+                    <tr>
+                        <th data-sort="name">Race <span class="sort-arrow"></span></th>
+                        <th data-sort="yearCount"># Years <span class="sort-arrow"></span></th>
+                        <th data-sort="swim">Swim <span class="sort-arrow"></span></th>
+                        <th data-sort="t1">T1 <span class="sort-arrow"></span></th>
+                        <th data-sort="bike">Bike <span class="sort-arrow"></span></th>
+                        <th data-sort="t2">T2 <span class="sort-arrow"></span></th>
+                        <th data-sort="run">Run <span class="sort-arrow"></span></th>
+                        <th data-sort="finish">Finish <span class="sort-arrow"></span></th>
+                    </tr>
+                </thead>
+                <tbody id="race-table-body"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <button id="theme-toggle" class="theme-toggle"><i class="fas fa-moon"></i></button>
+    <script src="js/shared.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/races.js"></script>
+</body>
+</html>

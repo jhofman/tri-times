@@ -371,8 +371,9 @@ async function init() {
         selectAthleteByIndex(this.value);
     });
 
-    // Initialize with New York
-    const initialRace = 'new-york';
+    // Check for ?race= query param, otherwise default to New York
+    const params = new URLSearchParams(window.location.search);
+    const initialRace = params.get('race') || 'new-york';
     raceChoices.setChoiceByValue(initialRace);
     updateYears(initialRace);
     const initialYear = document.getElementById('year-select').value;
