@@ -34,20 +34,23 @@ open http://localhost:8080
 Race data is fetched from the Ironman results API using the included scraper (based on [ironman-results](https://github.com/colinlord/ironman-results) by Colin Lord).
 
 ```bash
-# Fetch race data
-npm run fetch
+# Fetch results for a single race (interactive)
+npm run fetch-results
 
-# When prompted:
-# 1. Paste the results URL (e.g., https://www.ironman.com/races/im703-north-carolina/results)
-# 2. Enter a base name (e.g., "northcarolina")
+# Or pass a URL directly
+npm run fetch-results -- https://www.ironman.com/races/im703-chattanooga
 
-# Update the races manifest
+# Fetch results for ALL 70.3 races (takes a while!)
+npm run fetch-all-results
+
+# Update the list of available races from ironman.com
+npm run fetch-race-list
+
+# Regenerate the races manifest after adding data
 npm run update-manifest
 ```
 
-The scraper accepts either the main ironman.com results page URL or the direct labs-v2.competitor.com iframe URL.
-
-CSV files are saved to `results/` and the manifest at `results/races.json` is automatically updated.
+CSV files are saved to `results/` and the manifest at `results/races.json` lists available races.
 
 ## Project Structure
 
@@ -55,6 +58,7 @@ CSV files are saved to `results/` and the manifest at `results/races.json` is au
 tri-times/
 ├── index.html          # Single race view
 ├── compare.html        # Race comparison view
+├── races.txt           # List of all 70.3 race URLs
 ├── css/
 │   └── style.css       # Styles with light/dark themes
 ├── js/
@@ -66,8 +70,9 @@ tri-times/
 │   ├── races.json      # Available races manifest
 │   └── *.csv           # Race data files
 └── scripts/
-    ├── scraper.js      # Fetch race data
-    └── update-manifest.js
+    ├── scraper.js      # Fetch race results
+    ├── fetch-race-list.js  # Update races.txt
+    └── update-manifest.js  # Regenerate races.json
 ```
 
 ## Data Format

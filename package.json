@@ -4,7 +4,9 @@
   "description": "Visualize Ironman 70.3 race results with interactive histograms",
   "scripts": {
     "start": "python3 -m http.server 8080",
-    "fetch": "node scripts/scraper.js",
+    "fetch-race-list": "node scripts/fetch-race-list.js",
+    "fetch-results": "node scripts/scraper.js",
+    "fetch-all-results": "node scripts/scraper.js races.txt",
     "update-manifest": "node scripts/update-manifest.js"
   },
   "keywords": ["ironman", "triathlon", "70.3", "results", "visualization", "d3"],
