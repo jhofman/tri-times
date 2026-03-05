@@ -26,33 +26,38 @@ async function loadRaces() {
     return RACES;
 }
 
-// Load all CSV data for all races
-async function loadAllData() {
-    const races = await loadRaces();
-    const allData = {};
-    const promises = [];
+// Cache for loaded race data
+const raceDataCache = {};
 
-    for (const [raceId, race] of Object.entries(races)) {
-        allData[raceId] = {};
-        for (const year of race.years) {
-            promises.push(
-                d3.csv(`${RESULTS_PATH}${raceId}_${year}.csv`).then(data => {
-                    allData[raceId][year] = data.map(d => ({
-                        ...d,
-                        swim: +d['Swim (Seconds)'],
-                        t1: +d['T1 (Seconds)'],
-                        bike: +d['Bike (Seconds)'],
-                        t2: +d['T2 (Seconds)'],
-                        run: +d['Run (Seconds)'],
-                        finish: +d['Finish (Seconds)'],
-                        division: d['Division'].replace(/"/g, '')
-                    })).filter(d => d.finish > 0); // Filter out DNFs
-                })
-            );
-        }
+// Load CSV data for a single race/year (lazy loading with cache)
+async function loadRaceData(raceId, year) {
+    const cacheKey = `${raceId}_${year}`;
+
+    // Return cached data if available
+    if (raceDataCache[cacheKey]) {
+        return raceDataCache[cacheKey];
     }
-    await Promise.all(promises);
-    return allData;
+
+    // Load and cache the data
+    const data = await d3.csv(`${RESULTS_PATH}${raceId}_${year}.csv`);
+    const processed = data.map(d => ({
+        ...d,
+        swim: +d['Swim (Seconds)'],
+        t1: +d['T1 (Seconds)'],
+        bike: +d['Bike (Seconds)'],
+        t2: +d['T2 (Seconds)'],
+        run: +d['Run (Seconds)'],
+        finish: +d['Finish (Seconds)'],
+        division: d['Division'].replace(/"/g, '')
+    })).filter(d => d.finish > 0); // Filter out DNFs
+
+    raceDataCache[cacheKey] = processed;
+    return processed;
+}
+
+// Helper to get cached data synchronously (returns undefined if not loaded)
+function getCachedRaceData(raceId, year) {
+    return raceDataCache[`${raceId}_${year}`];
 }
 
 // Get unique divisions from data, sorted

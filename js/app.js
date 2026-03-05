@@ -10,8 +10,9 @@ const CHART_COLORS = {
     finish: { fill: 'rgba(152, 78, 163, 0.6)', hover: 'rgba(152, 78, 163, 0.9)' }
 };
 
-let allData = {};
+let currentRaceData = []; // Data for current race/year
 let currentRace = null;
+let currentYear = null;
 let currentData = [];
 let selectedAthlete = null;
 let raceChoices = null;
@@ -19,9 +20,9 @@ let yearChoices = null;
 let divisionChoices = null;
 let athleteChoices = null;
 
-// Update division dropdown based on selected race/year
-function updateDivisions(race, year) {
-    const divisions = getDivisions(allData[race][year]);
+// Update division dropdown based on current race data
+function updateDivisions() {
+    const divisions = getDivisions(currentRaceData);
 
     const allOptions = [
         { value: 'ALL', label: 'Everyone' },
@@ -45,21 +46,31 @@ function updateYears(race) {
     yearChoices.setChoiceByValue(years[0]);
 }
 
-// Filter data by race, year, and division
-function filterData(race, year, division) {
-    const data = allData[race][year];
-
+// Filter data by division
+function filterData(division) {
     if (division === 'ALL') {
-        currentData = data;
+        currentData = currentRaceData;
     } else if (division === 'ALL_M') {
-        currentData = data.filter(d => d.division.startsWith('M'));
+        currentData = currentRaceData.filter(d => d.division.startsWith('M'));
     } else if (division === 'ALL_F') {
-        currentData = data.filter(d => d.division.startsWith('F'));
+        currentData = currentRaceData.filter(d => d.division.startsWith('F'));
     } else {
-        currentData = data.filter(d => d.division === division);
+        currentData = currentRaceData.filter(d => d.division === division);
     }
 
     d3.select('#stats').text(`${currentData.length} athletes`);
+}
+
+// Load data for a race/year and update display
+async function loadAndDisplayRace(race, year) {
+    d3.select('#stats').text('Loading...');
+    currentRace = race;
+    currentYear = year;
+    currentRaceData = await loadRaceData(race, year);
+    updateDivisions();
+    clearAthlete();
+    filterData('ALL');
+    drawCharts();
 }
 
 // Draw a histogram
@@ -221,14 +232,10 @@ function drawCharts() {
 }
 
 function searchAthletes(query) {
-    const race = document.getElementById('race-select').value;
-    const year = document.getElementById('year-select').value;
-    const athletes = allData[race]?.[year] || [];
-
     if (!query || query.length < 1) return [];
 
     const q = query.toLowerCase();
-    return athletes
+    return currentRaceData
         .map((a, i) => ({ athlete: a, index: i }))
         .filter(({ athlete }) => athlete['Athlete Name'].toLowerCase().includes(q))
         .slice(0, 20)
@@ -243,21 +250,17 @@ function searchAthletes(query) {
 }
 
 function selectAthleteByIndex(index) {
-    const race = document.getElementById('race-select').value;
-    const year = document.getElementById('year-select').value;
-    const athletes = allData[race]?.[year] || [];
-
     if (index === '' || index === null) {
         selectedAthlete = null;
         drawCharts();
         return;
     }
 
-    const athlete = athletes[parseInt(index)];
+    const athlete = currentRaceData[parseInt(index)];
     if (athlete) {
         selectedAthlete = athlete;
         divisionChoices.setChoiceByValue(athlete.division);
-        filterData(race, year, athlete.division);
+        filterData(athlete.division);
         drawCharts();
     }
 }
@@ -273,10 +276,9 @@ function handleResize() {
 }
 
 async function init() {
-    d3.select('#stats').text('Loading data...');
+    d3.select('#stats').text('Loading...');
 
     await loadRaces();
-    allData = await loadAllData();
 
     // Initialize Choices.js on race dropdown
     raceChoices = new Choices('#race-select', {
@@ -305,32 +307,21 @@ async function init() {
         shouldSort: false
     });
 
-    document.getElementById('race-select').addEventListener('change', function() {
+    document.getElementById('race-select').addEventListener('change', async function() {
         const race = this.value;
-        currentRace = race;
         updateYears(race);
         const year = document.getElementById('year-select').value;
-        updateDivisions(race, year);
-        clearAthlete();
-        const division = document.getElementById('division-select').value;
-        filterData(race, year, division);
-        drawCharts();
+        await loadAndDisplayRace(race, year);
     });
 
-    document.getElementById('year-select').addEventListener('change', function() {
+    document.getElementById('year-select').addEventListener('change', async function() {
         const race = document.getElementById('race-select').value;
         const year = this.value;
-        updateDivisions(race, year);
-        clearAthlete();
-        const division = document.getElementById('division-select').value;
-        filterData(race, year, division);
-        drawCharts();
+        await loadAndDisplayRace(race, year);
     });
 
     document.getElementById('division-select').addEventListener('change', function() {
-        const race = document.getElementById('race-select').value;
-        const year = document.getElementById('year-select').value;
-        filterData(race, year, this.value);
+        filterData(this.value);
         drawCharts();
     });
 
@@ -380,16 +371,14 @@ async function init() {
         selectAthleteByIndex(this.value);
     });
 
-    // Initialize with New York 2025
+    // Initialize with New York
     const initialRace = 'new-york';
     raceChoices.setChoiceByValue(initialRace);
-    currentRace = initialRace;
     updateYears(initialRace);
     const initialYear = document.getElementById('year-select').value;
-    updateDivisions(initialRace, initialYear);
 
-    filterData(initialRace, initialYear, 'ALL');
-    drawCharts();
+    // Load initial race data
+    await loadAndDisplayRace(initialRace, initialYear);
 
     window.addEventListener('resize', debounce(handleResize, 150));
 }

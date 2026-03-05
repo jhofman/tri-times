@@ -6,7 +6,6 @@ const COMPARE_COLORS = {
     raceB: { fill: 'rgba(255, 127, 0, 0.5)', stroke: 'rgb(255, 127, 0)' }       // orange
 };
 
-let allData = {}; // allData[race][year] = [...]
 let dataA = [];
 let dataB = [];
 let raceAChoices = null;
@@ -64,15 +63,17 @@ function updateDivisions() {
     }
 }
 
-// Load data for both races
-function loadRaceData() {
+// Load data for both races (lazy loading with cache)
+async function loadComparisonData() {
     const raceA = d3.select('#race-a-select').property('value');
     const yearA = d3.select('#year-a-select').property('value');
     const raceB = d3.select('#race-b-select').property('value');
     const yearB = d3.select('#year-b-select').property('value');
 
-    dataA = allData[raceA]?.[yearA] || [];
-    dataB = allData[raceB]?.[yearB] || [];
+    [dataA, dataB] = await Promise.all([
+        loadRaceData(raceA, yearA),
+        loadRaceData(raceB, yearB)
+    ]);
 
     updateDivisions();
 }
@@ -307,7 +308,6 @@ function handleResize() {
 // Initialize
 async function init() {
     await loadRaces();
-    allData = await loadAllData();
 
     // Initialize Choices.js on race dropdowns
     const raceOptions = Object.entries(RACES).map(([id, race]) => ({
@@ -361,25 +361,25 @@ async function init() {
     updateYears('race-b-select', 'year-b-select');
 
     // Event listeners
-    document.getElementById('race-a-select').addEventListener('change', function() {
+    document.getElementById('race-a-select').addEventListener('change', async function() {
         updateYears('race-a-select', 'year-a-select');
-        loadRaceData();
+        await loadComparisonData();
         drawCharts();
     });
 
-    document.getElementById('year-a-select').addEventListener('change', function() {
-        loadRaceData();
+    document.getElementById('year-a-select').addEventListener('change', async function() {
+        await loadComparisonData();
         drawCharts();
     });
 
-    document.getElementById('race-b-select').addEventListener('change', function() {
+    document.getElementById('race-b-select').addEventListener('change', async function() {
         updateYears('race-b-select', 'year-b-select');
-        loadRaceData();
+        await loadComparisonData();
         drawCharts();
     });
 
-    document.getElementById('year-b-select').addEventListener('change', function() {
-        loadRaceData();
+    document.getElementById('year-b-select').addEventListener('change', async function() {
+        await loadComparisonData();
         drawCharts();
     });
 
@@ -388,8 +388,7 @@ async function init() {
     });
 
     // Load initial data
-    loadRaceData();
-
+    await loadComparisonData();
     drawCharts();
 
     window.addEventListener('resize', debounce(handleResize, 150));
