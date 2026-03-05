@@ -11,7 +11,7 @@
     --shadow: rgba(0, 0, 0, 0.4);
     --tooltip-bg: rgba(22, 27, 34, 0.95);
     --quartile-line: rgba(255, 255, 255, 0.25);
-    --athlete-marker: rgba(255, 255, 255, 0.9);
+    --athlete-marker: rgba(255, 255, 255, 0.55);
 }
 
 html.light-theme {
@@ -27,7 +27,7 @@ html.light-theme {
     --shadow: rgba(0, 0, 0, 0.15);
     --tooltip-bg: rgba(255, 255, 255, 0.95);
     --quartile-line: rgba(0, 0, 0, 0.2);
-    --athlete-marker: rgba(0, 0, 0, 0.8);
+    --athlete-marker: rgba(0, 0, 0, 0.45);
 }
 
 * {
@@ -212,6 +212,7 @@ select:focus {
 .quartile-line {
     stroke: var(--quartile-line);
     stroke-width: 1;
+    stroke-dasharray: 1, 3;
 }
 
 .quartile-label {
@@ -286,11 +287,11 @@ select:focus {
 .athlete-marker {
     stroke: var(--athlete-marker);
     stroke-width: 2;
-    stroke-dasharray: 4, 2;
+    stroke-dasharray: 6, 3;
 }
 
 .athlete-label {
-    fill: var(--text-primary);
+    fill: var(--athlete-marker);
     font-size: 11px;
     font-weight: 600;
 }

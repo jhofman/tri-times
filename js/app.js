@@ -105,7 +105,7 @@ function drawHistogram(containerId, field, title) {
         { pct: 75, value: sorted[Math.floor(sorted.length * 0.75)] }
     ];
 
-    const margin = { top: 20, right: 20, bottom: 35, left: 45 };
+    const margin = { top: 35, right: 20, bottom: 35, left: 45 };
     const width = container.node().clientWidth - 32;
     const height = 200;
     const innerWidth = width - margin.left - margin.right;
@@ -186,9 +186,9 @@ function drawHistogram(containerId, field, title) {
         .attr('class', 'axis')
         .call(d3.axisLeft(y).ticks(5));
 
-    // Draw quartile lines (stagger y positions to avoid overlap)
-    const labelYPositions = [-2, -12, -2];
-    const lineYPositions = [0, -10, 0];
+    // Draw quartile lines (three tiers: 25th/75th near bars, median higher)
+    const labelYPositions = [-2, -14, -2];
+    const lineYPositions = [0, -12, 0];
     quartiles.forEach((q, i) => {
         const qx = x(q.value);
         if (qx >= 0 && qx <= innerWidth) {
@@ -218,17 +218,18 @@ function drawHistogram(containerId, field, title) {
                 .attr('class', 'athlete-marker')
                 .attr('x1', athleteX)
                 .attr('x2', athleteX)
-                .attr('y1', 0)
+                .attr('y1', -25)
                 .attr('y2', innerHeight);
 
             const pct = Math.round((sortedValues.filter(v => v <= athleteTime).length / values.length) * 100);
+            const lastName = selectedAthlete['Athlete Name'].split(' ').slice(-1)[0];
 
             g.append('text')
                 .attr('class', 'athlete-label')
                 .attr('x', athleteX)
-                .attr('y', -12)
+                .attr('y', -26)
                 .attr('text-anchor', 'middle')
-                .text(`${formatTimeShort(athleteTime)} (${pct}%)`);
+                .text(`${lastName} ${formatTimeShort(athleteTime)} (${pct}%)`);
         }
     }
 }
