@@ -1,4 +1,4 @@
-# Ironman 70.3 Results Explorer
+# tri-times
 
 Interactive visualization of Ironman 70.3 triathlon race results. View split time distributions, compare races, and track athlete performance across divisions.
 
@@ -15,8 +15,8 @@ Interactive visualization of Ironman 70.3 triathlon race results. View split tim
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/im703-explorer.git
-cd im703-explorer
+git clone https://github.com/yourusername/tri-times.git
+cd tri-times
 
 # Start a local server
 npm start
