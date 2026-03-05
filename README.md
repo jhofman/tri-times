@@ -2,6 +2,10 @@
 
 Interactive visualization of Ironman 70.3 triathlon race results. View split time distributions, compare races, and track athlete performance across divisions.
 
+![Single Race View](screenshots/single-race.png)
+
+![Race Comparison](screenshots/compare-races.png)
+
 ## Features
 
 - **Single Race View**: Histograms for swim, T1, bike, T2, run, and overall times
@@ -15,7 +19,7 @@ Interactive visualization of Ironman 70.3 triathlon race results. View split tim
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/tri-times.git
+git clone https://github.com/jhofman/tri-times.git
 cd tri-times
 
 # Start a local server
@@ -46,7 +50,7 @@ CSV files are saved to `results/` and the manifest at `results/races.json` is au
 ## Project Structure
 
 ```
-im703-explorer/
+tri-times/
 ├── index.html          # Single race view
 ├── compare.html        # Race comparison view
 ├── css/
