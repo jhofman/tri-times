@@ -7,14 +7,59 @@
  * This script fetches race results from the Ironman API and saves them as CSV files.
  *
  * Usage: node scripts/scraper.js
- *   - Enter the event group URL when prompted
+ *   - Enter the results URL (either ironman.com or labs-v2.competitor.com)
  *   - Enter a base name for output files (e.g., "northcarolina")
- *   - CSV files will be saved to the current directory
+ *   - CSV files will be saved to the results/ directory
  */
 
 const fs = require("fs/promises");
 const path = require("path");
 const readline = require("readline");
+
+const USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36";
+
+/**
+ * Resolves a URL to the labs-v2.competitor.com results URL.
+ * Handles both direct labs-v2 URLs and ironman.com results pages with iframes.
+ */
+async function resolveResultsUrl(url) {
+  // If already a labs-v2.competitor.com URL, return as-is
+  if (url.includes("labs-v2.competitor.com")) {
+    return url;
+  }
+
+  // If it's an ironman.com/races/... URL without /results, add it
+  if (url.match(/ironman\.com\/races\/[^/]+\/?$/) && !url.endsWith("/results")) {
+    url = url.replace(/\/?$/, "/results");
+    console.log(`Added /results to URL: ${url}`);
+  }
+
+  // Fetch the ironman.com page and find the iframe
+  console.log("Fetching ironman.com page to find results iframe...");
+
+  const response = await fetch(url, {
+    headers: { "User-Agent": USER_AGENT },
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch URL. Status: ${response.status}`);
+  }
+
+  const html = await response.text();
+
+  // Look for iframe with labs-v2.competitor.com src
+  const iframeMatch = html.match(/src=["'](https:\/\/labs-v2\.competitor\.com\/results\/event\/[^"']+)["']/);
+
+  if (!iframeMatch) {
+    throw new Error(
+      "Could not find results iframe on this page. Make sure you're on a results page (e.g., ironman.com/races/im703-north-carolina/results)"
+    );
+  }
+
+  const iframeUrl = iframeMatch[1];
+  console.log(`Found results iframe: ${iframeUrl}`);
+  return iframeUrl;
+}
 
 /**
  * Creates a readline interface and returns a helper function
@@ -36,13 +81,10 @@ function createQuestionInterface() {
  * Fetches the HTML from the Group URL and extracts the __NEXT_DATA__ blob.
  */
 async function fetchNextData(url) {
-  console.log(`Fetching main event group data from: ${url}`);
+  console.log(`Fetching event data from: ${url}`);
 
   const response = await fetch(url, {
-    headers: {
-      "User-Agent":
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36",
-    },
+    headers: { "User-Agent": USER_AGENT },
   });
 
   if (!response.ok) {
@@ -73,8 +115,7 @@ async function fetchResultsForEvent(eventUuid) {
 
   const response = await fetch(API_URL, {
     headers: {
-      "User-Agent":
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36",
+      "User-Agent": USER_AGENT,
       Accept: "application/json",
     },
   });
@@ -208,8 +249,8 @@ function getYearFromName(eventName) {
   const io = createQuestionInterface();
 
   try {
-    const eventUrl = await io.ask("Please paste the main event group URL: ");
-    if (!eventUrl.startsWith("http")) {
+    const inputUrl = await io.ask("Paste the results URL (ironman.com or labs-v2.competitor.com): ");
+    if (!inputUrl.startsWith("http")) {
       throw new Error("Invalid URL.");
     }
 
@@ -221,7 +262,10 @@ function getYearFromName(eventName) {
       .replace(/\s+/g, "_")
       .replace(/[^a-z0-9_]/g, "");
 
-    const jsonData = await fetchNextData(eventUrl);
+    // Resolve to labs-v2 URL if needed
+    const resultsUrl = await resolveResultsUrl(inputUrl);
+
+    const jsonData = await fetchNextData(resultsUrl);
     const pageProps = jsonData?.props?.pageProps;
 
     const subEvents = pageProps?.subevents;

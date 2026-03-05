@@ -38,12 +38,14 @@ Race data is fetched from the Ironman results API using the included scraper (ba
 npm run fetch
 
 # When prompted:
-# 1. Paste the event group URL (e.g., https://www.ironman.com/im703-north-carolina-results)
+# 1. Paste the results URL (e.g., https://www.ironman.com/races/im703-north-carolina/results)
 # 2. Enter a base name (e.g., "northcarolina")
 
 # Update the races manifest
 npm run update-manifest
 ```
+
+The scraper accepts either the main ironman.com results page URL or the direct labs-v2.competitor.com iframe URL.
 
 CSV files are saved to `results/` and the manifest at `results/races.json` is automatically updated.
 
