@@ -352,7 +352,7 @@ async function init() {
     setupAthleteSearch();
 
     // Initialize with Jones Beach 2025
-    const initialRace = 'jonesbeach';
+    const initialRace = 'new-york';
     d3.select('#race-select').property('value', initialRace);
     currentRace = initialRace;
     updateYears(initialRace);

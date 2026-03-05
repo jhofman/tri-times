@@ -23,12 +23,12 @@ const USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
 const DELAY_BETWEEN_RACES = 5000; // 5 seconds between races when batch processing
 
 /**
- * Extract race name from URL (im703-north-carolina → northcarolina)
+ * Extract race name from URL (im703-north-carolina → north-carolina)
  */
 function extractRaceName(url) {
   const match = url.match(/im703-([^/]+)/);
   if (!match) return null;
-  return match[1].replace(/-/g, '');
+  return match[1];
 }
 
 /**

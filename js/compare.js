@@ -330,8 +330,8 @@ async function init() {
         .text(d => d[1].name);
 
     // Set default: first two different races
-    d3.select('#race-a-select').property('value', 'northcarolina');
-    d3.select('#race-b-select').property('value', 'jonesbeach');
+    d3.select('#race-a-select').property('value', 'north-carolina');
+    d3.select('#race-b-select').property('value', 'new-york');
 
     // Initialize year dropdowns
     updateYears('race-a-select', 'year-a-select');

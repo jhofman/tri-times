@@ -2,7 +2,7 @@
  * Update Manifest Script
  *
  * Scans the results/ directory for CSV files and regenerates results/races.json.
- * CSV files should follow the naming convention: {racename}_{year}.csv
+ * CSV files should follow the naming convention: {race-name}_{year}.csv
  *
  * Usage: node scripts/update-manifest.js
  */
@@ -13,28 +13,26 @@ const path = require("path");
 const RESULTS_DIR = path.join(__dirname, "..", "results");
 const MANIFEST_PATH = path.join(RESULTS_DIR, "races.json");
 
-// Map race IDs to display names (add new races here)
-const RACE_NAMES = {
-  northcarolina: "North Carolina",
-  jonesbeach: "Jones Beach",
-  westernmass: "Western Mass",
-  chattanooga: "Chattanooga",
-  texas: "Texas",
-  florida: "Florida",
-  california: "California",
-  arizona: "Arizona",
-  // Add more races as needed
-};
+/**
+ * Convert hyphenated race ID to display name.
+ * e.g., "north-carolina" → "North Carolina"
+ */
+function toDisplayName(raceId) {
+  return raceId
+    .split("-")
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
 
 function updateManifest() {
   const files = fs.readdirSync(RESULTS_DIR);
   const races = {};
 
-  // Parse CSV filenames
+  // Parse CSV filenames (allows hyphens in race name)
   for (const file of files) {
     if (!file.endsWith(".csv")) continue;
 
-    const match = file.match(/^([a-z]+)_(\d{4})\.csv$/);
+    const match = file.match(/^([a-z-]+)_(\d{4})\.csv$/);
     if (!match) {
       console.warn(`Skipping unrecognized file: ${file}`);
       continue;
@@ -44,7 +42,7 @@ function updateManifest() {
 
     if (!races[raceId]) {
       races[raceId] = {
-        name: RACE_NAMES[raceId] || raceId,
+        name: toDisplayName(raceId),
         years: [],
       };
     }
