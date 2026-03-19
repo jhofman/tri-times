@@ -4,6 +4,7 @@
  * Scans the results/ directory for CSV files and regenerates:
  *   - results/races.json  (race manifest)
  *   - results/race-stats.json  (pre-computed decile stats per race)
+ *   - results/athletes/*.json  (athlete index sharded by first letter)
  *
  * CSV files should follow the naming convention: {race-name}_{year}.csv
  *
@@ -16,6 +17,7 @@ const path = require("path");
 const RESULTS_DIR = path.join(__dirname, "..", "results");
 const MANIFEST_PATH = path.join(RESULTS_DIR, "races.json");
 const STATS_PATH = path.join(RESULTS_DIR, "race-stats.json");
+const ATHLETES_DIR = path.join(RESULTS_DIR, "athletes");
 
 const SPLITS = ["swim", "t1", "bike", "t2", "run", "finish"];
 const SPLIT_COLUMNS = {
@@ -216,6 +218,88 @@ function updateManifest() {
   const raceCount = Object.keys(raceStats).length;
   const totalAth = Object.values(raceStats).reduce((s, r) => s + r.totalAthletes, 0);
   console.log(`  ${raceCount} races, ${totalAth.toLocaleString()} total athletes`);
+
+  // Build athlete index sharded by first letter of name
+  console.log("\nBuilding athlete index...");
+  const athleteShards = {};
+
+  for (const { file } of Object.values(raceFiles).flat()) {
+    const match = file.match(/^([a-z-]+)_(\d{4})\.csv$/);
+    if (!match) continue;
+    const [, raceId, year] = match;
+
+    const csv = fs.readFileSync(path.join(RESULTS_DIR, file), "utf-8");
+    const rows = parseCsv(csv);
+
+    // First pass: build sorted arrays per split for percentile computation
+    const splitArrays = { swim: [], bike: [], run: [], finish: [] };
+    const finishers = [];
+    for (const row of rows) {
+      const name = (row["Athlete Name"] || "").replace(/"/g, "").trim();
+      if (!name) continue;
+      const f = parseFloat(row[SPLIT_COLUMNS.finish]) || 0;
+      if (f <= 0) continue;
+      finishers.push(row);
+      for (const sp of ["swim", "bike", "run", "finish"]) {
+        const v = parseFloat(row[SPLIT_COLUMNS[sp]]) || 0;
+        if (v > 0) splitArrays[sp].push(v);
+      }
+    }
+    for (const sp of ["swim", "bike", "run", "finish"]) {
+      splitArrays[sp].sort((a, b) => a - b);
+    }
+
+    // Helper: percentile rank matching app.js formula
+    function pctRank(sorted, value) {
+      if (value <= 0 || sorted.length === 0) return 0;
+      let count = 0;
+      for (let i = 0; i < sorted.length; i++) {
+        if (sorted[i] <= value) count++;
+        else break;
+      }
+      return Math.round((count / sorted.length) * 100);
+    }
+
+    // Second pass: build shard entries with percentiles
+    for (const row of finishers) {
+      const name = (row["Athlete Name"] || "").replace(/"/g, "").trim();
+      const letter = name[0].toLowerCase();
+      if (!athleteShards[letter]) athleteShards[letter] = {};
+      if (!athleteShards[letter][name]) athleteShards[letter][name] = [];
+
+      const swim = parseInt(parseFloat(row[SPLIT_COLUMNS.swim]) || 0);
+      const bike = parseInt(parseFloat(row[SPLIT_COLUMNS.bike]) || 0);
+      const run = parseInt(parseFloat(row[SPLIT_COLUMNS.run]) || 0);
+      const finish = parseInt(parseFloat(row[SPLIT_COLUMNS.finish]) || 0);
+
+      athleteShards[letter][name].push([
+        raceId, year, swim, bike, run, finish,
+        (row["Division"] || "").replace(/"/g, ""),
+        pctRank(splitArrays.swim, swim),
+        pctRank(splitArrays.bike, bike),
+        pctRank(splitArrays.run, run),
+        pctRank(splitArrays.finish, finish),
+      ]);
+    }
+  }
+
+  // Sort each athlete's races by year descending
+  for (const shard of Object.values(athleteShards)) {
+    for (const races of Object.values(shard)) {
+      races.sort((a, b) => b[1].localeCompare(a[1]));
+    }
+  }
+
+  // Write shards
+  if (!fs.existsSync(ATHLETES_DIR)) fs.mkdirSync(ATHLETES_DIR);
+  let totalAthletes = 0;
+  for (const [letter, data] of Object.entries(athleteShards)) {
+    const filePath = path.join(ATHLETES_DIR, `${letter}.json`);
+    fs.writeFileSync(filePath, JSON.stringify(data));
+    totalAthletes += Object.keys(data).length;
+  }
+  console.log(`Updated ${ATHLETES_DIR}/`);
+  console.log(`  ${Object.keys(athleteShards).length} shards, ${totalAthletes.toLocaleString()} athletes`);
 }
 
 updateManifest();

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tri Times</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav">
+            <a href="index.html">Single Race</a>
+            <a href="compare.html">Compare Races</a>
+            <a href="races.html">Race List</a>
+            <a href="athlete.html" class="active">Athlete List</a>
+        </nav>
+
+        <h1>Tri Times</h1>
+        <p class="subtitle">Explore split time distributions for Ironman 70.3 races. <a href="index.html">View a single race</a>, <a href="compare.html">compare two races</a>, <a href="races.html">browse all races</a>, or <a href="athlete.html">look up an athlete</a>.</p>
+
+        <div class="controls">
+            <div class="control-group" style="flex: 1; max-width: 400px;">
+                <label for="athlete-search">Search Athlete</label>
+                <div class="search-input-wrapper">
+                    <input type="text" id="athlete-search" placeholder="Type a name..." autocomplete="off">
+                    <button id="clear-search" class="clear-btn" style="display: none;" title="Clear"><i class="fas fa-times"></i></button>
+                </div>
+            </div>
+            <div class="stats" id="stats"></div>
+        </div>
+
+        <div id="search-results" class="search-results"></div>
+
+        <div id="athlete-results" style="display: none;">
+            <h2 id="athlete-name"></h2>
+            <div class="table-wrapper">
+                <table class="race-table" id="results-table">
+                    <thead>
+                        <tr>
+                            <th data-sort="race">Race <span class="sort-arrow"></span></th>
+                            <th data-sort="year">Year <span class="sort-arrow"></span></th>
+                            <th data-sort="division">Division <span class="sort-arrow"></span></th>
+                            <th data-sort="swim">Swim <span class="sort-arrow"></span></th>
+                            <th data-sort="bike">Bike <span class="sort-arrow"></span></th>
+                            <th data-sort="run">Run <span class="sort-arrow"></span></th>
+                            <th data-sort="finish">Finish <span class="sort-arrow"></span></th>
+                        </tr>
+                    </thead>
+                    <tbody id="results-table-body"></tbody>
+                    <tfoot id="results-table-foot"></tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <button id="theme-toggle" class="theme-toggle"><i class="fas fa-moon"></i></button>
+    <script src="js/shared.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/athlete-lookup.js"></script>
+</body>
+</html>
