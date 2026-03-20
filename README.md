@@ -1,6 +1,6 @@
 # tri-times
 
-Interactive visualization of Ironman 70.3 triathlon race results. View split time distributions, compare races, and track athlete performance across divisions.
+Interactive visualization of Ironman 70.3 triathlon race results. View split time distributions, compare races, browse race stats, look up athletes, and predict race times.
 
 ![Single Race View](screenshots/single-race.png)
 
@@ -8,11 +8,13 @@ Interactive visualization of Ironman 70.3 triathlon race results. View split tim
 
 ## Features
 
-- **Single Race View**: Histograms for swim, T1, bike, T2, run, and overall times
+- **Single Race View**: Histograms for swim, T1, bike, T2, run, and overall times with quartile markers
 - **Race Comparison**: Overlay distributions from two different races
+- **Race List**: Sortable table of all races with percentile-based split times (5th–95th)
+- **Athlete Search**: Look up any athlete across all races with per-split percentile rankings
+- **Race Predictor**: Project an athlete's time in any race using their historical percentile profile
 - **Division Filtering**: Filter by age group, gender, or view everyone
-- **Athlete Search**: Highlight a specific athlete across all charts
-- **Quartile Markers**: See 25th, 50th, and 75th percentile times
+- **Shareable URLs**: All page state is reflected in the URL for easy sharing
 - **Light/Dark Theme**: Toggle between themes
 
 ## Quick Start
@@ -46,7 +48,7 @@ npm run fetch-all-results
 # Update the list of available races from ironman.com
 npm run fetch-race-list
 
-# Regenerate the races manifest after adding data
+# Regenerate races.json, race-stats.json, and athlete index shards
 npm run update-manifest
 ```
 
@@ -56,23 +58,31 @@ CSV files are saved to `results/` and the manifest at `results/races.json` lists
 
 ```
 tri-times/
-├── index.html          # Single race view
-├── compare.html        # Race comparison view
-├── races.txt           # List of all 70.3 race URLs
+├── index.html              # Single race view
+├── compare.html            # Race comparison view
+├── races.html              # Race list with sortable stats
+├── athlete.html            # Athlete search
+├── predict.html            # Race time predictor
+├── races.txt               # List of all 70.3 race URLs
 ├── css/
-│   └── style.css       # Styles with light/dark themes
+│   └── style.css           # Styles with light/dark themes
 ├── js/
-│   ├── shared.js       # Utilities, data loading
-│   ├── theme.js        # Theme toggle
-│   ├── app.js          # Single race logic
-│   └── compare.js      # Comparison logic
+│   ├── shared.js           # Utilities, data loading, caching
+│   ├── theme.js            # Theme toggle
+│   ├── app.js              # Single race histograms
+│   ├── compare.js          # Race comparison logic
+│   ├── races.js            # Race list table
+│   ├── athlete-lookup.js   # Athlete search with sharded index
+│   └── predict.js          # Race predictor with interpolation
 ├── results/
-│   ├── races.json      # Available races manifest
-│   └── *.csv           # Race data files
+│   ├── races.json          # Race manifest (names, years)
+│   ├── race-stats.json     # Pre-computed percentile stats per race
+│   ├── athletes/           # Athlete index shards (by first letter)
+│   └── *.csv               # Race data files
 └── scripts/
-    ├── scraper.js      # Fetch race results
+    ├── scraper.js          # Fetch race results
     ├── fetch-race-list.js  # Update races.txt
-    └── update-manifest.js  # Regenerate races.json
+    └── update-manifest.js  # Regenerate races.json, stats, and athlete index
 ```
 
 ## Data Format
@@ -86,6 +96,7 @@ CSV files contain the following columns:
 ## Technologies
 
 - [D3.js](https://d3js.org/) v7 for data visualization
+- [Choices.js](https://choices-js.github.io/Choices/) for searchable dropdowns
 - Vanilla JavaScript (no build step required)
 - CSS custom properties for theming
 - [Font Awesome](https://fontawesome.com/) for icons
