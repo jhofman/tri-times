@@ -14,26 +14,37 @@
             <a href="index.html">Single Race</a>
             <a href="compare.html">Compare Races</a>
             <a href="races.html" class="active">Race List</a>
-            <a href="athlete.html">Athlete List</a>
+            <a href="athlete.html">Athlete Search</a>
+            <a href="predict.html">Race Predictor</a>
         </nav>
 
         <h1>Tri Times</h1>
-        <p class="subtitle">Explore split time distributions for Ironman 70.3 races. <a href="index.html">View a single race</a>, <a href="compare.html">compare two races</a>, <a href="races.html">browse all races</a>, or <a href="athlete.html">look up an athlete</a>.</p>
+        <p class="subtitle">Explore split time distributions for Ironman 70.3 races. <a href="index.html">View a single race</a>, <a href="compare.html">compare two races</a>, <a href="races.html">browse all races</a>, <a href="athlete.html">look up an athlete</a>, or <a href="predict.html">predict a race time</a>.</p>
         <p class="subtitle" id="percentile-description">Showing typical (median) split times for each race.</p>
 
         <div class="controls">
             <div class="control-group">
                 <label for="percentile-select">Percentile</label>
                 <select id="percentile-select">
-                    <option value="10">10th (fastest)</option>
+                    <option value="5">5th (fastest)</option>
+                    <option value="10">10th</option>
+                    <option value="15">15th</option>
                     <option value="20">20th</option>
+                    <option value="25">25th</option>
                     <option value="30">30th</option>
+                    <option value="35">35th</option>
                     <option value="40">40th</option>
+                    <option value="45">45th</option>
                     <option value="50" selected>50th (median)</option>
+                    <option value="55">55th</option>
                     <option value="60">60th</option>
+                    <option value="65">65th</option>
                     <option value="70">70th</option>
+                    <option value="75">75th</option>
                     <option value="80">80th</option>
-                    <option value="90">90th (slowest)</option>
+                    <option value="85">85th</option>
+                    <option value="90">90th</option>
+                    <option value="95">95th (slowest)</option>
                 </select>
             </div>
             <div class="stats" id="stats"></div>

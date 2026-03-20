@@ -19,12 +19,12 @@ function renderTable() {
         id,
         name: race.name,
         yearCount: race.yearCount,
-        swim: race.deciles[percentile]?.swim || 0,
-        t1: race.deciles[percentile]?.t1 || 0,
-        bike: race.deciles[percentile]?.bike || 0,
-        t2: race.deciles[percentile]?.t2 || 0,
-        run: race.deciles[percentile]?.run || 0,
-        finish: race.deciles[percentile]?.finish || 0,
+        swim: race.percentiles[percentile]?.swim || 0,
+        t1: race.percentiles[percentile]?.t1 || 0,
+        bike: race.percentiles[percentile]?.bike || 0,
+        t2: race.percentiles[percentile]?.t2 || 0,
+        run: race.percentiles[percentile]?.run || 0,
+        finish: race.percentiles[percentile]?.finish || 0,
     }));
 
     rows.sort((a, b) => {

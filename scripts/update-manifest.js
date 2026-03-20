@@ -29,6 +29,7 @@ const SPLIT_COLUMNS = {
   finish: "Finish (Seconds)",
 };
 const DECILES = [10, 20, 30, 40, 50, 60, 70, 80, 90];
+const PERCENTILES = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95];
 
 /**
  * Convert hyphenated race ID to display name.
@@ -96,8 +97,8 @@ function percentile(sorted, pct) {
   return sorted[Math.min(idx, sorted.length - 1)];
 }
 
-/** Compute decile stats for a single year's data. Returns { "10": { swim: ..., ... }, ... } */
-function computeYearDeciles(rows) {
+/** Compute percentile stats for a single year's data. Returns { "5": { swim: ..., ... }, "10": {...}, ... } */
+function computeYearPercentiles(rows) {
   // Filter to finishers (finish > 0)
   const finishers = rows.filter(r => {
     const v = parseFloat(r[SPLIT_COLUMNS.finish]);
@@ -115,15 +116,15 @@ function computeYearDeciles(rows) {
       .sort((a, b) => a - b);
   }
 
-  const deciles = {};
-  for (const d of DECILES) {
-    deciles[d] = {};
+  const pctiles = {};
+  for (const p of PERCENTILES) {
+    pctiles[p] = {};
     for (const split of SPLITS) {
-      deciles[d][split] = sorted[split].length > 0 ? percentile(sorted[split], d) : 0;
+      pctiles[p][split] = sorted[split].length > 0 ? percentile(sorted[split], p) : 0;
     }
   }
 
-  return { deciles, athleteCount: finishers.length };
+  return { pctiles, athleteCount: finishers.length };
 }
 
 /** Median of an array of numbers. */
@@ -184,22 +185,22 @@ function updateManifest() {
     for (const { file } of raceFiles[raceId]) {
       const csv = fs.readFileSync(path.join(RESULTS_DIR, file), "utf-8");
       const rows = parseCsv(csv);
-      const result = computeYearDeciles(rows);
+      const result = computeYearPercentiles(rows);
       if (result) {
-        yearResults.push(result.deciles);
+        yearResults.push(result.pctiles);
         totalAthletes += result.athleteCount;
       }
     }
 
     if (yearResults.length === 0) continue;
 
-    // Median-of-medians: for each decile/split, take the median across years
+    // Median-of-medians: for each percentile/split, take the median across years
     const aggregated = {};
-    for (const d of DECILES) {
-      aggregated[d] = {};
+    for (const p of PERCENTILES) {
+      aggregated[p] = {};
       for (const split of SPLITS) {
-        const values = yearResults.map(yr => yr[d][split]).filter(v => v > 0);
-        aggregated[d][split] = Math.round(median(values));
+        const values = yearResults.map(yr => yr[p][split]).filter(v => v > 0);
+        aggregated[p][split] = Math.round(median(values));
       }
     }
 
@@ -207,7 +208,7 @@ function updateManifest() {
       name: race.name,
       yearCount: yearResults.length,
       totalAthletes,
-      deciles: aggregated,
+      percentiles: aggregated,
     };
   }
 
@@ -232,7 +233,7 @@ function updateManifest() {
     const rows = parseCsv(csv);
 
     // First pass: build sorted arrays per split for percentile computation
-    const splitArrays = { swim: [], bike: [], run: [], finish: [] };
+    const splitArrays = { swim: [], t1: [], bike: [], t2: [], run: [], finish: [] };
     const finishers = [];
     for (const row of rows) {
       const name = (row["Athlete Name"] || "").replace(/"/g, "").trim();
@@ -240,12 +241,12 @@ function updateManifest() {
       const f = parseFloat(row[SPLIT_COLUMNS.finish]) || 0;
       if (f <= 0) continue;
       finishers.push(row);
-      for (const sp of ["swim", "bike", "run", "finish"]) {
+      for (const sp of ["swim", "t1", "bike", "t2", "run", "finish"]) {
         const v = parseFloat(row[SPLIT_COLUMNS[sp]]) || 0;
         if (v > 0) splitArrays[sp].push(v);
       }
     }
-    for (const sp of ["swim", "bike", "run", "finish"]) {
+    for (const sp of ["swim", "t1", "bike", "t2", "run", "finish"]) {
       splitArrays[sp].sort((a, b) => a - b);
     }
 
@@ -268,15 +269,19 @@ function updateManifest() {
       if (!athleteShards[letter][name]) athleteShards[letter][name] = [];
 
       const swim = parseInt(parseFloat(row[SPLIT_COLUMNS.swim]) || 0);
+      const t1 = parseInt(parseFloat(row[SPLIT_COLUMNS.t1]) || 0);
       const bike = parseInt(parseFloat(row[SPLIT_COLUMNS.bike]) || 0);
+      const t2 = parseInt(parseFloat(row[SPLIT_COLUMNS.t2]) || 0);
       const run = parseInt(parseFloat(row[SPLIT_COLUMNS.run]) || 0);
       const finish = parseInt(parseFloat(row[SPLIT_COLUMNS.finish]) || 0);
 
       athleteShards[letter][name].push([
-        raceId, year, swim, bike, run, finish,
+        raceId, year, swim, t1, bike, t2, run, finish,
         (row["Division"] || "").replace(/"/g, ""),
         pctRank(splitArrays.swim, swim),
+        pctRank(splitArrays.t1, t1),
         pctRank(splitArrays.bike, bike),
+        pctRank(splitArrays.t2, t2),
         pctRank(splitArrays.run, run),
         pctRank(splitArrays.finish, finish),
       ]);

@@ -100,20 +100,24 @@ function selectAthlete(name) {
     lastMatches = [];
     highlightIndex = -1;
 
-    // races: [race_id, year, swim, bike, run, finish, division, swim_pct, bike_pct, run_pct, finish_pct]
+    // [race_id, year, swim, t1, bike, t2, run, finish, division, swim%, t1%, bike%, t2%, run%, finish%]
     currentResults = shard[name].map(r => ({
         raceId: r[0],
         race: r[0].split('-').map(w => w[0].toUpperCase() + w.slice(1)).join(' '),
         year: r[1],
         swim: r[2],
-        bike: r[3],
-        run: r[4],
-        finish: r[5],
-        division: r[6],
-        swimPct: r[7],
-        bikePct: r[8],
-        runPct: r[9],
-        finishPct: r[10],
+        t1: r[3],
+        bike: r[4],
+        t2: r[5],
+        run: r[6],
+        finish: r[7],
+        division: r[8],
+        swimPct: r[9],
+        t1Pct: r[10],
+        bikePct: r[11],
+        t2Pct: r[12],
+        runPct: r[13],
+        finishPct: r[14],
     }));
 
     sortColumn = 'year';
@@ -151,7 +155,7 @@ function renderResults() {
         </tr>
     `).join('');
 
-    // Median percentile summary row
+    // Median percentile summary row + predict link
     const tfoot = document.getElementById('results-table-foot');
     if (currentResults.length > 0) {
         const median = arr => {
@@ -160,9 +164,17 @@ function renderResults() {
             return s.length % 2 ? s[mid] : Math.round((s[mid - 1] + s[mid]) / 2);
         };
         const medSwim = median(currentResults.map(r => r.swimPct));
+        const medT1 = median(currentResults.map(r => r.t1Pct));
         const medBike = median(currentResults.map(r => r.bikePct));
+        const medT2 = median(currentResults.map(r => r.t2Pct));
         const medRun = median(currentResults.map(r => r.runPct));
         const medFinish = median(currentResults.map(r => r.finishPct));
+
+        const predictParams = new URLSearchParams({
+            athlete: document.getElementById('athlete-search').value,
+            swim: medSwim, t1: medT1, bike: medBike, t2: medT2, run: medRun,
+        });
+
         tfoot.innerHTML = `
             <tr class="summary-row">
                 <td colspan="3"><strong>Median Percentile</strong></td>
@@ -170,6 +182,9 @@ function renderResults() {
                 <td><strong>${medBike}%</strong></td>
                 <td><strong>${medRun}%</strong></td>
                 <td><strong>${medFinish}%</strong></td>
+            </tr>
+            <tr class="summary-row predict-row">
+                <td colspan="7"><a href="predict.html?${predictParams}">Predict Race Time →</a></td>
             </tr>`;
     } else {
         tfoot.innerHTML = '';

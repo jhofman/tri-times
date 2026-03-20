@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tri Times</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav">
+            <a href="index.html">Single Race</a>
+            <a href="compare.html">Compare Races</a>
+            <a href="races.html">Race List</a>
+            <a href="athlete.html">Athlete Search</a>
+            <a href="predict.html" class="active">Race Predictor</a>
+        </nav>
+
+        <h1>Tri Times</h1>
+        <p class="subtitle">Explore split time distributions for Ironman 70.3 races. <a href="index.html">View a single race</a>, <a href="compare.html">compare two races</a>, <a href="races.html">browse all races</a>, <a href="athlete.html">look up an athlete</a>, or <a href="predict.html">predict a race time</a>.</p>
+
+        <div class="controls">
+            <div class="control-group" style="flex: 1; max-width: 280px; position: relative;">
+                <label for="athlete-search">Athlete</label>
+                <div class="search-input-wrapper">
+                    <input type="text" id="athlete-search" placeholder="Search athlete..." autocomplete="off">
+                    <button id="clear-athlete" class="clear-btn" style="display: none;" title="Clear"><i class="fas fa-times"></i></button>
+                </div>
+                <div id="search-results" class="search-results"></div>
+            </div>
+            <div class="control-group race-select-container">
+                <label for="race-select">Race</label>
+                <select id="race-select"></select>
+            </div>
+            <div class="control-group">
+                <label for="year-select">Year</label>
+                <select id="year-select"></select>
+            </div>
+        </div>
+
+        <p id="predict-description" class="predict-description" style="display: none;"></p>
+
+        <div class="predict-inputs">
+            <h3>Percentile Profile</h3>
+            <p class="predict-help">Lower percentile = faster. Select an athlete to auto-fill from their race history, or enter percentiles manually.</p>
+            <div class="percentile-grid">
+                <div class="pctl-input-group">
+                    <label for="pctl-swim">Swim</label>
+                    <div class="pctl-input-wrapper">
+                        <input type="number" id="pctl-swim" min="1" max="99" value="50" class="pctl-input">
+                        <span class="pctl-suffix">%</span>
+                    </div>
+                </div>
+                <div class="pctl-input-group">
+                    <label for="pctl-t1">T1</label>
+                    <div class="pctl-input-wrapper">
+                        <input type="number" id="pctl-t1" min="1" max="99" value="50" class="pctl-input">
+                        <span class="pctl-suffix">%</span>
+                    </div>
+                </div>
+                <div class="pctl-input-group">
+                    <label for="pctl-bike">Bike</label>
+                    <div class="pctl-input-wrapper">
+                        <input type="number" id="pctl-bike" min="1" max="99" value="50" class="pctl-input">
+                        <span class="pctl-suffix">%</span>
+                    </div>
+                </div>
+                <div class="pctl-input-group">
+                    <label for="pctl-t2">T2</label>
+                    <div class="pctl-input-wrapper">
+                        <input type="number" id="pctl-t2" min="1" max="99" value="50" class="pctl-input">
+                        <span class="pctl-suffix">%</span>
+                    </div>
+                </div>
+                <div class="pctl-input-group">
+                    <label for="pctl-run">Run</label>
+                    <div class="pctl-input-wrapper">
+                        <input type="number" id="pctl-run" min="1" max="99" value="50" class="pctl-input">
+                        <span class="pctl-suffix">%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="projection" class="projection" style="display: none;">
+            <h3 id="projection-heading">Projected Time</h3>
+            <table class="race-table" id="projection-table">
+                <thead>
+                    <tr>
+                        <th>Split</th>
+                        <th>Percentile</th>
+                        <th>Projected Time</th>
+                    </tr>
+                </thead>
+                <tbody id="projection-body"></tbody>
+                <tfoot>
+                    <tr class="summary-row">
+                        <td><strong>Finish</strong></td>
+                        <td id="finish-pctl"></td>
+                        <td><strong id="finish-time"></strong></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+    <button id="theme-toggle" class="theme-toggle"><i class="fas fa-moon"></i></button>
+    <script src="js/shared.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/predict.js"></script>
+</body>
+</html>
