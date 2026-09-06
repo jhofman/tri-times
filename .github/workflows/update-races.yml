@@ -37,6 +37,9 @@ jobs:
           UPDATE_BRANCH: automation/weekly-race-update
         shell: bash
         run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
           pr_number="$(gh pr list \
             --head "$UPDATE_BRANCH" \
             --base "$BASE_BRANCH" \
