@@ -24,6 +24,12 @@
       "2011"
     ]
   },
+  "alghero": {
+    "name": "Alghero",
+    "years": [
+      "2026"
+    ]
+  },
   "aracaju-sergipe": {
     "name": "Aracaju Sergipe",
     "years": [
@@ -49,6 +55,18 @@
       "2011",
       "2010",
       "2009"
+    ]
+  },
+  "baku": {
+    "name": "Baku",
+    "years": [
+      "2026"
+    ]
+  },
+  "barranquilla": {
+    "name": "Barranquilla",
+    "years": [
+      "2026"
     ]
   },
   "belgrade": {
@@ -277,6 +295,18 @@
       "2022"
     ]
   },
+  "curitiba": {
+    "name": "Curitiba",
+    "years": [
+      "2026"
+    ]
+  },
+  "dallas-little-elm": {
+    "name": "Dallas Little Elm",
+    "years": [
+      "2026"
+    ]
+  },
   "danang": {
     "name": "Danang",
     "years": [
@@ -289,6 +319,12 @@
       "2017",
       "2016",
       "2015"
+    ]
+  },
+  "davao-philippines": {
+    "name": "Davao Philippines",
+    "years": [
+      "2026"
     ]
   },
   "desaru-coast": {
@@ -622,6 +658,12 @@
       "2017"
     ]
   },
+  "leipzig": {
+    "name": "Leipzig",
+    "years": [
+      "2026"
+    ]
+  },
   "les-sables-dolonne": {
     "name": "Les Sables Dolonne",
     "years": [
@@ -872,6 +914,12 @@
       "2016"
     ]
   },
+  "omaha": {
+    "name": "Omaha",
+    "years": [
+      "2026"
+    ]
+  },
   "oman": {
     "name": "Oman",
     "years": [
@@ -953,6 +1001,12 @@
       "2022"
     ]
   },
+  "pucon": {
+    "name": "Pucon",
+    "years": [
+      "2026"
+    ]
+  },
   "puerto-rico": {
     "name": "Puerto Rico",
     "years": [
@@ -969,6 +1023,12 @@
       "2013",
       "2012",
       "2011"
+    ]
+  },
+  "puerto-varas": {
+    "name": "Puerto Varas",
+    "years": [
+      "2026"
     ]
   },
   "punta-del-este": {
@@ -1011,6 +1071,12 @@
       "2024",
       "2023",
       "2022"
+    ]
+  },
+  "san-salvador": {
+    "name": "San Salvador",
+    "years": [
+      "2026"
     ]
   },
   "santa-cruz": {
@@ -1188,6 +1254,12 @@
       "2016",
       "2015",
       "2014"
+    ]
+  },
+  "vitoria": {
+    "name": "Vitoria",
+    "years": [
+      "2026"
     ]
   },
   "waco": {
