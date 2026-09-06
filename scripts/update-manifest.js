@@ -5,6 +5,7 @@
  *   - results/races.json  (race manifest)
  *   - results/race-stats.json  (pre-computed decile stats per race)
  *   - results/athletes/*.json  (athlete index sharded by first letter)
+ *   - results/athlete-search/*.json  (name search index by token prefix)
  *
  * CSV files should follow the naming convention: {race-name}_{year}.csv
  *
@@ -18,6 +19,7 @@ const RESULTS_DIR = path.join(__dirname, "..", "results");
 const MANIFEST_PATH = path.join(RESULTS_DIR, "races.json");
 const STATS_PATH = path.join(RESULTS_DIR, "race-stats.json");
 const ATHLETES_DIR = path.join(RESULTS_DIR, "athletes");
+const ATHLETE_SEARCH_DIR = path.join(RESULTS_DIR, "athlete-search");
 
 const SPLITS = ["swim", "t1", "bike", "t2", "run", "finish"];
 const SPLIT_COLUMNS = {
@@ -295,6 +297,26 @@ function updateManifest() {
     }
   }
 
+  // Build a compact search index keyed by the first two characters of every
+  // name token, allowing both first- and last-name searches.
+  const athleteSearchShards = {};
+  for (const shard of Object.values(athleteShards)) {
+    for (const [name, races] of Object.entries(shard)) {
+      const normalizedTokens = name
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase()
+        .split(/\s+/)
+        .map(token => token.replace(/[^a-z0-9]/g, ""))
+        .filter(token => token.length >= 2);
+      const prefixes = new Set(normalizedTokens.map(token => token.slice(0, 2)));
+      for (const prefix of prefixes) {
+        if (!athleteSearchShards[prefix]) athleteSearchShards[prefix] = {};
+        athleteSearchShards[prefix][name] = races.length;
+      }
+    }
+  }
+
   // Write shards
   if (!fs.existsSync(ATHLETES_DIR)) fs.mkdirSync(ATHLETES_DIR);
   let totalAthletes = 0;
@@ -305,6 +327,19 @@ function updateManifest() {
   }
   console.log(`Updated ${ATHLETES_DIR}/`);
   console.log(`  ${Object.keys(athleteShards).length} shards, ${totalAthletes.toLocaleString()} athletes`);
+
+  if (!fs.existsSync(ATHLETE_SEARCH_DIR)) fs.mkdirSync(ATHLETE_SEARCH_DIR);
+  for (const file of fs.readdirSync(ATHLETE_SEARCH_DIR)) {
+    if (file.endsWith(".json")) fs.unlinkSync(path.join(ATHLETE_SEARCH_DIR, file));
+  }
+  for (const [prefix, data] of Object.entries(athleteSearchShards)) {
+    fs.writeFileSync(
+      path.join(ATHLETE_SEARCH_DIR, `${prefix}.json`),
+      JSON.stringify(data)
+    );
+  }
+  console.log(`Updated ${ATHLETE_SEARCH_DIR}/`);
+  console.log(`  ${Object.keys(athleteSearchShards).length} token-prefix shards`);
 }
 
 updateManifest();

@@ -1,6 +1,7 @@
 // Athlete Lookup
 
 const shardCache = {};
+const searchShardCache = {};
 let currentResults = [];
 let sortColumn = 'year';
 let sortAsc = false;
@@ -14,6 +15,35 @@ async function fetchShard(letter) {
         if (!response.ok) return {};
         const data = await response.json();
         shardCache[letter] = data;
+        return data;
+    } catch {
+        return {};
+    }
+}
+
+function normalizeName(value) {
+    return value.normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .replace(/[^a-z0-9\s]/g, '');
+}
+
+function matchesName(name, query) {
+    const normalizedName = normalizeName(name);
+    return normalizeName(query).trim().split(/\s+/)
+        .every(token => normalizedName.includes(token));
+}
+
+async function fetchSearchShard(query) {
+    const firstToken = normalizeName(query).trim().split(/\s+/)[0];
+    const prefix = firstToken.slice(0, 2);
+    if (prefix.length < 2) return {};
+    if (searchShardCache[prefix]) return searchShardCache[prefix];
+    try {
+        const response = await fetch(`results/athlete-search/${prefix}.json`);
+        if (!response.ok) return {};
+        const data = await response.json();
+        searchShardCache[prefix] = data;
         return data;
     } catch {
         return {};
@@ -36,15 +66,14 @@ async function searchAthletes(query) {
         return;
     }
 
-    const letter = query[0].toLowerCase();
-    const shard = await fetchShard(letter);
-    const q = query.toLowerCase();
+    const searchShard = await fetchSearchShard(query);
+    const q = normalizeName(query);
 
-    lastMatches = Object.keys(shard)
-        .filter(name => name.toLowerCase().includes(q))
+    lastMatches = Object.keys(searchShard)
+        .filter(name => matchesName(name, q))
         .sort((a, b) => {
-            const aStarts = a.toLowerCase().startsWith(q) ? 0 : 1;
-            const bStarts = b.toLowerCase().startsWith(q) ? 0 : 1;
+            const aStarts = normalizeName(a).startsWith(q) ? 0 : 1;
+            const bStarts = normalizeName(b).startsWith(q) ? 0 : 1;
             if (aStarts !== bStarts) return aStarts - bStarts;
             return a.localeCompare(b);
         })
@@ -59,14 +88,10 @@ async function searchAthletes(query) {
     }
 
     container.innerHTML = lastMatches.map((name, i) => {
-        const races = shard[name];
-        const raceCount = races.length;
-        const raceNames = [...new Set(races.map(r => r[0]))].slice(0, 3)
-            .map(id => id.split('-').map(w => w[0].toUpperCase() + w.slice(1)).join(' '));
-        const summary = raceNames.join(', ') + (raceCount > 3 ? `, +${raceCount - raceNames.length} more` : '');
+        const raceCount = searchShard[name];
         return `<div class="search-item${i === highlightIndex ? ' search-item-active' : ''}" data-name="${name.replace(/"/g, '&quot;')}">
             <div class="search-item-name">${name}</div>
-            <div class="search-item-detail">${raceCount} race${raceCount !== 1 ? 's' : ''}: ${summary}</div>
+            <div class="search-item-detail">${raceCount} race${raceCount !== 1 ? 's' : ''}</div>
         </div>`;
     }).join('');
 
@@ -87,9 +112,9 @@ function clearSearch() {
     history.replaceState(null, '', window.location.pathname);
 }
 
-function selectAthlete(name) {
+async function selectAthlete(name) {
     const letter = name[0].toLowerCase();
-    const shard = shardCache[letter];
+    const shard = await fetchShard(letter);
     if (!shard || !shard[name]) return;
 
     document.getElementById('search-results').innerHTML = '';
@@ -270,9 +295,7 @@ async function init() {
     const athleteParam = params.get('athlete');
     if (athleteParam) {
         searchInput.value = athleteParam;
-        const letter = athleteParam[0].toLowerCase();
-        await fetchShard(letter);
-        selectAthlete(athleteParam);
+        await selectAthlete(athleteParam);
     }
 }
 

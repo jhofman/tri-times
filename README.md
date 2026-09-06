@@ -77,7 +77,8 @@ tri-times/
 ├── results/
 │   ├── races.json          # Race manifest (names, years)
 │   ├── race-stats.json     # Pre-computed percentile stats per race
-│   ├── athletes/           # Athlete index shards (by first letter)
+│   ├── athletes/           # Full athlete records (by first-name initial)
+│   ├── athlete-search/     # Compact name search index (by token prefix)
 │   └── *.csv               # Race data files
 └── scripts/
     ├── scraper.js          # Fetch race results
