@@ -7,7 +7,7 @@
     "fetch-race-list": "node scripts/fetch-race-list.js",
     "fetch-results": "node scripts/scraper.js",
     "fetch-all-results": "node scripts/scraper.js races.txt",
-    "fetch-new-results": "node scripts/scraper.js races.txt --year current --new-races-only",
+    "fetch-new-results": "node scripts/scraper.js races.txt --year current --missing-only --include-known-races",
     "update-manifest": "node scripts/update-manifest.js"
   },
   "keywords": ["ironman", "triathlon", "70.3", "results", "visualization", "d3"],

@@ -37,6 +37,9 @@ jobs:
           UPDATE_BRANCH: automation/weekly-race-update
         shell: bash
         run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
           pr_number="$(gh pr list \
             --head "$UPDATE_BRANCH" \
             --base "$BASE_BRANCH" \
@@ -53,7 +56,7 @@ jobs:
       - name: Refresh race list
         run: npm run fetch-race-list
 
-      - name: Fetch current-year results for new races
+      - name: Fetch missing current-year results
         id: fetch-results
         continue-on-error: true
         run: npm run fetch-new-results
@@ -102,7 +105,7 @@ jobs:
           ## Weekly race data update
 
           - Refreshed the Ironman 70.3 race list
-          - Added $(date -u +%Y) results for newly listed races when available
+          - Added missing $(date -u +%Y) results for active and previously tracked races
           - Regenerated race statistics and athlete indexes when result data changed
           - Result fetch step: $RESULT_FETCH_OUTCOME
 

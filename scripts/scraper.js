@@ -355,7 +355,20 @@ async function interactiveMode() {
  */
 async function batchMode(filePath, options = {}) {
   const content = fsSync.readFileSync(filePath, "utf-8");
-  const urls = content.split("\n").map(l => l.trim()).filter(l => l && l.startsWith("http"));
+  const urlSet = new Set(
+    content.split("\n").map(l => l.trim()).filter(l => l && l.startsWith("http"))
+  );
+
+  if (options.includeKnownRaces) {
+    for (const file of fsSync.readdirSync(RESULTS_DIR)) {
+      const match = file.match(/^([a-z0-9-]+)_20\d{2}\.csv$/);
+      if (match) {
+        urlSet.add(`https://www.ironman.com/races/im703-${match[1]}`);
+      }
+    }
+  }
+
+  const urls = [...urlSet].sort();
 
   console.log(`Found ${urls.length} races to scrape.\n`);
 
@@ -411,6 +424,7 @@ function parseArguments(args) {
     targetYear: null,
     missingOnly: false,
     newRacesOnly: false,
+    includeKnownRaces: false,
   };
   let input = null;
 
@@ -420,6 +434,8 @@ function parseArguments(args) {
       options.missingOnly = true;
     } else if (arg === "--new-races-only") {
       options.newRacesOnly = true;
+    } else if (arg === "--include-known-races") {
+      options.includeKnownRaces = true;
     } else if (arg === "--year") {
       const value = args[++i];
       if (!value) throw new Error("--year requires a value");
@@ -468,7 +484,7 @@ function parseArguments(args) {
       console.error("  node scripts/scraper.js <url>               # Single race");
       console.error("  node scripts/scraper.js races.txt           # Batch mode");
       console.error("  node scripts/scraper.js races.txt --year current --missing-only");
-      console.error("  node scripts/scraper.js races.txt --year current --new-races-only");
+      console.error("  node scripts/scraper.js races.txt --year current --missing-only --include-known-races");
       process.exit(1);
     }
   } catch (err) {
