@@ -48,11 +48,29 @@ npm run fetch-all-results
 # Update the list of available races from ironman.com
 npm run fetch-race-list
 
+# Fetch current-year results only for races with no existing CSV data
+npm run fetch-new-results
+
 # Regenerate races.json, race-stats.json, and athlete index shards
 npm run update-manifest
 ```
 
 CSV files are saved to `results/` and the manifest at `results/races.json` lists available races.
+
+### Weekly data updates
+
+The **Update race data** GitHub Actions workflow runs every Monday and can also
+be started manually from the Actions tab. It refreshes `races.txt`, fetches
+current-year results only for newly listed races that have no CSV data yet,
+regenerates derived data when needed, and opens or updates
+`automation/weekly-race-update` as a pull request for review.
+
+To let the built-in `GITHUB_TOKEN` open that pull request, enable:
+**Settings → Actions → General → Workflow permissions → Allow GitHub Actions
+to create and approve pull requests**.
+
+For a full historical refresh, run `npm run fetch-all-results` locally before
+`npm run update-manifest`.
 
 ## Project Structure
 
@@ -74,6 +92,8 @@ tri-times/
 │   ├── races.js            # Race list table
 │   ├── athlete-lookup.js   # Athlete search with sharded index
 │   └── predict.js          # Race predictor with interpolation
+├── .github/workflows/
+│   └── update-races.yml    # Weekly current-year data update PR
 ├── results/
 │   ├── races.json          # Race manifest (names, years)
 │   ├── race-stats.json     # Pre-computed percentile stats per race

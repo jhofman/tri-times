@@ -145,7 +145,7 @@ function updateManifest() {
   for (const file of files) {
     if (!file.endsWith(".csv")) continue;
 
-    const match = file.match(/^([a-z-]+)_(\d{4})\.csv$/);
+    const match = file.match(/^([a-z0-9-]+)_(\d{4})\.csv$/);
     if (!match) {
       console.warn(`Skipping unrecognized file: ${file}`);
       continue;
@@ -227,7 +227,7 @@ function updateManifest() {
   const athleteShards = {};
 
   for (const { file } of Object.values(raceFiles).flat()) {
-    const match = file.match(/^([a-z-]+)_(\d{4})\.csv$/);
+    const match = file.match(/^([a-z0-9-]+)_(\d{4})\.csv$/);
     if (!match) continue;
     const [, raceId, year] = match;
 
