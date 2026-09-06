@@ -8,6 +8,7 @@
   "aix-en-provence": {
     "name": "Aix En Provence",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -22,6 +23,12 @@
       "2013",
       "2012",
       "2011"
+    ]
+  },
+  "alghero": {
+    "name": "Alghero",
+    "years": [
+      "2026"
     ]
   },
   "aracaju-sergipe": {
@@ -51,6 +58,18 @@
       "2009"
     ]
   },
+  "baku": {
+    "name": "Baku",
+    "years": [
+      "2026"
+    ]
+  },
+  "barranquilla": {
+    "name": "Barranquilla",
+    "years": [
+      "2026"
+    ]
+  },
   "belgrade": {
     "name": "Belgrade",
     "years": [
@@ -61,6 +80,7 @@
   "boise": {
     "name": "Boise",
     "years": [
+      "2026",
       "2025",
       "2015",
       "2014",
@@ -75,6 +95,7 @@
   "bolton": {
     "name": "Bolton",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2021"
@@ -83,6 +104,7 @@
   "boulder": {
     "name": "Boulder",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -103,6 +125,7 @@
   "brasilia": {
     "name": "Brasilia",
     "years": [
+      "2026",
       "2025",
       "2015",
       "2014",
@@ -121,6 +144,7 @@
   "cairns": {
     "name": "Cairns",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -140,6 +164,7 @@
   "calgary": {
     "name": "Calgary",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -172,6 +197,7 @@
   "cap-cana": {
     "name": "Cap Cana",
     "years": [
+      "2026",
       "2025",
       "2024"
     ]
@@ -206,6 +232,7 @@
   "cebu-philippines": {
     "name": "Cebu Philippines",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2022",
@@ -224,6 +251,7 @@
   "chattanooga": {
     "name": "Chattanooga",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -239,6 +267,7 @@
   "coeur-dalene": {
     "name": "Coeur Dalene",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2022",
@@ -277,9 +306,22 @@
       "2022"
     ]
   },
+  "curitiba": {
+    "name": "Curitiba",
+    "years": [
+      "2026"
+    ]
+  },
+  "dallas-little-elm": {
+    "name": "Dallas Little Elm",
+    "years": [
+      "2026"
+    ]
+  },
   "danang": {
     "name": "Danang",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -291,9 +333,16 @@
       "2015"
     ]
   },
+  "davao-philippines": {
+    "name": "Davao Philippines",
+    "years": [
+      "2026"
+    ]
+  },
   "desaru-coast": {
     "name": "Desaru Coast",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -312,6 +361,7 @@
   "duisburg": {
     "name": "Duisburg",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -322,6 +372,7 @@
   "durban": {
     "name": "Durban",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -337,6 +388,7 @@
   "eagleman": {
     "name": "Eagleman",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -361,6 +413,7 @@
   "ecuador": {
     "name": "Ecuador",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -376,6 +429,7 @@
   "elsinore": {
     "name": "Elsinore",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -454,6 +508,7 @@
   "gdynia": {
     "name": "Gdynia",
     "years": [
+      "2026",
       "2024",
       "2023",
       "2022",
@@ -469,6 +524,7 @@
   "geelong": {
     "name": "Geelong",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -486,6 +542,7 @@
   "goseong": {
     "name": "Goseong",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -503,6 +560,7 @@
   "gulf-coast": {
     "name": "Gulf Coast",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -517,6 +575,7 @@
   "hawaii": {
     "name": "Hawaii",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -542,6 +601,7 @@
   "hradec-kralove": {
     "name": "Hradec Kralove",
     "years": [
+      "2026",
       "2025",
       "2024"
     ]
@@ -549,6 +609,7 @@
   "jonkoping": {
     "name": "Jonkoping",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -581,6 +642,7 @@
   "kraichgau": {
     "name": "Kraichgau",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -595,6 +657,7 @@
   "krakow": {
     "name": "Krakow",
     "years": [
+      "2026",
       "2025"
     ]
   },
@@ -622,9 +685,16 @@
       "2017"
     ]
   },
+  "leipzig": {
+    "name": "Leipzig",
+    "years": [
+      "2026"
+    ]
+  },
   "les-sables-dolonne": {
     "name": "Les Sables Dolonne",
     "years": [
+      "2026",
       "2024",
       "2023",
       "2022",
@@ -636,6 +706,7 @@
   "los-cabos": {
     "name": "Los Cabos",
     "years": [
+      "2026",
       "2023",
       "2022",
       "2019",
@@ -648,6 +719,7 @@
   "luxembourg": {
     "name": "Luxembourg",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -665,6 +737,7 @@
   "maine": {
     "name": "Maine",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -678,6 +751,7 @@
   "mallorca": {
     "name": "Mallorca",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -717,6 +791,7 @@
   "mont-tremblant": {
     "name": "Mont Tremblant",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -743,6 +818,7 @@
   "muncie": {
     "name": "Muncie",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -762,6 +838,7 @@
   "muskoka": {
     "name": "Muskoka",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -781,6 +858,7 @@
   "musselman": {
     "name": "Musselman",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -799,6 +877,7 @@
   "new-zealand": {
     "name": "New Zealand",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -837,6 +916,7 @@
   "oceanside": {
     "name": "Oceanside",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -861,6 +941,7 @@
   "ohio": {
     "name": "Ohio",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -870,6 +951,12 @@
       "2018",
       "2017",
       "2016"
+    ]
+  },
+  "omaha": {
+    "name": "Omaha",
+    "years": [
+      "2026"
     ]
   },
   "oman": {
@@ -887,6 +974,7 @@
   "oregon": {
     "name": "Oregon",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -897,6 +985,7 @@
   "panama": {
     "name": "Panama",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -910,6 +999,7 @@
   "pennsylvania": {
     "name": "Pennsylvania",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023"
@@ -918,6 +1008,7 @@
   "peru": {
     "name": "Peru",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -947,15 +1038,23 @@
   "poznan": {
     "name": "Poznan",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
       "2022"
     ]
   },
+  "pucon": {
+    "name": "Pucon",
+    "years": [
+      "2026"
+    ]
+  },
   "puerto-rico": {
     "name": "Puerto Rico",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -971,9 +1070,16 @@
       "2011"
     ]
   },
+  "puerto-varas": {
+    "name": "Puerto Varas",
+    "years": [
+      "2026"
+    ]
+  },
   "punta-del-este": {
     "name": "Punta Del Este",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -987,6 +1093,7 @@
   "rio-de-janeiro": {
     "name": "Rio De Janeiro",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -1001,16 +1108,24 @@
   "rockford-illinois": {
     "name": "Rockford Illinois",
     "years": [
+      "2026",
       "2025"
     ]
   },
   "san-juan": {
     "name": "San Juan",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
       "2022"
+    ]
+  },
+  "san-salvador": {
+    "name": "San Salvador",
+    "years": [
+      "2026"
     ]
   },
   "santa-cruz": {
@@ -1041,6 +1156,7 @@
   "shanghai-chongming": {
     "name": "Shanghai Chongming",
     "years": [
+      "2026",
       "2025",
       "2019",
       "2018"
@@ -1049,6 +1165,7 @@
   "subic-bay-philippines": {
     "name": "Subic Bay Philippines",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -1080,6 +1197,7 @@
   "swansea": {
     "name": "Swansea",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -1089,6 +1207,7 @@
   "switzerland": {
     "name": "Switzerland",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -1108,6 +1227,7 @@
   "tallinn": {
     "name": "Tallinn",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -1119,6 +1239,7 @@
   "texas": {
     "name": "Texas",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -1146,6 +1267,7 @@
   "valencia": {
     "name": "Valencia",
     "years": [
+      "2026",
       "2025",
       "2024"
     ]
@@ -1153,6 +1275,7 @@
   "venice-jesolo": {
     "name": "Venice Jesolo",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -1163,6 +1286,7 @@
   "vichy": {
     "name": "Vichy",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -1178,6 +1302,7 @@
   "victoria": {
     "name": "Victoria",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -1188,6 +1313,12 @@
       "2016",
       "2015",
       "2014"
+    ]
+  },
+  "vitoria": {
+    "name": "Vitoria",
+    "years": [
+      "2026"
     ]
   },
   "waco": {
@@ -1205,6 +1336,7 @@
   "warsaw": {
     "name": "Warsaw",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -1239,6 +1371,7 @@
   "western-massachusetts": {
     "name": "Western Massachusetts",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023"
@@ -1247,6 +1380,7 @@
   "western-sydney": {
     "name": "Western Sydney",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -1262,6 +1396,7 @@
   "westfriesland": {
     "name": "Westfriesland",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -1320,6 +1455,7 @@
   "zell-am-see": {
     "name": "Zell Am See",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
