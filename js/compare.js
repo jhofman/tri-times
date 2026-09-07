@@ -106,6 +106,7 @@ async function loadComparisonData() {
 function renderCompareChart(field, state) {
     const card = document.getElementById(COMPARE_CHARTS[field].id);
     card.querySelector('.chart-foot')?.remove();
+    card.querySelector('.compare-chip-stack')?.remove();
     const valuesA = state.filteredA.map(d => d[field]).filter(v => v > 0);
     const valuesB = state.filteredB.map(d => d[field]).filter(v => v > 0);
     const result = renderHistogram(card, {
@@ -129,16 +130,14 @@ function renderCompareChart(field, state) {
     }
 
     const [statsA, statsB] = result.series;
-    const medianStat = (stats, className, label, color) => {
+    const medianChip = (stats, className, label, color) => {
         if (!stats.n) {
             return `<span class="chip compare-chip ${className}" style="--chip:${color}">${escapeHtml(label)} · No data</span>`;
         }
         const pace = formatPace(field, stats.q[1]);
         return `<span class="chip compare-chip ${className}" style="--chip:${color}">${escapeHtml(label)} · ${formatChartTime(field, stats.q[1])}${pace ? ` · <i class="pace">${pace}</i>` : ''}</span>`;
     };
-    card.querySelector('.chart-stats').classList.add('compare-stats');
-    card.querySelector('.chart-stats').innerHTML =
-        `${medianStat(statsA, 'race-a', state.labelA, 'var(--race-a)')}${medianStat(statsB, 'race-b', state.labelB, 'var(--race-b)')}`;
+    card.querySelector('.chart-stats').innerHTML = '';
 
     let comparison = '';
     if (statsA.n && statsB.n) {
@@ -151,6 +150,24 @@ function renderCompareChart(field, state) {
     }
     const outside = statsA.belowDomain + statsA.aboveDomain + statsB.belowDomain + statsB.aboveDomain;
     card.querySelector('.chart-sub').innerHTML = comparison;
+    const chipStack = document.createElement('div');
+    chipStack.className = 'compare-chip-stack';
+    chipStack.innerHTML =
+        `${medianChip(statsA, 'race-a', state.labelA, 'var(--race-a)')}${medianChip(statsB, 'race-b', state.labelB, 'var(--race-b)')}`;
+    card.querySelector('svg').insertAdjacentElement('beforebegin', chipStack);
+
+    const positionChip = (chip, stats, fallback) => {
+        const halfWidth = chip.offsetWidth / 2;
+        const availableWidth = chipStack.clientWidth;
+        const domainSpan = result.domain[1] - result.domain[0];
+        const target = stats.n && domainSpan
+            ? ((stats.q[1] - result.domain[0]) / domainSpan) * availableWidth
+            : fallback * availableWidth;
+        chip.style.left = `${Math.max(halfWidth, Math.min(availableWidth - halfWidth, target))}px`;
+    };
+    positionChip(chipStack.querySelector('.race-a'), statsA, 0);
+    positionChip(chipStack.querySelector('.race-b'), statsB, 1);
+
     if (outside) {
         card.insertAdjacentHTML(
             'beforeend',

@@ -840,23 +840,30 @@ select,
     color: var(--race-b);
 }
 
-.compare-stats {
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 0.25rem;
-}
-
 .compare-chip {
-    max-width: none;
-}
-
-.chart-stats .compare-chip {
+    position: absolute;
+    max-width: 100%;
     color: #fff;
+    transform: translateX(-50%);
 }
 
 .compare-chip .pace {
     color: inherit;
     opacity: 0.8;
+}
+
+.compare-chip.race-a {
+    top: 0;
+}
+
+.compare-chip.race-b {
+    top: 22px;
+}
+
+.compare-chip-stack {
+    position: relative;
+    height: 43px;
+    margin: 0 8px 0.35rem 36px;
 }
 
 .chart-note.race-a {
@@ -1265,14 +1272,6 @@ select,
 
     .chart-stats .pace {
         display: none;
-    }
-
-    .compare-chip .pace {
-        display: inline;
-    }
-
-    .compare-stats {
-        align-items: flex-start;
     }
 
     .athlete-result-head {

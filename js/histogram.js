@@ -54,7 +54,7 @@ function renderHistogram(card, opts) {
         values: item.values.filter(value => Number.isFinite(value) && value > 0).sort((a, b) => a - b),
     }));
     const allValues = series.flatMap(item => item.values).sort((a, b) => a - b);
-    if (allValues.length === 0) return { series: [], binWidth: 0 };
+    if (allValues.length === 0) return { series: [], binWidth: 0, domain: null };
 
     let visibleMin = allValues[0];
     let visibleMax = allValues[allValues.length - 1];
@@ -282,7 +282,7 @@ function renderHistogram(card, opts) {
     });
     interactiveMarkers.forEach(marker => marker.raise());
 
-    return { series: stats, binWidth };
+    return { series: stats, binWidth, domain };
 }
 
 function observeHistogramCards(callback) {
