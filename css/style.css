@@ -1202,6 +1202,20 @@ select,
     color: var(--text-muted);
 }
 
+.projection-result {
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+
+.projection-pace {
+    min-width: 4.5rem;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    text-align: right;
+}
+
 :focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 2px;
