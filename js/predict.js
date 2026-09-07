@@ -222,14 +222,13 @@ async function updateProjection() {
         const pct = Math.max(1, Math.min(99, parseInt(document.getElementById(`pctl-${split}`).value) || 50));
         const time = interpolateTime(sortedArrays[split], pct);
         totalSeconds += time;
-        rows.push({ label: splitLabels[split], pct, time, pace: formatPace(split, time) });
+        rows.push({ label: splitLabels[split], time, pace: formatPace(split, time) });
     }
 
     const list = document.getElementById('projection-body');
     list.innerHTML = rows.map(r => `
         <div class="projection-row">
             <span>${r.label}</span>
-            <span class="projection-percentile">${ordinal(r.pct)}</span>
             <strong class="projection-time">${formatTime(r.time)}</strong>
             <span class="projection-pace">${r.pace || ''}</span>
         </div>
