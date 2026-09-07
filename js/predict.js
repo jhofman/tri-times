@@ -230,10 +230,8 @@ async function updateProjection() {
         <div class="projection-row">
             <span>${r.label}</span>
             <span class="projection-percentile">${ordinal(r.pct)}</span>
-            <span class="projection-result">
-                <strong>${formatTime(r.time)}</strong>
-                ${r.pace ? `<span class="projection-pace">${r.pace}</span>` : ''}
-            </span>
+            <strong class="projection-time">${formatTime(r.time)}</strong>
+            <span class="projection-pace">${r.pace || ''}</span>
         </div>
     `).join('');
 
