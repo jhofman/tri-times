@@ -131,11 +131,12 @@ function renderCompareChart(field, state) {
     const [statsA, statsB] = result.series;
     const medianStat = (stats, className, label, color) => {
         if (!stats.n) {
-            return `<span class="compare-median ${className}"><span class="race-dot" style="--dot:${color}"></span><span class="compare-median-label">${escapeHtml(label)}</span> No data</span>`;
+            return `<span class="chip compare-chip ${className}" style="--chip:${color}">${escapeHtml(label)} · No data</span>`;
         }
         const pace = formatPace(field, stats.q[1]);
-        return `<span class="compare-median ${className}"><span class="race-dot" style="--dot:${color}"></span><span class="compare-median-label">${escapeHtml(label)}</span><strong>${formatChartTime(field, stats.q[1])}</strong>${pace ? ` <i class="pace">${pace}</i>` : ''}</span>`;
+        return `<span class="chip compare-chip ${className}" style="--chip:${color}">${escapeHtml(label)} · ${formatChartTime(field, stats.q[1])}${pace ? ` · <i class="pace">${pace}</i>` : ''}</span>`;
     };
+    card.querySelector('.chart-stats').classList.add('compare-stats');
     card.querySelector('.chart-stats').innerHTML =
         `${medianStat(statsA, 'race-a', state.labelA, 'var(--race-a)')}${medianStat(statsB, 'race-b', state.labelB, 'var(--race-b)')}`;
 
