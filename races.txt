@@ -4,7 +4,6 @@ https://www.ironman.com/races/im703-alghero
 https://www.ironman.com/races/im703-aracaju-sergipe
 https://www.ironman.com/races/im703-augusta
 https://www.ironman.com/races/im703-bahrain
-https://www.ironman.com/races/im703-baku
 https://www.ironman.com/races/im703-barranquilla
 https://www.ironman.com/races/im703-belgrade
 https://www.ironman.com/races/im703-bolton
@@ -41,7 +40,6 @@ https://www.ironman.com/races/im703-gulf-coast
 https://www.ironman.com/races/im703-hawaii
 https://www.ironman.com/races/im703-jonkoping
 https://www.ironman.com/races/im703-kenting
-https://www.ironman.com/races/im703-knokke-heist
 https://www.ironman.com/races/im703-kraichgau
 https://www.ironman.com/races/im703-la-quinta
 https://www.ironman.com/races/im703-langkawi
