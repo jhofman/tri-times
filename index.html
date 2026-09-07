@@ -3,25 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tri Times</title>
+    <title>Single Race · Tri Times</title>
+    <script>(function(){var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t;})();</script>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
 </head>
-<body>
+<body data-page="race">
     <div class="container">
-        <nav class="nav">
-            <a href="index.html" class="active">Single Race</a>
-            <a href="compare.html">Compare Races</a>
-            <a href="races.html">Race List</a>
-            <a href="athlete.html">Athlete Search</a>
-            <a href="predict.html">Race Predictor</a>
-        </nav>
-
-        <h1>Tri Times</h1>
-        <p class="subtitle">Explore split time distributions for Ironman 70.3 races. <a href="index.html">View a single race</a>, <a href="compare.html">compare two races</a>, <a href="races.html">browse all races</a>, <a href="athlete.html">look up an athlete</a>, or <a href="predict.html">predict a race time</a>.</p>
+        <div class="page-head">
+            <h1 id="page-title">Single race</h1>
+            <p class="page-desc">Split time distributions for one race. Highlight an athlete to see where they land.</p>
+        </div>
 
         <div class="controls">
             <div class="control-group race-select-container">
@@ -45,30 +39,37 @@
 
         <div class="charts-grid">
             <div class="chart-container" id="swim-chart">
-                <h3>Swim</h3>
+                <div class="chart-head"><h3>Swim</h3><div class="chart-stats"></div></div>
+                <div class="chart-sub"></div>
             </div>
             <div class="chart-container" id="t1-chart">
-                <h3>T1</h3>
+                <div class="chart-head"><h3>T1</h3><div class="chart-stats"></div></div>
+                <div class="chart-sub"></div>
             </div>
             <div class="chart-container" id="bike-chart">
-                <h3>Bike</h3>
+                <div class="chart-head"><h3>Bike</h3><div class="chart-stats"></div></div>
+                <div class="chart-sub"></div>
             </div>
             <div class="chart-container" id="t2-chart">
-                <h3>T2</h3>
+                <div class="chart-head"><h3>T2</h3><div class="chart-stats"></div></div>
+                <div class="chart-sub"></div>
             </div>
             <div class="chart-container" id="run-chart">
-                <h3>Run</h3>
+                <div class="chart-head"><h3>Run</h3><div class="chart-stats"></div></div>
+                <div class="chart-sub"></div>
             </div>
             <div class="chart-container" id="finish-chart">
-                <h3>Overall</h3>
+                <div class="chart-head"><h3>Overall</h3><div class="chart-stats"></div></div>
+                <div class="chart-sub"></div>
             </div>
         </div>
 
         <div class="tooltip" id="tooltip"></div>
     </div>
 
-    <button id="theme-toggle" class="theme-toggle"><i class="fas fa-moon"></i></button>
+    <script src="js/nav.js"></script>
     <script src="js/shared.js"></script>
+    <script src="js/histogram.js"></script>
     <script src="js/theme.js"></script>
     <script src="js/app.js"></script>
 </body>

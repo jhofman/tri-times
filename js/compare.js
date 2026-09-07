@@ -1,9 +1,10 @@
-// Ironman 70.3 Race Comparison
-
-// Colors for comparison
-const COMPARE_COLORS = {
-    raceA: { fill: 'rgba(55, 126, 184, 0.5)', stroke: 'rgb(55, 126, 184)' },    // blue
-    raceB: { fill: 'rgba(255, 127, 0, 0.5)', stroke: 'rgb(255, 127, 0)' }       // orange
+const COMPARE_CHARTS = {
+    swim: { id: 'swim-chart', color: 'var(--swim)' },
+    t1: { id: 't1-chart', color: 'var(--t1)' },
+    bike: { id: 'bike-chart', color: 'var(--bike)' },
+    t2: { id: 't2-chart', color: 'var(--t2)' },
+    run: { id: 'run-chart', color: 'var(--run)' },
+    finish: { id: 'finish-chart', color: 'var(--finish)' },
 };
 
 let dataA = [];
@@ -14,81 +15,36 @@ let yearAChoices = null;
 let yearBChoices = null;
 let divisionChoices = null;
 
-// Get unique divisions from both datasets, sorted
 function getCombinedDivisions() {
-    const divsA = dataA.map(d => d.division);
-    const divsB = dataB.map(d => d.division);
-    const divs = [...new Set([...divsA, ...divsB])];
-    return divs.sort((a, b) => {
+    return [...new Set([...dataA, ...dataB].map(d => d.division))].sort((a, b) => {
         const genderA = a[0], genderB = b[0];
         if (genderA !== genderB) return genderA === 'M' ? -1 : 1;
-        const ageA = parseInt(a.slice(1));
-        const ageB = parseInt(b.slice(1));
-        return ageA - ageB;
+        return parseInt(a.slice(1)) - parseInt(b.slice(1));
     });
 }
 
-// Update year dropdown based on selected race
 function updateYears(raceSelectId, yearSelectId) {
     const race = document.getElementById(raceSelectId).value;
     const years = RACES[race].years;
-    const yearOptions = years.map(y => ({ value: y, label: y }));
-
-    const choicesInstance = yearSelectId === 'year-a-select' ? yearAChoices : yearBChoices;
-    choicesInstance.clearStore();
-    choicesInstance.setChoices(yearOptions, 'value', 'label', true);
-    choicesInstance.setChoiceByValue(years[0]);
+    const choices = yearSelectId === 'year-a-select' ? yearAChoices : yearBChoices;
+    choices.clearStore();
+    choices.setChoices(years.map(year => ({ value: year, label: year })), 'value', 'label', true);
+    choices.setChoiceByValue(years[0]);
 }
 
-// Update division dropdown
 function updateDivisions() {
-    const divisions = getCombinedDivisions();
-    const currentValue = document.getElementById('division-select').value;
-
-    const allOptions = [
+    const current = document.getElementById('division-select').value;
+    const options = [
         { value: 'ALL', label: 'Everyone' },
         { value: 'ALL_M', label: 'All Men' },
         { value: 'ALL_F', label: 'All Women' },
-        ...divisions.map(d => ({ value: d, label: d }))
+        ...getCombinedDivisions().map(value => ({ value, label: value })),
     ];
-
     divisionChoices.clearStore();
-    divisionChoices.setChoices(allOptions, 'value', 'label', true);
-
-    // Restore previous value if still valid
-    if (allOptions.some(o => o.value === currentValue)) {
-        divisionChoices.setChoiceByValue(currentValue);
-    } else {
-        divisionChoices.setChoiceByValue('ALL');
-    }
+    divisionChoices.setChoices(options, 'value', 'label', true);
+    divisionChoices.setChoiceByValue(options.some(option => option.value === current) ? current : 'ALL');
 }
 
-// Load data for both races (lazy loading with cache)
-async function loadComparisonData() {
-    const raceA = d3.select('#race-a-select').property('value');
-    const yearA = d3.select('#year-a-select').property('value');
-    const raceB = d3.select('#race-b-select').property('value');
-    const yearB = d3.select('#year-b-select').property('value');
-
-    [dataA, dataB] = await Promise.all([
-        loadRaceData(raceA, yearA),
-        loadRaceData(raceB, yearB)
-    ]);
-
-    updateDivisions();
-    updateUrl(raceA, yearA, raceB, yearB);
-}
-
-function updateUrl(raceA, yearA, raceB, yearB) {
-    const params = new URLSearchParams();
-    params.set('race_a', raceA);
-    params.set('year_a', yearA);
-    params.set('race_b', raceB);
-    params.set('year_b', yearB);
-    history.replaceState(null, '', '?' + params.toString());
-}
-
-// Filter data by division
 function filterByDivision(data, division) {
     if (division === 'ALL') return data;
     if (division === 'ALL_M') return data.filter(d => d.division.startsWith('M'));
@@ -96,321 +52,161 @@ function filterByDivision(data, division) {
     return data.filter(d => d.division === division);
 }
 
-// Update stats display
-function updateStats() {
-    const division = d3.select('#division-select').property('value');
-    const filteredA = filterByDivision(dataA, division);
-    const filteredB = filterByDivision(dataB, division);
-
-    const raceAName = RACES[d3.select('#race-a-select').property('value')].name;
-    const raceBName = RACES[d3.select('#race-b-select').property('value')].name;
+function comparisonState() {
+    const raceA = document.getElementById('race-a-select').value;
+    const raceB = document.getElementById('race-b-select').value;
+    const yearA = document.getElementById('year-a-select').value;
+    const yearB = document.getElementById('year-b-select').value;
+    const division = document.getElementById('division-select').value || 'ALL';
+    return {
+        raceA,
+        raceB,
+        yearA,
+        yearB,
+        division,
+        labelA: `${RACES[raceA].name} ${yearA}`,
+        labelB: `${RACES[raceB].name} ${yearB}`,
+        filteredA: filterByDivision(dataA, division),
+        filteredB: filterByDivision(dataB, division),
+    };
 }
 
-// Calculate comparison text for a field
-function getComparisonText(field) {
-    const division = d3.select('#division-select').property('value');
-    const filteredA = filterByDivision(dataA, division);
-    const filteredB = filterByDivision(dataB, division);
-
-    const raceAName = RACES[d3.select('#race-a-select').property('value')].name;
-    const raceBName = RACES[d3.select('#race-b-select').property('value')].name;
-
-    const valuesA = filteredA.map(d => d[field]).filter(v => v > 0);
-    const valuesB = filteredB.map(d => d[field]).filter(v => v > 0);
-
-    if (valuesA.length === 0 || valuesB.length === 0) return '';
-
-    const medianA = [...valuesA].sort((a, b) => a - b)[Math.floor(valuesA.length * 0.5)];
-    const medianB = [...valuesB].sort((a, b) => a - b)[Math.floor(valuesB.length * 0.5)];
-    const diff = Math.abs(medianA - medianB);
-
-    if (diff < 30) return '';
-    if (medianA < medianB) {
-        return `<span style="color: ${COMPARE_COLORS.raceA.stroke}">${raceAName} typically ${formatTime(diff)} faster</span>`;
-    } else {
-        return `<span style="color: ${COMPARE_COLORS.raceB.stroke}">${raceBName} typically ${formatTime(diff)} faster</span>`;
-    }
+function updateUrl(state) {
+    const params = new URLSearchParams({
+        race_a: state.raceA,
+        year_a: state.yearA,
+        race_b: state.raceB,
+        year_b: state.yearB,
+    });
+    if (state.division !== 'ALL') params.set('division', state.division);
+    history.replaceState(null, '', `?${params}`);
 }
 
-// Draw comparison histogram
-function drawComparisonHistogram(containerId, field) {
-    const container = d3.select(`#${containerId}`);
-    container.select('svg').remove();
-    container.select('.no-data').remove();
+function updateLegend(state) {
+    const divisionText = state.division === 'ALL' ? '' : ` in ${state.division}`;
+    document.getElementById('compare-legend').innerHTML = `
+        <span class="legend-item"><span class="race-dot" style="--dot:var(--race-a)"></span>${escapeHtml(state.labelA)} · ${state.filteredA.length.toLocaleString()} athletes${divisionText}</span>
+        <span class="legend-item"><span class="race-dot" style="--dot:var(--race-b)"></span>${escapeHtml(state.labelB)} · ${state.filteredB.length.toLocaleString()} athletes${divisionText}</span>
+    `;
+    setPageTitle(`${state.labelA} vs ${state.labelB}`);
+}
 
-    const division = d3.select('#division-select').property('value');
-    const valuesA = filterByDivision(dataA, division).map(d => d[field]).filter(v => v > 0);
-    const valuesB = filterByDivision(dataB, division).map(d => d[field]).filter(v => v > 0);
+async function loadComparisonData() {
+    const raceA = document.getElementById('race-a-select').value;
+    const raceB = document.getElementById('race-b-select').value;
+    const yearA = document.getElementById('year-a-select').value;
+    const yearB = document.getElementById('year-b-select').value;
+    [dataA, dataB] = await Promise.all([
+        loadRaceData(raceA, yearA),
+        loadRaceData(raceB, yearB),
+    ]);
+    updateDivisions();
+}
 
-    if (valuesA.length === 0 && valuesB.length === 0) {
-        container.append('div')
-            .attr('class', 'no-data')
-            .text('No data');
+function renderCompareChart(field, state) {
+    const card = document.getElementById(COMPARE_CHARTS[field].id);
+    const valuesA = state.filteredA.map(d => d[field]).filter(v => v > 0);
+    const valuesB = state.filteredB.map(d => d[field]).filter(v => v > 0);
+    const result = renderHistogram(card, {
+        field,
+        series: [
+            { id: 'a', values: valuesA, color: 'var(--race-a)', label: state.labelA },
+            { id: 'b', values: valuesB, color: 'var(--race-b)', label: state.labelB },
+        ],
+        style: 'outline',
+        yMode: 'percent',
+        markers: {},
+        medians: true,
+        tooltip: document.getElementById('tooltip'),
+    });
+
+    if (result.series.length === 0) {
+        card.querySelector('.chart-stats').innerHTML = '';
+        card.querySelector('.chart-sub').innerHTML = '';
+        d3.select(card).append('div').attr('class', 'no-data').text('No data for this division');
         return;
     }
 
-    const margin = { top: 20, right: 20, bottom: 35, left: 45 };
-    const width = container.node().clientWidth - 32;
-    const height = 200;
-    const innerWidth = width - margin.left - margin.right;
-    const innerHeight = height - margin.top - margin.bottom;
+    const [statsA, statsB] = result.series;
+    const medianStat = (stats, className) => {
+        if (!stats.n) return `<span class="${className}">No data</span>`;
+        const pace = formatPace(field, stats.q[1]);
+        return `<span class="${className}">● ${formatChartTime(field, stats.q[1])}${pace ? ` <i class="pace">${pace}</i>` : ''}</span>`;
+    };
+    card.querySelector('.chart-stats').innerHTML =
+        `${medianStat(statsA, 'race-a')}${medianStat(statsB, 'race-b')}`;
 
-    const svg = container.append('svg')
-        .attr('width', width)
-        .attr('height', height);
-
-    const g = svg.append('g')
-        .attr('transform', `translate(${margin.left},${margin.top})`);
-
-    // Combined extent for shared scale
-    const allValues = [...valuesA, ...valuesB];
-    const xExtent = d3.extent(allValues);
-    const x = d3.scaleLinear()
-        .domain([xExtent[0] * 0.95, xExtent[1] * 1.05])
-        .range([0, innerWidth]);
-
-    // Create histogram bins
-    const histogram = d3.bin()
-        .domain(x.domain())
-        .thresholds(30);
-
-    const binsA = histogram(valuesA);
-    const binsB = histogram(valuesB);
-
-    const maxCount = Math.max(
-        d3.max(binsA, d => d.length) || 0,
-        d3.max(binsB, d => d.length) || 0
-    );
-
-    const y = d3.scaleLinear()
-        .domain([0, maxCount])
-        .nice()
-        .range([innerHeight, 0]);
-
-    const tooltip = d3.select('#tooltip');
-
-    // Draw Race A bars
-    if (valuesA.length > 0) {
-        g.selectAll('.bar-a')
-            .data(binsA)
-            .enter()
-            .append('rect')
-            .attr('class', 'bar bar-a')
-            .attr('x', d => x(d.x0) + 1)
-            .attr('y', d => y(d.length))
-            .attr('width', d => Math.max(0, x(d.x1) - x(d.x0) - 2))
-            .attr('height', d => innerHeight - y(d.length))
-            .attr('fill', COMPARE_COLORS.raceA.fill);
+    let comparison = '';
+    if (statsA.n && statsB.n) {
+        const difference = Math.abs(statsA.q[1] - statsB.q[1]);
+        if (difference >= 30) {
+            const winner = statsA.q[1] < statsB.q[1] ? state.labelA : state.labelB;
+            const winnerClass = statsA.q[1] < statsB.q[1] ? 'race-a' : 'race-b';
+            comparison = `<span class="chart-note ${winnerClass}">${escapeHtml(winner)} typically ${formatDelta(difference)} faster</span>`;
+        }
     }
-
-    // Draw Race B bars
-    if (valuesB.length > 0) {
-        g.selectAll('.bar-b')
-            .data(binsB)
-            .enter()
-            .append('rect')
-            .attr('class', 'bar bar-b')
-            .attr('x', d => x(d.x0) + 1)
-            .attr('y', d => y(d.length))
-            .attr('width', d => Math.max(0, x(d.x1) - x(d.x0) - 2))
-            .attr('height', d => innerHeight - y(d.length))
-            .attr('fill', COMPARE_COLORS.raceB.fill);
-    }
-
-    // X axis
-    g.append('g')
-        .attr('class', 'axis')
-        .attr('transform', `translate(0,${innerHeight})`)
-        .call(d3.axisBottom(x).ticks(5).tickFormat(formatTimeShort));
-
-    // Y axis
-    g.append('g')
-        .attr('class', 'axis')
-        .call(d3.axisLeft(y).ticks(5));
-
-    // Draw median lines
-    if (valuesA.length > 0) {
-        const sortedA = [...valuesA].sort((a, b) => a - b);
-        const medianA = sortedA[Math.floor(sortedA.length * 0.5)];
-        const medianAX = x(medianA);
-
-        g.append('line')
-            .attr('class', 'median-line')
-            .attr('x1', medianAX)
-            .attr('x2', medianAX)
-            .attr('y1', 0)
-            .attr('y2', innerHeight)
-            .attr('stroke', COMPARE_COLORS.raceA.stroke)
-            .attr('stroke-width', 2)
-            .attr('stroke-dasharray', '4,2');
-
-        g.append('text')
-            .attr('class', 'median-label')
-            .attr('x', medianAX)
-            .attr('y', -2)
-            .attr('text-anchor', 'middle')
-            .attr('fill', COMPARE_COLORS.raceA.stroke)
-            .text(formatTimeShort(medianA));
-    }
-
-    if (valuesB.length > 0) {
-        const sortedB = [...valuesB].sort((a, b) => a - b);
-        const medianB = sortedB[Math.floor(sortedB.length * 0.5)];
-        const medianBX = x(medianB);
-
-        g.append('line')
-            .attr('class', 'median-line')
-            .attr('x1', medianBX)
-            .attr('x2', medianBX)
-            .attr('y1', -10)
-            .attr('y2', innerHeight)
-            .attr('stroke', COMPARE_COLORS.raceB.stroke)
-            .attr('stroke-width', 2)
-            .attr('stroke-dasharray', '4,2');
-
-        g.append('text')
-            .attr('class', 'median-label')
-            .attr('x', medianBX)
-            .attr('y', -12)
-            .attr('text-anchor', 'middle')
-            .attr('fill', COMPARE_COLORS.raceB.stroke)
-            .text(formatTimeShort(medianB));
-    }
+    const outside = statsA.belowDomain + statsA.aboveDomain + statsB.belowDomain + statsB.aboveDomain;
+    const outsideNote = outside
+        ? `<span class="outside-note">${outside.toLocaleString()} result${outside === 1 ? '' : 's'} outside view</span>`
+        : '';
+    card.querySelector('.chart-sub').innerHTML = `${comparison}${outsideNote}`;
 }
 
-// Update chart title with comparison
-function updateChartTitle(containerId, title, field) {
-    const container = d3.select(`#${containerId}`);
-    const comparison = getComparisonText(field);
-    const h3 = container.select('h3');
-
-    if (comparison) {
-        h3.html(`${title} <span class="chart-comparison">${comparison}</span>`);
-    } else {
-        h3.text(title);
-    }
-}
-
-// Draw all charts
 function drawCharts() {
-    updateStats();
-    drawComparisonHistogram('swim-chart', 'swim');
-    drawComparisonHistogram('t1-chart', 't1');
-    drawComparisonHistogram('bike-chart', 'bike');
-    drawComparisonHistogram('t2-chart', 't2');
-    drawComparisonHistogram('run-chart', 'run');
-    drawComparisonHistogram('finish-chart', 'finish');
-
-    // Update titles with comparisons
-    updateChartTitle('swim-chart', 'Swim', 'swim');
-    updateChartTitle('t1-chart', 'T1', 't1');
-    updateChartTitle('bike-chart', 'Bike', 'bike');
-    updateChartTitle('t2-chart', 'T2', 't2');
-    updateChartTitle('run-chart', 'Run', 'run');
-    updateChartTitle('finish-chart', 'Overall', 'finish');
+    const state = comparisonState();
+    updateLegend(state);
+    updateUrl(state);
+    Object.keys(COMPARE_CHARTS).forEach(field => renderCompareChart(field, state));
 }
 
-// Handle window resize
-function handleResize() {
-    drawCharts();
-}
-
-// Initialize
 async function init() {
     await loadRaces();
-
-    // Initialize Choices.js on race dropdowns
-    const raceOptions = Object.entries(RACES).map(([id, race]) => ({
-        value: id,
-        label: race.name
-    }));
-
-    raceAChoices = new Choices('#race-a-select', {
+    const raceOptions = Object.entries(RACES).map(([value, race]) => ({ value, label: race.name }));
+    const config = {
         searchEnabled: true,
         searchPlaceholderValue: 'Search races...',
         itemSelectText: '',
         shouldSort: false,
-        choices: raceOptions
-    });
-
-    raceBChoices = new Choices('#race-b-select', {
-        searchEnabled: true,
-        searchPlaceholderValue: 'Search races...',
-        itemSelectText: '',
-        shouldSort: false,
-        choices: raceOptions
-    });
-
-    // Initialize Choices.js on year dropdowns
-    yearAChoices = new Choices('#year-a-select', {
-        searchEnabled: false,
-        itemSelectText: '',
-        shouldSort: false
-    });
-
-    yearBChoices = new Choices('#year-b-select', {
-        searchEnabled: false,
-        itemSelectText: '',
-        shouldSort: false
-    });
-
-    // Initialize Choices.js on division dropdown
+    };
+    raceAChoices = new Choices('#race-a-select', { ...config, choices: raceOptions });
+    raceBChoices = new Choices('#race-b-select', { ...config, choices: raceOptions });
+    yearAChoices = new Choices('#year-a-select', { searchEnabled: false, itemSelectText: '', shouldSort: false });
+    yearBChoices = new Choices('#year-b-select', { searchEnabled: false, itemSelectText: '', shouldSort: false });
     divisionChoices = new Choices('#division-select', {
         searchEnabled: true,
         searchPlaceholderValue: 'Search divisions...',
         itemSelectText: '',
-        shouldSort: false
+        shouldSort: false,
     });
 
-    // Set races from query params or defaults
     const params = new URLSearchParams(window.location.search);
-    const initialRaceA = params.get('race_a') || 'north-carolina';
-    const initialRaceB = params.get('race_b') || 'new-york';
+    const initialRaceA = RACES[params.get('race_a')] ? params.get('race_a') : 'north-carolina';
+    const initialRaceB = RACES[params.get('race_b')] ? params.get('race_b') : 'new-york';
     raceAChoices.setChoiceByValue(initialRaceA);
     raceBChoices.setChoiceByValue(initialRaceB);
-
-    // Initialize year dropdowns
     updateYears('race-a-select', 'year-a-select');
     updateYears('race-b-select', 'year-b-select');
+    if (RACES[initialRaceA].years.includes(params.get('year_a'))) yearAChoices.setChoiceByValue(params.get('year_a'));
+    if (RACES[initialRaceB].years.includes(params.get('year_b'))) yearBChoices.setChoiceByValue(params.get('year_b'));
 
-    // Apply year params if provided
-    const yearA = params.get('year_a');
-    const yearB = params.get('year_b');
-    if (yearA) yearAChoices.setChoiceByValue(yearA);
-    if (yearB) yearBChoices.setChoiceByValue(yearB);
-
-    // Event listeners
-    document.getElementById('race-a-select').addEventListener('change', async function() {
-        updateYears('race-a-select', 'year-a-select');
-        await loadComparisonData();
-        drawCharts();
-    });
-
-    document.getElementById('year-a-select').addEventListener('change', async function() {
-        await loadComparisonData();
-        drawCharts();
-    });
-
-    document.getElementById('race-b-select').addEventListener('change', async function() {
-        updateYears('race-b-select', 'year-b-select');
-        await loadComparisonData();
-        drawCharts();
-    });
-
-    document.getElementById('year-b-select').addEventListener('change', async function() {
-        await loadComparisonData();
-        drawCharts();
-    });
-
-    document.getElementById('division-select').addEventListener('change', function() {
-        drawCharts();
-    });
-
-    // Load initial data
     await loadComparisonData();
+    const divisionParam = params.get('division');
+    if (divisionParam) divisionChoices.setChoiceByValue(divisionParam);
     drawCharts();
 
-    window.addEventListener('resize', debounce(handleResize, 150));
+    for (const [raceId, yearId] of [['race-a-select', 'year-a-select'], ['race-b-select', 'year-b-select']]) {
+        document.getElementById(raceId).addEventListener('change', async () => {
+            updateYears(raceId, yearId);
+            await loadComparisonData();
+            drawCharts();
+        });
+        document.getElementById(yearId).addEventListener('change', async () => {
+            await loadComparisonData();
+            drawCharts();
+        });
+    }
+    document.getElementById('division-select').addEventListener('change', drawCharts);
+    observeHistogramCards(drawCharts);
 }
 
 init();

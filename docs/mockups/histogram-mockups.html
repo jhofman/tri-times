@@ -1,0 +1,281 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Tri Times histogram mockups</title>
+<style>
+:root{--bg:#fff;--bg2:#f6f8fa;--bg3:#eaeef2;--border:#d0d7de;--text:#1f2328;--text2:#656d76;--muted:#8c959f;--accent:#0969da;--grid:rgba(0,0,0,.07);--halo:#f6f8fa}
+:root{--swim:#2f7fc1;--t1:#63a6d9;--marker:#1f2328;--quartile:rgba(31,35,40,.45)}
+body.dark{--bg:#0d1117;--bg2:#161b22;--bg3:#21262d;--border:#30363d;--text:#e6edf3;--text2:#8b949e;--muted:#6e7681;--accent:#58a6ff;--grid:rgba(255,255,255,.08);--halo:#161b22;--swim:#5aa0e0;--t1:#8cc0ea;--marker:#e6edf3;--quartile:rgba(230,237,243,.45)}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.45}
+.wrap{max-width:1250px;margin:0 auto;padding:24px 24px 60px}
+h1{font-size:20px;margin:0 0 4px}
+h2{font-size:15px;margin:38px 0 2px}
+.lead{color:var(--text2);font-size:13.5px;margin:0 0 14px;max-width:860px}
+.row{display:flex;flex-wrap:wrap;gap:14px}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:12px 14px 8px;width:396px}
+.card .t{display:flex;justify-content:space-between;align-items:baseline;gap:8px;min-height:18px}
+.card .name{font-size:11.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--text2);white-space:nowrap}
+.card .stats{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums;display:flex;gap:10px}
+.card .stats b{font-weight:500;color:var(--text2)}
+.card .chip{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:#fff;border-radius:999px;padding:1px 8px 1px 6px;font-variant-numeric:tabular-nums}
+.card .chip i{width:7px;height:7px;border-radius:50%;background:#fff;opacity:.9}
+.card .sub{display:flex;gap:8px;align-items:center;min-height:20px;margin-top:2px}
+.card .note{font-size:11.5px;color:var(--muted);margin:2px 0 6px;min-height:34px;line-height:1.35}
+.card svg{display:block;font-family:inherit;overflow:visible}
+.axis text{fill:var(--text2);font-size:10.5px;font-variant-numeric:tabular-nums}
+.axis line,.axis path{stroke:var(--border)}
+.grid line{stroke:var(--grid)}
+.qline{stroke:var(--text2);stroke-opacity:.6;stroke-width:1;stroke-dasharray:1 3}
+.qlabel{fill:var(--muted);font-size:10px;font-variant-numeric:tabular-nums}
+.tagtext{font-size:10px;font-variant-numeric:tabular-nums;fill:var(--text2);paint-order:stroke;stroke:var(--halo);stroke-width:3px;stroke-linejoin:round}
+.leader{stroke:var(--muted);stroke-width:1}
+.toggle{position:fixed;right:20px;top:16px;border:1px solid var(--border);background:var(--bg2);color:var(--text);border-radius:999px;padding:6px 12px;font-size:12px;cursor:pointer}
+/* header mock */
+.mock{border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--bg);max-width:1100px}
+.topbar{display:flex;align-items:center;gap:18px;padding:10px 20px;border-bottom:1px solid var(--border)}
+.brand{display:flex;align-items:center;gap:8px;font-weight:700;font-size:15px;letter-spacing:-.01em}
+.brand i{width:10px;height:10px;border-radius:50%;background:var(--accent);display:inline-block}
+.tabs{display:flex;gap:2px;margin-left:6px}
+.tabs a{font-size:13px;color:var(--text2);text-decoration:none;padding:6px 10px;border-radius:6px}
+.tabs a.active{color:var(--text);background:var(--bg3);font-weight:500}
+.sp{flex:1}
+.icon{width:30px;height:30px;border:1px solid var(--border);border-radius:8px;display:inline-flex;align-items:center;justify-content:center;color:var(--text2);font-size:13px}
+.pagehead{padding:18px 20px 0}.pagehead h3{margin:0;font-size:20px;font-weight:650}.pagehead p{margin:2px 0 0;color:var(--text2);font-size:13px}
+.toolbar{display:flex;gap:14px;align-items:flex-end;padding:14px 20px 18px;flex-wrap:wrap}
+.field label{display:block;font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--text2);margin-bottom:4px;font-weight:600}
+.field .sel{border:1px solid var(--border);border-radius:7px;background:var(--bg2);padding:7px 30px 7px 10px;font-size:13px;min-width:120px;position:relative;color:var(--text)}
+.field .sel.ph{color:var(--muted)}
+.field .sel:after{content:'';position:absolute;right:11px;top:11px;width:6px;height:6px;border-right:1.5px solid var(--text2);border-bottom:1.5px solid var(--text2);transform:rotate(45deg)}
+.count{font-size:12px;color:var(--text2);padding-bottom:9px;margin-left:auto}
+.swrow{display:flex;gap:16px;flex-wrap:wrap;margin:8px 0 4px;align-items:center}
+.swrow .lbl{font-size:12px;color:var(--text2);width:250px}
+.sw{display:flex;gap:5px;align-items:center;font-size:11px;color:var(--text2)}.sw b{width:26px;height:16px;border-radius:3px;display:inline-block}
+.final-grid{display:grid;grid-template-columns:minmax(0,1fr) 390px;gap:18px;align-items:start;max-width:1100px}
+.final-example{min-width:0}
+.final-label{display:flex;justify-content:space-between;gap:12px;align-items:center;margin:0 0 6px;color:var(--text2);font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.final-label span:last-child{font-weight:400;color:var(--muted);letter-spacing:0;text-transform:none}
+.final-card{width:100%;padding:14px 16px 10px;background:var(--bg2)}
+.final-card .t{align-items:flex-start;flex-wrap:wrap}
+.final-card .name{font-size:13px;color:var(--text)}
+.final-card .stats{margin-left:auto;flex-wrap:wrap;justify-content:flex-end;column-gap:12px;row-gap:2px}
+.final-card .stats span{white-space:nowrap}
+.final-card .stats b{font-weight:650;color:var(--text2)}
+.final-card .pace{color:var(--muted);font-style:normal;margin-left:2px}
+.final-card .sub{justify-content:space-between;flex-wrap:wrap;gap:6px;min-height:24px;margin-top:4px}
+.final-card .chip{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;background:var(--split)}
+.final-card .chip i{background:var(--bg)}
+.final-card .domain-note{font-size:10.5px;color:var(--muted);white-space:nowrap}
+.final-card .note{min-height:0;margin:3px 0 2px;font-size:10.5px}
+.final-card svg{width:100%;height:auto}
+.final-card .qline{stroke:var(--quartile);stroke-opacity:1}
+.mobile-shell{width:390px;max-width:100%;padding:14px;background:var(--bg3);border:1px solid var(--border);border-radius:12px}
+.mobile-shell .final-card{padding:12px 12px 8px}
+.mobile-shell .final-card .t{display:block}
+.mobile-shell .final-card .stats{justify-content:flex-start;margin:4px 0 0;gap:10px}
+.mobile-shell .final-card .pace{display:none}
+.mobile-shell .final-card .sub{align-items:flex-start}
+.mobile-shell .final-card .chip{font-size:10.5px}
+@media(max-width:820px){.final-grid{grid-template-columns:1fr}.mobile-shell{width:390px}}
+@media(max-width:480px){.wrap{padding-left:14px;padding-right:14px}.final-card .pace{display:none}.final-card .t{display:block}.final-card .stats{justify-content:flex-start;margin:4px 0 0}.mobile-shell{padding:10px}}
+</style></head><body>
+<button class="toggle" onclick="document.body.classList.toggle('dark')">Toggle dark</button>
+<div class="wrap">
+<h1>Tri Times · histogram &amp; chrome mockups</h1>
+<p class="lead">Real data: New York 70.3 2025, everyone (2,206 finishers); North Carolina 2025 for the overlay. Highlighted athlete is a finisher sitting exactly at the median overall time, the worst case for label collisions. Each row shows the current treatment first, then candidates. Use the toggle (top right) to check dark mode.</p>
+
+<h2>D · Page chrome</h2>
+<p class="lead">Proposed: a slim top bar with wordmark, nav tabs, and theme toggle; per-page title + one-line description (replacing the repeated paragraph of links); controls in a toolbar with the athlete count right-aligned.</p>
+<div class="mock">
+  <div class="topbar">
+    <div class="brand"><i></i>Tri Times</div>
+    <div class="tabs"><a class="active">Race</a><a>Compare</a><a>Races</a><a>Athletes</a><a>Predict</a></div>
+    <div class="sp"></div>
+    <span class="icon">☾</span><span class="icon">⌘</span>
+  </div>
+  <div class="pagehead"><h3>New York 70.3 · 2025</h3><p>Split time distributions for one race. Highlight an athlete to see where they land.</p></div>
+  <div class="toolbar">
+    <div class="field"><label>Race</label><div class="sel">New York</div></div>
+    <div class="field"><label>Year</label><div class="sel" style="min-width:84px">2025</div></div>
+    <div class="field"><label>Division</label><div class="sel">Everyone</div></div>
+    <div class="field"><label>Highlight athlete</label><div class="sel ph" style="min-width:220px">Search by name…</div></div>
+    <div class="count">2,206 athletes</div>
+  </div>
+</div>
+
+<h2>A · Bar treatment (Swim)</h2>
+<p class="lead">Same bins, four fills. The question is whether the plot should read as “bars” or as a “distribution”.</p>
+<div class="row" id="secA"></div>
+
+<h2>P · Split palette</h2>
+<p class="lead">Current mixes Set1 and Paired, so T1/T2 are pastel while the others are saturated. Two alternatives shown.</p>
+<div id="secP"></div>
+
+<h2>B · Quartile + athlete labels (Overall, athlete at the median)</h2>
+<p class="lead">Keeps the three quartile lines and the athlete marker in every variant; only where the numbers live changes.</p>
+<div class="row" id="secB"></div>
+<h2 style="margin-top:14px">B · same treatments on T1 (quartiles 1½ minutes apart)</h2>
+<div class="row" id="secB2"></div>
+
+<h2>C · Compare overlay (Swim: North Carolina vs New York)</h2>
+<p class="lead">Two overlapping filled bar sets mix to brown and hide which race is on top.</p>
+<div class="row" id="secC"></div>
+
+<h2 id="final">Final · Integrated single-race treatment</h2>
+<p class="lead">Implementation target combining the approved choices: A4 outline + 18% fill, faint IQR band, header quartiles with pace, a split-colour athlete chip, neutral solid marker with triangle, and adaptive bins snapped to round seconds. Both examples show how a trimmed display domain reports observations that remain included in the statistics.</p>
+<div class="final-grid">
+  <div class="final-example">
+    <div class="final-label"><span>Desktop card</span><span>fills the available chart column</span></div>
+    <div id="finalDesktop"></div>
+  </div>
+  <div class="final-example">
+    <div class="final-label"><span>390px mobile treatment</span><span>pace hides; stats wrap below title</span></div>
+    <div class="mobile-shell"><div id="finalMobile"></div></div>
+  </div>
+</div>
+</div>
+<script>
+if(location.hash==='#dark')document.body.classList.add('dark');
+const DATA={"single": {"swim": {"bins": [{"x0": 1197.95, "x1": 1296.78375, "n": 1}, {"x0": 1296.78375, "x1": 1395.6175, "n": 0}, {"x0": 1395.6175, "x1": 1494.45125, "n": 0}, {"x0": 1494.45125, "x1": 1593.285, "n": 5}, {"x0": 1593.285, "x1": 1692.11875, "n": 7}, {"x0": 1692.11875, "x1": 1790.9525, "n": 25}, {"x0": 1790.9525, "x1": 1889.78625, "n": 33}, {"x0": 1889.78625, "x1": 1988.6200000000001, "n": 53}, {"x0": 1988.6200000000001, "x1": 2087.45375, "n": 54}, {"x0": 2087.45375, "x1": 2186.2875000000004, "n": 112}, {"x0": 2186.2875000000004, "x1": 2285.12125, "n": 112}, {"x0": 2285.12125, "x1": 2383.955, "n": 175}, {"x0": 2383.955, "x1": 2482.78875, "n": 192}, {"x0": 2482.78875, "x1": 2581.6225000000004, "n": 210}, {"x0": 2581.6225000000004, "x1": 2680.45625, "n": 194}, {"x0": 2680.45625, "x1": 2779.29, "n": 178}, {"x0": 2779.29, "x1": 2878.12375, "n": 160}, {"x0": 2878.12375, "x1": 2976.9575000000004, "n": 133}, {"x0": 2976.9575000000004, "x1": 3075.79125, "n": 102}, {"x0": 3075.79125, "x1": 3174.625, "n": 91}, {"x0": 3174.625, "x1": 3273.45875, "n": 64}, {"x0": 3273.45875, "x1": 3372.2925000000005, "n": 65}, {"x0": 3372.2925000000005, "x1": 3471.1262500000003, "n": 50}, {"x0": 3471.1262500000003, "x1": 3569.96, "n": 39}, {"x0": 3569.96, "x1": 3668.79375, "n": 29}, {"x0": 3668.79375, "x1": 3767.6275000000005, "n": 20}, {"x0": 3767.6275000000005, "x1": 3866.4612500000003, "n": 22}, {"x0": 3866.4612500000003, "x1": 3965.295, "n": 18}, {"x0": 3965.295, "x1": 4064.12875, "n": 18}, {"x0": 4064.12875, "x1": 4162.962500000001, "n": 15}, {"x0": 4162.962500000001, "x1": 4261.79625, "n": 6}, {"x0": 4261.79625, "x1": 4360.63, "n": 9}, {"x0": 4360.63, "x1": 4459.46375, "n": 7}, {"x0": 4459.46375, "x1": 4558.297500000001, "n": 2}, {"x0": 4558.297500000001, "x1": 4657.13125, "n": 2}, {"x0": 4657.13125, "x1": 4755.965, "n": 0}, {"x0": 4755.965, "x1": 4854.79875, "n": 0}, {"x0": 4854.79875, "x1": 4953.632500000001, "n": 2}, {"x0": 4953.632500000001, "x1": 5052.46625, "n": 0}, {"x0": 5052.46625, "x1": 5151.3, "n": 0}], "q": [2372.0, 2649.0, 2985.0], "domain": [1197.95, 5151.3], "n": 2205, "athlete": {"name": "Erin Mcguinness", "value": 2679.0, "pct": 53}}, "t1": {"bins": [{"x0": 105.44999999999999, "x1": 152.71499999999997, "n": 46}, {"x0": 152.71499999999997, "x1": 199.98, "n": 161}, {"x0": 199.98, "x1": 247.245, "n": 282}, {"x0": 247.245, "x1": 294.51, "n": 315}, {"x0": 294.51, "x1": 341.775, "n": 303}, {"x0": 341.775, "x1": 389.04, "n": 263}, {"x0": 389.04, "x1": 436.305, "n": 218}, {"x0": 436.305, "x1": 483.57, "n": 170}, {"x0": 483.57, "x1": 530.835, "n": 127}, {"x0": 530.835, "x1": 578.0999999999999, "n": 95}, {"x0": 578.0999999999999, "x1": 625.365, "n": 69}, {"x0": 625.365, "x1": 672.6300000000001, "n": 37}, {"x0": 672.6300000000001, "x1": 719.895, "n": 39}, {"x0": 719.895, "x1": 767.1600000000001, "n": 18}, {"x0": 767.1600000000001, "x1": 814.425, "n": 15}, {"x0": 814.425, "x1": 861.69, "n": 10}, {"x0": 861.69, "x1": 908.9549999999999, "n": 6}, {"x0": 908.9549999999999, "x1": 956.22, "n": 8}, {"x0": 956.22, "x1": 1003.4849999999999, "n": 3}, {"x0": 1003.4849999999999, "x1": 1050.75, "n": 2}, {"x0": 1050.75, "x1": 1098.015, "n": 1}, {"x0": 1098.015, "x1": 1145.28, "n": 0}, {"x0": 1145.28, "x1": 1192.545, "n": 2}, {"x0": 1192.545, "x1": 1239.8100000000002, "n": 4}, {"x0": 1239.8100000000002, "x1": 1287.075, "n": 3}, {"x0": 1287.075, "x1": 1334.3400000000001, "n": 1}, {"x0": 1334.3400000000001, "x1": 1381.605, "n": 0}, {"x0": 1381.605, "x1": 1428.8700000000001, "n": 0}, {"x0": 1428.8700000000001, "x1": 1476.135, "n": 1}, {"x0": 1476.135, "x1": 1523.4, "n": 0}, {"x0": 1523.4, "x1": 1570.665, "n": 2}, {"x0": 1570.665, "x1": 1617.93, "n": 1}, {"x0": 1617.93, "x1": 1665.1950000000002, "n": 1}, {"x0": 1665.1950000000002, "x1": 1712.46, "n": 0}, {"x0": 1712.46, "x1": 1759.7250000000001, "n": 0}, {"x0": 1759.7250000000001, "x1": 1806.99, "n": 0}, {"x0": 1806.99, "x1": 1854.255, "n": 1}, {"x0": 1854.255, "x1": 1901.52, "n": 1}, {"x0": 1901.52, "x1": 1948.785, "n": 0}, {"x0": 1948.785, "x1": 1996.05, "n": 0}], "q": [256.0, 341.0, 454.0], "domain": [105.44999999999999, 1996.0500000000002], "n": 2205, "athlete": {"name": "Erin Mcguinness", "value": 424.0, "pct": 70}}, "bike": {"bins": [{"x0": 6957.799999999999, "x1": 7289.82375, "n": 0}, {"x0": 7289.82375, "x1": 7621.847499999999, "n": 3}, {"x0": 7621.847499999999, "x1": 7953.871249999999, "n": 10}, {"x0": 7953.871249999999, "x1": 8285.894999999999, "n": 16}, {"x0": 8285.894999999999, "x1": 8617.918749999999, "n": 38}, {"x0": 8617.918749999999, "x1": 8949.9425, "n": 64}, {"x0": 8949.9425, "x1": 9281.96625, "n": 95}, {"x0": 9281.96625, "x1": 9613.99, "n": 134}, {"x0": 9613.99, "x1": 9946.013749999998, "n": 165}, {"x0": 9946.013749999998, "x1": 10278.037499999999, "n": 198}, {"x0": 10278.037499999999, "x1": 10610.061249999999, "n": 200}, {"x0": 10610.061249999999, "x1": 10942.085, "n": 181}, {"x0": 10942.085, "x1": 11274.10875, "n": 185}, {"x0": 11274.10875, "x1": 11606.1325, "n": 177}, {"x0": 11606.1325, "x1": 11938.15625, "n": 162}, {"x0": 11938.15625, "x1": 12270.18, "n": 125}, {"x0": 12270.18, "x1": 12602.20375, "n": 112}, {"x0": 12602.20375, "x1": 12934.227499999999, "n": 91}, {"x0": 12934.227499999999, "x1": 13266.25125, "n": 58}, {"x0": 13266.25125, "x1": 13598.275, "n": 47}, {"x0": 13598.275, "x1": 13930.298749999998, "n": 48}, {"x0": 13930.298749999998, "x1": 14262.322499999998, "n": 30}, {"x0": 14262.322499999998, "x1": 14594.346249999999, "n": 17}, {"x0": 14594.346249999999, "x1": 14926.369999999999, "n": 19}, {"x0": 14926.369999999999, "x1": 15258.39375, "n": 9}, {"x0": 15258.39375, "x1": 15590.4175, "n": 5}, {"x0": 15590.4175, "x1": 15922.44125, "n": 6}, {"x0": 15922.44125, "x1": 16254.465, "n": 2}, {"x0": 16254.465, "x1": 16586.488749999997, "n": 1}, {"x0": 16586.488749999997, "x1": 16918.512499999997, "n": 2}, {"x0": 16918.512499999997, "x1": 17250.536249999997, "n": 0}, {"x0": 17250.536249999997, "x1": 17582.559999999998, "n": 0}, {"x0": 17582.559999999998, "x1": 17914.583749999998, "n": 0}, {"x0": 17914.583749999998, "x1": 18246.6075, "n": 0}, {"x0": 18246.6075, "x1": 18578.63125, "n": 0}, {"x0": 18578.63125, "x1": 18910.655, "n": 0}, {"x0": 18910.655, "x1": 19242.67875, "n": 0}, {"x0": 19242.67875, "x1": 19574.7025, "n": 1}, {"x0": 19574.7025, "x1": 19906.72625, "n": 0}, {"x0": 19906.72625, "x1": 20238.75, "n": 0}], "q": [9983.0, 10941.0, 12002.0], "domain": [6957.799999999999, 20238.75], "n": 2201, "athlete": {"name": "Erin Mcguinness", "value": 11092.0, "pct": 55}}, "finish": {"bins": [{"x0": 13560.3, "x1": 14099.7225, "n": 0}, {"x0": 14099.7225, "x1": 14639.145, "n": 3}, {"x0": 14639.145, "x1": 15178.5675, "n": 5}, {"x0": 15178.5675, "x1": 15717.99, "n": 11}, {"x0": 15717.99, "x1": 16257.4125, "n": 17}, {"x0": 16257.4125, "x1": 16796.835, "n": 31}, {"x0": 16796.835, "x1": 17336.2575, "n": 34}, {"x0": 17336.2575, "x1": 17875.68, "n": 51}, {"x0": 17875.68, "x1": 18415.1025, "n": 77}, {"x0": 18415.1025, "x1": 18954.525, "n": 91}, {"x0": 18954.525, "x1": 19493.947500000002, "n": 103}, {"x0": 19493.947500000002, "x1": 20033.370000000003, "n": 135}, {"x0": 20033.370000000003, "x1": 20572.792500000003, "n": 145}, {"x0": 20572.792500000003, "x1": 21112.215, "n": 136}, {"x0": 21112.215, "x1": 21651.6375, "n": 141}, {"x0": 21651.6375, "x1": 22191.06, "n": 138}, {"x0": 22191.06, "x1": 22730.482500000002, "n": 149}, {"x0": 22730.482500000002, "x1": 23269.905000000002, "n": 124}, {"x0": 23269.905000000002, "x1": 23809.3275, "n": 132}, {"x0": 23809.3275, "x1": 24348.75, "n": 94}, {"x0": 24348.75, "x1": 24888.1725, "n": 114}, {"x0": 24888.1725, "x1": 25427.595, "n": 92}, {"x0": 25427.595, "x1": 25967.0175, "n": 62}, {"x0": 25967.0175, "x1": 26506.440000000002, "n": 54}, {"x0": 26506.440000000002, "x1": 27045.862500000003, "n": 63}, {"x0": 27045.862500000003, "x1": 27585.285000000003, "n": 36}, {"x0": 27585.285000000003, "x1": 28124.707500000004, "n": 35}, {"x0": 28124.707500000004, "x1": 28664.130000000005, "n": 29}, {"x0": 28664.130000000005, "x1": 29203.552500000005, "n": 29}, {"x0": 29203.552500000005, "x1": 29742.975000000002, "n": 23}, {"x0": 29742.975000000002, "x1": 30282.397500000003, "n": 16}, {"x0": 30282.397500000003, "x1": 30821.820000000003, "n": 8}, {"x0": 30821.820000000003, "x1": 31361.242500000004, "n": 10}, {"x0": 31361.242500000004, "x1": 31900.665000000005, "n": 6}, {"x0": 31900.665000000005, "x1": 32440.087500000005, "n": 8}, {"x0": 32440.087500000005, "x1": 32979.51000000001, "n": 2}, {"x0": 32979.51000000001, "x1": 33518.9325, "n": 2}, {"x0": 33518.9325, "x1": 34058.355, "n": 0}, {"x0": 34058.355, "x1": 34597.777500000004, "n": 0}, {"x0": 34597.777500000004, "x1": 35137.200000000004, "n": 0}], "q": [20001.0, 22120.0, 24509.0], "domain": [13560.3, 35137.200000000004], "n": 2206, "athlete": {"name": "Erin Mcguinness", "value": 22120.0, "pct": 50}}}, "compare": {"swim": {"domain": [1178.0, 5151.3], "a": {"bins": [{"x0": 1178.0, "x1": 1310.4433333333334, "n": 9}, {"x0": 1310.4433333333334, "x1": 1442.8866666666668, "n": 35}, {"x0": 1442.8866666666668, "x1": 1575.33, "n": 115}, {"x0": 1575.33, "x1": 1707.7733333333333, "n": 235}, {"x0": 1707.7733333333333, "x1": 1840.2166666666667, "n": 365}, {"x0": 1840.2166666666667, "x1": 1972.6599999999999, "n": 517}, {"x0": 1972.6599999999999, "x1": 2105.1033333333335, "n": 484}, {"x0": 2105.1033333333335, "x1": 2237.5466666666666, "n": 333}, {"x0": 2237.5466666666666, "x1": 2369.99, "n": 200}, {"x0": 2369.99, "x1": 2502.4333333333334, "n": 113}, {"x0": 2502.4333333333334, "x1": 2634.8766666666666, "n": 59}, {"x0": 2634.8766666666666, "x1": 2767.3199999999997, "n": 36}, {"x0": 2767.3199999999997, "x1": 2899.7633333333333, "n": 20}, {"x0": 2899.7633333333333, "x1": 3032.2066666666665, "n": 15}, {"x0": 3032.2066666666665, "x1": 3164.6499999999996, "n": 8}, {"x0": 3164.6499999999996, "x1": 3297.0933333333332, "n": 3}, {"x0": 3297.0933333333332, "x1": 3429.5366666666664, "n": 4}, {"x0": 3429.5366666666664, "x1": 3561.98, "n": 2}, {"x0": 3561.98, "x1": 3694.423333333333, "n": 1}, {"x0": 3694.423333333333, "x1": 3826.866666666667, "n": 1}, {"x0": 3826.866666666667, "x1": 3959.31, "n": 1}, {"x0": 3959.31, "x1": 4091.753333333333, "n": 0}, {"x0": 4091.753333333333, "x1": 4224.196666666667, "n": 0}, {"x0": 4224.196666666667, "x1": 4356.639999999999, "n": 1}, {"x0": 4356.639999999999, "x1": 4489.083333333333, "n": 0}, {"x0": 4489.083333333333, "x1": 4621.526666666667, "n": 0}, {"x0": 4621.526666666667, "x1": 4753.969999999999, "n": 0}, {"x0": 4753.969999999999, "x1": 4886.413333333333, "n": 0}, {"x0": 4886.413333333333, "x1": 5018.856666666667, "n": 0}, {"x0": 5018.856666666667, "x1": 5151.299999999999, "n": 0}], "median": 1973.0, "n": 2557}, "b": {"bins": [{"x0": 1178.0, "x1": 1310.4433333333334, "n": 1}, {"x0": 1310.4433333333334, "x1": 1442.8866666666668, "n": 0}, {"x0": 1442.8866666666668, "x1": 1575.33, "n": 3}, {"x0": 1575.33, "x1": 1707.7733333333333, "n": 10}, {"x0": 1707.7733333333333, "x1": 1840.2166666666667, "n": 34}, {"x0": 1840.2166666666667, "x1": 1972.6599999999999, "n": 66}, {"x0": 1972.6599999999999, "x1": 2105.1033333333335, "n": 83}, {"x0": 2105.1033333333335, "x1": 2237.5466666666666, "n": 142}, {"x0": 2237.5466666666666, "x1": 2369.99, "n": 206}, {"x0": 2369.99, "x1": 2502.4333333333334, "n": 259}, {"x0": 2502.4333333333334, "x1": 2634.8766666666666, "n": 281}, {"x0": 2634.8766666666666, "x1": 2767.3199999999997, "n": 248}, {"x0": 2767.3199999999997, "x1": 2899.7633333333333, "n": 207}, {"x0": 2899.7633333333333, "x1": 3032.2066666666665, "n": 168}, {"x0": 3032.2066666666665, "x1": 3164.6499999999996, "n": 123}, {"x0": 3164.6499999999996, "x1": 3297.0933333333332, "n": 90}, {"x0": 3297.0933333333332, "x1": 3429.5366666666664, "n": 73}, {"x0": 3429.5366666666664, "x1": 3561.98, "n": 59}, {"x0": 3561.98, "x1": 3694.423333333333, "n": 36}, {"x0": 3694.423333333333, "x1": 3826.866666666667, "n": 29}, {"x0": 3826.866666666667, "x1": 3959.31, "n": 26}, {"x0": 3959.31, "x1": 4091.753333333333, "n": 21}, {"x0": 4091.753333333333, "x1": 4224.196666666667, "n": 16}, {"x0": 4224.196666666667, "x1": 4356.639999999999, "n": 11}, {"x0": 4356.639999999999, "x1": 4489.083333333333, "n": 8}, {"x0": 4489.083333333333, "x1": 4621.526666666667, "n": 3}, {"x0": 4621.526666666667, "x1": 4753.969999999999, "n": 0}, {"x0": 4753.969999999999, "x1": 4886.413333333333, "n": 1}, {"x0": 4886.413333333333, "x1": 5018.856666666667, "n": 1}, {"x0": 5018.856666666667, "x1": 5151.299999999999, "n": 0}], "median": 2649.0, "n": 2205}}, "bike": {"domain": [6957.799999999999, 20238.75], "a": {"bins": [{"x0": 6957.799999999999, "x1": 7400.498333333333, "n": 0}, {"x0": 7400.498333333333, "x1": 7843.196666666666, "n": 0}, {"x0": 7843.196666666666, "x1": 8285.895, "n": 8}, {"x0": 8285.895, "x1": 8728.593333333332, "n": 57}, {"x0": 8728.593333333332, "x1": 9171.291666666666, "n": 110}, {"x0": 9171.291666666666, "x1": 9613.99, "n": 239}, {"x0": 9613.99, "x1": 10056.688333333334, "n": 245}, {"x0": 10056.688333333334, "x1": 10499.386666666665, "n": 295}, {"x0": 10499.386666666665, "x1": 10942.085, "n": 273}, {"x0": 10942.085, "x1": 11384.783333333333, "n": 297}, {"x0": 11384.783333333333, "x1": 11827.481666666667, "n": 258}, {"x0": 11827.481666666667, "x1": 12270.18, "n": 202}, {"x0": 12270.18, "x1": 12712.878333333334, "n": 170}, {"x0": 12712.878333333334, "x1": 13155.576666666668, "n": 127}, {"x0": 13155.576666666668, "x1": 13598.275, "n": 85}, {"x0": 13598.275, "x1": 14040.973333333333, "n": 60}, {"x0": 14040.973333333333, "x1": 14483.671666666667, "n": 49}, {"x0": 14483.671666666667, "x1": 14926.369999999999, "n": 23}, {"x0": 14926.369999999999, "x1": 15369.068333333333, "n": 30}, {"x0": 15369.068333333333, "x1": 15811.766666666666, "n": 17}, {"x0": 15811.766666666666, "x1": 16254.465, "n": 5}, {"x0": 16254.465, "x1": 16697.163333333334, "n": 4}, {"x0": 16697.163333333334, "x1": 17139.861666666668, "n": 1}, {"x0": 17139.861666666668, "x1": 17582.56, "n": 2}, {"x0": 17582.56, "x1": 18025.25833333333, "n": 0}, {"x0": 18025.25833333333, "x1": 18467.956666666665, "n": 0}, {"x0": 18467.956666666665, "x1": 18910.655, "n": 0}, {"x0": 18910.655, "x1": 19353.353333333333, "n": 0}, {"x0": 19353.353333333333, "x1": 19796.051666666666, "n": 0}, {"x0": 19796.051666666666, "x1": 20238.75, "n": 0}], "median": 11008.0, "n": 2557}, "b": {"bins": [{"x0": 6957.799999999999, "x1": 7400.498333333333, "n": 1}, {"x0": 7400.498333333333, "x1": 7843.196666666666, "n": 8}, {"x0": 7843.196666666666, "x1": 8285.895, "n": 20}, {"x0": 8285.895, "x1": 8728.593333333332, "n": 57}, {"x0": 8728.593333333332, "x1": 9171.291666666666, "n": 102}, {"x0": 9171.291666666666, "x1": 9613.99, "n": 172}, {"x0": 9613.99, "x1": 10056.688333333334, "n": 229}, {"x0": 10056.688333333334, "x1": 10499.386666666665, "n": 271}, {"x0": 10499.386666666665, "x1": 10942.085, "n": 244}, {"x0": 10942.085, "x1": 11384.783333333333, "n": 257}, {"x0": 11384.783333333333, "x1": 11827.481666666667, "n": 223}, {"x0": 11827.481666666667, "x1": 12270.18, "n": 169}, {"x0": 12270.18, "x1": 12712.878333333334, "n": 144}, {"x0": 12712.878333333334, "x1": 13155.576666666668, "n": 103}, {"x0": 13155.576666666668, "x1": 13598.275, "n": 61}, {"x0": 13598.275, "x1": 14040.973333333333, "n": 57}, {"x0": 14040.973333333333, "x1": 14483.671666666667, "n": 35}, {"x0": 14483.671666666667, "x1": 14926.369999999999, "n": 22}, {"x0": 14926.369999999999, "x1": 15369.068333333333, "n": 11}, {"x0": 15369.068333333333, "x1": 15811.766666666666, "n": 7}, {"x0": 15811.766666666666, "x1": 16254.465, "n": 4}, {"x0": 16254.465, "x1": 16697.163333333334, "n": 1}, {"x0": 16697.163333333334, "x1": 17139.861666666668, "n": 2}, {"x0": 17139.861666666668, "x1": 17582.56, "n": 0}, {"x0": 17582.56, "x1": 18025.25833333333, "n": 0}, {"x0": 18025.25833333333, "x1": 18467.956666666665, "n": 0}, {"x0": 18467.956666666665, "x1": 18910.655, "n": 0}, {"x0": 18910.655, "x1": 19353.353333333333, "n": 1}, {"x0": 19353.353333333333, "x1": 19796.051666666666, "n": 0}, {"x0": 19796.051666666666, "x1": 20238.75, "n": 0}], "median": 10941.0, "n": 2201}}}};
+const NS='http://www.w3.org/2000/svg';
+const el=(t,a={},p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e;};
+const txt=(p,a,s)=>{const t=el('text',a,p);t.textContent=s;return t;};
+const fmt=s=>`${Math.floor(s/3600)}:${String(Math.floor(s%3600/60)).padStart(2,'0')}`;
+const lin=(d,r)=>{const f=v=>r[0]+(v-d[0])/(d[1]-d[0])*(r[1]-r[0]);f.domain=d;return f;};
+function tTicks(lo,hi,n=5){const span=hi-lo;const steps=[15,30,60,120,300,600,900,1200,1800,3600,7200];const st=steps.find(s=>span/s<=n)||7200;const t=[];for(let v=Math.ceil(lo/st)*st;v<=hi;v+=st)t.push(v);return t;}
+function cTicks(max,n=4){const raw=max/n;const p=10**Math.floor(Math.log10(raw));const m=raw/p;const st=(m<=1?1:m<=2?2:m<=5?5:10)*p;const t=[];for(let v=0;v<=max+1e-9;v+=st)t.push(v);return t;}
+function niceMax(max){const t=cTicks(max);const st=t[1]-t[0];return Math.ceil(max/st)*st;}
+const textW=(s,px=10)=>s.length*px*0.58;
+
+function card(parent,{name,note,stats,chip}){const c=document.createElement('div');c.className='card';
+  c.innerHTML=`<div class="t"><span class="name">${name}</span>${stats?`<span class="stats">${stats}</span>`:''}</div><div class="sub">${chip||''}</div><div class="note">${note}</div>`;parent.appendChild(c);return c;}
+function frame(c,{w=366,h=200,top=30,right=10,bottom=26,left=36}={}){
+  const svg=el('svg',{width:w,height:h,viewBox:`0 0 ${w} ${h}`},c);
+  const g=el('g',{transform:`translate(${left},${top})`},svg);return {svg,g,iw:w-left-right,ih:h-top-bottom};}
+function scales(d,f,bins){const x=lin(d.domain,[0,f.iw]);const mx=niceMax(Math.max(...bins.map(b=>b.n)));const y=lin([0,mx],[f.ih,0]);return {x,y};}
+function axes(g,x,y,iw,ih,{grid=false}={}){
+  const gr=el('g',{class:'grid'},g);const ax=el('g',{class:'axis'},g);
+  el('line',{x1:0,x2:iw,y1:ih,y2:ih},ax);
+  tTicks(x.domain[0],x.domain[1]).forEach(v=>{const px=x(v);el('line',{x1:px,x2:px,y1:ih,y2:ih+4},ax);txt(ax,{x:px,y:ih+15,'text-anchor':'middle'},fmt(v));});
+  cTicks(y.domain[1]).forEach(v=>{const py=y(v);if(grid){if(v>0)el('line',{x1:0,x2:iw,y1:py,y2:py},gr);}else el('line',{x1:-4,x2:0,y1:py,y2:py},ax);txt(ax,{x:-7,y:py+3.5,'text-anchor':'end'},v);});
+  if(!grid)el('line',{x1:0,x2:0,y1:0,y2:ih},ax);
+  g.insertBefore(gr,g.firstChild);}
+function bars(g,bins,x,y,ih,{fill,gap=2,opacity=1,fillFn,blend}={}){
+  const grp=el('g',{},g);if(blend)grp.style.mixBlendMode=blend;
+  bins.forEach(b=>{if(!b.n)return;const x0=x(b.x0),x1=x(b.x1);const w=Math.max(0.5,x1-x0-gap);
+    el('rect',{x:x0+gap/2,y:y(b.n),width:w,height:ih-y(b.n),fill:fillFn?fillFn(b):fill,'fill-opacity':fillFn?1:opacity},grp);});return grp;}
+function stepArea(g,bins,x,y,ih,{stroke,fill,fillOpacity=.15,sw=1.5}){
+  let d=`M${x(bins[0].x0)},${ih}`;bins.forEach(b=>{d+=`L${x(b.x0)},${y(b.n)}L${x(b.x1)},${y(b.n)}`;});d+=`L${x(bins.at(-1).x1)},${ih}Z`;
+  el('path',{d,fill,'fill-opacity':fillOpacity,stroke,'stroke-width':sw,'stroke-linejoin':'round'},g);}
+function qlines(g,q,x,ih,y1s=[0,0,0]){q.forEach((v,i)=>el('line',{class:'qline',x1:x(v),x2:x(v),y1:y1s[i],y2:ih},g));}
+function band(g,q,x,ih,color){el('rect',{x:x(q[0]),y:0,width:x(q[2])-x(q[0]),height:ih,fill:color,'fill-opacity':.09},g);}
+function labelsCurrent(g,q,x){const ly=[-2,-14,-2];q.forEach((v,i)=>txt(g,{class:'qlabel',x:x(v),y:ly[i],'text-anchor':'middle'},fmt(v)));}
+function athleteCurrent(g,a,x,ih){const px=x(a.value);el('line',{x1:px,x2:px,y1:-25,y2:ih,stroke:'var(--text2)','stroke-width':2,'stroke-dasharray':'6 3',opacity:.8},g);
+  txt(g,{x:px,y:-26,'text-anchor':'middle',fill:'var(--text2)','font-size':11,'font-weight':600},`${a.name.split(' ').at(-1)} ${fmt(a.value)} (${a.pct}%)`);}
+function athleteSolid(g,a,x,ih,color,{head=true}={}){const px=x(a.value);el('line',{x1:px,x2:px,y1:-4,y2:ih,stroke:color,'stroke-width':2},g);
+  if(head)el('path',{d:`M${px-4},-4 L${px+4},-4 L${px},2 Z`,fill:color},g);}
+function dodge(items,gap=6,lo=0,hi=Infinity){items.sort((a,b)=>a.x-b.x);items.forEach(i=>i.px=i.x);
+  for(let it=0;it<3;it++){for(let i=1;i<items.length;i++){const need=items[i-1].px+items[i-1].w/2+gap-(items[i].px-items[i].w/2);if(need>0)items[i].px+=need;}
+    for(let i=items.length-2;i>=0;i--){const need=items[i].px+items[i].w/2+gap-(items[i+1].px-items[i+1].w/2);if(need>0)items[i].px-=need/2;}
+  }
+  const minX=items[0].px-items[0].w/2,maxX=items.at(-1).px+items.at(-1).w/2;
+  if(minX<lo)items.forEach(i=>i.px+=lo-minX);else if(maxX>hi)items.forEach(i=>i.px-=maxX-hi);return items;}
+function tagsDodged(g,q,a,x,iw,color){
+  const items=q.map((v,i)=>({x:x(v),w:textW(fmt(v)),text:fmt(v),kind:'q'}));
+  const at=`${a.name.split(' ').at(-1)} ${fmt(a.value)} · ${a.pct}%`;items.push({x:x(a.value),w:textW(at,10.5)+12,text:at,kind:'a'});
+  dodge(items,5,-30,iw+6);
+  items.forEach(it=>{if(Math.abs(it.px-it.x)>1.5)el('line',{class:'leader',x1:it.x,y1:-1,x2:it.px,y2:-9},g);
+    if(it.kind==='q')txt(g,{class:'tagtext',x:it.px,y:-11,'text-anchor':'middle'},it.text);
+    else{el('rect',{x:it.px-it.w/2,y:-21,width:it.w,height:14,rx:7,fill:color},g);txt(g,{x:it.px,y:-10.5,'text-anchor':'middle',fill:'#fff','font-size':10.5,'font-weight':600},it.text);}});}
+
+const SPLIT={swim:'#377eb8',finish:'#984ea3',t1:'#a6cee3'};
+const HARM={swim:'#2f7fc1',t1:'#63a6d9',bike:'#3a9d5d',t2:'#8cc07a',run:'#d6524a',finish:'#8b5cb8'};
+const CUR={swim:'#377eb8',t1:'#a6cee3',bike:'#4daf4a',t2:'#b2df8a',run:'#e41a1c',finish:'#984ea3'};
+
+// ---- A: bar treatments
+{const d=DATA.single.swim,B=SPLIT.swim,sec=document.getElementById('secA');
+ let c=card(sec,{name:'A1 · Current',note:'Set1 blue at 60% opacity, 2px gaps, 40 bins, y-axis spine, quartile labels stacked above the plot.'});
+ let f=frame(c),{x,y}=scales(d,f,d.bins);bars(f.g,d.bins,x,y,f.ih,{fill:B,opacity:.6,gap:2});axes(f.g,x,y,f.iw,f.ih);qlines(f.g,d.q,x,f.ih,[0,-12,0]);labelsCurrent(f.g,d.q,x);
+ c=card(sec,{name:'A2 · Solid + hairline gaps',note:'Fully opaque muted fill, 1px gaps, horizontal gridlines replace the y-axis spine. Crisper, less "chart-library" looking.'});
+ f=frame(c);({x,y}=scales(d,f,d.bins));axes(f.g,x,y,f.iw,f.ih,{grid:true});bars(f.g,d.bins,x,y,f.ih,{fill:'#4d8ac7',gap:1});qlines(f.g,d.q,x,f.ih,[0,-12,0]);labelsCurrent(f.g,d.q,x);
+ c=card(sec,{name:'A3 · IQR shaded into the bars',note:'Bins inside the interquartile range at full colour, tails at 35%. The quartiles become visible from the bars themselves, so the lines can be lighter.'});
+ f=frame(c);({x,y}=scales(d,f,d.bins));axes(f.g,x,y,f.iw,f.ih,{grid:true});bars(f.g,d.bins,x,y,f.ih,{gap:1,fillFn:b=>{const m=(b.x0+b.x1)/2;return m>=d.q[0]&&m<=d.q[2]?'#4d8ac7':'rgba(77,138,199,.35)';}});qlines(f.g,d.q,x,f.ih,[0,-12,0]);labelsCurrent(f.g,d.q,x);
+ c=card(sec,{name:'A4 · Outline + light fill',note:'Step outline with a 15% fill reads as a distribution rather than a bar chart, and overlays cleanly in Compare. Loses per-bin hover targets unless kept as invisible rects.'});
+ f=frame(c);({x,y}=scales(d,f,d.bins));axes(f.g,x,y,f.iw,f.ih,{grid:true});stepArea(f.g,d.bins,x,y,f.ih,{stroke:B,fill:B});qlines(f.g,d.q,x,f.ih,[0,-12,0]);labelsCurrent(f.g,d.q,x);}
+
+// ---- P: palette
+{const sec=document.getElementById('secP');const rows=[['Current (Set1 + Paired mix)',CUR],['Harmonised, similar luminance',HARM],['Single accent for all splits',{swim:'#4d8ac7',t1:'#4d8ac7',bike:'#4d8ac7',t2:'#4d8ac7',run:'#4d8ac7',finish:'#4d8ac7'}]];
+ rows.forEach(([lbl,p])=>{const r=document.createElement('div');r.className='swrow';r.innerHTML=`<span class="lbl">${lbl}</span>`+Object.entries(p).map(([k,v])=>`<span class="sw"><b style="background:${v}"></b>${k}</span>`).join('');sec.appendChild(r);});}
+
+// ---- B: labels
+function sectionB(sec,d,color,title){
+ let c=card(sec,{name:`B1 · Current (${title})`,note:'Three label tiers above the plot; athlete label in grey on a fourth tier. Marker lines cross the labels; near-equal quartiles collide.'});
+ let f=frame(c,{top:36,h:206}),{x,y}=scales(d,f,d.bins);bars(f.g,d.bins,x,y,f.ih,{fill:color,opacity:.6,gap:2});axes(f.g,x,y,f.iw,f.ih);qlines(f.g,d.q,x,f.ih,[0,-12,0]);labelsCurrent(f.g,d.q,x);athleteCurrent(f.g,d.athlete,x,f.ih);
+ const stats=`<b>25%</b> ${fmt(d.q[0])} <b>50%</b> ${fmt(d.q[1])} <b>75%</b> ${fmt(d.q[2])}`;
+ const chip=`<span class="chip" style="background:${color}"><i></i>${d.athlete.name} · ${fmt(d.athlete.value)} · ${d.athlete.pct}th pct</span>`;
+ c=card(sec,{name:title,stats,chip,note:'B2 · Numbers move to the card header; the plot keeps unlabeled dotted quartile lines, a faint IQR band, and a solid athlete marker with a pointer. Hover on any line shows its value.'});
+ f=frame(c,{top:12,h:182});({x,y}=scales(d,f,d.bins));axes(f.g,x,y,f.iw,f.ih,{grid:true});band(f.g,d.q,x,f.ih,color);bars(f.g,d.bins,x,y,f.ih,{fill:color,gap:1,opacity:.85});qlines(f.g,d.q,x,f.ih);athleteSolid(f.g,d.athlete,x,f.ih,'var(--text)');
+ c=card(sec,{name:`B3 · Dodged tags (${title})`,note:'Single label row above the plot with collision dodging and leader lines when a tag is pushed. Athlete tag is a filled pill in the split colour; quartile tags get a background halo.'});
+ f=frame(c,{top:28,h:198});({x,y}=scales(d,f,d.bins));axes(f.g,x,y,f.iw,f.ih,{grid:true});bars(f.g,d.bins,x,y,f.ih,{fill:color,gap:1,opacity:.85});qlines(f.g,d.q,x,f.ih);athleteSolid(f.g,d.athlete,x,f.ih,color,{head:false});tagsDodged(f.g,d.q,d.athlete,x,f.iw,color);}
+sectionB(document.getElementById('secB'),DATA.single.finish,'#8b5cb8','Overall');
+sectionB(document.getElementById('secB2'),DATA.single.t1,'#63a6d9','T1');
+
+// ---- C: compare
+{const d=DATA.compare.swim,A='rgb(55,126,184)',Bc='rgb(255,127,0)',sec=document.getElementById('secC');const allBins=[...d.a.bins,...d.b.bins];
+ let c=card(sec,{name:'C1 · Current',note:'Two filled bar sets at 50% opacity. Overlap turns brown; median labels on two tiers in each colour.'});
+ let f=frame(c,{top:26}),{x,y}=scales(d,f,allBins);bars(f.g,d.a.bins,x,y,f.ih,{fill:A,opacity:.5});bars(f.g,d.b.bins,x,y,f.ih,{fill:Bc,opacity:.5});axes(f.g,x,y,f.iw,f.ih);
+ [[d.a.median,A,-2,0],[d.b.median,Bc,-12,-10]].forEach(([m,col,ly,y1])=>{el('line',{x1:x(m),x2:x(m),y1,y2:f.ih,stroke:col,'stroke-width':2,'stroke-dasharray':'4 2'},f.g);txt(f.g,{x:x(m),y:ly,'text-anchor':'middle',fill:col,'font-size':10,'font-weight':600},fmt(m));});
+ const stats=`<b style="color:${A}">NC</b> ${fmt(d.a.median)} <b style="color:${Bc}">NY</b> ${fmt(d.b.median)}`;
+ c=card(sec,{name:'Swim',stats,chip:`<span style="font-size:11px;color:var(--accent)">North Carolina typically 0:11 faster</span>`,note:'C2 · Step outlines with 15% fills; both shapes stay legible where they overlap. Medians unlabeled in-plot, shown in the header with the existing "typically faster" line.'});
+ f=frame(c,{top:12,h:184});({x,y}=scales(d,f,allBins));axes(f.g,x,y,f.iw,f.ih,{grid:true});stepArea(f.g,d.a.bins,x,y,f.ih,{stroke:A,fill:A,fillOpacity:.18});stepArea(f.g,d.b.bins,x,y,f.ih,{stroke:Bc,fill:Bc,fillOpacity:.18});
+ [[d.a.median,A],[d.b.median,Bc]].forEach(([m,col])=>el('line',{x1:x(m),x2:x(m),y1:0,y2:f.ih,stroke:col,'stroke-width':1.5,'stroke-dasharray':'4 3'},f.g));
+ c=card(sec,{name:'Swim',stats,note:'C3 · Solid bars with multiply blending and 1px gaps. Overlap darkens instead of muddying; still a "bar" look. Falls apart in dark mode (multiply on dark backgrounds goes black), so C2 is safer.'});
+ f=frame(c,{top:12,h:184});({x,y}=scales(d,f,allBins));axes(f.g,x,y,f.iw,f.ih,{grid:true});bars(f.g,d.a.bins,x,y,f.ih,{fill:A,gap:1,opacity:.75,blend:'multiply'});bars(f.g,d.b.bins,x,y,f.ih,{fill:Bc,gap:1,opacity:.75,blend:'multiply'});
+ [[d.a.median,A],[d.b.median,Bc]].forEach(([m,col])=>el('line',{x1:x(m),x2:x(m),y1:0,y2:f.ih,stroke:col,'stroke-width':1.5,'stroke-dasharray':'4 3'},f.g));}
+
+// ---- Final: approved choices combined
+const SNAP_SECONDS=[10,15,20,30,60,90,120,180,300,600,900];
+function weightedQuantile(bins,p){
+  const total=bins.reduce((sum,b)=>sum+b.n,0),target=total*p;let seen=0;
+  for(const b of bins){if(seen+b.n>=target)return b.x0+(b.x1-b.x0)*(target-seen)/Math.max(1,b.n);seen+=b.n;}
+  return bins.at(-1).x1;
+}
+function finalBins(d){
+  const count=Math.max(12,Math.min(40,Math.round(1.6*Math.sqrt(d.n))));
+  let lo=weightedQuantile(d.bins,.005),hi=weightedQuantile(d.bins,.995);
+  lo=Math.min(lo,d.athlete.value);hi=Math.max(hi,d.athlete.value);
+  const ideal=(hi-lo)/count;
+  const width=SNAP_SECONDS.reduce((best,v)=>Math.abs(v-ideal)<Math.abs(best-ideal)?v:best);
+  const start=Math.floor(lo/width)*width,end=Math.ceil(hi/width)*width;
+  const bins=[];for(let x0=start;x0<end;x0+=width)bins.push({x0,x1:x0+width,n:0});
+  let outside=0;
+  d.bins.forEach(source=>{
+    const sourceWidth=source.x1-source.x0;
+    const inside=Math.max(0,Math.min(source.x1,end)-Math.max(source.x0,start));
+    outside+=source.n*(1-inside/sourceWidth);
+    bins.forEach(target=>{const overlap=Math.max(0,Math.min(source.x1,target.x1)-Math.max(source.x0,target.x0));if(overlap)target.n+=source.n*overlap/sourceWidth;});
+  });
+  return {bins,domain:[start,end],width,outside:Math.round(outside),count:bins.length};
+}
+function swimPace(s){const pace=Math.floor(s/19);return `${Math.floor(pace/60)}:${String(pace%60).padStart(2,'0')}/100m`;}
+function ordinal(n){const mod100=n%100;if(mod100>=11&&mod100<=13)return `${n}th`;return `${n}${n%10===1?'st':n%10===2?'nd':n%10===3?'rd':'th'}`;}
+function finalCard(parent,d,{title,color,pace=false,mobile=false}={}){
+  const prepared=finalBins(d);
+  const stats=d.q.map((v,i)=>`<span><b>${[25,50,75][i]}%</b> ${fmt(v)}${pace?` <i class="pace">${swimPace(v)}</i>`:''}</span>`).join('');
+  const athletePace=pace?` · ${swimPace(d.athlete.value)}`:'';
+  const chip=`<span class="chip" style="--split:${color}"><i></i>${d.athlete.name} · ${fmt(d.athlete.value)}${athletePace} · ${d.athlete.pct}% percentile in F35-39</span>`;
+  const domainNote=prepared.outside?`<span class="domain-note">${prepared.outside} results outside view</span>`:'';
+  const c=card(parent,{name:title,stats,chip:chip+domainNote,note:`${prepared.count} adaptive bins · ${prepared.width} sec snapped width · statistics use all ${d.n.toLocaleString()} valid results`});
+  c.classList.add('final-card');c.style.setProperty('--split',color);
+  const w=mobile?338:Math.max(560,Math.floor(c.getBoundingClientRect().width)-32);
+  const f=frame(c,{w,h:210,top:8,right:8,bottom:26,left:36});
+  const shaped={domain:prepared.domain},{x,y}=scales(shaped,f,prepared.bins);
+  axes(f.g,x,y,f.iw,f.ih,{grid:true});
+  band(f.g,d.q,x,f.ih,color);
+  stepArea(f.g,prepared.bins,x,y,f.ih,{stroke:color,fill:color,fillOpacity:.18});
+  qlines(f.g,d.q,x,f.ih);
+  athleteSolid(f.g,d.athlete,x,f.ih,'var(--marker)');
+  f.svg.setAttribute('role','img');
+  f.svg.setAttribute('aria-label',`${title} histogram, median ${fmt(d.q[1])}; ${prepared.outside} results outside the displayed range`);
+}
+finalCard(document.getElementById('finalDesktop'),DATA.single.swim,{title:'Swim',color:'var(--swim)',pace:true});
+finalCard(document.getElementById('finalMobile'),DATA.single.swim,{title:'Swim',color:'var(--swim)',pace:true,mobile:true});
+</script></body></html>

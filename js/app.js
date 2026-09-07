@@ -1,13 +1,12 @@
 // Ironman 70.3 Results Visualization - Single Race View
 
-// ColorBrewer Set1 colors per chart
-const CHART_COLORS = {
-    swim:   { fill: 'rgba(55, 126, 184, 0.6)', hover: 'rgba(55, 126, 184, 0.9)' },
-    t1:     { fill: 'rgba(166, 206, 227, 0.6)', hover: 'rgba(166, 206, 227, 0.9)' },
-    bike:   { fill: 'rgba(77, 175, 74, 0.6)', hover: 'rgba(77, 175, 74, 0.9)' },
-    t2:     { fill: 'rgba(178, 223, 138, 0.6)', hover: 'rgba(178, 223, 138, 0.9)' },
-    run:    { fill: 'rgba(228, 26, 28, 0.6)', hover: 'rgba(228, 26, 28, 0.9)' },
-    finish: { fill: 'rgba(152, 78, 163, 0.6)', hover: 'rgba(152, 78, 163, 0.9)' }
+const CHARTS = {
+    swim: { id: 'swim-chart', color: 'var(--swim)' },
+    t1: { id: 't1-chart', color: 'var(--t1)' },
+    bike: { id: 'bike-chart', color: 'var(--bike)' },
+    t2: { id: 't2-chart', color: 'var(--t2)' },
+    run: { id: 'run-chart', color: 'var(--run)' },
+    finish: { id: 'finish-chart', color: 'var(--finish)' },
 };
 
 let currentRaceData = []; // Data for current race/year
@@ -58,7 +57,10 @@ function filterData(division) {
         currentData = currentRaceData.filter(d => d.division === division);
     }
 
-    d3.select('#stats').text(`${currentData.length} athletes`);
+    const suffix = division && division !== 'ALL'
+        ? ` · ${document.getElementById('division-select').selectedOptions[0]?.textContent || division}`
+        : '';
+    d3.select('#stats').text(`${currentData.length.toLocaleString()} athletes${suffix}`);
 }
 
 function updateUrl() {
@@ -78,169 +80,62 @@ async function loadAndDisplayRace(race, year) {
     currentYear = year;
     currentRaceData = await loadRaceData(race, year);
     updateDivisions();
-    clearAthlete();
+    clearAthlete(false);
     filterData('ALL');
     drawCharts();
+    setPageTitle(`${RACES[race].name} · ${year}`, `${RACES[race].name} ${year}`);
     updateUrl();
 }
 
-// Draw a histogram
-function drawHistogram(containerId, field, title) {
-    const container = d3.select(`#${containerId}`);
-    container.select('svg').remove();
-    container.select('.no-data').remove();
-
+function renderChart(field) {
+    const config = CHARTS[field];
+    const card = document.getElementById(config.id);
     const values = currentData.map(d => d[field]).filter(v => v > 0);
     if (values.length === 0) {
-        container.append('div')
+        d3.select(card).select('svg').remove();
+        d3.select(card).select('.no-data').remove();
+        d3.select(card).append('div')
             .attr('class', 'no-data')
-            .text('No data');
+            .text('No data for this division');
+        card.querySelector('.chart-stats').innerHTML = '';
+        card.querySelector('.chart-sub').innerHTML = '';
         return;
     }
 
-    const sorted = [...values].sort((a, b) => a - b);
-    const quartiles = [
-        { pct: 25, value: sorted[Math.floor(sorted.length * 0.25)] },
-        { pct: 50, value: sorted[Math.floor(sorted.length * 0.5)] },
-        { pct: 75, value: sorted[Math.floor(sorted.length * 0.75)] }
-    ];
-
-    const margin = { top: 35, right: 20, bottom: 35, left: 45 };
-    const width = container.node().clientWidth - 32;
-    const height = 200;
-    const innerWidth = width - margin.left - margin.right;
-    const innerHeight = height - margin.top - margin.bottom;
-
-    const svg = container.append('svg')
-        .attr('width', width)
-        .attr('height', height);
-
-    const g = svg.append('g')
-        .attr('transform', `translate(${margin.left},${margin.top})`);
-
-    const xExtent = d3.extent(values);
-    const x = d3.scaleLinear()
-        .domain([xExtent[0] * 0.95, xExtent[1] * 1.05])
-        .range([0, innerWidth]);
-
-    const histogram = d3.bin()
-        .domain(x.domain())
-        .thresholds(40);
-
-    const bins = histogram(values);
-    const sortedValues = [...values].sort((a, b) => a - b);
-
-    const y = d3.scaleLinear()
-        .domain([0, d3.max(bins, d => d.length)])
-        .nice()
-        .range([innerHeight, 0]);
-
-    const tooltip = d3.select('#tooltip');
-    const colors = CHART_COLORS[field];
-
-    g.selectAll('.bar')
-        .data(bins)
-        .enter()
-        .append('rect')
-        .attr('class', 'bar')
-        .attr('x', d => x(d.x0) + 1)
-        .attr('y', d => y(d.length))
-        .attr('width', d => Math.max(0, x(d.x1) - x(d.x0) - 2))
-        .attr('height', d => innerHeight - y(d.length))
-        .attr('fill', colors.fill)
-        .on('mouseenter', function(event, d) {
-            d3.select(this).attr('fill', colors.hover);
-            const countBelow = sortedValues.filter(v => v < d.x0).length;
-            const countAtOrBelow = sortedValues.filter(v => v <= d.x1).length;
-            const pctLow = Math.round((countBelow / values.length) * 100);
-            const pctHigh = Math.round((countAtOrBelow / values.length) * 100);
-
-            const pctText = pctLow === pctHigh
-                ? `${pctHigh}th percentile`
-                : `${pctLow}th - ${pctHigh}th percentile`;
-
-            tooltip
-                .classed('visible', true)
-                .html(`
-                    <div class="time-range">${formatTime(d.x0)} - ${formatTime(d.x1)}</div>
-                    <div class="count">${d.length} athlete${d.length !== 1 ? 's' : ''}</div>
-                    <div class="percentile">${pctText}</div>
-                `);
-        })
-        .on('mousemove', function(event) {
-            tooltip
-                .style('left', (event.clientX + 12) + 'px')
-                .style('top', (event.clientY - 10) + 'px');
-        })
-        .on('mouseleave', function() {
-            d3.select(this).attr('fill', colors.fill);
-            tooltip.classed('visible', false);
-        });
-
-    g.append('g')
-        .attr('class', 'axis')
-        .attr('transform', `translate(0,${innerHeight})`)
-        .call(d3.axisBottom(x).ticks(5).tickFormat(formatTimeShort));
-
-    g.append('g')
-        .attr('class', 'axis')
-        .call(d3.axisLeft(y).ticks(5));
-
-    // Draw quartile lines (three tiers: 25th/75th near bars, median higher)
-    const labelYPositions = [-2, -14, -2];
-    const lineYPositions = [0, -12, 0];
-    quartiles.forEach((q, i) => {
-        const qx = x(q.value);
-        if (qx >= 0 && qx <= innerWidth) {
-            g.append('line')
-                .attr('class', 'quartile-line')
-                .attr('x1', qx)
-                .attr('x2', qx)
-                .attr('y1', lineYPositions[i])
-                .attr('y2', innerHeight);
-
-            g.append('text')
-                .attr('class', 'quartile-label')
-                .attr('x', qx)
-                .attr('y', labelYPositions[i])
-                .attr('text-anchor', 'middle')
-                .text(formatTimeShort(q.value));
+    const athlete = selectedAthlete && selectedAthlete[field] > 0
+        ? {
+            name: selectedAthlete['Athlete Name'],
+            value: selectedAthlete[field],
+            division: selectedAthlete.division,
         }
+        : null;
+    const result = renderHistogram(card, {
+        field,
+        series: [{ id: 'race', values, color: config.color, label: RACES[currentRace].name }],
+        style: 'outline',
+        yMode: 'count',
+        markers: { quartiles: true, band: true, athlete },
+        tooltip: document.getElementById('tooltip'),
     });
+    const stats = result.series[0];
+    card.querySelector('.chart-stats').innerHTML = stats.q.map((value, index) => {
+        const pct = [25, 50, 75][index];
+        const pace = formatPace(field, value);
+        return `<span><b>${pct}%</b> ${formatChartTime(field, value)}${pace ? ` <i class="pace">${pace}</i>` : ''}</span>`;
+    }).join('');
 
-    // Draw athlete marker if selected
-    if (selectedAthlete && selectedAthlete[field] > 0) {
-        const athleteTime = selectedAthlete[field];
-        const athleteX = x(athleteTime);
-
-        if (athleteX >= 0 && athleteX <= innerWidth) {
-            g.append('line')
-                .attr('class', 'athlete-marker')
-                .attr('x1', athleteX)
-                .attr('x2', athleteX)
-                .attr('y1', -25)
-                .attr('y2', innerHeight);
-
-            const pct = Math.round((sortedValues.filter(v => v <= athleteTime).length / values.length) * 100);
-            const lastName = selectedAthlete['Athlete Name'].split(' ').slice(-1)[0];
-
-            g.append('text')
-                .attr('class', 'athlete-label')
-                .attr('x', athleteX)
-                .attr('y', -26)
-                .attr('text-anchor', 'middle')
-                .text(`${lastName} ${formatTimeShort(athleteTime)} (${pct}%)`);
-        }
-    }
+    const outside = stats.belowDomain + stats.aboveDomain;
+    const chip = athlete
+        ? `<span class="chip" style="--chip:${config.color}">${escapeHtml(athlete.name)} · ${formatChartTime(field, athlete.value)}${formatPace(field, athlete.value) ? ` · ${formatPace(field, athlete.value)}` : ''} · ${stats.athletePct}% percentile in ${escapeHtml(athlete.division)}</span>`
+        : '';
+    const outsideNote = outside
+        ? `<span class="outside-note">${outside.toLocaleString()} result${outside === 1 ? '' : 's'} outside view</span>`
+        : '';
+    card.querySelector('.chart-sub').innerHTML = `${chip}${outsideNote}`;
 }
 
 function drawCharts() {
-    drawHistogram('swim-chart', 'swim', 'Swim');
-    drawHistogram('t1-chart', 't1', 'T1');
-    drawHistogram('bike-chart', 'bike', 'Bike');
-    drawHistogram('t2-chart', 't2', 'T2');
-    drawHistogram('run-chart', 'run', 'Run');
-    drawHistogram('finish-chart', 'finish', 'Overall');
+    Object.keys(CHARTS).forEach(renderChart);
 }
 
 function searchAthletes(query) {
@@ -279,15 +174,13 @@ function selectAthleteByIndex(index) {
     }
 }
 
-function clearAthlete() {
+function clearAthlete(redraw = true) {
     selectedAthlete = null;
     athleteChoices.removeActiveItems();
-    drawCharts();
-    updateUrl();
-}
-
-function handleResize() {
-    drawCharts();
+    if (redraw) {
+        drawCharts();
+        updateUrl();
+    }
 }
 
 async function init() {
@@ -418,7 +311,7 @@ async function init() {
         }
     }
 
-    window.addEventListener('resize', debounce(handleResize, 150));
+    observeHistogramCards(drawCharts);
 }
 
 init();

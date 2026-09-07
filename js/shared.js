@@ -18,6 +18,84 @@ function formatTimeShort(seconds) {
     return `${h}:${String(m).padStart(2, '0')}`;
 }
 
+function formatTransitionTime(seconds) {
+    const m = Math.floor(seconds / 60);
+    const s = Math.floor(seconds % 60);
+    return `${m}:${String(s).padStart(2, '0')}`;
+}
+
+function formatChartTime(field, seconds) {
+    return field === 't1' || field === 't2'
+        ? formatTransitionTime(seconds)
+        : formatTimeShort(seconds);
+}
+
+function formatDelta(seconds) {
+    const rounded = Math.round(seconds);
+    if (rounded < 3600) return formatTransitionTime(rounded);
+    return formatTime(rounded);
+}
+
+const DISTANCES = {
+    swim: { m: 1900 },
+    bike: { mi: 56 },
+    run: { mi: 13.1 },
+};
+
+function formatPace(field, seconds) {
+    if (!seconds || seconds <= 0) return null;
+    if (field === 'swim') {
+        return `${formatTransitionTime(seconds / (DISTANCES.swim.m / 100))}/100m`;
+    }
+    if (field === 'bike') {
+        return `${(DISTANCES.bike.mi / (seconds / 3600)).toFixed(1)} mph`;
+    }
+    if (field === 'run') {
+        return `${formatTransitionTime(seconds / DISTANCES.run.mi)}/mi`;
+    }
+    return null;
+}
+
+function nearestRank(sorted, percentile) {
+    if (sorted.length === 0) return 0;
+    return sorted[Math.min(Math.floor(sorted.length * percentile), sorted.length - 1)];
+}
+
+function ordinal(value) {
+    const n = Math.round(value);
+    const mod100 = n % 100;
+    if (mod100 >= 11 && mod100 <= 13) return `${n}th`;
+    if (n % 10 === 1) return `${n}st`;
+    if (n % 10 === 2) return `${n}nd`;
+    if (n % 10 === 3) return `${n}rd`;
+    return `${n}th`;
+}
+
+function timeTicks(domain, targetCount = 5) {
+    const steps = [30, 60, 120, 300, 600, 900, 1200, 1800, 3600];
+    const rawStep = (domain[1] - domain[0]) / Math.max(targetCount, 1);
+    const step = steps.reduce((best, candidate) =>
+        Math.abs(candidate - rawStep) < Math.abs(best - rawStep) ? candidate : best
+    );
+    const start = Math.ceil(domain[0] / step) * step;
+    return d3.range(start, domain[1] + step * 0.5, step);
+}
+
+function setPageTitle(heading, documentHeading = heading) {
+    const pageTitle = document.getElementById('page-title');
+    if (pageTitle) pageTitle.textContent = heading;
+    document.title = `${documentHeading} · Tri Times`;
+}
+
+function escapeHtml(value) {
+    return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+}
+
 // Load races manifest
 async function loadRaces() {
     if (RACES) return RACES;

@@ -10,9 +10,9 @@ function renderTable() {
     const desc = document.getElementById('percentile-description');
 
     if (percentile === '50') {
-        desc.textContent = 'Showing typical (median) split times for each race.';
+        desc.textContent = 'Showing 50th percentile (median) split times.';
     } else {
-        desc.textContent = `Showing split times for the ${percentile}th percentile of finishers.`;
+        desc.textContent = `Showing ${ordinal(percentile)} percentile split times.`;
     }
 
     const rows = Object.entries(raceStats).map(([id, race]) => ({
@@ -41,26 +41,26 @@ function renderTable() {
 
     tbody.innerHTML = rows.map(r => `
         <tr>
-            <td><a href="index.html?race=${r.id}">${r.name}</a> <a href="https://www.ironman.com/races/im703-${r.id}" target="_blank" rel="noopener" class="external-link"><i class="fas fa-external-link-alt"></i></a></td>
-            <td>${r.yearCount}</td>
-            <td>${formatTime(r.swim)}</td>
-            <td>${formatTime(r.t1)}</td>
-            <td>${formatTime(r.bike)}</td>
-            <td>${formatTime(r.t2)}</td>
-            <td>${formatTime(r.run)}</td>
-            <td>${formatTime(r.finish)}</td>
+            <td><a href="index.html?race=${r.id}">${r.name}</a> <a href="https://www.ironman.com/races/im703-${r.id}" target="_blank" rel="noopener" class="external-link" aria-label="Open ${escapeHtml(r.name)} on Ironman">${ICONS.external}</a></td>
+            <td class="num">${r.yearCount}</td>
+            <td class="num">${formatTime(r.swim)}</td>
+            <td class="num">${formatTime(r.t1)}</td>
+            <td class="num">${formatTime(r.bike)}</td>
+            <td class="num">${formatTime(r.t2)}</td>
+            <td class="num">${formatTime(r.run)}</td>
+            <td class="num">${formatTime(r.finish)}</td>
         </tr>
     `).join('');
 
-    document.getElementById('stats').textContent = `${rows.length} races`;
+    document.getElementById('stats').textContent = `${rows.length.toLocaleString()} races`;
 
     // Update sort arrows
     document.querySelectorAll('#race-table th').forEach(th => {
         const arrow = th.querySelector('.sort-arrow');
         if (th.dataset.sort === sortColumn) {
-            arrow.textContent = sortAsc ? ' ▲' : ' ▼';
+            arrow.innerHTML = sortAsc ? ICONS.chevronUp : ICONS.chevronDown;
         } else {
-            arrow.textContent = '';
+            arrow.innerHTML = '';
         }
     });
 }

@@ -134,6 +134,7 @@ async function selectAthlete(name) {
 
     for (const [split, val] of Object.entries(medians)) {
         document.getElementById(`pctl-${split}`).value = val;
+        document.getElementById(`pctl-${split}-range`).value = val;
     }
 
     updateDescription();
@@ -158,8 +159,10 @@ function updateDescription() {
         const n = selectedAthlete.raceCount;
         desc.innerHTML = `Using <strong>${selectedAthlete.name}</strong>'s historical percentiles from ${n} race${n !== 1 ? 's' : ''} to predict their time. You can adjust the percentiles below.`;
         desc.style.display = 'block';
+        setPageTitle('Race predictor', `${selectedAthlete.name} prediction`);
     } else {
         desc.style.display = 'none';
+        setPageTitle('Race predictor');
     }
 }
 
@@ -222,17 +225,19 @@ async function updateProjection() {
         rows.push({ label: splitLabels[split], pct, time });
     }
 
-    const tbody = document.getElementById('projection-body');
-    tbody.innerHTML = rows.map(r => `
-        <tr>
-            <td>${r.label}</td>
-            <td>${r.pct}%</td>
-            <td>${formatTime(r.time)}</td>
-        </tr>
+    const list = document.getElementById('projection-body');
+    list.innerHTML = rows.map(r => `
+        <div class="projection-row">
+            <span>${r.label}</span>
+            <span class="projection-percentile">${ordinal(r.pct)}</span>
+            <strong>${formatTime(r.time)}</strong>
+        </div>
     `).join('');
 
     const finishPctl = findPercentile(sortedArrays.finish, totalSeconds);
-    document.getElementById('finish-pctl').textContent = `~${finishPctl}%`;
+    const raceName = RACES[raceId].name;
+    document.getElementById('finish-pctl').textContent =
+        `≈ ${ordinal(finishPctl)} percentile at ${raceName} ${year}`;
     document.getElementById('finish-time').textContent = formatTime(totalSeconds);
     document.getElementById('projection').style.display = 'block';
 
@@ -274,6 +279,7 @@ async function init() {
         itemSelectText: '',
         shouldSort: false
     });
+    document.getElementById('clear-athlete').innerHTML = ICONS.close;
 
     // Athlete search
     const searchInput = document.getElementById('athlete-search');
@@ -322,15 +328,18 @@ async function init() {
 
     for (const split of ['swim', 't1', 'bike', 't2', 'run']) {
         const val = params.get(split);
-        if (val) document.getElementById(`pctl-${split}`).value = val;
+        if (val) {
+            document.getElementById(`pctl-${split}`).value = val;
+            document.getElementById(`pctl-${split}-range`).value = val;
+        }
     }
 
     const raceParam = params.get('race') || 'western-massachusetts';
-    const yearParam = params.get('year') || '2024';
+    const yearParam = params.get('year');
     if (RACES[raceParam]) {
         raceChoices.setChoiceByValue(raceParam);
         updateYears(raceParam);
-        if (RACES[raceParam].years.includes(yearParam)) {
+        if (yearParam && RACES[raceParam].years.includes(yearParam)) {
             yearChoices.setChoiceByValue(yearParam);
         }
     }
@@ -360,9 +369,16 @@ async function init() {
     });
 
     for (const split of ['swim', 't1', 'bike', 't2', 'run']) {
-        document.getElementById(`pctl-${split}`).addEventListener('input', async function () {
+        const number = document.getElementById(`pctl-${split}`);
+        const range = document.getElementById(`pctl-${split}-range`);
+        const sync = async (source, target) => {
+            const value = Math.max(1, Math.min(99, parseInt(source.value) || 50));
+            source.value = value;
+            target.value = value;
             if (currentData) await updateProjection();
-        });
+        };
+        number.addEventListener('input', () => sync(number, range));
+        range.addEventListener('input', () => sync(range, number));
     }
 }
 

@@ -8,8 +8,8 @@ Interactive visualization of Ironman 70.3 triathlon race results. View split tim
 
 ## Features
 
-- **Single Race View**: Histograms for swim, T1, bike, T2, run, and overall times with quartile markers
-- **Race Comparison**: Overlay distributions from two different races
+- **Single Race View**: Responsive split distributions with quartile ranges, pace summaries, and athlete markers
+- **Race Comparison**: Normalized overlays for comparing distribution shape across two races
 - **Race List**: Sortable table of all races with percentile-based split times (5th–95th)
 - **Athlete Search**: Look up any athlete across all races with per-split percentile rankings
 - **Race Predictor**: Project an athlete's time in any race using their historical percentile profile
@@ -87,7 +87,9 @@ tri-times/
 │   └── style.css           # Styles with light/dark themes
 ├── js/
 │   ├── shared.js           # Utilities, data loading, caching
+│   ├── nav.js              # Shared navigation and inline icons
 │   ├── theme.js            # Theme toggle
+│   ├── histogram.js        # Shared histogram renderer
 │   ├── app.js              # Single race histograms
 │   ├── compare.js          # Race comparison logic
 │   ├── races.js            # Race list table
@@ -121,7 +123,7 @@ CSV files contain the following columns:
 - [Choices.js](https://choices-js.github.io/Choices/) for searchable dropdowns
 - Vanilla JavaScript (no build step required)
 - CSS custom properties for theming
-- [Font Awesome](https://fontawesome.com/) for icons
+- Inline SVG icons
 
 ## License
 

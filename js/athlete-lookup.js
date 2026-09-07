@@ -110,6 +110,7 @@ function clearSearch() {
     highlightIndex = -1;
     currentResults = [];
     history.replaceState(null, '', window.location.pathname);
+    setPageTitle('Athlete search');
 }
 
 async function selectAthlete(name) {
@@ -128,7 +129,7 @@ async function selectAthlete(name) {
     // [race_id, year, swim, t1, bike, t2, run, finish, division, swim%, t1%, bike%, t2%, run%, finish%]
     currentResults = shard[name].map(r => ({
         raceId: r[0],
-        race: r[0].split('-').map(w => w[0].toUpperCase() + w.slice(1)).join(' '),
+        race: RACES[r[0]]?.name || r[0].split('-').map(w => w[0].toUpperCase() + w.slice(1)).join(' '),
         year: r[1],
         swim: r[2],
         t1: r[3],
@@ -149,6 +150,7 @@ async function selectAthlete(name) {
     sortAsc = false;
     renderResults();
     updateUrl(name);
+    setPageTitle(name);
 }
 
 function renderResults() {
@@ -171,12 +173,14 @@ function renderResults() {
     tbody.innerHTML = sorted.map(r => `
         <tr>
             <td><a href="index.html?race=${r.raceId}&year=${r.year}&athlete=${encodeURIComponent(name)}">${r.race}</a></td>
-            <td>${r.year}</td>
+            <td class="num">${r.year}</td>
             <td>${r.division}</td>
-            <td>${formatTime(r.swim)} <span class="pct">(${r.swimPct}%)</span></td>
-            <td>${formatTime(r.bike)} <span class="pct">(${r.bikePct}%)</span></td>
-            <td>${formatTime(r.run)} <span class="pct">(${r.runPct}%)</span></td>
-            <td>${formatTime(r.finish)} <span class="pct">(${r.finishPct}%)</span></td>
+            <td class="num">${formatTime(r.swim)} <span class="pct">(${r.swimPct}%)</span></td>
+            <td class="num">${formatTime(r.t1)} <span class="pct">(${r.t1Pct}%)</span></td>
+            <td class="num">${formatTime(r.bike)} <span class="pct">(${r.bikePct}%)</span></td>
+            <td class="num">${formatTime(r.t2)} <span class="pct">(${r.t2Pct}%)</span></td>
+            <td class="num">${formatTime(r.run)} <span class="pct">(${r.runPct}%)</span></td>
+            <td class="num">${formatTime(r.finish)} <span class="pct">(${r.finishPct}%)</span></td>
         </tr>
     `).join('');
 
@@ -199,30 +203,30 @@ function renderResults() {
             athlete: document.getElementById('athlete-search').value,
             swim: medSwim, t1: medT1, bike: medBike, t2: medT2, run: medRun,
         });
+        document.getElementById('predict-athlete').href = `predict.html?${predictParams}`;
 
         tfoot.innerHTML = `
             <tr class="summary-row">
                 <td colspan="3"><strong>Median Percentile</strong></td>
                 <td><strong>${medSwim}%</strong></td>
+                <td><strong>${medT1}%</strong></td>
                 <td><strong>${medBike}%</strong></td>
+                <td><strong>${medT2}%</strong></td>
                 <td><strong>${medRun}%</strong></td>
                 <td><strong>${medFinish}%</strong></td>
-            </tr>
-            <tr class="summary-row predict-row">
-                <td colspan="7"><a href="predict.html?${predictParams}">Predict Race Time →</a></td>
             </tr>`;
     } else {
         tfoot.innerHTML = '';
     }
 
-    document.getElementById('stats').textContent = `${currentResults.length} race${currentResults.length !== 1 ? 's' : ''}`;
+    document.getElementById('stats').textContent = `${currentResults.length.toLocaleString()} race${currentResults.length !== 1 ? 's' : ''}`;
 
     document.querySelectorAll('#results-table th').forEach(th => {
         const arrow = th.querySelector('.sort-arrow');
         if (th.dataset.sort === sortColumn) {
-            arrow.textContent = sortAsc ? ' ▲' : ' ▼';
+            arrow.innerHTML = sortAsc ? ICONS.chevronUp : ICONS.chevronDown;
         } else {
-            arrow.textContent = '';
+            arrow.innerHTML = '';
         }
     });
 }
@@ -234,8 +238,10 @@ function updateUrl(name) {
 }
 
 async function init() {
+    await loadRaces();
     const searchInput = document.getElementById('athlete-search');
     const clearBtn = document.getElementById('clear-search');
+    clearBtn.innerHTML = ICONS.close;
     let debounceTimer;
 
     searchInput.addEventListener('input', () => {

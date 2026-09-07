@@ -1,29 +1,18 @@
-// Theme toggle functionality
-(function() {
+(function () {
     const html = document.documentElement;
 
-    // Default to light theme
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        // Only go dark if explicitly saved
-    } else {
-        html.classList.add('light-theme');
-    }
-
-    // Setup toggle button after DOM loads
-    document.addEventListener('DOMContentLoaded', () => {
+    function renderIcon() {
         const toggle = document.getElementById('theme-toggle');
         if (!toggle) return;
+        const isDark = html.dataset.theme === 'dark';
+        toggle.innerHTML = isDark ? ICONS.sun : ICONS.moon;
+        toggle.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+    }
 
-        // Set initial icon (sun = light mode active, moon = dark mode active)
-        const isLight = html.classList.contains('light-theme');
-        toggle.innerHTML = isLight ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
-
-        toggle.addEventListener('click', () => {
-            html.classList.toggle('light-theme');
-            const isLight = html.classList.contains('light-theme');
-            toggle.innerHTML = isLight ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
-            localStorage.setItem('theme', isLight ? 'light' : 'dark');
-        });
+    renderIcon();
+    document.getElementById('theme-toggle')?.addEventListener('click', () => {
+        html.dataset.theme = html.dataset.theme === 'dark' ? 'light' : 'dark';
+        localStorage.setItem('theme', html.dataset.theme);
+        renderIcon();
     });
 })();
