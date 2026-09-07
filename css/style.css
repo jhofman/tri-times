@@ -840,6 +840,26 @@ select,
     color: var(--race-b);
 }
 
+.compare-median {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.25rem;
+    white-space: nowrap;
+}
+
+.compare-median .race-dot {
+    align-self: center;
+}
+
+.compare-median-label {
+    font-weight: 600;
+}
+
+.compare-median strong {
+    color: currentColor;
+    font-weight: 700;
+}
+
 .pace {
     color: var(--text-muted);
     font-style: normal;
@@ -863,6 +883,14 @@ select,
 .outside-note {
     margin-left: auto;
     white-space: nowrap;
+}
+
+.chart-foot {
+    min-height: 17px;
+    margin-top: -0.25rem;
+    color: var(--text-muted);
+    font-size: 0.6875rem;
+    text-align: right;
 }
 
 .chip {
@@ -1230,6 +1258,10 @@ select,
 
     .chart-stats .pace {
         display: none;
+    }
+
+    .compare-median .pace {
+        display: inline;
     }
 
     .athlete-result-head {

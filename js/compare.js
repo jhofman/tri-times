@@ -105,6 +105,7 @@ async function loadComparisonData() {
 
 function renderCompareChart(field, state) {
     const card = document.getElementById(COMPARE_CHARTS[field].id);
+    card.querySelector('.chart-foot')?.remove();
     const valuesA = state.filteredA.map(d => d[field]).filter(v => v > 0);
     const valuesB = state.filteredB.map(d => d[field]).filter(v => v > 0);
     const result = renderHistogram(card, {
@@ -128,13 +129,15 @@ function renderCompareChart(field, state) {
     }
 
     const [statsA, statsB] = result.series;
-    const medianStat = (stats, className) => {
-        if (!stats.n) return `<span class="${className}">No data</span>`;
+    const medianStat = (stats, className, label, color) => {
+        if (!stats.n) {
+            return `<span class="compare-median ${className}"><span class="race-dot" style="--dot:${color}"></span><span class="compare-median-label">${escapeHtml(label)}</span> No data</span>`;
+        }
         const pace = formatPace(field, stats.q[1]);
-        return `<span class="${className}">● ${formatChartTime(field, stats.q[1])}${pace ? ` <i class="pace">${pace}</i>` : ''}</span>`;
+        return `<span class="compare-median ${className}"><span class="race-dot" style="--dot:${color}"></span><span class="compare-median-label">${escapeHtml(label)}</span><strong>${formatChartTime(field, stats.q[1])}</strong>${pace ? ` <i class="pace">${pace}</i>` : ''}</span>`;
     };
     card.querySelector('.chart-stats').innerHTML =
-        `${medianStat(statsA, 'race-a')}${medianStat(statsB, 'race-b')}`;
+        `${medianStat(statsA, 'race-a', state.labelA, 'var(--race-a)')}${medianStat(statsB, 'race-b', state.labelB, 'var(--race-b)')}`;
 
     let comparison = '';
     if (statsA.n && statsB.n) {
@@ -146,10 +149,13 @@ function renderCompareChart(field, state) {
         }
     }
     const outside = statsA.belowDomain + statsA.aboveDomain + statsB.belowDomain + statsB.aboveDomain;
-    const outsideNote = outside
-        ? `<span class="outside-note">${outside.toLocaleString()} result${outside === 1 ? '' : 's'} outside view</span>`
-        : '';
-    card.querySelector('.chart-sub').innerHTML = `${comparison}${outsideNote}`;
+    card.querySelector('.chart-sub').innerHTML = comparison;
+    if (outside) {
+        card.insertAdjacentHTML(
+            'beforeend',
+            `<div class="chart-foot">${outside.toLocaleString()} outlier${outside === 1 ? '' : 's'} excluded from view · included in statistics</div>`
+        );
+    }
 }
 
 function drawCharts() {
