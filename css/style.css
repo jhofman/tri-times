@@ -874,6 +874,15 @@ select,
     color: var(--race-b);
 }
 
+.compare-chart .chart-stats {
+    margin-left: auto;
+    text-align: right;
+}
+
+.compare-chart .chart-sub:empty {
+    display: none;
+}
+
 .pace {
     color: var(--text-muted);
     font-style: normal;
@@ -1266,8 +1275,17 @@ select,
         gap: 0.2rem;
     }
 
+    .compare-chart .chart-head {
+        align-items: baseline;
+        flex-direction: row;
+    }
+
     .chart-stats {
         justify-content: flex-start;
+    }
+
+    .compare-chart .chart-stats {
+        justify-content: flex-end;
     }
 
     .chart-stats .pace {

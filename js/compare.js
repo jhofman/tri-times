@@ -105,6 +105,7 @@ async function loadComparisonData() {
 
 function renderCompareChart(field, state) {
     const card = document.getElementById(COMPARE_CHARTS[field].id);
+    card.classList.add('compare-chart');
     card.querySelector('.chart-foot')?.remove();
     card.querySelector('.compare-chip-stack')?.remove();
     const valuesA = state.filteredA.map(d => d[field]).filter(v => v > 0);
@@ -137,8 +138,6 @@ function renderCompareChart(field, state) {
         const pace = formatPace(field, stats.q[1]);
         return `<span class="chip compare-chip ${className}" style="--chip:${color}">${escapeHtml(label)} · ${formatChartTime(field, stats.q[1])}${pace ? ` · <i class="pace">${pace}</i>` : ''}</span>`;
     };
-    card.querySelector('.chart-stats').innerHTML = '';
-
     let comparison = '';
     if (statsA.n && statsB.n) {
         const difference = Math.abs(statsA.q[1] - statsB.q[1]);
@@ -149,7 +148,8 @@ function renderCompareChart(field, state) {
         }
     }
     const outside = statsA.belowDomain + statsA.aboveDomain + statsB.belowDomain + statsB.aboveDomain;
-    card.querySelector('.chart-sub').innerHTML = comparison;
+    card.querySelector('.chart-stats').innerHTML = comparison;
+    card.querySelector('.chart-sub').innerHTML = '';
     const chipStack = document.createElement('div');
     chipStack.className = 'compare-chip-stack';
     chipStack.innerHTML =
