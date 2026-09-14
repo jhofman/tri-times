@@ -73,6 +73,7 @@
   "belgrade": {
     "name": "Belgrade",
     "years": [
+      "2026",
       "2025",
       "2024"
     ]
@@ -463,6 +464,7 @@
   "erkner": {
     "name": "Erkner",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -914,6 +916,12 @@
       "2016"
     ]
   },
+  "northern-california": {
+    "name": "Northern California",
+    "years": [
+      "2026"
+    ]
+  },
   "oceanside": {
     "name": "Oceanside",
     "years": [
@@ -1132,6 +1140,7 @@
   "santa-cruz": {
     "name": "Santa Cruz",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -1181,6 +1190,7 @@
   "sunshine-coast": {
     "name": "Sunshine Coast",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -1422,6 +1432,7 @@
   "wisconsin": {
     "name": "Wisconsin",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -1435,6 +1446,7 @@
   "world-championship-2026": {
     "name": "World Championship 2026",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -1451,6 +1463,12 @@
       "2011",
       "2009",
       "2006"
+    ]
+  },
+  "world-championship-2027": {
+    "name": "World Championship 2027",
+    "years": [
+      "2026"
     ]
   },
   "zell-am-see": {
