@@ -2,7 +2,6 @@ https://www.ironman.com/races/im703-agadir
 https://www.ironman.com/races/im703-aix-en-provence
 https://www.ironman.com/races/im703-alghero
 https://www.ironman.com/races/im703-aracaju-sergipe
-https://www.ironman.com/races/im703-augusta
 https://www.ironman.com/races/im703-bahrain
 https://www.ironman.com/races/im703-barranquilla
 https://www.ironman.com/races/im703-boise
@@ -39,6 +38,7 @@ https://www.ironman.com/races/im703-goa
 https://www.ironman.com/races/im703-greece
 https://www.ironman.com/races/im703-gulf-coast
 https://www.ironman.com/races/im703-hawaii
+https://www.ironman.com/races/im703-hengqin
 https://www.ironman.com/races/im703-jonkoping
 https://www.ironman.com/races/im703-kenting
 https://www.ironman.com/races/im703-kraichgau
@@ -52,14 +52,12 @@ https://www.ironman.com/races/im703-maine
 https://www.ironman.com/races/im703-malaga
 https://www.ironman.com/races/im703-mallorca
 https://www.ironman.com/races/im703-melbourne
-https://www.ironman.com/races/im703-michigan
 https://www.ironman.com/races/im703-mont-tremblant
 https://www.ironman.com/races/im703-mossel-bay
 https://www.ironman.com/races/im703-muncie
 https://www.ironman.com/races/im703-muskoka
 https://www.ironman.com/races/im703-musselman
 https://www.ironman.com/races/im703-nelson-mandela-bay
-https://www.ironman.com/races/im703-new-york
 https://www.ironman.com/races/im703-new-zealand
 https://www.ironman.com/races/im703-nice
 https://www.ironman.com/races/im703-north-carolina
@@ -70,6 +68,7 @@ https://www.ironman.com/races/im703-omaha
 https://www.ironman.com/races/im703-oman
 https://www.ironman.com/races/im703-oregon
 https://www.ironman.com/races/im703-panama
+https://www.ironman.com/races/im703-pennsylvania
 https://www.ironman.com/races/im703-peru
 https://www.ironman.com/races/im703-phu-quoc
 https://www.ironman.com/races/im703-port-macquarie
@@ -79,6 +78,8 @@ https://www.ironman.com/races/im703-puerto-varas
 https://www.ironman.com/races/im703-punta-del-este
 https://www.ironman.com/races/im703-rio-de-janeiro
 https://www.ironman.com/races/im703-rockford-illinois
+https://www.ironman.com/races/im703-ruidoso-new-mexico
+https://www.ironman.com/races/im703-san-juan
 https://www.ironman.com/races/im703-san-salvador
 https://www.ironman.com/races/im703-sao-paulo
 https://www.ironman.com/races/im703-sharm-el-sheikh
@@ -100,11 +101,9 @@ https://www.ironman.com/races/im703-victoria
 https://www.ironman.com/races/im703-vilamoura-algarve
 https://www.ironman.com/races/im703-vitoria
 https://www.ironman.com/races/im703-waco
-https://www.ironman.com/races/im703-washington-tri-cities
 https://www.ironman.com/races/im703-western-australia
 https://www.ironman.com/races/im703-western-sydney
 https://www.ironman.com/races/im703-westfriesland
 https://www.ironman.com/races/im703-weymouth
-https://www.ironman.com/races/im703-world-championship-2026
 https://www.ironman.com/races/im703-world-championship-2027
 https://www.ironman.com/races/im703-zell-am-see
