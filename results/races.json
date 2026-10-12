@@ -138,6 +138,7 @@
   "buenos-aires": {
     "name": "Buenos Aires",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023"
@@ -277,6 +278,12 @@
       "2018",
       "2017",
       "2016"
+    ]
+  },
+  "colombo": {
+    "name": "Colombo",
+    "years": [
+      "2026"
     ]
   },
   "cozumel": {
@@ -461,6 +468,7 @@
   "encarnacion": {
     "name": "Encarnacion",
     "years": [
+      "2026",
       "2025"
     ]
   },
@@ -1352,6 +1360,7 @@
   "waco": {
     "name": "Waco",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
