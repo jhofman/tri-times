@@ -9,11 +9,17 @@ site and Git history.
 
 As of October 19, 2026:
 
-- `results/` contains roughly 492 MB of uncompressed data.
-- Raw CSV files account for roughly 357 MB.
-- Generated athlete and search indexes account for roughly 134 MB.
+- `results/` contains roughly 516 MB of uncompressed data after the Atlantic
+  City and recent North American historical imports.
+- Raw CSV files account for roughly 375 MB.
+- Generated athlete and search indexes account for roughly 141 MB.
 - The largest tracked file is roughly 13 MB.
 - The published GitHub Pages artifact is roughly 150 MB compressed.
+
+The 13-event North American cohort increased `results/` by only about 6 MB, but
+it touched 365 files because athlete records are distributed across generated
+index shards. This is why batching imports and regenerating once matters more
+than keeping each individual batch extremely small.
 
 GitHub Pages limits a published site to 1 GB. GitHub warns when a normal Git
 file exceeds 50 MiB and blocks files larger than 100 MiB. Current files are

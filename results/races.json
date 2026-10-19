@@ -358,6 +358,12 @@
       "2026"
     ]
   },
+  "des-moines": {
+    "name": "Des Moines",
+    "years": [
+      "2023"
+    ]
+  },
   "desaru-coast": {
     "name": "Desaru Coast",
     "years": [
@@ -746,6 +752,19 @@
       "2015"
     ]
   },
+  "louisville": {
+    "name": "Louisville",
+    "years": [
+      "2022"
+    ]
+  },
+  "lubbock": {
+    "name": "Lubbock",
+    "years": [
+      "2022",
+      "2021"
+    ]
+  },
   "luxembourg": {
     "name": "Luxembourg",
     "years": [
@@ -835,6 +854,12 @@
       "2014",
       "2013",
       "2012"
+    ]
+  },
+  "morro-bay": {
+    "name": "Morro Bay",
+    "years": [
+      "2023"
     ]
   },
   "mossel-bay": {
@@ -1209,6 +1234,19 @@
       "2018"
     ]
   },
+  "st-petersburg": {
+    "name": "St Petersburg",
+    "years": [
+      "2021"
+    ]
+  },
+  "steelhead": {
+    "name": "Steelhead",
+    "years": [
+      "2023",
+      "2022"
+    ]
+  },
   "subic-bay-philippines": {
     "name": "Subic Bay Philippines",
     "years": [
@@ -1305,6 +1343,13 @@
       "2010"
     ]
   },
+  "timberman": {
+    "name": "Timberman",
+    "years": [
+      "2022",
+      "2021"
+    ]
+  },
   "valdivia": {
     "name": "Valdivia",
     "years": [
@@ -1361,6 +1406,14 @@
       "2016",
       "2015",
       "2014"
+    ]
+  },
+  "virginia-blue-ridge": {
+    "name": "Virginia Blue Ridge",
+    "years": [
+      "2023",
+      "2022",
+      "2021"
     ]
   },
   "vitoria": {

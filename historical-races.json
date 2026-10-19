@@ -20,6 +20,136 @@
           "eventId": "A7CC1C9B-49B6-40C4-9F94-160F58CC6E93"
         }
       ]
+    },
+    {
+      "id": "des-moines",
+      "name": "Des Moines",
+      "status": "retired",
+      "source": "https://github.com/miloknowles/triathlon-tools/blob/main/python/tasks/im/subevents.csv",
+      "excludedEvents": [
+        {
+          "year": "2021",
+          "eventId": "951360A4-3212-4A21-B99D-69BFB52D8215",
+          "reason": "Nonstandard course after thunderstorms: bike shortened from 56 to 27 miles"
+        }
+      ],
+      "events": [
+        {
+          "year": "2023",
+          "eventId": "02938DDC-067F-4A9E-A128-0282CE56CB96"
+        }
+      ]
+    },
+    {
+      "id": "louisville",
+      "name": "Louisville",
+      "status": "retired",
+      "source": "https://github.com/miloknowles/triathlon-tools/blob/main/python/tasks/im/subevents.csv",
+      "events": [
+        {
+          "year": "2022",
+          "eventId": "E9A444D6-19E4-4D31-A942-711E13906B1E"
+        }
+      ]
+    },
+    {
+      "id": "lubbock",
+      "name": "Lubbock",
+      "status": "retired",
+      "source": "https://github.com/miloknowles/triathlon-tools/blob/main/python/tasks/im/subevents.csv",
+      "events": [
+        {
+          "year": "2021",
+          "eventId": "B8DC7A2C-AEB9-44B7-BA53-7073481D13B9"
+        },
+        {
+          "year": "2022",
+          "eventId": "1C90189F-0FA4-4D2B-A635-98E2C085EBED"
+        }
+      ]
+    },
+    {
+      "id": "morro-bay",
+      "name": "Morro Bay",
+      "status": "retired",
+      "source": "https://github.com/miloknowles/triathlon-tools/blob/main/python/tasks/im/subevents.csv",
+      "events": [
+        {
+          "year": "2023",
+          "eventId": "602C8440-9CCE-4BE5-86B3-3DD3BB62EA97"
+        }
+      ]
+    },
+    {
+      "id": "st-petersburg",
+      "name": "St. Petersburg",
+      "status": "retired",
+      "source": "https://github.com/miloknowles/triathlon-tools/blob/main/python/tasks/im/subevents.csv",
+      "events": [
+        {
+          "year": "2021",
+          "eventId": "C97EAB4F-B4C9-41D4-9F92-7A0B4E77A0D0"
+        }
+      ]
+    },
+    {
+      "id": "steelhead",
+      "name": "Steelhead",
+      "status": "retired",
+      "source": "https://github.com/miloknowles/triathlon-tools/blob/main/python/tasks/im/subevents.csv",
+      "excludedEvents": [
+        {
+          "year": "2021",
+          "eventId": "1EBAE80A-D637-4D4F-B09C-624FB7D01A1E",
+          "reason": "Swim canceled; source results contain no swim or T1 split data"
+        }
+      ],
+      "events": [
+        {
+          "year": "2022",
+          "eventId": "6F38BACF-7D0D-4933-8B20-81D36975426B"
+        },
+        {
+          "year": "2023",
+          "eventId": "482F9D35-2577-43DC-8738-0B773CE7987E"
+        }
+      ]
+    },
+    {
+      "id": "timberman",
+      "name": "Timberman",
+      "status": "retired",
+      "source": "https://github.com/miloknowles/triathlon-tools/blob/main/python/tasks/im/subevents.csv",
+      "events": [
+        {
+          "year": "2021",
+          "eventId": "B00F69A3-2AFC-44CF-BCC8-7679827AE178"
+        },
+        {
+          "year": "2022",
+          "eventId": "4FBE7285-960B-4B94-8507-93B55EA64CA2"
+        }
+      ]
+    },
+    {
+      "id": "virginia-blue-ridge",
+      "name": "Virginia Blue Ridge",
+      "status": "retired",
+      "source": "https://github.com/miloknowles/triathlon-tools/blob/main/python/tasks/im/subevents.csv",
+      "events": [
+        {
+          "year": "2021",
+          "eventId": "29D863C5-0F58-49FE-B1F0-63A946CA4A0F"
+        },
+        {
+          "year": "2022",
+          "eventId": "DAB667FA-B0D6-4E42-9822-9CA73DD80873"
+        },
+        {
+          "year": "2023",
+          "eventId": "0A6B9FEF-B45D-4F43-8DE9-C49280DFA17B"
+        }
+      ]
     }
   ]
 }

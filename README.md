@@ -65,6 +65,8 @@ CSV files are saved to `results/` and the manifest at `results/races.json` lists
 `historical-races.json` records retired race-years by canonical race ID, year,
 and Competitor event UUID. The historical importer queries those UUIDs directly,
 so it does not depend on the race still appearing on ironman.com.
+Known nonstandard or incomplete race-years can be retained under
+`excludedEvents` with a reason; the importer only fetches entries in `events`.
 
 ```bash
 # Import every missing event in the registry
