@@ -222,6 +222,7 @@
   "cascais": {
     "name": "Cascais",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -485,6 +486,7 @@
   "florianopolis": {
     "name": "Florianopolis",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -924,6 +926,7 @@
   "north-carolina": {
     "name": "North Carolina",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -1047,6 +1050,7 @@
   "port-macquarie": {
     "name": "Port Macquarie",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
