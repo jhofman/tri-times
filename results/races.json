@@ -41,6 +41,7 @@
   "augusta": {
     "name": "Augusta",
     "years": [
+      "2026",
       "2025",
       "2023",
       "2022",
@@ -73,6 +74,7 @@
   "belgrade": {
     "name": "Belgrade",
     "years": [
+      "2026",
       "2025",
       "2024"
     ]
@@ -136,6 +138,7 @@
   "buenos-aires": {
     "name": "Buenos Aires",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023"
@@ -219,6 +222,7 @@
   "cascais": {
     "name": "Cascais",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -277,9 +281,16 @@
       "2016"
     ]
   },
+  "colombo": {
+    "name": "Colombo",
+    "years": [
+      "2026"
+    ]
+  },
   "cozumel": {
     "name": "Cozumel",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -446,6 +457,7 @@
   "emilia-romagna": {
     "name": "Emilia Romagna",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -457,12 +469,14 @@
   "encarnacion": {
     "name": "Encarnacion",
     "years": [
+      "2026",
       "2025"
     ]
   },
   "erkner": {
     "name": "Erkner",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -472,6 +486,7 @@
   "florianopolis": {
     "name": "Florianopolis",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -598,6 +613,12 @@
       "2005"
     ]
   },
+  "hengqin": {
+    "name": "Hengqin",
+    "years": [
+      "2026"
+    ]
+  },
   "hradec-kralove": {
     "name": "Hradec Kralove",
     "years": [
@@ -634,6 +655,7 @@
   "knokke-heist": {
     "name": "Knokke Heist",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023"
@@ -780,6 +802,7 @@
   "michigan": {
     "name": "Michigan",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -903,6 +926,7 @@
   "north-carolina": {
     "name": "North Carolina",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -911,6 +935,12 @@
       "2019",
       "2017",
       "2016"
+    ]
+  },
+  "northern-california": {
+    "name": "Northern California",
+    "years": [
+      "2026"
     ]
   },
   "oceanside": {
@@ -1020,6 +1050,7 @@
   "port-macquarie": {
     "name": "Port Macquarie",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -1112,6 +1143,12 @@
       "2025"
     ]
   },
+  "ruidoso-new-mexico": {
+    "name": "Ruidoso New Mexico",
+    "years": [
+      "2026"
+    ]
+  },
   "san-juan": {
     "name": "San Juan",
     "years": [
@@ -1131,6 +1168,7 @@
   "santa-cruz": {
     "name": "Santa Cruz",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -1146,6 +1184,7 @@
   "sao-paulo": {
     "name": "Sao Paulo",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -1180,6 +1219,7 @@
   "sunshine-coast": {
     "name": "Sunshine Coast",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -1324,6 +1364,7 @@
   "waco": {
     "name": "Waco",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -1347,6 +1388,7 @@
   "washington-tri-cities": {
     "name": "Washington Tri Cities",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -1407,6 +1449,7 @@
   "weymouth": {
     "name": "Weymouth",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -1421,6 +1464,7 @@
   "wisconsin": {
     "name": "Wisconsin",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -1434,6 +1478,7 @@
   "world-championship-2026": {
     "name": "World Championship 2026",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -1450,6 +1495,12 @@
       "2011",
       "2009",
       "2006"
+    ]
+  },
+  "world-championship-2027": {
+    "name": "World Championship 2027",
+    "years": [
+      "2026"
     ]
   },
   "zell-am-see": {
