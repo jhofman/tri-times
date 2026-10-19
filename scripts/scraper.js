@@ -24,6 +24,8 @@ const DELAY_BETWEEN_RACES = 5000; // 5 seconds between races when batch processi
 const RESULTS_DIR = process.env.RESULTS_DIR
   ? path.resolve(process.env.RESULTS_DIR)
   : path.join(__dirname, "..", "results");
+const HISTORICAL_REGISTRY_VERSION = 1;
+const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 class HttpError extends Error {
   constructor(status, url) {
@@ -212,6 +214,115 @@ function getYearFromName(eventName) {
   if (!eventName) return null;
   const match = eventName.match(/\b(20\d{2})\b/);
   return match ? match[1] : null;
+}
+
+function validateHistoricalRegistry(registry) {
+  if (!registry || registry.version !== HISTORICAL_REGISTRY_VERSION) {
+    throw new Error(`Historical registry must have version ${HISTORICAL_REGISTRY_VERSION}`);
+  }
+  if (!Array.isArray(registry.races) || registry.races.length === 0) {
+    throw new Error("Historical registry must contain at least one race");
+  }
+
+  const records = [];
+  const raceYears = new Set();
+  const eventIds = new Set();
+
+  for (const race of registry.races) {
+    if (!race || !/^[a-z0-9-]+$/.test(race.id || "")) {
+      throw new Error(`Invalid historical race id: ${race?.id || "(missing)"}`);
+    }
+    if (!Array.isArray(race.events) || race.events.length === 0) {
+      throw new Error(`Historical race ${race.id} must contain at least one event`);
+    }
+
+    for (const event of race.events) {
+      const year = String(event?.year || "");
+      const eventId = String(event?.eventId || "");
+      if (!/^20\d{2}$/.test(year)) {
+        throw new Error(`Invalid year for ${race.id}: ${year || "(missing)"}`);
+      }
+      if (!UUID_PATTERN.test(eventId)) {
+        throw new Error(`Invalid event UUID for ${race.id} ${year}: ${eventId || "(missing)"}`);
+      }
+
+      const raceYear = `${race.id}:${year}`;
+      const normalizedEventId = eventId.toLowerCase();
+      if (raceYears.has(raceYear)) {
+        throw new Error(`Duplicate historical race year: ${race.id} ${year}`);
+      }
+      if (eventIds.has(normalizedEventId)) {
+        throw new Error(`Duplicate historical event UUID: ${eventId}`);
+      }
+
+      raceYears.add(raceYear);
+      eventIds.add(normalizedEventId);
+      records.push({
+        raceId: race.id,
+        raceName: race.name || race.id,
+        year,
+        eventId,
+      });
+    }
+  }
+
+  return records.sort((a, b) =>
+    a.raceId.localeCompare(b.raceId) || a.year.localeCompare(b.year)
+  );
+}
+
+function validateHistoricalResults(resultsData, record) {
+  if (!Array.isArray(resultsData) || resultsData.length === 0) {
+    throw new Error(`No results found for ${record.raceId} ${record.year}`);
+  }
+
+  const expectedEventId = record.eventId.toLowerCase();
+  const resultEventIds = new Set(
+    resultsData
+      .map(result => result._wtc_eventid_value)
+      .filter(Boolean)
+      .map(eventId => eventId.toLowerCase())
+  );
+  if (resultEventIds.size > 0 &&
+      (resultEventIds.size !== 1 || !resultEventIds.has(expectedEventId))) {
+    throw new Error(`Event UUID mismatch for ${record.raceId} ${record.year}`);
+  }
+
+  const resultYears = new Set(
+    resultsData
+      .map(result => getYearFromName(result.wtc_EventId?.wtc_name))
+      .filter(Boolean)
+  );
+  if (resultYears.size > 0 &&
+      (resultYears.size !== 1 || !resultYears.has(record.year))) {
+    throw new Error(`Event year mismatch for ${record.raceId} ${record.year}`);
+  }
+}
+
+async function importHistoricalEvent(record, options = {}) {
+  const outputFile = path.join(RESULTS_DIR, `${record.raceId}_${record.year}.csv`);
+  if (options.missingOnly && fsSync.existsSync(outputFile)) {
+    console.log(`${record.raceId} ${record.year}: Already exists; skipping.`);
+    return { existing: true };
+  }
+
+  console.log(`\n=== Importing ${record.raceName} ${record.year} ===`);
+  console.log(`Event UUID: ${record.eventId}`);
+
+  const resultsData = await fetchResultsForEvent(record.eventId);
+  validateHistoricalResults(resultsData, record);
+
+  const tempFile = `${outputFile}.tmp`;
+  try {
+    await fs.writeFile(tempFile, convertToCSV(resultsData));
+    await fs.rename(tempFile, outputFile);
+  } catch (error) {
+    await fs.rm(tempFile, { force: true });
+    throw error;
+  }
+
+  console.log(`Saved ${resultsData.length} results to ${outputFile}.`);
+  return { imported: true, athleteCount: resultsData.length };
 }
 
 /**
@@ -419,6 +530,58 @@ async function batchMode(filePath, options = {}) {
   }
 }
 
+async function historicalBatchMode(filePath, options = {}) {
+  const registry = JSON.parse(fsSync.readFileSync(filePath, "utf-8"));
+  const allRecords = validateHistoricalRegistry(registry);
+  const records = options.targetYear
+    ? allRecords.filter(record => record.year === options.targetYear)
+    : allRecords;
+
+  if (records.length === 0) {
+    throw new Error(`Historical registry contains no events for ${options.targetYear}`);
+  }
+
+  console.log(`Found ${records.length} historical event(s) to import.`);
+  const results = { imported: 0, failed: 0, skipped: 0, athletes: 0 };
+
+  for (let i = 0; i < records.length; i++) {
+    const record = records[i];
+    let madeRequest = false;
+
+    try {
+      madeRequest = !(options.missingOnly &&
+        fsSync.existsSync(path.join(RESULTS_DIR, `${record.raceId}_${record.year}.csv`)));
+      const outcome = await importHistoricalEvent(record, options);
+      if (outcome.imported) {
+        results.imported++;
+        results.athletes += outcome.athleteCount;
+      } else {
+        results.skipped++;
+      }
+    } catch (error) {
+      console.error(`Failed: ${record.raceId} ${record.year} - ${error.message}`);
+      results.failed++;
+    }
+
+    if (madeRequest && i < records.length - 1) {
+      console.log(`Waiting ${DELAY_BETWEEN_RACES / 1000}s before next event...`);
+      await new Promise(resolve => setTimeout(resolve, DELAY_BETWEEN_RACES));
+    }
+  }
+
+  console.log("\n=== Historical import summary ===");
+  console.log(`Imported: ${results.imported}`);
+  console.log(`Athletes: ${results.athletes}`);
+  console.log(`Failed: ${results.failed}`);
+  console.log(`Skipped: ${results.skipped}`);
+
+  if (results.failed > 0) {
+    throw new Error(
+      `${results.failed} historical event${results.failed === 1 ? "" : "s"} failed`
+    );
+  }
+}
+
 function parseArguments(args) {
   const options = {
     targetYear: null,
@@ -452,22 +615,38 @@ function parseArguments(args) {
     }
   }
 
+  return { input, options };
+}
+
+function validateOptionsForMode(input, options) {
+  const historicalMode = input?.endsWith(".json");
+  if (historicalMode) {
+    if (options.newRacesOnly || options.includeKnownRaces) {
+      throw new Error(
+        "--new-races-only and --include-known-races are not supported for historical registries"
+      );
+    }
+    return;
+  }
+
   if ((options.missingOnly || options.newRacesOnly) && !options.targetYear) {
     throw new Error("--missing-only and --new-races-only require --year");
   }
-
-  return { input, options };
 }
 
 /**
  * Main entry point.
  */
-(async () => {
+async function main() {
   try {
     const { input: arg, options } = parseArguments(process.argv.slice(2));
+    validateOptionsForMode(arg, options);
     if (!arg) {
       // Interactive mode
       await interactiveMode();
+    } else if (arg.endsWith(".json")) {
+      // Historical registry mode - direct event UUID imports
+      await historicalBatchMode(arg, options);
     } else if (arg.endsWith(".txt")) {
       // Batch mode - file of URLs
       await batchMode(arg, options);
@@ -485,10 +664,23 @@ function parseArguments(args) {
       console.error("  node scripts/scraper.js races.txt           # Batch mode");
       console.error("  node scripts/scraper.js races.txt --year current --missing-only");
       console.error("  node scripts/scraper.js races.txt --year current --missing-only --include-known-races");
+      console.error("  node scripts/scraper.js historical-races.json --missing-only");
       process.exit(1);
     }
   } catch (err) {
     console.error("Error:", err.message);
     process.exit(1);
   }
-})();
+}
+
+if (require.main === module) {
+  main();
+}
+
+module.exports = {
+  getYearFromName,
+  parseArguments,
+  validateHistoricalRegistry,
+  validateHistoricalResults,
+  validateOptionsForMode,
+};

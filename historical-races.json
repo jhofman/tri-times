@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "races": [
+    {
+      "id": "atlantic-city",
+      "name": "Atlantic City",
+      "status": "retired",
+      "source": "https://github.com/miloknowles/triathlon-tools/blob/main/python/tasks/im/subevents.csv",
+      "events": [
+        {
+          "year": "2021",
+          "eventId": "265D1956-55C5-460C-B786-CB365140FB7A"
+        },
+        {
+          "year": "2022",
+          "eventId": "C5A9C592-7CED-4D22-B454-6D2DA6DE4684"
+        },
+        {
+          "year": "2023",
+          "eventId": "A7CC1C9B-49B6-40C4-9F94-160F58CC6E93"
+        }
+      ]
+    }
+  ]
+}

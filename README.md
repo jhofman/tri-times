@@ -51,11 +51,32 @@ npm run fetch-race-list
 # Fetch missing current-year results for active and previously tracked races
 npm run fetch-new-results
 
+# Fetch registered historical events whose original race pages are unavailable
+npm run fetch-historical-results
+
 # Regenerate races.json, race-stats.json, and athlete index shards
 npm run update-manifest
 ```
 
 CSV files are saved to `results/` and the manifest at `results/races.json` lists available races.
+
+### Historical and retired races
+
+`historical-races.json` records retired race-years by canonical race ID, year,
+and Competitor event UUID. The historical importer queries those UUIDs directly,
+so it does not depend on the race still appearing on ironman.com.
+
+```bash
+# Import every missing event in the registry
+npm run fetch-historical-results
+
+# Or import one registered year
+node scripts/scraper.js historical-races.json --year 2023 --missing-only
+```
+
+Add and validate all desired historical CSVs before running
+`npm run update-manifest`; regenerating derived athlete indexes once per batch
+keeps Git history and pull request diffs smaller.
 
 ### Weekly data updates
 
@@ -83,6 +104,7 @@ tri-times/
 ├── athlete.html            # Athlete search
 ├── predict.html            # Race time predictor
 ├── races.txt               # List of all 70.3 race URLs
+├── historical-races.json   # Retired race-years and Competitor event UUIDs
 ├── css/
 │   └── style.css           # Styles with light/dark themes
 ├── js/
@@ -105,9 +127,13 @@ tri-times/
 │   └── *.csv               # Race data files
 └── scripts/
     ├── scraper.js          # Fetch race results
+    ├── scraper.test.js     # Scraper and historical registry tests
     ├── fetch-race-list.js  # Update races.txt
     └── update-manifest.js  # Regenerate races.json, stats, and athlete index
 ```
+
+See [`docs/data-storage.md`](docs/data-storage.md) for current repository size
+constraints and guidance for larger historical imports.
 
 ## Data Format
 
