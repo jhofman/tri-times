@@ -64,7 +64,8 @@ CSV files are saved to `results/` and the manifest at `results/races.json` lists
 ### Course profiles
 
 `results/course-metadata.json` stores curated facts from official Ironman race
-pages, athlete guides, and course maps. `npm run update-manifest` separately
+pages, athlete guides, and course maps; `npm run fetch-course-conditions`
+refreshes typical air/water temperatures from the race pages. `npm run update-manifest` separately
 generates `results/course-observations.json` from race-year medians so observed
 patterns are never presented as official course facts. See
 [`docs/course-metadata.md`](docs/course-metadata.md) for the schema, provenance,

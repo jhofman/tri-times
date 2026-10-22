@@ -58,9 +58,7 @@ test("typical temperatures fold into an air range and the swim leg", () => {
   assert.equal(buildConditions(profile).text, "Air 56–76°F");
   assert.equal(buildConditions({ typicalHighAirF: 80 }).text, "Air high 80°F");
   assert.equal(buildConditions({}), null);
-  assert.deepEqual(buildLegDetails(profile, null)[0].details, [
-    { text: "76°F water", icon: "temperature-half" },
-  ]);
+  assert.deepEqual(buildLegDetails(profile, null)[0].details.map(detail => detail.text), ["76°F water"]);
 });
 
 test("observed signals are capped, prioritize transitions, and become short chips", () => {

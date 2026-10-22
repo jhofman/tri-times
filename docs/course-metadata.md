@@ -17,10 +17,13 @@ Each race can include:
 Edition-specific facts must identify a source in the same race entry. Preserve
 missing fields by omitting them; do not infer values from another race or
 edition. Guide PDFs are linked rather than committed. When the selected result
-year has no matching guide, the UI labels the year of the latest available
-official course details and warns that routes can change.
+year has no matching guide, the card's title tooltip names the year of the
+latest available official course details and warns that routes can change.
 
-Typical temperatures are climate/profile values, not race-day weather.
+Typical temperatures are climate/profile values, not race-day weather. Refresh
+them from the official race pages with `npm run fetch-course-conditions`; the
+script updates only temperatures and reports where curated swim/bike/run labels
+differ from the race page.
 
 ## Observed from results
 
@@ -35,7 +38,7 @@ medians. A fast or slow signal is emitted only when:
 These signals are descriptive, not causal. Field strength, weather, course
 changes, and timing quality can all affect result distributions. The UI
 therefore shows them as dashed chips ("Fast swim", "Very long T1") with a
-bolt or hourglass icon, explains them in a caption and tooltip, and does
+bolt or hourglass icon, explains them in a tooltip, and does
 not turn a fast swim or long transition into an official course claim.
 Chips use "Very" when a race-year falls in the extreme 3% tail.
 Only emitted tail signals are written to the frontend artifact, keeping the

@@ -6,7 +6,10 @@
       "profile": {
         "swimType": "Bay",
         "bikeTerrain": "Flat",
-        "runTerrain": "Flat"
+        "runTerrain": "Flat",
+        "typicalHighAirF": 65,
+        "typicalLowAirF": 46,
+        "typicalWaterF": 65
       },
       "officialPage": "https://www.ironman.com/races/im703-new-york",
       "editions": {
@@ -35,7 +38,10 @@
       "profile": {
         "swimType": "Tidal river",
         "bikeTerrain": "Flat",
-        "runTerrain": "Rolling"
+        "runTerrain": "Rolling",
+        "typicalHighAirF": 73,
+        "typicalLowAirF": 53,
+        "typicalWaterF": 72
       },
       "officialPage": "https://www.ironman.com/races/im703-north-carolina",
       "editions": {
@@ -69,7 +75,10 @@
       "profile": {
         "swimType": "River",
         "bikeTerrain": "Rolling",
-        "runTerrain": "Rolling"
+        "runTerrain": "Rolling",
+        "typicalHighAirF": 74,
+        "typicalLowAirF": 53,
+        "typicalWaterF": 67
       },
       "officialPage": "https://www.ironman.com/races/im703-western-massachusetts",
       "editions": {
@@ -98,7 +107,10 @@
       "profile": {
         "swimType": "River",
         "bikeTerrain": "Rolling",
-        "runTerrain": "Flat"
+        "runTerrain": "Flat",
+        "typicalHighAirF": 87,
+        "typicalLowAirF": 55,
+        "typicalWaterF": 65
       },
       "officialPage": "https://www.ironman.com/races/im703-oregon",
       "editions": {
@@ -127,7 +139,10 @@
       "profile": {
         "swimType": "River",
         "bikeTerrain": "Rolling",
-        "runTerrain": "Rolling"
+        "runTerrain": "Rolling",
+        "typicalHighAirF": 84,
+        "typicalLowAirF": 63,
+        "typicalWaterF": 72
       },
       "officialPage": "https://www.ironman.com/races/im703-chattanooga",
       "editions": {
@@ -156,7 +171,10 @@
       "profile": {
         "swimType": "Harbor",
         "bikeTerrain": "Hilly",
-        "runTerrain": "Flat"
+        "runTerrain": "Flat",
+        "typicalHighAirF": 69,
+        "typicalLowAirF": 45,
+        "typicalWaterF": 61
       },
       "officialPage": "https://www.ironman.com/races/im703-oceanside",
       "editions": {
@@ -186,7 +204,10 @@
       "profile": {
         "swimType": "Sea",
         "bikeTerrain": "Hilly",
-        "runTerrain": "Flat"
+        "runTerrain": "Flat",
+        "typicalHighAirF": 79,
+        "typicalLowAirF": 64,
+        "typicalWaterF": 75
       },
       "officialPage": "https://www.ironman.com/races/im703-nice",
       "editions": {
@@ -214,8 +235,8 @@
         "swimType": "Lake",
         "bikeTerrain": "Rolling",
         "runTerrain": "Rolling",
-        "typicalHighAirF": 76,
-        "typicalLowAirF": 56,
+        "typicalHighAirF": 62,
+        "typicalLowAirF": 50,
         "typicalWaterF": 76
       },
       "officialPage": "https://www.ironman.com/races/im703-pennsylvania",

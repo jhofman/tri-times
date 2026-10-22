@@ -182,7 +182,8 @@ select:focus {
 .course-title {
     display: flex;
     align-items: baseline;
-    gap: 0.75rem;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.75rem;
 }
 
 .course-air {
@@ -278,10 +279,8 @@ select:focus {
     cursor: help;
 }
 
-.course-caveat {
-    margin-top: 0.5rem;
-    color: var(--text-muted);
-    font-size: 0.6875rem;
+.course-hint {
+    cursor: help;
 }
 
 @media (max-width: 820px) {

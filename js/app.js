@@ -117,10 +117,10 @@ async function renderCourseProfile(race, year) {
         const features = CourseProfile.buildFeatures(edition?.data?.features);
         const observed = observations.races?.[race]?.[year];
         const observedSignals = CourseProfile.formatObservationSignals(observed);
-        const courseCaveat = edition
+        const courseNote = edition
             ? edition.exact
                 ? `${edition.year} official course details`
-                : `Latest official course details are from ${edition.year}; routes can change by year`
+                : `Course details are from the ${edition.year} guide; routes can change by year`
             : 'Current official race profile; routes can change by year';
 
         const icon = name => name ? `<i class="fa-solid fa-${name}" aria-hidden="true"></i>` : '';
@@ -128,7 +128,7 @@ async function renderCourseProfile(race, year) {
             <div class="course-leg">
                 <span class="course-leg-label">${icon(leg.icon)}${escapeHtml(leg.label)}</span>
                 ${leg.primary ? `<strong>${icon(leg.primaryIcon)}${escapeHtml(leg.primary)}</strong>` : ''}
-                ${leg.details.map(detail => `<span>${icon(detail.icon)}${escapeHtml(detail.text)}</span>`).join('')}
+                ${leg.details.map(detail => `<span${detail.title ? ` class="course-hint" title="${escapeHtml(detail.title)}"` : ''}>${icon(detail.icon)}${escapeHtml(detail.text)}</span>`).join('')}
             </div>
         `).join('');
         const factMarkup = features.map(fact =>
@@ -136,11 +136,6 @@ async function renderCourseProfile(race, year) {
         ).join('') + observedSignals.map(chip =>
             `<span class="course-fact course-fact-observed ${chip.direction}" title="${escapeHtml(chip.title)}">${icon(chip.icon)}${escapeHtml(chip.text)}</span>`
         ).join('');
-        const caveats = [
-            courseCaveat + '.',
-            conditions || raceMetadata.profile?.typicalWaterF ? 'Temperatures are typical climate values, not race-day readings.' : '',
-            observedSignals.length ? `Dashed chips are inferred from ${year} results vs. all race-years, unadjusted for field strength.` : '',
-        ].filter(Boolean).join(' ');
         const linkMarkup = links.map(link =>
             `<a class="course-source" href="${escapeHtml(link.url)}" target="_blank" rel="noopener">${icon(link.icon)}${escapeHtml(link.label)} ↗</a>`
         ).join('');
@@ -148,14 +143,13 @@ async function renderCourseProfile(race, year) {
         element.innerHTML = `
             <div class="course-profile-head">
                 <div class="course-title">
-                    <h2 id="course-profile-title">Course info</h2>
+                    <h2 id="course-profile-title" class="course-hint" title="${escapeHtml(courseNote)}">Course info</h2>
                     ${conditions ? `<span class="course-air" title="${escapeHtml(conditions.title)}">${icon(conditions.icon)}${escapeHtml(conditions.text)}</span>` : ''}
                 </div>
                 ${linkMarkup ? `<div class="course-links">${linkMarkup}</div>` : ''}
             </div>
             <div class="course-legs">${legMarkup}</div>
             ${factMarkup ? `<div class="course-facts">${factMarkup}</div>` : ''}
-            <p class="course-caveat">${escapeHtml(caveats)}</p>
         `;
         element.hidden = false;
     } catch (error) {

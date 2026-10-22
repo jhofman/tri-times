@@ -78,7 +78,11 @@
             buildLeg('Swim', profile.swimType, 'water', [
                 edition?.swimDistanceMi ? { text: `${edition.swimDistanceMi} mi`, icon: 'ruler-horizontal' } : null,
                 formatLaps(edition?.swimLaps),
-                profile.typicalWaterF ? { text: `${profile.typicalWaterF}°F water`, icon: 'temperature-half' } : null,
+                profile.typicalWaterF ? {
+                    text: `${profile.typicalWaterF}°F water`,
+                    icon: 'temperature-half',
+                    title: 'Average water temperature from the official race page (typical, not race-day)',
+                } : null,
             ]),
             buildLeg('Bike', profile.bikeTerrain, terrainIcon(profile.bikeTerrain), [
                 formatElevation(edition?.bikeElevationGainFt),
@@ -95,7 +99,7 @@
         const { typicalLowAirF: low, typicalHighAirF: high } = profile;
         if (!low && !high) return null;
         const text = low && high ? `Air ${low}–${high}°F` : `Air ${high ? 'high' : 'low'} ${high || low}°F`;
-        return { text, icon: 'temperature-half', title: 'Typical air temperature range (climate values, not race-day readings)' };
+        return { text, icon: 'temperature-half', title: 'Typical air temperature range from the official race page (not race-day readings)' };
     }
 
     function buildFeatures(features) {
