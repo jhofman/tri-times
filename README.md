@@ -97,7 +97,8 @@ The **Update race data** GitHub Actions workflow runs every Monday and can also
 be started manually from the Actions tab. It refreshes `races.txt`, fetches
 missing current-year results for the union of active races and races already
 represented in the local CSV archive, regenerates derived data when needed,
-and opens or updates
+adds official course profiles for races that do not have one yet
+(`npm run fetch-course-conditions -- --missing-only`), and opens or updates
 `automation/weekly-race-update` as a pull request for review.
 
 To let the built-in `GITHUB_TOKEN` open that pull request, enable:

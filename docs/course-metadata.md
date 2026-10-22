@@ -26,7 +26,10 @@ fetch-course-conditions` refreshes these for every race in `results/races.json`,
 adding races without metadata by trying their `im703-<id>` page (with a small
 alias table for renamed slugs). Retired races whose page is missing or
 redirects are skipped, as are World Championships, whose venue rotates each
-year. The script logs every change. Edition facts (elevation, transitions,
+year. The script logs every change and rewrites the file only when something
+changed. The weekly workflow runs it with `--missing-only`, which requests pages
+only for races without metadata (new races, plus the few retired races with no
+page), so existing profiles are refreshed only when run manually. Edition facts (elevation, transitions,
 features, guide links) are curated by hand for a subset of races.
 
 Typical temperatures are climate/profile values, not race-day weather.
