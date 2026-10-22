@@ -131,14 +131,14 @@ async function renderCourseProfile(race, year) {
                 ${leg.details.map(detail => `<span>${icon(detail.icon)}${escapeHtml(detail.text)}</span>`).join('')}
             </div>
         `).join('');
-        const factMarkup = [...conditions, ...features].map(fact =>
+        const factMarkup = features.map(fact =>
             `<span class="course-fact">${icon(fact.icon)}${escapeHtml(fact.text)}</span>`
         ).join('') + observedSignals.map(chip =>
             `<span class="course-fact course-fact-observed ${chip.direction}" title="${escapeHtml(chip.title)}">${icon(chip.icon)}${escapeHtml(chip.text)}</span>`
         ).join('');
         const caveats = [
             courseCaveat + '.',
-            conditions.length ? 'Typical temperatures are climate values, not race-day readings.' : '',
+            conditions || raceMetadata.profile?.typicalWaterF ? 'Temperatures are typical climate values, not race-day readings.' : '',
             observedSignals.length ? `Dashed chips are inferred from ${year} results vs. all race-years, unadjusted for field strength.` : '',
         ].filter(Boolean).join(' ');
         const linkMarkup = links.map(link =>
@@ -147,7 +147,10 @@ async function renderCourseProfile(race, year) {
 
         element.innerHTML = `
             <div class="course-profile-head">
-                <h2 id="course-profile-title">Course info</h2>
+                <div class="course-title">
+                    <h2 id="course-profile-title">Course info</h2>
+                    ${conditions ? `<span class="course-air" title="${escapeHtml(conditions.title)}">${icon(conditions.icon)}${escapeHtml(conditions.text)}</span>` : ''}
+                </div>
                 ${linkMarkup ? `<div class="course-links">${linkMarkup}</div>` : ''}
             </div>
             <div class="course-legs">${legMarkup}</div>

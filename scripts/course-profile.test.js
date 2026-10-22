@@ -53,15 +53,13 @@ test("feature icons match keywords and fall back to an info icon", () => {
   ]).map(feature => feature.icon), ["location-dot", "forward", "circle-info"]);
 });
 
-test("temperature labels are explicitly typical conditions", () => {
-  assert.deepEqual(buildConditions({
-    typicalHighAirF: 76,
-    typicalLowAirF: 56,
-    typicalWaterF: 76,
-  }).map(condition => condition.text), [
-    "Typical high 76°F",
-    "Typical low 56°F",
-    "Typical water 76°F",
+test("typical temperatures fold into an air range and the swim leg", () => {
+  const profile = { swimType: "Lake", typicalHighAirF: 76, typicalLowAirF: 56, typicalWaterF: 76 };
+  assert.equal(buildConditions(profile).text, "Air 56–76°F");
+  assert.equal(buildConditions({ typicalHighAirF: 80 }).text, "Air high 80°F");
+  assert.equal(buildConditions({}), null);
+  assert.deepEqual(buildLegDetails(profile, null)[0].details, [
+    { text: "76°F water", icon: "temperature-half" },
   ]);
 });
 

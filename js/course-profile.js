@@ -78,6 +78,7 @@
             buildLeg('Swim', profile.swimType, 'water', [
                 edition?.swimDistanceMi ? { text: `${edition.swimDistanceMi} mi`, icon: 'ruler-horizontal' } : null,
                 formatLaps(edition?.swimLaps),
+                profile.typicalWaterF ? { text: `${profile.typicalWaterF}°F water`, icon: 'temperature-half' } : null,
             ]),
             buildLeg('Bike', profile.bikeTerrain, terrainIcon(profile.bikeTerrain), [
                 formatElevation(edition?.bikeElevationGainFt),
@@ -91,11 +92,10 @@
     }
 
     function buildConditions(profile) {
-        return [
-            profile.typicalHighAirF ? { text: `Typical high ${profile.typicalHighAirF}°F`, icon: 'temperature-high' } : null,
-            profile.typicalLowAirF ? { text: `Typical low ${profile.typicalLowAirF}°F`, icon: 'temperature-low' } : null,
-            profile.typicalWaterF ? { text: `Typical water ${profile.typicalWaterF}°F`, icon: 'temperature-half' } : null,
-        ].filter(Boolean);
+        const { typicalLowAirF: low, typicalHighAirF: high } = profile;
+        if (!low && !high) return null;
+        const text = low && high ? `Air ${low}–${high}°F` : `Air ${high ? 'high' : 'low'} ${high || low}°F`;
+        return { text, icon: 'temperature-half', title: 'Typical air temperature range (climate values, not race-day readings)' };
     }
 
     function buildFeatures(features) {
