@@ -2,6 +2,8 @@
 
 const RESULTS_PATH = 'results/';
 let RACES = null;
+let courseMetadataPromise = null;
+let courseObservationsPromise = null;
 
 // Format seconds to H:MM:SS
 function formatTime(seconds) {
@@ -102,6 +104,26 @@ async function loadRaces() {
     const response = await fetch(`${RESULTS_PATH}races.json`);
     RACES = await response.json();
     return RACES;
+}
+
+async function loadCourseMetadata() {
+    if (!courseMetadataPromise) {
+        courseMetadataPromise = fetch(`${RESULTS_PATH}course-metadata.json`).then(response => {
+            if (!response.ok) throw new Error(`Course metadata request failed: ${response.status}`);
+            return response.json();
+        });
+    }
+    return courseMetadataPromise;
+}
+
+async function loadCourseObservations() {
+    if (!courseObservationsPromise) {
+        courseObservationsPromise = fetch(`${RESULTS_PATH}course-observations.json`).then(response => {
+            if (!response.ok) throw new Error(`Course observations request failed: ${response.status}`);
+            return response.json();
+        });
+    }
+    return courseObservationsPromise;
 }
 
 // Cache for loaded race data

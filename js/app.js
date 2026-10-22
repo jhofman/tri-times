@@ -14,6 +14,7 @@ let currentRace = null;
 let currentYear = null;
 let currentData = [];
 let selectedAthlete = null;
+let chartNotes = {}; // Inferred notes shown beside each split's chart
 let raceChoices = null;
 let yearChoices = null;
 let divisionChoices = null;
@@ -82,9 +83,99 @@ async function loadAndDisplayRace(race, year) {
     updateDivisions();
     clearAthlete(false);
     filterData('ALL');
+    renderCourseProfile(race, year);
     drawCharts();
     setPageTitle(`${RACES[race].name} · ${year}`, `${RACES[race].name} ${year}`);
     updateUrl();
+}
+
+async function renderCourseProfile(race, year) {
+    const element = document.getElementById('course-profile');
+    chartNotes = {};
+
+    try {
+        const [metadata, observations] = await Promise.all([
+            loadCourseMetadata(),
+            loadCourseObservations(),
+        ]);
+        const raceMetadata = metadata.races?.[race];
+        if (race !== currentRace || year !== currentYear) return;
+
+        const edition = raceMetadata ? CourseProfile.selectEdition(raceMetadata, year) : null;
+        const legs = raceMetadata
+            ? CourseProfile.buildLegDetails(raceMetadata.profile || {}, edition?.data)
+                .map(leg => ({ ...leg, details: leg.details.filter(detail => detail.icon !== 'rotate') }))
+            : [];
+        // Course chips sit in their leg box when the card shows one; everything
+        // else (year notes, transitions) sits beside the matching chart.
+        const legSplits = new Set(legs.map(leg => leg.label.toLowerCase()));
+        const legChips = {};
+        for (const chip of [
+            ...CourseProfile.formatObservationSignals(observations.courses?.[race]),
+            ...CourseProfile.formatYearSignals(observations.races?.[race]?.[year], year, RACES[race]?.name),
+        ]) {
+            const target = chip.kind === 'course' && legSplits.has(chip.split) ? legChips : chartNotes;
+            (target[chip.split] ||= []).push(chip);
+        }
+        drawCharts();
+
+        if (!raceMetadata) {
+            element.hidden = true;
+            element.innerHTML = '';
+            return;
+        }
+
+        const source = edition?.data?.source
+            ? raceMetadata.sources?.[edition.data.source]
+            : null;
+        const links = [
+            raceMetadata.officialPage ? { url: raceMetadata.officialPage, label: 'Race page', icon: 'globe' } : null,
+            source?.url ? { url: source.url, label: source.label, icon: 'file-pdf' } : null,
+        ].filter(Boolean);
+        const conditions = CourseProfile.buildConditions(raceMetadata.profile || {});
+        const features = CourseProfile.buildFeatures(edition?.data?.features);
+        const courseNote = edition
+            ? edition.exact
+                ? `${edition.year} official course details`
+                : `Course details are from the ${edition.year} guide; routes can change by year`
+            : 'Current official race profile; routes can change by year';
+
+        const icon = name => name ? `<i class="fa-solid fa-${name}" aria-hidden="true"></i>` : '';
+        const chipMarkup = chip =>
+            `<span class="course-fact course-fact-observed ${chip.direction}" title="${escapeHtml(chip.title)}">${icon(chip.icon)}${escapeHtml(chip.short)}</span>`;
+        const legMarkup = legs.map(leg => `
+            <div class="course-leg">
+                ${legChips[leg.label.toLowerCase()]
+                    ? `<div class="course-leg-top"><span class="course-leg-label">${icon(leg.icon)}${escapeHtml(leg.label)}</span><span class="course-leg-chips">${legChips[leg.label.toLowerCase()].map(chipMarkup).join('')}</span></div>`
+                    : `<span class="course-leg-label">${icon(leg.icon)}${escapeHtml(leg.label)}</span>`}
+                ${leg.primary ? `<strong>${icon(leg.primaryIcon)}${escapeHtml(leg.primary)}</strong>` : ''}
+                ${leg.details.map(detail => `<span${detail.title ? ` class="course-hint" title="${escapeHtml(detail.title)}"` : ''}>${icon(detail.icon)}${escapeHtml(detail.text)}</span>`).join('')}
+            </div>
+        `).join('');
+        const factMarkup = features.map(fact =>
+            `<span class="course-fact">${icon(fact.icon)}${escapeHtml(fact.text)}</span>`
+        ).join('');
+        const linkMarkup = links.map(link =>
+            `<a class="course-source" href="${escapeHtml(link.url)}" target="_blank" rel="noopener">${icon(link.icon)}${escapeHtml(link.label)} ↗</a>`
+        ).join('');
+
+        element.innerHTML = `
+            <div class="course-profile-head">
+                <div class="course-title">
+                    <h2 id="course-profile-title" class="course-hint" title="${escapeHtml(courseNote)}">Course info</h2>
+                    ${conditions ? `<span class="course-air" title="${escapeHtml(conditions.title)}">${icon(conditions.icon)}${escapeHtml(conditions.text)}</span>` : ''}
+                </div>
+                ${linkMarkup ? `<div class="course-links">${linkMarkup}</div>` : ''}
+            </div>
+            <div class="course-legs">${legMarkup}</div>
+            ${factMarkup ? `<div class="course-facts">${factMarkup}</div>` : ''}
+        `;
+        element.hidden = false;
+    } catch (error) {
+        element.hidden = true;
+        element.innerHTML = '';
+        console.error('Unable to render course profile:', error);
+    }
 }
 
 function renderChart(field) {
@@ -102,6 +193,9 @@ function renderChart(field) {
         return;
     }
 
+    // Year comparisons use all finishers, so hide them when a division is selected.
+    const division = document.getElementById('division-select').value;
+    const allDivisions = !division || division === 'ALL';
     const athlete = selectedAthlete && selectedAthlete[field] > 0
         ? {
             name: selectedAthlete['Athlete Name'],
@@ -114,7 +208,15 @@ function renderChart(field) {
         series: [{ id: 'race', values, color: config.color, label: RACES[currentRace].name }],
         style: 'outline',
         yMode: 'count',
-        markers: { quartiles: true, band: true, athlete },
+        markers: {
+            quartiles: true,
+            band: true,
+            athlete,
+            reference: (() => {
+                const note = allDivisions && chartNotes[field]?.find(chip => chip.kind === 'year');
+                return note ? { value: note.typicalSeconds, label: 'usual', title: `Typical median in other ${RACES[currentRace].name} years` } : null;
+            })(),
+        },
         tooltip: document.getElementById('tooltip'),
     });
     const stats = result.series[0];
@@ -124,14 +226,18 @@ function renderChart(field) {
         return `<span><b>${pct}%</b> ${formatChartTime(field, value)}${pace ? ` <i class="pace">${pace}</i>` : ''}</span>`;
     }).join('');
 
-    const outside = stats.belowDomain + stats.aboveDomain;
     const chip = athlete
         ? `<span class="chip" style="--chip:${config.color}">${escapeHtml(athlete.name)} · ${formatChartTime(field, athlete.value)}${formatPace(field, athlete.value) ? ` · ${formatPace(field, athlete.value)}` : ''} · ${stats.athletePct}% percentile in ${escapeHtml(athlete.division)}</span>`
         : '';
-    const outsideNote = outside
-        ? `<span class="outside-note">${outside.toLocaleString()} result${outside === 1 ? '' : 's'} outside view</span>`
+    const notes = (chartNotes[field] || [])
+        .filter(note => note.kind === 'course' || allDivisions)
+        .sort((a, b) => (a.kind === 'course' ? 0 : 1) - (b.kind === 'course' ? 0 : 1));
+    const noteMarkup = notes.length
+        ? `<span class="outside-note chart-notes">${notes.map(note =>
+            `<span class="chart-note-text ${note.direction}" title="${escapeHtml(note.title)}"><i class="fa-solid fa-${note.icon}" aria-hidden="true"></i>${escapeHtml(note.kind === 'year' ? note.chartText : note.text)}</span>`
+        ).join('<span class="chart-note-sep" aria-hidden="true">·</span>')}</span>`
         : '';
-    card.querySelector('.chart-sub').innerHTML = `${chip}${outsideNote}`;
+    card.querySelector('.chart-sub').innerHTML = `${chip}${noteMarkup}`;
 }
 
 function drawCharts() {

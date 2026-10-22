@@ -24,6 +24,7 @@
     --finish: #8b5cb8;
     --race-a: #377eb8;
     --race-b: #ff7f00;
+    --warning: #bf8700;
     --radius: 10px;
     --radius-sm: 7px;
     --control-h: 36px;
@@ -54,6 +55,7 @@
     --finish: #a97fd0;
     --race-a: #6aa3d8;
     --race-b: #ffa04d;
+    --warning: #d29922;
 }
 
 * {
@@ -151,6 +153,199 @@ select:focus {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
+}
+
+.course-profile {
+    margin-bottom: 1.25rem;
+    padding: 1rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+.course-profile[hidden] {
+    display: none;
+}
+
+.course-profile-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+    margin-bottom: 0.6rem;
+}
+
+.course-profile h2 {
+    font-size: 0.9375rem;
+    font-weight: 650;
+}
+
+.course-title {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.75rem;
+}
+
+.course-air {
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    cursor: help;
+}
+
+.course-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.35rem 0.9rem;
+}
+
+.course-source {
+    color: var(--accent);
+    font-size: 0.75rem;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.course-source:hover {
+    text-decoration: underline;
+}
+
+.course-profile .fa-solid {
+    width: 1.15em;
+    margin-right: 0.3em;
+    text-align: center;
+    opacity: 0.75;
+}
+
+.course-leg-label .fa-solid {
+    font-size: 0.8rem;
+}
+
+.course-legs {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.5rem;
+}
+
+.course-leg {
+    display: flex;
+    min-width: 0;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.15rem 0.45rem;
+    padding: 0.55rem 0.65rem;
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+}
+
+.course-leg-label {
+    width: 100%;
+    color: var(--text-muted);
+    font-size: 0.625rem;
+    font-weight: 650;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.course-leg strong {
+    font-size: 0.875rem;
+}
+
+.course-leg span:not(.course-leg-label) {
+    color: var(--text-secondary);
+}
+
+.course-facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 0.65rem;
+}
+
+.course-fact {
+    padding: 0.18rem 0.45rem;
+    background: var(--bg-tertiary);
+    border: 1px solid transparent;
+    border-radius: 999px;
+    color: var(--text-secondary);
+    font-size: 0.6875rem;
+}
+
+.course-fact-observed {
+    background: transparent;
+    border: 1px dashed var(--text-muted);
+    cursor: help;
+}
+
+.course-leg-top {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+}
+
+.course-leg-top .course-leg-label {
+    width: auto;
+}
+
+.course-leg-chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.25rem;
+    margin-left: auto;
+}
+
+.course-leg-chips .course-fact {
+    padding: 0.05rem 0.4rem;
+    font-size: 0.625rem;
+    white-space: nowrap;
+}
+
+.chart-notes {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.15rem 0.4rem;
+    white-space: normal;
+}
+
+.chart-note-text {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    white-space: nowrap;
+    cursor: help;
+}
+
+.chart-note-text .fa-solid {
+    width: 1em;
+    font-size: 0.625rem;
+    text-align: center;
+}
+
+.chart-note-text.shortened .fa-solid {
+    color: var(--warning);
+}
+
+.reference-marker line:first-child {
+    stroke: var(--text-muted);
+    stroke-dasharray: 3 3;
+}
+
+.reference-marker text {
+    fill: var(--text-muted);
+    font-size: 9px;
+}
+
+.course-hint {
+    cursor: help;
 }
 
 @media (max-width: 820px) {
@@ -1250,6 +1445,14 @@ select,
 
     .page-head {
         margin-top: 0.25rem;
+    }
+
+    .course-links {
+        justify-content: flex-start;
+    }
+
+    .course-legs {
+        grid-template-columns: 1fr;
     }
 }
 

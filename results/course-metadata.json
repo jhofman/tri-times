@@ -1,0 +1,1448 @@
+{
+  "schemaVersion": 1,
+  "retrievedAt": "2026-10-22",
+  "races": {
+    "agadir": {
+      "profile": {
+        "typicalHighAirF": 80,
+        "typicalLowAirF": 59,
+        "typicalWaterF": 69,
+        "swimType": "Ocean",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-agadir"
+    },
+    "aix-en-provence": {
+      "profile": {
+        "typicalHighAirF": 76,
+        "typicalLowAirF": 58,
+        "typicalWaterF": 64,
+        "swimType": "Lake",
+        "bikeTerrain": "Hilly",
+        "runTerrain": "Rolling"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-aix-en-provence"
+    },
+    "alghero": {
+      "profile": {
+        "typicalHighAirF": 82,
+        "typicalLowAirF": 61,
+        "typicalWaterF": 64,
+        "swimType": "Ocean",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-alghero"
+    },
+    "aracaju-sergipe": {
+      "profile": {
+        "typicalHighAirF": 86,
+        "typicalLowAirF": 78,
+        "typicalWaterF": 79,
+        "swimType": "River",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-sergipe"
+    },
+    "augusta": {
+      "profile": {
+        "typicalHighAirF": 81,
+        "typicalLowAirF": 66,
+        "typicalWaterF": 73,
+        "swimType": "River",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-augusta"
+    },
+    "baku": {
+      "profile": {
+        "typicalHighAirF": 88,
+        "typicalLowAirF": 73,
+        "typicalWaterF": 73,
+        "swimType": "Bay",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-baku"
+    },
+    "barranquilla": {
+      "profile": {
+        "typicalHighAirF": 93,
+        "typicalLowAirF": 78,
+        "swimType": "Ocean",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-barranquilla"
+    },
+    "belgrade": {
+      "profile": {
+        "typicalHighAirF": 81,
+        "typicalLowAirF": 56,
+        "typicalWaterF": 74,
+        "swimType": "Lake",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-belgrade"
+    },
+    "boise": {
+      "profile": {
+        "typicalHighAirF": 101,
+        "typicalLowAirF": 69,
+        "swimType": "Reservoir",
+        "bikeTerrain": "Hilly",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-boise"
+    },
+    "bolton": {
+      "profile": {
+        "typicalHighAirF": 61,
+        "typicalLowAirF": 49,
+        "typicalWaterF": 66,
+        "swimType": "Lake",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Rolling"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-bolton"
+    },
+    "boulder": {
+      "profile": {
+        "typicalHighAirF": 91,
+        "typicalLowAirF": 55,
+        "typicalWaterF": 62,
+        "swimType": "Reservoir",
+        "bikeTerrain": "Hilly",
+        "runTerrain": "Hilly"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-boulder"
+    },
+    "brasilia": {
+      "profile": {
+        "typicalHighAirF": 83,
+        "typicalLowAirF": 65,
+        "swimType": "Lake",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-brasilia"
+    },
+    "buenos-aires": {
+      "profile": {
+        "typicalHighAirF": 73,
+        "typicalLowAirF": 59,
+        "typicalWaterF": 73,
+        "swimType": "Lake",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-buenos-aires"
+    },
+    "cairns": {
+      "profile": {
+        "typicalHighAirF": 83,
+        "typicalLowAirF": 65,
+        "typicalWaterF": 73,
+        "swimType": "Ocean",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-cairns"
+    },
+    "calgary": {
+      "profile": {
+        "typicalHighAirF": 69,
+        "typicalLowAirF": 53,
+        "typicalWaterF": 65,
+        "swimType": "Lake",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Rolling"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-calgary"
+    },
+    "campeche": {
+      "profile": {
+        "typicalHighAirF": 89,
+        "typicalLowAirF": 72,
+        "typicalWaterF": 80,
+        "swimType": "Ocean",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-campeche"
+    },
+    "cap-cana": {
+      "profile": {
+        "typicalHighAirF": 92,
+        "typicalLowAirF": 76,
+        "typicalWaterF": 83,
+        "swimType": "Ocean",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-cap-cana"
+    },
+    "cartagena": {
+      "profile": {
+        "typicalHighAirF": 88,
+        "typicalLowAirF": 77,
+        "typicalWaterF": 85,
+        "swimType": "Bay",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-cartagena"
+    },
+    "cascais": {
+      "profile": {
+        "typicalHighAirF": 77,
+        "typicalLowAirF": 64,
+        "typicalWaterF": 62,
+        "swimType": "Bay",
+        "bikeTerrain": "Hilly",
+        "runTerrain": "Rolling"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-cascais"
+    },
+    "cebu-philippines": {
+      "profile": {
+        "typicalHighAirF": 91,
+        "typicalLowAirF": 81,
+        "typicalWaterF": 82,
+        "swimType": "Ocean",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-cebu-philippines"
+    },
+    "chattanooga": {
+      "profile": {
+        "swimType": "River",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Rolling",
+        "typicalHighAirF": 84,
+        "typicalLowAirF": 63,
+        "typicalWaterF": 72
+      },
+      "officialPage": "https://www.ironman.com/races/im703-chattanooga",
+      "editions": {
+        "2025": {
+          "swimLaps": 1,
+          "swimDistanceMi": 1.4,
+          "bikeLaps": 1,
+          "runLaps": 2.25,
+          "runElevationGainFt": 627,
+          "features": [
+            "Current-assisted downriver swim",
+            "Longer-than-standard 1.4-mile swim"
+          ],
+          "source": "2025-athlete-guide"
+        }
+      },
+      "sources": {
+        "2025-athlete-guide": {
+          "label": "2025 athlete guide",
+          "type": "athlete-guide",
+          "url": "https://www.ironman.com/sites/default/files/2025-05/2025%20IM%2070.3%20Chattanooga%20Athlete%20Guide.pdf"
+        }
+      }
+    },
+    "coeur-dalene": {
+      "profile": {
+        "typicalHighAirF": 67,
+        "typicalLowAirF": 55,
+        "typicalWaterF": 68,
+        "swimType": "Lake",
+        "bikeTerrain": "Hilly",
+        "runTerrain": "Rolling"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-coeur-dalene"
+    },
+    "colombo": {
+      "profile": {
+        "typicalHighAirF": 88,
+        "typicalLowAirF": 81,
+        "typicalWaterF": 78,
+        "swimType": "Ocean",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-colombo"
+    },
+    "cozumel": {
+      "profile": {
+        "typicalHighAirF": 91,
+        "typicalLowAirF": 78,
+        "typicalWaterF": 84,
+        "swimType": "Ocean",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-cozumel"
+    },
+    "croatia": {
+      "profile": {
+        "typicalHighAirF": 67,
+        "typicalLowAirF": 50,
+        "typicalWaterF": 69,
+        "swimType": "Ocean",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Rolling"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-croatia"
+    },
+    "curitiba": {
+      "profile": {
+        "typicalHighAirF": 84,
+        "typicalLowAirF": 62,
+        "swimType": "Lake",
+        "bikeTerrain": "Hilly",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-curitiba"
+    },
+    "dallas-little-elm": {
+      "profile": {
+        "typicalHighAirF": 83,
+        "typicalLowAirF": 63,
+        "typicalWaterF": 66,
+        "swimType": "Lake",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Rolling"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-dallas-little-elm"
+    },
+    "danang": {
+      "profile": {
+        "typicalHighAirF": 93,
+        "typicalLowAirF": 78,
+        "typicalWaterF": 82,
+        "swimType": "Ocean",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-danang"
+    },
+    "davao-philippines": {
+      "profile": {
+        "typicalHighAirF": 88,
+        "typicalLowAirF": 76,
+        "typicalWaterF": 85,
+        "swimType": "Ocean",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-davao-philippines"
+    },
+    "desaru-coast": {
+      "profile": {
+        "typicalHighAirF": 90,
+        "typicalLowAirF": 82,
+        "typicalWaterF": 84,
+        "swimType": "Ocean",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Rolling"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-desaru-coast"
+    },
+    "dhofar": {
+      "profile": {
+        "typicalHighAirF": 88,
+        "typicalLowAirF": 78,
+        "typicalWaterF": 80,
+        "swimType": "Bay",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-dhofar"
+    },
+    "duisburg": {
+      "profile": {
+        "typicalHighAirF": 77,
+        "typicalLowAirF": 61,
+        "typicalWaterF": 70,
+        "swimType": "Lake",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Rolling"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-duisburg"
+    },
+    "durban": {
+      "profile": {
+        "typicalHighAirF": 76,
+        "typicalLowAirF": 51,
+        "typicalWaterF": 72,
+        "swimType": "Ocean",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Rolling"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-durban"
+    },
+    "eagleman": {
+      "profile": {
+        "typicalHighAirF": 86,
+        "typicalLowAirF": 68,
+        "typicalWaterF": 75,
+        "swimType": "River",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-eagleman"
+    },
+    "ecuador": {
+      "profile": {
+        "typicalHighAirF": 83,
+        "typicalLowAirF": 66,
+        "typicalWaterF": 78,
+        "swimType": "Ocean",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-ecuador"
+    },
+    "elsinore": {
+      "profile": {
+        "typicalHighAirF": 81,
+        "typicalLowAirF": 59,
+        "typicalWaterF": 63,
+        "swimType": "Bay",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-elsinore"
+    },
+    "emilia-romagna": {
+      "profile": {
+        "typicalHighAirF": 74,
+        "typicalLowAirF": 60,
+        "typicalWaterF": 72,
+        "swimType": "Ocean",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-emilia-romagna"
+    },
+    "encarnacion": {
+      "profile": {
+        "typicalHighAirF": 83,
+        "typicalLowAirF": 64,
+        "typicalWaterF": 68,
+        "swimType": "River",
+        "bikeTerrain": "Hilly",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-encarnacion"
+    },
+    "erkner": {
+      "profile": {
+        "typicalHighAirF": 68,
+        "typicalLowAirF": 50,
+        "typicalWaterF": 68,
+        "swimType": "Lake",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-erkner"
+    },
+    "florianopolis": {
+      "profile": {
+        "typicalHighAirF": 79,
+        "typicalLowAirF": 69,
+        "typicalWaterF": 68,
+        "swimType": "Ocean",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Rolling"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-florianopolis"
+    },
+    "florida": {
+      "profile": {
+        "typicalHighAirF": 78,
+        "typicalLowAirF": 53,
+        "typicalWaterF": 67,
+        "swimType": "Lake",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Rolling"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-florida"
+    },
+    "gdynia": {
+      "profile": {
+        "typicalHighAirF": 70,
+        "typicalLowAirF": 56,
+        "typicalWaterF": 66,
+        "swimType": "Bay",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Rolling"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-gdynia"
+    },
+    "geelong": {
+      "profile": {
+        "typicalHighAirF": 69,
+        "typicalLowAirF": 52,
+        "typicalWaterF": 64,
+        "swimType": "Bay",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Rolling"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-geelong"
+    },
+    "goseong": {
+      "profile": {
+        "typicalHighAirF": 80,
+        "typicalLowAirF": 65,
+        "typicalWaterF": 75,
+        "swimType": "Ocean",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Hilly"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-goseong"
+    },
+    "greece": {
+      "profile": {
+        "typicalHighAirF": 64,
+        "typicalLowAirF": 53,
+        "typicalWaterF": 73,
+        "swimType": "Ocean",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-greece"
+    },
+    "gulf-coast": {
+      "profile": {
+        "typicalHighAirF": 83,
+        "typicalLowAirF": 71,
+        "typicalWaterF": 76,
+        "swimType": "Ocean",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-gulf-coast"
+    },
+    "hawaii": {
+      "profile": {
+        "typicalHighAirF": 85,
+        "typicalLowAirF": 75,
+        "typicalWaterF": 75,
+        "swimType": "Ocean",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Rolling"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-hawaii"
+    },
+    "hengqin": {
+      "profile": {
+        "typicalHighAirF": 71,
+        "typicalLowAirF": 64,
+        "typicalWaterF": 70,
+        "swimType": "Harbor",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-hengqin"
+    },
+    "hradec-kralove": {
+      "profile": {
+        "typicalHighAirF": 86,
+        "typicalLowAirF": 61,
+        "typicalWaterF": 69,
+        "swimType": "River",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-hradec-kralove"
+    },
+    "jonkoping": {
+      "profile": {
+        "typicalHighAirF": 72,
+        "typicalLowAirF": 50,
+        "typicalWaterF": 68,
+        "swimType": "Lake",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-jonkoping"
+    },
+    "kenting": {
+      "profile": {
+        "typicalHighAirF": 85,
+        "typicalLowAirF": 74,
+        "typicalWaterF": 77,
+        "swimType": "Ocean",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-kenting"
+    },
+    "kraichgau": {
+      "profile": {
+        "typicalHighAirF": 72,
+        "typicalLowAirF": 50,
+        "typicalWaterF": 73,
+        "swimType": "Lake",
+        "bikeTerrain": "Hilly",
+        "runTerrain": "Rolling"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-kraichgau"
+    },
+    "krakow": {
+      "profile": {
+        "typicalHighAirF": 80,
+        "typicalLowAirF": 58,
+        "typicalWaterF": 73,
+        "swimType": "Lake",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-krakow"
+    },
+    "la-quinta": {
+      "profile": {
+        "typicalHighAirF": 80,
+        "typicalLowAirF": 54,
+        "typicalWaterF": 57,
+        "swimType": "Lake",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-la-quinta"
+    },
+    "langkawi": {
+      "profile": {
+        "typicalHighAirF": 86,
+        "typicalLowAirF": 78,
+        "typicalWaterF": 84,
+        "swimType": "Ocean",
+        "bikeTerrain": "Hilly",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-langkawi"
+    },
+    "leipzig": {
+      "profile": {
+        "typicalHighAirF": 77,
+        "typicalLowAirF": 61,
+        "typicalWaterF": 72,
+        "swimType": "Lake",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-leipzig"
+    },
+    "les-sables-dolonne": {
+      "profile": {
+        "typicalHighAirF": 79,
+        "typicalLowAirF": 60,
+        "typicalWaterF": 66,
+        "swimType": "Ocean",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Rolling"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-les-sables-dolonne"
+    },
+    "los-cabos": {
+      "profile": {
+        "typicalHighAirF": 83,
+        "typicalLowAirF": 65,
+        "typicalWaterF": 84,
+        "swimType": "Ocean",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-los-cabos"
+    },
+    "louisville": {
+      "profile": {
+        "typicalHighAirF": 89,
+        "typicalLowAirF": 72,
+        "typicalWaterF": 80,
+        "swimType": "River",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Rolling"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-louisville"
+    },
+    "luxembourg": {
+      "profile": {
+        "typicalHighAirF": 81,
+        "typicalLowAirF": 61,
+        "typicalWaterF": 68,
+        "swimType": "River",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-luxembourg"
+    },
+    "maine": {
+      "profile": {
+        "typicalHighAirF": 82,
+        "typicalLowAirF": 62,
+        "typicalWaterF": 75,
+        "swimType": "River",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Rolling"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-maine"
+    },
+    "mallorca": {
+      "profile": {
+        "typicalHighAirF": 71,
+        "typicalLowAirF": 55,
+        "typicalWaterF": 63,
+        "swimType": "Ocean",
+        "bikeTerrain": "Hilly",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-mallorca"
+    },
+    "melbourne": {
+      "profile": {
+        "typicalHighAirF": 73,
+        "typicalLowAirF": 52,
+        "typicalWaterF": 65,
+        "swimType": "Bay",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-melbourne"
+    },
+    "michigan": {
+      "profile": {
+        "typicalHighAirF": 78,
+        "typicalLowAirF": 58,
+        "typicalWaterF": 65,
+        "swimType": "Lake",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Rolling"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-michigan"
+    },
+    "mont-tremblant": {
+      "profile": {
+        "typicalHighAirF": 73,
+        "typicalLowAirF": 54,
+        "typicalWaterF": 63,
+        "swimType": "Lake",
+        "bikeTerrain": "Hilly",
+        "runTerrain": "Rolling"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-mont-tremblant"
+    },
+    "mossel-bay": {
+      "profile": {
+        "typicalHighAirF": 81,
+        "typicalLowAirF": 57,
+        "typicalWaterF": 69,
+        "swimType": "Bay",
+        "bikeTerrain": "Hilly",
+        "runTerrain": "Rolling"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-mossel-bay"
+    },
+    "muncie": {
+      "profile": {
+        "typicalHighAirF": 85,
+        "typicalLowAirF": 68,
+        "typicalWaterF": 68,
+        "swimType": "Reservoir",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Rolling"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-muncie"
+    },
+    "muskoka": {
+      "profile": {
+        "typicalHighAirF": 74,
+        "typicalLowAirF": 52,
+        "typicalWaterF": 68,
+        "swimType": "Lake",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Hilly"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-muskoka"
+    },
+    "musselman": {
+      "profile": {
+        "typicalHighAirF": 81,
+        "typicalLowAirF": 64,
+        "typicalWaterF": 72,
+        "swimType": "Lake",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Rolling"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-musselman"
+    },
+    "new-york": {
+      "profile": {
+        "swimType": "Bay",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Flat",
+        "typicalHighAirF": 65,
+        "typicalLowAirF": 46,
+        "typicalWaterF": 65
+      },
+      "officialPage": "https://www.ironman.com/races/im703-new-york",
+      "editions": {
+        "2025": {
+          "swimLaps": 1,
+          "bikeLaps": 2,
+          "runLaps": 2,
+          "bikeElevationGainFt": 756,
+          "runElevationGainFt": 65,
+          "features": [
+            "Protected Zach's Bay swim",
+            "Fully closed parkway bike course"
+          ],
+          "source": "2025-athlete-guide"
+        }
+      },
+      "sources": {
+        "2025-athlete-guide": {
+          "label": "2025 athlete guide",
+          "type": "athlete-guide",
+          "url": "https://www.ironman.com/sites/default/files/2025-09/2025%2070.3%20NY%20Athlete%20Guide%20R6.pdf"
+        }
+      }
+    },
+    "new-zealand": {
+      "profile": {
+        "swimType": "Lake",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Flat",
+        "typicalHighAirF": 66,
+        "typicalLowAirF": 43,
+        "typicalWaterF": 66
+      },
+      "officialPage": "https://www.ironman.com/races/im703-new-zealand",
+      "sources": {}
+    },
+    "nice": {
+      "profile": {
+        "swimType": "Sea",
+        "bikeTerrain": "Hilly",
+        "runTerrain": "Flat",
+        "typicalHighAirF": 79,
+        "typicalLowAirF": 64,
+        "typicalWaterF": 75
+      },
+      "officialPage": "https://www.ironman.com/races/im703-nice",
+      "editions": {
+        "2025": {
+          "swimLaps": 1,
+          "bikeLaps": 1,
+          "bikeElevationGainFt": 4026,
+          "features": [
+            "Col de Vence climb",
+            "Technical bike descent"
+          ],
+          "source": "2025-course-map"
+        }
+      },
+      "sources": {
+        "2025-course-map": {
+          "label": "2025 course map",
+          "type": "course-map",
+          "url": "https://www.ironman.com/sites/default/files/2025-05/IM25_703Nice_CourseMap_Bike_0.pdf"
+        }
+      }
+    },
+    "north-carolina": {
+      "profile": {
+        "swimType": "Bay",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Rolling",
+        "typicalHighAirF": 73,
+        "typicalLowAirF": 53,
+        "typicalWaterF": 72
+      },
+      "officialPage": "https://www.ironman.com/races/im703-north-carolina",
+      "editions": {
+        "2025": {
+          "swimLaps": 1,
+          "bikeLaps": 1,
+          "runLaps": 1,
+          "bikeElevationGainFt": 643,
+          "runElevationGainFt": 261,
+          "transitionCount": 2,
+          "transitionLocations": [
+            "Wrightsville Beach",
+            "Wilmington Convention Center"
+          ],
+          "features": [
+            "Current-assisted tidal channel swim",
+            "Separate T1 and T2 locations"
+          ],
+          "source": "2025-course-maps"
+        }
+      },
+      "sources": {
+        "2025-course-maps": {
+          "label": "2025 course maps",
+          "type": "course-map",
+          "url": "https://www.ironman.com/sites/default/files/2025-08/IM25_703NorthCarolina_CourseMaps_8.5x11_V3.pdf"
+        }
+      }
+    },
+    "northern-california": {
+      "profile": {
+        "typicalHighAirF": 88,
+        "typicalLowAirF": 59,
+        "swimType": "Lake",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-northern-california"
+    },
+    "oceanside": {
+      "profile": {
+        "swimType": "Bay",
+        "bikeTerrain": "Hilly",
+        "runTerrain": "Rolling",
+        "typicalHighAirF": 69,
+        "typicalLowAirF": 45,
+        "typicalWaterF": 61
+      },
+      "officialPage": "https://www.ironman.com/races/im703-oceanside",
+      "editions": {
+        "2025": {
+          "swimLaps": 1,
+          "bikeLaps": 1,
+          "runLaps": 2,
+          "bikeElevationGainFt": 2720,
+          "runElevationGainFt": 277,
+          "transitionCount": 2,
+          "features": [
+            "Saltwater harbor swim",
+            "Separate T1 and T2 zones"
+          ],
+          "source": "2025-athlete-guide"
+        }
+      },
+      "sources": {
+        "2025-athlete-guide": {
+          "label": "2025 athlete guide",
+          "type": "athlete-guide",
+          "url": "https://www.ironman.com/sites/default/files/2025-03/2025%20Oceanside%20Athlete%20Guide.pdf"
+        }
+      }
+    },
+    "ohio": {
+      "profile": {
+        "typicalHighAirF": 80,
+        "typicalLowAirF": 67,
+        "typicalWaterF": 78,
+        "swimType": "Lake",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Rolling"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-ohio"
+    },
+    "omaha": {
+      "profile": {
+        "typicalHighAirF": 84,
+        "typicalLowAirF": 62,
+        "swimType": "Lake",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Rolling"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-omaha"
+    },
+    "oman": {
+      "profile": {
+        "typicalHighAirF": 78,
+        "typicalLowAirF": 65,
+        "typicalWaterF": 72,
+        "swimType": "Sea",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-oman"
+    },
+    "oregon": {
+      "profile": {
+        "swimType": "River",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Flat",
+        "typicalHighAirF": 87,
+        "typicalLowAirF": 55,
+        "typicalWaterF": 65
+      },
+      "officialPage": "https://www.ironman.com/races/im703-oregon",
+      "editions": {
+        "2025": {
+          "swimLaps": 1,
+          "bikeLaps": 1,
+          "runLaps": 2,
+          "bikeElevationGainFt": 1149,
+          "runElevationGainFt": 341,
+          "features": [
+            "Current-assisted downriver swim",
+            "Out-and-back bike course"
+          ],
+          "source": "2025-athlete-guide"
+        }
+      },
+      "sources": {
+        "2025-athlete-guide": {
+          "label": "2025 athlete guide",
+          "type": "athlete-guide",
+          "url": "https://www.ironman.com/sites/default/files/2025-06/2025%20Oregon%20Athlete%20Guide.pdf"
+        }
+      }
+    },
+    "panama": {
+      "profile": {
+        "typicalHighAirF": 91,
+        "typicalLowAirF": 77,
+        "typicalWaterF": 78,
+        "swimType": "Ocean",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-panama"
+    },
+    "pennsylvania": {
+      "profile": {
+        "swimType": "Lake",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Rolling",
+        "typicalHighAirF": 62,
+        "typicalLowAirF": 50,
+        "typicalWaterF": 76
+      },
+      "officialPage": "https://www.ironman.com/races/im703-pennsylvania",
+      "sources": {}
+    },
+    "peru": {
+      "profile": {
+        "typicalHighAirF": 73,
+        "typicalLowAirF": 66,
+        "typicalWaterF": 70,
+        "swimType": "Ocean",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-peru"
+    },
+    "port-macquarie": {
+      "profile": {
+        "typicalHighAirF": 76,
+        "typicalLowAirF": 56,
+        "typicalWaterF": 73,
+        "swimType": "River",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-port-macquarie"
+    },
+    "poznan": {
+      "profile": {
+        "typicalHighAirF": 76,
+        "typicalLowAirF": 60,
+        "typicalWaterF": 69,
+        "swimType": "Lake",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-poznan"
+    },
+    "pucon": {
+      "profile": {
+        "typicalHighAirF": 78,
+        "typicalLowAirF": 43,
+        "typicalWaterF": 68,
+        "swimType": "Lake",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Hilly"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-pucon"
+    },
+    "puerto-rico": {
+      "profile": {
+        "typicalHighAirF": 83,
+        "typicalLowAirF": 74,
+        "typicalWaterF": 81,
+        "swimType": "Bay",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Hilly"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-puerto-rico"
+    },
+    "puerto-varas": {
+      "profile": {
+        "typicalHighAirF": 64,
+        "typicalLowAirF": 36,
+        "swimType": "Lake",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Rolling"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-puerto-varas"
+    },
+    "punta-del-este": {
+      "profile": {
+        "typicalHighAirF": 87,
+        "typicalLowAirF": 66,
+        "typicalWaterF": 73,
+        "swimType": "Ocean",
+        "bikeTerrain": "Hilly",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-punta-del-este"
+    },
+    "rio-de-janeiro": {
+      "profile": {
+        "typicalHighAirF": 85,
+        "typicalLowAirF": 70,
+        "typicalWaterF": 73,
+        "swimType": "Ocean",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-rio-de-janeiro"
+    },
+    "rockford-illinois": {
+      "profile": {
+        "typicalHighAirF": 85,
+        "typicalLowAirF": 63,
+        "typicalWaterF": 79,
+        "swimType": "River",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-rockford-illinois"
+    },
+    "ruidoso-new-mexico": {
+      "profile": {
+        "typicalHighAirF": 85,
+        "typicalLowAirF": 56,
+        "swimType": "Lake",
+        "bikeTerrain": "Hilly",
+        "runTerrain": "Rolling"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-ruidoso-new-mexico"
+    },
+    "san-juan": {
+      "profile": {
+        "typicalHighAirF": 64,
+        "typicalLowAirF": 52,
+        "typicalWaterF": 68,
+        "swimType": "Reservoir",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-san-juan"
+    },
+    "san-salvador": {
+      "profile": {
+        "typicalHighAirF": 86,
+        "typicalLowAirF": 60,
+        "swimType": "Lake",
+        "bikeTerrain": "Hilly",
+        "runTerrain": "Hilly"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-san-salvador"
+    },
+    "santa-cruz": {
+      "profile": {
+        "typicalHighAirF": 72,
+        "typicalLowAirF": 55,
+        "typicalWaterF": 63,
+        "swimType": "Ocean",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Rolling"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-santa-cruz"
+    },
+    "sao-paulo": {
+      "profile": {
+        "typicalHighAirF": 81,
+        "typicalLowAirF": 60,
+        "typicalWaterF": 71,
+        "swimType": "Reservoir",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-sao-paulo"
+    },
+    "shanghai-chongming": {
+      "profile": {
+        "typicalHighAirF": 84,
+        "typicalLowAirF": 60,
+        "typicalWaterF": 70,
+        "swimType": "Lake",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-shanghai-chongming"
+    },
+    "subic-bay-philippines": {
+      "profile": {
+        "typicalHighAirF": 89,
+        "typicalLowAirF": 79,
+        "typicalWaterF": 84,
+        "swimType": "Ocean",
+        "bikeTerrain": "Hilly",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-subic-bay-philippines"
+    },
+    "sunshine-coast": {
+      "profile": {
+        "typicalHighAirF": 74,
+        "typicalLowAirF": 55,
+        "typicalWaterF": 72,
+        "swimType": "Ocean",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-sunshine-coast"
+    },
+    "swansea": {
+      "profile": {
+        "typicalHighAirF": 76,
+        "typicalLowAirF": 53,
+        "typicalWaterF": 60,
+        "swimType": "Harbor",
+        "bikeTerrain": "Hilly",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-swansea"
+    },
+    "switzerland": {
+      "profile": {
+        "typicalHighAirF": 76,
+        "typicalLowAirF": 54,
+        "typicalWaterF": 63,
+        "swimType": "Lake",
+        "bikeTerrain": "Hilly",
+        "runTerrain": "Rolling"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-switzerland"
+    },
+    "tallinn": {
+      "profile": {
+        "typicalHighAirF": 69,
+        "typicalLowAirF": 53,
+        "typicalWaterF": 64,
+        "swimType": "Lake",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-tallinn"
+    },
+    "texas": {
+      "profile": {
+        "typicalHighAirF": 79,
+        "typicalLowAirF": 67,
+        "typicalWaterF": 71,
+        "swimType": "Bay",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-texas"
+    },
+    "valdivia": {
+      "profile": {
+        "typicalHighAirF": 69,
+        "typicalLowAirF": 47,
+        "typicalWaterF": 61,
+        "swimType": "River",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-valdivia"
+    },
+    "valencia": {
+      "profile": {
+        "typicalHighAirF": 75,
+        "typicalLowAirF": 51,
+        "typicalWaterF": 66,
+        "swimType": "Ocean",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-valencia"
+    },
+    "venice-jesolo": {
+      "profile": {
+        "typicalHighAirF": 64,
+        "typicalLowAirF": 49,
+        "typicalWaterF": 63,
+        "swimType": "Ocean",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-venice-jesolo"
+    },
+    "vichy": {
+      "profile": {
+        "typicalHighAirF": 78,
+        "typicalLowAirF": 53,
+        "typicalWaterF": 72,
+        "swimType": "River",
+        "bikeTerrain": "Hilly",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-vichy"
+    },
+    "victoria": {
+      "profile": {
+        "typicalHighAirF": 56,
+        "typicalLowAirF": 49,
+        "typicalWaterF": 66,
+        "swimType": "Lake",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-victoria"
+    },
+    "vitoria": {
+      "profile": {
+        "typicalHighAirF": 92,
+        "typicalLowAirF": 59,
+        "typicalWaterF": 70,
+        "swimType": "Lake",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-vitoria"
+    },
+    "waco": {
+      "profile": {
+        "typicalHighAirF": 79,
+        "typicalLowAirF": 54,
+        "typicalWaterF": 65,
+        "swimType": "River",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Rolling"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-waco"
+    },
+    "warsaw": {
+      "profile": {
+        "typicalHighAirF": 75,
+        "typicalLowAirF": 56,
+        "typicalWaterF": 68,
+        "swimType": "Lake",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-warsaw"
+    },
+    "washington-tri-cities": {
+      "profile": {
+        "typicalHighAirF": 85,
+        "typicalLowAirF": 49,
+        "typicalWaterF": 68,
+        "swimType": "Lake",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Hilly"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-washington-tri-cities"
+    },
+    "western-australia": {
+      "profile": {
+        "typicalHighAirF": 73,
+        "typicalLowAirF": 62,
+        "typicalWaterF": 66,
+        "swimType": "Bay",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-western-australia"
+    },
+    "western-massachusetts": {
+      "profile": {
+        "swimType": "River",
+        "bikeTerrain": "Hilly",
+        "runTerrain": "Rolling",
+        "typicalHighAirF": 74,
+        "typicalLowAirF": 53,
+        "typicalWaterF": 67
+      },
+      "officialPage": "https://www.ironman.com/races/im703-western-massachusetts",
+      "editions": {
+        "2025": {
+          "swimLaps": 1,
+          "bikeLaps": 1,
+          "runLaps": 2,
+          "bikeElevationGainFt": 2521,
+          "runElevationGainFt": 742,
+          "features": [
+            "Connecticut River swim",
+            "Two-loop riverfront run"
+          ],
+          "source": "2025-athlete-guide"
+        }
+      },
+      "sources": {
+        "2025-athlete-guide": {
+          "label": "2025 athlete guide",
+          "type": "athlete-guide",
+          "url": "https://www.ironman.com/sites/default/files/2025-05/2025%20IM%2070.3%20Western%20Massachusetts%20Athlete%20Guide.pdf"
+        }
+      }
+    },
+    "western-sydney": {
+      "profile": {
+        "typicalHighAirF": 69,
+        "typicalLowAirF": 56,
+        "typicalWaterF": 66,
+        "swimType": "Lake",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-western-sydney"
+    },
+    "westfriesland": {
+      "profile": {
+        "typicalHighAirF": 70,
+        "typicalLowAirF": 57,
+        "typicalWaterF": 63,
+        "swimType": "Lake",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-westfriesland"
+    },
+    "weymouth": {
+      "profile": {
+        "typicalHighAirF": 65,
+        "typicalLowAirF": 45,
+        "typicalWaterF": 63,
+        "swimType": "Sea",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-weymouth"
+    },
+    "wisconsin": {
+      "profile": {
+        "typicalHighAirF": 81,
+        "typicalLowAirF": 56,
+        "typicalWaterF": 75,
+        "swimType": "Lake",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Hilly"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-wisconsin"
+    },
+    "zell-am-see": {
+      "profile": {
+        "typicalHighAirF": 77,
+        "typicalLowAirF": 60,
+        "typicalWaterF": 63,
+        "swimType": "Lake",
+        "bikeTerrain": "Hilly",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-zell-am-see"
+    }
+  }
+}
