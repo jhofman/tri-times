@@ -36,7 +36,7 @@
     },
     "north-carolina": {
       "profile": {
-        "swimType": "Tidal river",
+        "swimType": "Bay",
         "bikeTerrain": "Flat",
         "runTerrain": "Rolling",
         "typicalHighAirF": 73,
@@ -57,7 +57,7 @@
             "Wilmington Convention Center"
           ],
           "features": [
-            "Current-assisted point-to-point swim",
+            "Current-assisted tidal channel swim",
             "Separate T1 and T2 locations"
           ],
           "source": "2025-course-maps"
@@ -74,7 +74,7 @@
     "western-massachusetts": {
       "profile": {
         "swimType": "River",
-        "bikeTerrain": "Rolling",
+        "bikeTerrain": "Hilly",
         "runTerrain": "Rolling",
         "typicalHighAirF": 74,
         "typicalLowAirF": 53,
@@ -106,7 +106,7 @@
     "oregon": {
       "profile": {
         "swimType": "River",
-        "bikeTerrain": "Rolling",
+        "bikeTerrain": "Flat",
         "runTerrain": "Flat",
         "typicalHighAirF": 87,
         "typicalLowAirF": 55,
@@ -169,9 +169,9 @@
     },
     "oceanside": {
       "profile": {
-        "swimType": "Harbor",
+        "swimType": "Bay",
         "bikeTerrain": "Hilly",
-        "runTerrain": "Flat",
+        "runTerrain": "Rolling",
         "typicalHighAirF": 69,
         "typicalLowAirF": 45,
         "typicalWaterF": 61

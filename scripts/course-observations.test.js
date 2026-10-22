@@ -3,6 +3,7 @@ const assert = require("node:assert/strict");
 
 const {
   buildCourseObservations,
+  buildYearSignals,
   percentile,
   summarizeRaceYear,
 } = require("./course-observations");
@@ -66,4 +67,27 @@ test("buildCourseObservations emits only well-supported tail signals", () => {
   ]);
   assert.equal(result.races["race-9"]["2025"].signals.length, 5);
   assert.equal(result.races["small-race"], undefined);
+});
+
+test("year signals compare a race-year to the same race's other years", () => {
+  const year = (y, swim, bike, t1) => ({
+    raceId: "r", year: y, athleteCount: 300,
+    medians: { swim, t1, bike, t2: 300, run: 7000 },
+    coverage: { swim: 1, t1: 1, bike: 1, t2: 1, run: 1 },
+  });
+  const options = { minCoverage: 0.9, minOtherYears: 3 };
+  const siblings = [year("2021", 2000, 11000, 500), year("2022", 2020, 11050, 510), year("2023", 1990, 10950, 505)];
+
+  const slow = year("2024", 2010, 11800, 620);
+  assert.deepEqual(buildYearSignals(slow, [...siblings, slow], options), [
+    { split: "t1", deltaSeconds: 115, typicalSeconds: 505, otherYears: 3 },
+    { split: "bike", deltaSeconds: 800, typicalSeconds: 11000, otherYears: 3 },
+  ]);
+
+  // Two other years suffice only for the much-faster (likely shortened) check.
+  const shortened = year("2024", 900, 11020, 505);
+  const twoSiblings = siblings.slice(0, 2);
+  assert.deepEqual(buildYearSignals(shortened, [...twoSiblings, shortened], options), [
+    { split: "swim", deltaSeconds: -1120, typicalSeconds: 2020, otherYears: 2, likelyShortened: true },
+  ]);
 });

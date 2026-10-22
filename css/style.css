@@ -24,6 +24,7 @@
     --finish: #8b5cb8;
     --race-a: #377eb8;
     --race-b: #ff7f00;
+    --warning: #bf8700;
     --radius: 10px;
     --radius-sm: 7px;
     --control-h: 36px;
@@ -54,6 +55,7 @@
     --finish: #a97fd0;
     --race-a: #6aa3d8;
     --race-b: #ffa04d;
+    --warning: #d29922;
 }
 
 * {
@@ -277,6 +279,11 @@ select:focus {
     background: transparent;
     border: 1px dashed var(--text-muted);
     cursor: help;
+}
+
+.course-fact-observed.shortened .fa-solid {
+    color: var(--warning);
+    opacity: 1;
 }
 
 .course-hint {

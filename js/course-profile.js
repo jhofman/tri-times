@@ -114,16 +114,65 @@
         const word = isTransition ? (fast ? 'quick' : 'long') : (fast ? 'fast' : 'slow');
         const strength = tail <= 3 ? 'Very ' + word : word[0].toUpperCase() + word.slice(1);
         return {
-            text: `${strength} ${isTransition ? label : label.toLowerCase()}`,
+            text: isTransition ? `${strength} ${label} setup` : `${strength} ${label.toLowerCase()} course`,
             icon: fast ? 'bolt' : 'hourglass-half',
             direction: signal.direction,
-            title: `${label} median is among the ${fast ? 'fastest' : 'slowest'} ${tail}% of race-years. Inferred from results; unadjusted for field strength.`,
+            title: `${label} median is among the ${fast ? 'fastest' : 'slowest'} ${tail}% of all 70.3 race-years. Inferred from results; unadjusted for field strength.`,
         };
+    }
+
+    function formatDuration(seconds) {
+        const abs = Math.abs(seconds);
+        if (abs < 90) return `${Math.round(abs)} sec`;
+        return `${Math.round(abs / 60)} min`;
+    }
+
+    function formatClock(seconds) {
+        const h = Math.floor(seconds / 3600);
+        const m = Math.floor((seconds % 3600) / 60);
+        const s = String(Math.round(seconds % 60)).padStart(2, '0');
+        return h ? `${h}:${String(m).padStart(2, '0')}:${s}` : `${m}:${s}`;
+    }
+
+    function describeYearSignal(signal, year, raceName) {
+        const label = SPLIT_LABELS[signal.split];
+        const name = signal.split.startsWith('t') ? label : label.toLowerCase();
+        const actual = signal.typicalSeconds + signal.deltaSeconds;
+        const context = `${year} median ${formatClock(actual)} vs. ${formatClock(signal.typicalSeconds)} typical across ${signal.otherYears} other ${raceName || 'race'} years.`;
+        if (signal.likelyShortened) {
+            return {
+                text: `${year} ${name} much faster than usual`,
+                icon: 'triangle-exclamation',
+                direction: 'shortened',
+                title: `${context} A gap this large often means a shortened or altered course, a strong current, or a timing issue.`,
+            };
+        }
+        const slower = signal.deltaSeconds > 0;
+        const isTransition = signal.split === 't1' || signal.split === 't2';
+        const word = isTransition ? (slower ? 'longer' : 'quicker') : (slower ? 'slower' : 'faster');
+        return {
+            text: `${year} ${name} ${formatDuration(signal.deltaSeconds)} ${word} than usual`,
+            icon: slower ? 'arrow-up' : 'arrow-down',
+            direction: slower ? 'slow' : 'fast',
+            title: `${context} Unadjusted for weather or field strength.`,
+        };
+    }
+
+    function formatYearSignals(observation, year, raceName, limit = 3) {
+        if (!observation?.yearSignals?.length) return [];
+        return [...observation.yearSignals]
+            .sort((a, b) => Math.abs(b.deltaSeconds / b.typicalSeconds) - Math.abs(a.deltaSeconds / a.typicalSeconds))
+            .slice(0, limit)
+            .map(signal => describeYearSignal(signal, year, raceName));
     }
 
     function formatObservationSignals(observation, limit = 3) {
         if (!observation?.signals?.length) return [];
-        return [...observation.signals]
+        const shortened = new Set((observation.yearSignals || [])
+            .filter(signal => signal.likelyShortened)
+            .map(signal => signal.split));
+        return observation.signals
+            .filter(signal => !shortened.has(signal.split))
             .sort((a, b) => {
                 const priority = { t1: 0, t2: 1, swim: 2, bike: 3, run: 4 };
                 const extremityA = Math.min(a.percentile, 100 - a.percentile);
@@ -139,6 +188,7 @@
         buildFeatures,
         buildLegDetails,
         formatObservationSignals,
+        formatYearSignals,
         selectEdition,
     };
 }));

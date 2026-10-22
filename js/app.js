@@ -116,7 +116,10 @@ async function renderCourseProfile(race, year) {
         const conditions = CourseProfile.buildConditions(raceMetadata.profile || {});
         const features = CourseProfile.buildFeatures(edition?.data?.features);
         const observed = observations.races?.[race]?.[year];
-        const observedSignals = CourseProfile.formatObservationSignals(observed);
+        const observedSignals = [
+            ...CourseProfile.formatObservationSignals(observed),
+            ...CourseProfile.formatYearSignals(observed, year, RACES[race]?.name),
+        ];
         const courseNote = edition
             ? edition.exact
                 ? `${edition.year} official course details`

@@ -6,6 +6,7 @@ const {
   buildFeatures,
   buildLegDetails,
   formatObservationSignals,
+  formatYearSignals,
   selectEdition,
 } = require("../js/course-profile");
 
@@ -72,9 +73,27 @@ test("observed signals are capped, prioritize transitions, and become short chip
   }, 3);
 
   assert.deepEqual(chips.map(chip => [chip.text, chip.icon]), [
-    ["Very long T1", "hourglass-half"],
-    ["Fast swim", "bolt"],
-    ["Slow bike", "hourglass-half"],
+    ["Very long T1 setup", "hourglass-half"],
+    ["Fast swim course", "bolt"],
+    ["Slow bike course", "hourglass-half"],
   ]);
-  assert.match(chips[0].title, /slowest 1% of race-years.*unadjusted for field strength/);
+  assert.match(chips[0].title, /slowest 1% of all 70.3 race-years.*unadjusted for field strength/);
+});
+
+test("year chips name the year, size the gap, and replace a shortened leg's course chip", () => {
+  const observation = {
+    signals: [{ split: "swim", direction: "fast", percentile: 1 }],
+    yearSignals: [
+      { split: "run", deltaSeconds: -470, typicalSeconds: 7492, otherYears: 3 },
+      { split: "t2", deltaSeconds: 69, typicalSeconds: 302, otherYears: 8 },
+      { split: "swim", deltaSeconds: -1592, typicalSeconds: 2649, otherYears: 2, likelyShortened: true },
+    ],
+  };
+  assert.deepEqual(formatYearSignals(observation, "2023", "New York").map(chip => [chip.text, chip.icon]), [
+    ["2023 swim much faster than usual", "triangle-exclamation"],
+    ["2023 T2 69 sec longer than usual", "arrow-up"],
+    ["2023 run 8 min faster than usual", "arrow-down"],
+  ]);
+  assert.deepEqual(formatObservationSignals(observation), []);
+  assert.match(formatYearSignals(observation, "2023", "New York")[2].title, /2:04:52 typical across 3 other New York years/);
 });

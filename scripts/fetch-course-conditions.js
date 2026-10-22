@@ -1,9 +1,9 @@
 /**
- * Refresh typical air/water temperatures in results/course-metadata.json
- * from each race's official Ironman race page.
+ * Refresh the official race-page profile in results/course-metadata.json:
+ * swim/bike/run labels and typical air/water temperatures.
  *
- * Only temperature fields are updated; curated swim/bike/run descriptions are
- * left alone, but mismatches with the race page are reported for review.
+ * Venue-specific detail (e.g. "Saltwater harbor swim") lives in edition
+ * features, so the headline labels stay on Ironman's consistent scale.
  *
  * Usage: node scripts/fetch-course-conditions.js
  */
@@ -51,16 +51,13 @@ async function main() {
     }
     const found = parseConditions(pageText(await response.text()));
     const profile = entry.profile || (entry.profile = {});
-    for (const key of ["typicalHighAirF", "typicalLowAirF", "typicalWaterF"]) {
-      if (found[key] != null) profile[key] = found[key];
+    const changes = [];
+    for (const [key, value] of Object.entries(found)) {
+      if (value == null || profile[key] === value) continue;
+      changes.push(`${key} ${profile[key] ?? "–"} → ${value}`);
+      profile[key] = value;
     }
-    const mismatches = ["swimType", "bikeTerrain", "runTerrain"]
-      .filter(key => found[key] && profile[key] && found[key] !== profile[key])
-      .map(key => `${key}: curated "${profile[key]}" vs page "${found[key]}"`);
-    console.log(
-      `${race}: air ${profile.typicalLowAirF ?? "?"}–${profile.typicalHighAirF ?? "?"}°F, water ${profile.typicalWaterF ?? "?"}°F` +
-      (mismatches.length ? `\n  note ${mismatches.join("; ")}` : "")
-    );
+    console.log(`${race}: ${changes.length ? changes.join(", ") : "unchanged"}`);
   }
   metadata.retrievedAt = new Date().toISOString().slice(0, 10);
   fs.writeFileSync(METADATA_PATH, JSON.stringify(metadata, null, 2) + "\n");

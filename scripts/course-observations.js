@@ -31,11 +31,51 @@ function summarizeRaceYear(raceId, year, rows, splitColumns) {
   };
 }
 
+function median(values) {
+  const sorted = [...values].sort((a, b) => a - b);
+  return sorted.length ? sorted[Math.floor(sorted.length / 2)] : 0;
+}
+
+// Compare a race-year to the same race's other years. Only large differences
+// are emitted; a much faster leg usually means a shortened course.
+function buildYearSignals(summary, siblings, options) {
+  const signals = [];
+  for (const split of OBSERVED_SPLITS) {
+    if (summary.coverage[split] < options.minCoverage || summary.medians[split] <= 0) continue;
+    const others = siblings
+      .filter(other => other.year !== summary.year && other.coverage[split] >= options.minCoverage && other.medians[split] > 0)
+      .map(other => other.medians[split]);
+    if (others.length < Math.min(2, options.minOtherYears)) continue;
+
+    const typical = median(others);
+    const delta = summary.medians[split] - typical;
+    const isTransition = split === "t1" || split === "t2";
+    const relative = Math.abs(delta) / typical;
+    const likelyShortened = !isTransition && delta / typical <= -0.25;
+    if (!likelyShortened && others.length < options.minOtherYears) continue;
+    if (relative < (isTransition ? 0.15 : 0.05) || Math.abs(delta) < (isTransition ? 30 : 60)) continue;
+
+    signals.push({
+      split,
+      deltaSeconds: Math.round(delta),
+      typicalSeconds: Math.round(typical),
+      otherYears: others.length,
+      ...(likelyShortened ? { likelyShortened: true } : {}),
+    });
+  }
+  return signals;
+}
+
 function buildCourseObservations(summaries, options = {}) {
   const minAthletes = options.minAthletes || 200;
   const minCoverage = options.minCoverage || 0.9;
+  const minOtherYears = options.minOtherYears || 3;
   const eligible = summaries.filter(summary => summary.athleteCount >= minAthletes);
   const distributions = {};
+  const byRace = {};
+  for (const summary of eligible) {
+    (byRace[summary.raceId] ||= []).push(summary);
+  }
 
   for (const split of OBSERVED_SPLITS) {
     distributions[split] = eligible
@@ -62,11 +102,16 @@ function buildCourseObservations(summaries, options = {}) {
       if (rank >= 90) signals.push({ split, direction: "slow", percentile: rank });
     }
 
-    if (!signals.length) continue;
+    const yearSignals = summary.athleteCount >= minAthletes
+      ? buildYearSignals(summary, byRace[summary.raceId], { minCoverage, minOtherYears })
+      : [];
+
+    if (!signals.length && !yearSignals.length) continue;
     if (!observations[summary.raceId]) observations[summary.raceId] = {};
     observations[summary.raceId][summary.year] = {
       athleteCount: summary.athleteCount,
       signals,
+      ...(yearSignals.length ? { yearSignals } : {}),
     };
   }
 
@@ -79,6 +124,15 @@ function buildCourseObservations(summaries, options = {}) {
         fastAtOrBelowPercentile: 10,
         slowAtOrAbovePercentile: 90
       },
+      yearSignalThresholds: {
+        minimumOtherYears: minOtherYears,
+        likelyShortenedMinimumOtherYears: 2,
+        legRelativeChange: 0.05,
+        legMinimumSeconds: 60,
+        transitionRelativeChange: 0.15,
+        transitionMinimumSeconds: 30,
+        likelyShortenedLegChange: -0.25
+      },
       caveat: "Result distributions reflect both the course and the athletes who raced it."
     },
     races: observations,
@@ -87,6 +141,7 @@ function buildCourseObservations(summaries, options = {}) {
 
 module.exports = {
   buildCourseObservations,
+  buildYearSignals,
   percentile,
   summarizeRaceYear,
 };
