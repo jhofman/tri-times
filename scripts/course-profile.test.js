@@ -65,19 +65,20 @@ test("temperature labels are explicitly typical conditions", () => {
   ]);
 });
 
-test("observed signals are capped and prioritize transitions", () => {
-  const labels = formatObservationSignals({
+test("observed signals are capped, prioritize transitions, and become short chips", () => {
+  const chips = formatObservationSignals({
     signals: [
       { split: "run", direction: "slow", percentile: 95 },
-      { split: "t1", direction: "slow", percentile: 95 },
+      { split: "t1", direction: "slow", percentile: 99 },
       { split: "swim", direction: "fast", percentile: 5 },
       { split: "bike", direction: "slow", percentile: 95 },
     ],
   }, 3);
 
-  assert.deepEqual(labels, [
-    "T1 median is among the slowest 5% of race-years",
-    "Swim median is among the fastest 5% of race-years",
-    "Bike median is among the slowest 5% of race-years",
+  assert.deepEqual(chips.map(chip => [chip.text, chip.icon]), [
+    ["Very long T1", "hourglass-half"],
+    ["Fast swim", "bolt"],
+    ["Slow bike", "hourglass-half"],
   ]);
+  assert.match(chips[0].title, /slowest 1% of race-years.*unadjusted for field strength/);
 });

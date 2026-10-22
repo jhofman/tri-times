@@ -133,30 +133,26 @@ async function renderCourseProfile(race, year) {
         `).join('');
         const factMarkup = [...conditions, ...features].map(fact =>
             `<span class="course-fact">${icon(fact.icon)}${escapeHtml(fact.text)}</span>`
+        ).join('') + observedSignals.map(chip =>
+            `<span class="course-fact course-fact-observed ${chip.direction}" title="${escapeHtml(chip.title)}">${icon(chip.icon)}${escapeHtml(chip.text)}</span>`
         ).join('');
-        const observedMarkup = observedSignals.length ? `
-            <div class="course-observed">
-                <span class="course-observed-label">${icon('chart-simple')}Observed from results · ${escapeHtml(year)}</span>
-                <span>${observedSignals.map(escapeHtml).join(' · ')}</span>
-                <span class="course-observed-caveat">Unadjusted for field strength.</span>
-            </div>
-        ` : '';
+        const caveats = [
+            courseCaveat + '.',
+            conditions.length ? 'Typical temperatures are climate values, not race-day readings.' : '',
+            observedSignals.length ? `Dashed chips are inferred from ${year} results vs. all race-years, unadjusted for field strength.` : '',
+        ].filter(Boolean).join(' ');
         const linkMarkup = links.map(link =>
             `<a class="course-source" href="${escapeHtml(link.url)}" target="_blank" rel="noopener">${icon(link.icon)}${escapeHtml(link.label)} ↗</a>`
         ).join('');
 
         element.innerHTML = `
             <div class="course-profile-head">
-                <div>
-                    <span class="course-profile-kicker">Official profile</span>
-                    <h2 id="course-profile-title">Course &amp; conditions</h2>
-                </div>
+                <h2 id="course-profile-title">Course info</h2>
                 ${linkMarkup ? `<div class="course-links">${linkMarkup}</div>` : ''}
             </div>
             <div class="course-legs">${legMarkup}</div>
             ${factMarkup ? `<div class="course-facts">${factMarkup}</div>` : ''}
-            ${observedMarkup}
-            <p class="course-caveat">${escapeHtml(courseCaveat)}.${conditions.length ? ' Typical temperatures are climate values, not race-day readings.' : ''}</p>
+            <p class="course-caveat">${escapeHtml(caveats)}</p>
         `;
         element.hidden = false;
     } catch (error) {

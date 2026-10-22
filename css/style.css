@@ -167,24 +167,15 @@ select:focus {
 
 .course-profile-head {
     display: flex;
-    align-items: flex-start;
+    align-items: baseline;
     justify-content: space-between;
-    gap: 1rem;
-    margin-bottom: 0.75rem;
-}
-
-.course-profile-kicker,
-.course-observed-label {
-    display: block;
-    color: var(--text-muted);
-    font-size: 0.6875rem;
-    font-weight: 650;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+    margin-bottom: 0.6rem;
 }
 
 .course-profile h2 {
-    font-size: 1rem;
+    font-size: 0.9375rem;
     font-weight: 650;
 }
 
@@ -263,34 +254,21 @@ select:focus {
 .course-fact {
     padding: 0.18rem 0.45rem;
     background: var(--bg-tertiary);
+    border: 1px solid transparent;
     border-radius: 999px;
     color: var(--text-secondary);
     font-size: 0.6875rem;
 }
 
-.course-observed {
-    display: flex;
-    align-items: baseline;
-    flex-wrap: wrap;
-    gap: 0.15rem 0.55rem;
-    margin-top: 0.75rem;
-    padding-top: 0.65rem;
-    border-top: 1px solid var(--border);
-    color: var(--text-secondary);
-    font-size: 0.75rem;
+.course-fact-observed {
+    background: transparent;
+    border: 1px dashed var(--text-muted);
+    cursor: help;
 }
 
-.course-observed-label {
-    color: var(--text-secondary);
-}
-
-.course-observed-caveat,
 .course-caveat {
+    margin-top: 0.5rem;
     color: var(--text-muted);
-}
-
-.course-caveat {
-    margin-top: 0.55rem;
     font-size: 0.6875rem;
 }
 
@@ -1391,12 +1369,6 @@ select,
 
     .page-head {
         margin-top: 0.25rem;
-    }
-
-    .course-profile-head {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 0.25rem;
     }
 
     .course-links {

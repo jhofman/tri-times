@@ -102,6 +102,21 @@
         return (features || []).map(text => ({ text, icon: featureIcon(text) }));
     }
 
+    function describeSignal(signal) {
+        const fast = signal.direction === 'fast';
+        const tail = fast ? signal.percentile : Math.max(1, 100 - signal.percentile);
+        const label = SPLIT_LABELS[signal.split];
+        const isTransition = signal.split === 't1' || signal.split === 't2';
+        const word = isTransition ? (fast ? 'quick' : 'long') : (fast ? 'fast' : 'slow');
+        const strength = tail <= 3 ? 'Very ' + word : word[0].toUpperCase() + word.slice(1);
+        return {
+            text: `${strength} ${isTransition ? label : label.toLowerCase()}`,
+            icon: fast ? 'bolt' : 'hourglass-half',
+            direction: signal.direction,
+            title: `${label} median is among the ${fast ? 'fastest' : 'slowest'} ${tail}% of race-years. Inferred from results; unadjusted for field strength.`,
+        };
+    }
+
     function formatObservationSignals(observation, limit = 3) {
         if (!observation?.signals?.length) return [];
         return [...observation.signals]
@@ -112,12 +127,7 @@
                 return extremityA - extremityB || priority[a.split] - priority[b.split];
             })
             .slice(0, limit)
-            .map(signal => {
-                const tail = signal.direction === 'fast'
-                    ? `fastest ${signal.percentile}%`
-                    : `slowest ${Math.max(1, 100 - signal.percentile)}%`;
-                return `${SPLIT_LABELS[signal.split]} median is among the ${tail} of race-years`;
-            });
+            .map(describeSignal);
     }
 
     return {

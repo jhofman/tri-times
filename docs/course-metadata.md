@@ -34,7 +34,9 @@ medians. A fast or slow signal is emitted only when:
 
 These signals are descriptive, not causal. Field strength, weather, course
 changes, and timing quality can all affect result distributions. The UI
-therefore keeps them under a separate **Observed from results** label and does
+therefore shows them as dashed chips ("Fast swim", "Very long T1") with a
+bolt or hourglass icon, explains them in a caption and tooltip, and does
 not turn a fast swim or long transition into an official course claim.
+Chips use "Very" when a race-year falls in the extreme 3% tail.
 Only emitted tail signals are written to the frontend artifact, keeping the
 additional page payload small.
