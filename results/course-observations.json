@@ -1,0 +1,7978 @@
+{
+  "methodology": {
+    "comparisonUnit": "race-year median",
+    "minimumAthletes": 200,
+    "minimumSplitCoverage": 0.9,
+    "signalThresholds": {
+      "fastAtOrBelowPercentile": 10,
+      "slowAtOrAbovePercentile": 90
+    },
+    "caveat": "Result distributions reflect both the course and the athletes who raced it."
+  },
+  "races": {
+    "aix-en-provence": {
+      "2011": {
+        "athleteCount": 975,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 7
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 2
+          }
+        ]
+      },
+      "2014": {
+        "athleteCount": 1430,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 10
+          }
+        ]
+      },
+      "2016": {
+        "athleteCount": 2054,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 3
+          }
+        ]
+      },
+      "2017": {
+        "athleteCount": 1720,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 9
+          }
+        ]
+      },
+      "2018": {
+        "athleteCount": 1474,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 100
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 4
+          }
+        ]
+      },
+      "2019": {
+        "athleteCount": 1882,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 93
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 10
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 1964,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 96
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 4
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 2218,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 7
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 2217,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 97
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 10
+          }
+        ]
+      }
+    },
+    "aracaju-sergipe": {
+      "2024": {
+        "athleteCount": 954,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 4
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 1016,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 4
+          }
+        ]
+      }
+    },
+    "atlantic-city": {
+      "2021": {
+        "athleteCount": 1536,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 92
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 100
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 1629,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 95
+          },
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 92
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 100
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 1284,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 91
+          }
+        ]
+      }
+    },
+    "augusta": {
+      "2009": {
+        "athleteCount": 2563,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 4
+          }
+        ]
+      },
+      "2010": {
+        "athleteCount": 2522,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 5
+          }
+        ]
+      },
+      "2011": {
+        "athleteCount": 2620,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 5
+          }
+        ]
+      },
+      "2012": {
+        "athleteCount": 2676,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 5
+          }
+        ]
+      },
+      "2013": {
+        "athleteCount": 2686,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 5
+          }
+        ]
+      },
+      "2014": {
+        "athleteCount": 2494,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 5
+          }
+        ]
+      },
+      "2015": {
+        "athleteCount": 2508,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 6
+          }
+        ]
+      },
+      "2016": {
+        "athleteCount": 2369,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 9
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 93
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 98
+          }
+        ]
+      },
+      "2017": {
+        "athleteCount": 2388,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 10
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 96
+          }
+        ]
+      },
+      "2018": {
+        "athleteCount": 2667,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 94
+          }
+        ]
+      },
+      "2019": {
+        "athleteCount": 2584,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 97
+          }
+        ]
+      },
+      "2021": {
+        "athleteCount": 2235,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 5
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 1851,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 9
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 1775,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 8
+          },
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 91
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 2178,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 5
+          },
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 94
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 2454,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 8
+          },
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 96
+          }
+        ]
+      }
+    },
+    "barranquilla": {
+      "2026": {
+        "athleteCount": 677,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 92
+          },
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 5
+          }
+        ]
+      }
+    },
+    "belgrade": {
+      "2024": {
+        "athleteCount": 484,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 100
+          }
+        ]
+      }
+    },
+    "boise": {
+      "2008": {
+        "athleteCount": 947,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 6
+          }
+        ]
+      },
+      "2009": {
+        "athleteCount": 1195,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 90
+          },
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 10
+          }
+        ]
+      },
+      "2010": {
+        "athleteCount": 1145,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 93
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 7
+          }
+        ]
+      },
+      "2011": {
+        "athleteCount": 1186,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 6
+          }
+        ]
+      },
+      "2012": {
+        "athleteCount": 1234,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 0
+          }
+        ]
+      },
+      "2013": {
+        "athleteCount": 946,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 90
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 1476,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 96
+          }
+        ]
+      }
+    },
+    "bolton": {
+      "2021": {
+        "athleteCount": 910,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 96
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 1424,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 90
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 1616,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 91
+          }
+        ]
+      }
+    },
+    "boulder": {
+      "2010": {
+        "athleteCount": 1194,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 6
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 4
+          }
+        ]
+      },
+      "2011": {
+        "athleteCount": 1318,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 6
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 5
+          }
+        ]
+      },
+      "2012": {
+        "athleteCount": 1315,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 5
+          }
+        ]
+      },
+      "2013": {
+        "athleteCount": 1531,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 8
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 8
+          }
+        ]
+      },
+      "2016": {
+        "athleteCount": 1748,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 95
+          }
+        ]
+      },
+      "2017": {
+        "athleteCount": 1941,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 90
+          }
+        ]
+      },
+      "2018": {
+        "athleteCount": 1921,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 97
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 95
+          }
+        ]
+      },
+      "2019": {
+        "athleteCount": 1982,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 97
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 1929,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 91
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 1454,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 94
+          }
+        ]
+      }
+    },
+    "brasilia": {
+      "2014": {
+        "athleteCount": 883,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 100
+          }
+        ]
+      },
+      "2015": {
+        "athleteCount": 983,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 3
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 1414,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 6
+          },
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 5
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 1331,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 3
+          },
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 3
+          }
+        ]
+      }
+    },
+    "buenos-aires": {
+      "2023": {
+        "athleteCount": 1183,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 8
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 1228,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 7
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 1055,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 8
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 6
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 1034,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 6
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 10
+          }
+        ]
+      }
+    },
+    "cairns": {
+      "2017": {
+        "athleteCount": 1156,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 90
+          }
+        ]
+      }
+    },
+    "calgary": {
+      "2009": {
+        "athleteCount": 1056,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 7
+          }
+        ]
+      },
+      "2011": {
+        "athleteCount": 528,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 4
+          }
+        ]
+      },
+      "2012": {
+        "athleteCount": 548,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 3
+          }
+        ]
+      },
+      "2016": {
+        "athleteCount": 729,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 7
+          }
+        ]
+      },
+      "2017": {
+        "athleteCount": 687,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 9
+          },
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 4
+          }
+        ]
+      },
+      "2018": {
+        "athleteCount": 791,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 6
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 4
+          }
+        ]
+      },
+      "2021": {
+        "athleteCount": 781,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 7
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 450,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 5
+          },
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 95
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 10
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 571,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 10
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 244,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 4
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 5
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 970,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 94
+          }
+        ]
+      }
+    },
+    "campeche": {
+      "2017": {
+        "athleteCount": 894,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 2
+          },
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 91
+          }
+        ]
+      },
+      "2018": {
+        "athleteCount": 620,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 1
+          }
+        ]
+      },
+      "2019": {
+        "athleteCount": 587,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 2
+          }
+        ]
+      },
+      "2020": {
+        "athleteCount": 554,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 2
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 708,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 5
+          }
+        ]
+      }
+    },
+    "cartagena": {
+      "2018": {
+        "athleteCount": 1627,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 91
+          }
+        ]
+      },
+      "2019": {
+        "athleteCount": 1806,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 92
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 1652,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 91
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 1728,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 92
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 1773,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 90
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 90
+          }
+        ]
+      }
+    },
+    "cascais": {
+      "2017": {
+        "athleteCount": 1625,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 92
+          }
+        ]
+      },
+      "2018": {
+        "athleteCount": 1974,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 96
+          }
+        ]
+      },
+      "2019": {
+        "athleteCount": 2074,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 92
+          }
+        ]
+      },
+      "2021": {
+        "athleteCount": 2323,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 93
+          }
+        ]
+      }
+    },
+    "cebu-philippines": {
+      "2010": {
+        "athleteCount": 496,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 93
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 99
+          }
+        ]
+      },
+      "2011": {
+        "athleteCount": 697,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 96
+          },
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 6
+          }
+        ]
+      },
+      "2012": {
+        "athleteCount": 1130,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 98
+          }
+        ]
+      },
+      "2013": {
+        "athleteCount": 1492,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 90
+          }
+        ]
+      },
+      "2014": {
+        "athleteCount": 1643,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 97
+          },
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 92
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 94
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 99
+          }
+        ]
+      },
+      "2015": {
+        "athleteCount": 1485,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 100
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 99
+          }
+        ]
+      },
+      "2016": {
+        "athleteCount": 2065,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 91
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 94
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 99
+          }
+        ]
+      },
+      "2017": {
+        "athleteCount": 1612,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 100
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 93
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 100
+          }
+        ]
+      },
+      "2018": {
+        "athleteCount": 1347,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 98
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 97
+          }
+        ]
+      },
+      "2019": {
+        "athleteCount": 1034,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 96
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 98
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 599,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 97
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 99
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 666,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 99
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 94
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 664,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 93
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 93
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 515,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 7
+          }
+        ]
+      }
+    },
+    "chattanooga": {
+      "2017": {
+        "athleteCount": 2104,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 2
+          }
+        ]
+      },
+      "2018": {
+        "athleteCount": 2158,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 9
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 93
+          }
+        ]
+      },
+      "2019": {
+        "athleteCount": 2747,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 2
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 90
+          }
+        ]
+      },
+      "2021": {
+        "athleteCount": 1998,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 90
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 2754,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 92
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 3212,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 90
+          }
+        ]
+      }
+    },
+    "coeur-dalene": {
+      "2016": {
+        "athleteCount": 2220,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 92
+          }
+        ]
+      },
+      "2018": {
+        "athleteCount": 1470,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 90
+          }
+        ]
+      },
+      "2019": {
+        "athleteCount": 1945,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 92
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 2094,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 91
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 1545,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 0
+          },
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 97
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 996,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 96
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 1054,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 96
+          }
+        ]
+      }
+    },
+    "colombo": {
+      "2026": {
+        "athleteCount": 360,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 9
+          }
+        ]
+      }
+    },
+    "cozumel": {
+      "2010": {
+        "athleteCount": 694,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 94
+          }
+        ]
+      },
+      "2011": {
+        "athleteCount": 841,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 3
+          }
+        ]
+      },
+      "2014": {
+        "athleteCount": 1386,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 91
+          }
+        ]
+      },
+      "2015": {
+        "athleteCount": 1057,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 92
+          }
+        ]
+      },
+      "2017": {
+        "athleteCount": 1266,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 91
+          }
+        ]
+      },
+      "2019": {
+        "athleteCount": 1494,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 91
+          }
+        ]
+      },
+      "2020": {
+        "athleteCount": 496,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 9
+          }
+        ]
+      },
+      "2021": {
+        "athleteCount": 1227,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 98
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 94
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 1704,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 93
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 1611,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 95
+          }
+        ]
+      }
+    },
+    "croatia": {
+      "2022": {
+        "athleteCount": 781,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 10
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 1179,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 5
+          }
+        ]
+      }
+    },
+    "curitiba": {
+      "2026": {
+        "athleteCount": 1241,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 7
+          }
+        ]
+      }
+    },
+    "dallas-little-elm": {
+      "2026": {
+        "athleteCount": 1685,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 97
+          }
+        ]
+      }
+    },
+    "danang": {
+      "2015": {
+        "athleteCount": 671,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 97
+          }
+        ]
+      },
+      "2017": {
+        "athleteCount": 827,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 93
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 98
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 95
+          }
+        ]
+      },
+      "2018": {
+        "athleteCount": 905,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 97
+          }
+        ]
+      },
+      "2019": {
+        "athleteCount": 1312,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 98
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 792,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 97
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 92
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 96
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 1194,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 99
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 99
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 1034,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 0
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 98
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 1505,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 94
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 94
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 1219,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 99
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 98
+          }
+        ]
+      }
+    },
+    "davao-philippines": {
+      "2026": {
+        "athleteCount": 424,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 99
+          }
+        ]
+      }
+    },
+    "des-moines": {
+      "2023": {
+        "athleteCount": 1213,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 96
+          }
+        ]
+      }
+    },
+    "desaru-coast": {
+      "2022": {
+        "athleteCount": 739,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 100
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 95
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 527,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 98
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 100
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 489,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 91
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 96
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 396,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 99
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 96
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 384,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 3
+          }
+        ]
+      }
+    },
+    "dhofar": {
+      "2023": {
+        "athleteCount": 257,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 10
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 90
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 205,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 6
+          },
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 9
+          }
+        ]
+      }
+    },
+    "duisburg": {
+      "2021": {
+        "athleteCount": 1376,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 9
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 1991,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 5
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 1902,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 2
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 1888,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 3
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 2033,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 99
+          },
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 8
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 1992,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 6
+          }
+        ]
+      }
+    },
+    "durban": {
+      "2015": {
+        "athleteCount": 2211,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 94
+          }
+        ]
+      },
+      "2017": {
+        "athleteCount": 2127,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 100
+          }
+        ]
+      },
+      "2019": {
+        "athleteCount": 2557,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 97
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 992,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 91
+          },
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 90
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 99
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 936,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 95
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 875,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 94
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 1245,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 90
+          }
+        ]
+      }
+    },
+    "eagleman": {
+      "2006": {
+        "athleteCount": 1407,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 8
+          }
+        ]
+      },
+      "2009": {
+        "athleteCount": 1491,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 4
+          }
+        ]
+      },
+      "2010": {
+        "athleteCount": 1604,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 98
+          },
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 2
+          }
+        ]
+      },
+      "2011": {
+        "athleteCount": 1669,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 93
+          },
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 2
+          }
+        ]
+      },
+      "2012": {
+        "athleteCount": 1739,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 4
+          }
+        ]
+      },
+      "2013": {
+        "athleteCount": 1851,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 4
+          }
+        ]
+      },
+      "2014": {
+        "athleteCount": 1981,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 2
+          }
+        ]
+      },
+      "2015": {
+        "athleteCount": 1906,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 97
+          },
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 3
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 96
+          }
+        ]
+      },
+      "2016": {
+        "athleteCount": 1670,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 95
+          }
+        ]
+      },
+      "2018": {
+        "athleteCount": 1590,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 98
+          }
+        ]
+      },
+      "2021": {
+        "athleteCount": 1537,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 93
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 2172,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 92
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 1575,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 91
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 1802,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 93
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 92
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 2000,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 91
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 2245,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 95
+          }
+        ]
+      }
+    },
+    "ecuador": {
+      "2016": {
+        "athleteCount": 849,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 9
+          }
+        ]
+      },
+      "2017": {
+        "athleteCount": 1067,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 92
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 8
+          }
+        ]
+      },
+      "2019": {
+        "athleteCount": 1067,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 99
+          }
+        ]
+      },
+      "2021": {
+        "athleteCount": 665,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 90
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 761,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 94
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 708,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 99
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 738,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 100
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 753,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 99
+          }
+        ]
+      }
+    },
+    "elsinore": {
+      "2014": {
+        "athleteCount": 708,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 4
+          }
+        ]
+      },
+      "2015": {
+        "athleteCount": 874,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 7
+          }
+        ]
+      },
+      "2017": {
+        "athleteCount": 987,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 5
+          }
+        ]
+      },
+      "2018": {
+        "athleteCount": 1300,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 4
+          }
+        ]
+      },
+      "2019": {
+        "athleteCount": 1321,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 5
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 5
+          }
+        ]
+      },
+      "2021": {
+        "athleteCount": 692,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 4
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 3
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 919,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 4
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 1797,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 7
+          }
+        ]
+      }
+    },
+    "emilia-romagna": {
+      "2019": {
+        "athleteCount": 1807,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 9
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 2492,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 97
+          },
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 7
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 99
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 1950,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 94
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 2371,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 95
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 2071,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 94
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 98
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 2614,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 95
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 98
+          }
+        ]
+      }
+    },
+    "encarnacion": {
+      "2025": {
+        "athleteCount": 381,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 9
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 8
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 285,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 6
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 5
+          }
+        ]
+      }
+    },
+    "erkner": {
+      "2022": {
+        "athleteCount": 1345,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 4
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 6
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 1320,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 4
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 1462,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 7
+          },
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 8
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 1568,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 5
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 10
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 1695,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 8
+          }
+        ]
+      }
+    },
+    "florianopolis": {
+      "2019": {
+        "athleteCount": 1398,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 8
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 1355,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 9
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 1561,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 8
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 1425,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 10
+          }
+        ]
+      }
+    },
+    "florida": {
+      "2008": {
+        "athleteCount": 1932,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 9
+          }
+        ]
+      },
+      "2010": {
+        "athleteCount": 1951,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 90
+          }
+        ]
+      },
+      "2014": {
+        "athleteCount": 1575,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 9
+          }
+        ]
+      },
+      "2019": {
+        "athleteCount": 1301,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 92
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 91
+          }
+        ]
+      },
+      "2021": {
+        "athleteCount": 1235,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 94
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 1616,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 95
+          }
+        ]
+      }
+    },
+    "gdynia": {
+      "2016": {
+        "athleteCount": 1939,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 10
+          }
+        ]
+      },
+      "2017": {
+        "athleteCount": 1890,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 8
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 9
+          }
+        ]
+      },
+      "2018": {
+        "athleteCount": 1837,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 6
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 9
+          }
+        ]
+      },
+      "2019": {
+        "athleteCount": 1802,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 7
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 7
+          }
+        ]
+      },
+      "2021": {
+        "athleteCount": 1116,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 93
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 9
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 664,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 4
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 631,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 5
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 635,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 10
+          }
+        ]
+      }
+    },
+    "geelong": {
+      "2014": {
+        "athleteCount": 730,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 5
+          }
+        ]
+      },
+      "2017": {
+        "athleteCount": 667,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 7
+          }
+        ]
+      },
+      "2020": {
+        "athleteCount": 1263,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 10
+          }
+        ]
+      },
+      "2021": {
+        "athleteCount": 835,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 8
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 675,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 5
+          }
+        ]
+      }
+    },
+    "goseong": {
+      "2023": {
+        "athleteCount": 742,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 95
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 92
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 1267,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 93
+          }
+        ]
+      }
+    },
+    "gulf-coast": {
+      "2018": {
+        "athleteCount": 1204,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 96
+          }
+        ]
+      },
+      "2019": {
+        "athleteCount": 1424,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 96
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 94
+          }
+        ]
+      },
+      "2020": {
+        "athleteCount": 332,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 93
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 98
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 95
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 1246,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 93
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 1552,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 0
+          }
+        ]
+      }
+    },
+    "hawaii": {
+      "2005": {
+        "athleteCount": 675,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 2
+          }
+        ]
+      },
+      "2006": {
+        "athleteCount": 818,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 5
+          }
+        ]
+      },
+      "2011": {
+        "athleteCount": 1357,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 6
+          }
+        ]
+      },
+      "2013": {
+        "athleteCount": 1463,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 93
+          }
+        ]
+      },
+      "2016": {
+        "athleteCount": 1398,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 92
+          }
+        ]
+      },
+      "2017": {
+        "athleteCount": 1124,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 93
+          }
+        ]
+      },
+      "2018": {
+        "athleteCount": 1255,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 95
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 91
+          }
+        ]
+      },
+      "2019": {
+        "athleteCount": 1141,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 93
+          }
+        ]
+      },
+      "2021": {
+        "athleteCount": 1078,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 93
+          },
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 91
+          },
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 95
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 97
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 93
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 1242,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 92
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 91
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 95
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 996,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 97
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 91
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 90
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 960,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 1
+          },
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 99
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 92
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 94
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 930,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 99
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 92
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 96
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 1118,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 96
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 91
+          }
+        ]
+      }
+    },
+    "hengqin": {
+      "2026": {
+        "athleteCount": 1034,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 98
+          }
+        ]
+      }
+    },
+    "hradec-kralove": {
+      "2024": {
+        "athleteCount": 1138,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 10
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 1346,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 7
+          }
+        ]
+      }
+    },
+    "jonkoping": {
+      "2019": {
+        "athleteCount": 2087,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 93
+          }
+        ]
+      },
+      "2021": {
+        "athleteCount": 640,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 1
+          },
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 98
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 9
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 1519,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 94
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 1283,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 96
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 1408,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 0
+          },
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 98
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 1753,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 98
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 2391,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 97
+          }
+        ]
+      }
+    },
+    "kenting": {
+      "2021": {
+        "athleteCount": 336,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 99
+          },
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 96
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 696,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 97
+          },
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 100
+          },
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 100
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 97
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 100
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 1261,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 99
+          },
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 100
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 97
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 98
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 1058,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 2
+          },
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 99
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 98
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 100
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 919,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 98
+          },
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 100
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 99
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 98
+          }
+        ]
+      }
+    },
+    "knokke-heist": {
+      "2023": {
+        "athleteCount": 1998,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 7
+          },
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 100
+          },
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 6
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 10
+          }
+        ]
+      }
+    },
+    "kraichgau": {
+      "2015": {
+        "athleteCount": 557,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 6
+          },
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 5
+          },
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 1
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 5
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 0
+          }
+        ]
+      },
+      "2016": {
+        "athleteCount": 547,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 1
+          },
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 0
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 8
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 0
+          }
+        ]
+      },
+      "2017": {
+        "athleteCount": 521,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 8
+          },
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 2
+          },
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 1
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 1
+          }
+        ]
+      },
+      "2018": {
+        "athleteCount": 528,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 10
+          },
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 3
+          },
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 1
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 0
+          }
+        ]
+      },
+      "2019": {
+        "athleteCount": 566,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 7
+          },
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 8
+          },
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 1
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 1
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 1903,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 5
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 1968,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 8
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 2097,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 10
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 2111,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 98
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 2
+          }
+        ]
+      }
+    },
+    "la-quinta": {
+      "2018": {
+        "athleteCount": 2161,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 94
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 1559,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 90
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 2185,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 91
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 2236,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 91
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 90
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 2247,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 90
+          }
+        ]
+      }
+    },
+    "langkawi": {
+      "2017": {
+        "athleteCount": 579,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 95
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 99
+          }
+        ]
+      },
+      "2018": {
+        "athleteCount": 799,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 95
+          }
+        ]
+      },
+      "2019": {
+        "athleteCount": 789,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 96
+          },
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 96
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 99
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 449,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 91
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 440,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 93
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 95
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 456,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 96
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 495,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 90
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 93
+          }
+        ]
+      }
+    },
+    "leipzig": {
+      "2026": {
+        "athleteCount": 2218,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 6
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 93
+          }
+        ]
+      }
+    },
+    "les-sables-dolonne": {
+      "2019": {
+        "athleteCount": 2337,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 8
+          }
+        ]
+      },
+      "2020": {
+        "athleteCount": 1175,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 7
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 2588,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 10
+          }
+        ]
+      }
+    },
+    "los-cabos": {
+      "2015": {
+        "athleteCount": 658,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 91
+          }
+        ]
+      },
+      "2016": {
+        "athleteCount": 397,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 92
+          }
+        ]
+      },
+      "2019": {
+        "athleteCount": 639,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 9
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 559,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 94
+          },
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 92
+          }
+        ]
+      }
+    },
+    "louisville": {
+      "2022": {
+        "athleteCount": 2307,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 2
+          },
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 94
+          }
+        ]
+      }
+    },
+    "lubbock": {
+      "2022": {
+        "athleteCount": 683,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 97
+          },
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 5
+          }
+        ]
+      }
+    },
+    "luxembourg": {
+      "2013": {
+        "athleteCount": 950,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 3
+          }
+        ]
+      },
+      "2014": {
+        "athleteCount": 1376,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 8
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 8
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 3
+          }
+        ]
+      },
+      "2015": {
+        "athleteCount": 1406,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 8
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 5
+          }
+        ]
+      },
+      "2016": {
+        "athleteCount": 1581,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 4
+          },
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 1
+          },
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 10
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 10
+          }
+        ]
+      },
+      "2017": {
+        "athleteCount": 1486,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 7
+          },
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 10
+          },
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 9
+          }
+        ]
+      },
+      "2021": {
+        "athleteCount": 716,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 7
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 2265,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 97
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 2393,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 90
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 96
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 2166,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 95
+          }
+        ]
+      }
+    },
+    "maine": {
+      "2022": {
+        "athleteCount": 1195,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 6
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 1757,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 1
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 1834,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 6
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 1838,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 4
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 2022,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 4
+          }
+        ]
+      }
+    },
+    "mallorca": {
+      "2013": {
+        "athleteCount": 2500,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 4
+          }
+        ]
+      },
+      "2016": {
+        "athleteCount": 2464,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 91
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 91
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 2686,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 92
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 2524,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 92
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 2707,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 93
+          }
+        ]
+      }
+    },
+    "melbourne": {
+      "2022": {
+        "athleteCount": 1182,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 7
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 3
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 1270,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 1
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 4
+          }
+        ]
+      }
+    },
+    "michigan": {
+      "2019": {
+        "athleteCount": 2141,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 93
+          }
+        ]
+      }
+    },
+    "mont-tremblant": {
+      "2012": {
+        "athleteCount": 1665,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 3
+          }
+        ]
+      },
+      "2013": {
+        "athleteCount": 1872,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 7
+          }
+        ]
+      },
+      "2014": {
+        "athleteCount": 2177,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 6
+          }
+        ]
+      },
+      "2015": {
+        "athleteCount": 2150,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 8
+          }
+        ]
+      },
+      "2016": {
+        "athleteCount": 894,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 7
+          },
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 1
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 1
+          }
+        ]
+      },
+      "2018": {
+        "athleteCount": 926,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 9
+          },
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 0
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 0
+          }
+        ]
+      },
+      "2019": {
+        "athleteCount": 850,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 2
+          },
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 1
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 7
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 1
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 1808,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 4
+          }
+        ]
+      }
+    },
+    "morro-bay": {
+      "2023": {
+        "athleteCount": 1715,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 96
+          }
+        ]
+      }
+    },
+    "mossel-bay": {
+      "2022": {
+        "athleteCount": 1683,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 100
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 91
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 1777,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 90
+          },
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 95
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 1375,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 98
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 96
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 1750,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 99
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 99
+          }
+        ]
+      }
+    },
+    "muncie": {
+      "2011": {
+        "athleteCount": 1533,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 90
+          },
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 4
+          }
+        ]
+      },
+      "2012": {
+        "athleteCount": 1505,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 0
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 5
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 1
+          }
+        ]
+      },
+      "2016": {
+        "athleteCount": 1805,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 90
+          }
+        ]
+      },
+      "2018": {
+        "athleteCount": 1446,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 96
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 92
+          }
+        ]
+      },
+      "2019": {
+        "athleteCount": 1450,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 95
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 90
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 864,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 92
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 808,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 90
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 716,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 94
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 93
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 902,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 92
+          }
+        ]
+      }
+    },
+    "muskoka": {
+      "2011": {
+        "athleteCount": 818,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 94
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 3
+          }
+        ]
+      },
+      "2012": {
+        "athleteCount": 797,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 95
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 4
+          }
+        ]
+      },
+      "2013": {
+        "athleteCount": 1173,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 93
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 10
+          }
+        ]
+      },
+      "2014": {
+        "athleteCount": 895,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 97
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 8
+          }
+        ]
+      },
+      "2015": {
+        "athleteCount": 1194,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 92
+          }
+        ]
+      },
+      "2016": {
+        "athleteCount": 1082,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 95
+          }
+        ]
+      },
+      "2017": {
+        "athleteCount": 1109,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 91
+          },
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 97
+          }
+        ]
+      }
+    },
+    "musselman": {
+      "2025": {
+        "athleteCount": 1410,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 98
+          }
+        ]
+      }
+    },
+    "new-york": {
+      "2023": {
+        "athleteCount": 2122,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 1
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 96
+          }
+        ]
+      }
+    },
+    "new-zealand": {
+      "2018": {
+        "athleteCount": 322,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 1
+          }
+        ]
+      },
+      "2019": {
+        "athleteCount": 328,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 6
+          }
+        ]
+      }
+    },
+    "nice": {
+      "2018": {
+        "athleteCount": 2073,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 97
+          }
+        ]
+      },
+      "2021": {
+        "athleteCount": 1596,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 98
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 95
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 1643,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 99
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 97
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 2269,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 90
+          },
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 99
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 97
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 1924,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 91
+          },
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 99
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 96
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 2016,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 100
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 99
+          }
+        ]
+      }
+    },
+    "north-carolina": {
+      "2016": {
+        "athleteCount": 1019,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 99
+          },
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 94
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 99
+          }
+        ]
+      },
+      "2017": {
+        "athleteCount": 1632,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 8
+          }
+        ]
+      },
+      "2019": {
+        "athleteCount": 2207,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 10
+          },
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 96
+          }
+        ]
+      },
+      "2021": {
+        "athleteCount": 3991,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 8
+          },
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 93
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 2016,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 10
+          },
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 95
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 2301,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 93
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 2576,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 6
+          },
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 99
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 2557,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 10
+          },
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 97
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 2356,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 92
+          },
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 95
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 95
+          }
+        ]
+      }
+    },
+    "northern-california": {
+      "2026": {
+        "athleteCount": 1007,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 98
+          }
+        ]
+      }
+    },
+    "oceanside": {
+      "2013": {
+        "athleteCount": 2201,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 10
+          }
+        ]
+      },
+      "2016": {
+        "athleteCount": 2282,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 91
+          }
+        ]
+      },
+      "2017": {
+        "athleteCount": 2414,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 94
+          }
+        ]
+      },
+      "2021": {
+        "athleteCount": 1527,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 95
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 2220,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 99
+          },
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 91
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 91
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 2553,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 97
+          },
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 93
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 90
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 2500,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 98
+          }
+        ]
+      }
+    },
+    "ohio": {
+      "2016": {
+        "athleteCount": 1775,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 97
+          }
+        ]
+      },
+      "2017": {
+        "athleteCount": 1700,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 90
+          }
+        ]
+      },
+      "2018": {
+        "athleteCount": 1869,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 95
+          }
+        ]
+      },
+      "2019": {
+        "athleteCount": 1882,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 97
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 92
+          }
+        ]
+      },
+      "2021": {
+        "athleteCount": 1850,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 91
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 92
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 1390,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 98
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 90
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 1373,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 96
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 1026,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 95
+          }
+        ]
+      }
+    },
+    "omaha": {
+      "2026": {
+        "athleteCount": 1287,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 96
+          }
+        ]
+      }
+    },
+    "oregon": {
+      "2021": {
+        "athleteCount": 1750,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 3
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 2307,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 2
+          },
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 94
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 2313,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 2
+          },
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 90
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 2205,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 3
+          },
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 91
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 2141,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 2
+          },
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 94
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 2397,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 3
+          },
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 90
+          }
+        ]
+      }
+    },
+    "panama": {
+      "2012": {
+        "athleteCount": 542,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 4
+          },
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 90
+          }
+        ]
+      },
+      "2013": {
+        "athleteCount": 518,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 6
+          },
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 91
+          }
+        ]
+      },
+      "2014": {
+        "athleteCount": 737,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 3
+          }
+        ]
+      },
+      "2016": {
+        "athleteCount": 955,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 8
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 738,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 8
+          },
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 10
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 668,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 5
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 1043,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 3
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 1113,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 4
+          }
+        ]
+      }
+    },
+    "pennsylvania": {
+      "2023": {
+        "athleteCount": 1979,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 99
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 93
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 1050,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 100
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 808,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 98
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 1276,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 94
+          }
+        ]
+      }
+    },
+    "peru": {
+      "2017": {
+        "athleteCount": 1247,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 10
+          }
+        ]
+      },
+      "2019": {
+        "athleteCount": 1007,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 10
+          }
+        ]
+      }
+    },
+    "port-macquarie": {
+      "2011": {
+        "athleteCount": 539,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 9
+          },
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 0
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 2
+          }
+        ]
+      },
+      "2012": {
+        "athleteCount": 1047,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 10
+          },
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 1
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 1
+          }
+        ]
+      },
+      "2013": {
+        "athleteCount": 980,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 4
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 3
+          }
+        ]
+      },
+      "2014": {
+        "athleteCount": 640,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 7
+          },
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 4
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 1
+          }
+        ]
+      },
+      "2015": {
+        "athleteCount": 799,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 6
+          },
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 3
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 1
+          }
+        ]
+      },
+      "2016": {
+        "athleteCount": 621,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 1
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 7
+          }
+        ]
+      },
+      "2017": {
+        "athleteCount": 942,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 6
+          }
+        ]
+      },
+      "2018": {
+        "athleteCount": 954,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 9
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 2
+          }
+        ]
+      },
+      "2019": {
+        "athleteCount": 1055,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 5
+          }
+        ]
+      }
+    },
+    "poznan": {
+      "2022": {
+        "athleteCount": 567,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 5
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 5
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 5
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 482,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 3
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 1
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 8
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 679,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 6
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 9
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 4
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 1051,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 7
+          }
+        ]
+      }
+    },
+    "puerto-rico": {
+      "2016": {
+        "athleteCount": 969,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 92
+          }
+        ]
+      },
+      "2018": {
+        "athleteCount": 501,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 10
+          }
+        ]
+      },
+      "2019": {
+        "athleteCount": 787,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 9
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 490,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 91
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 639,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 93
+          }
+        ]
+      }
+    },
+    "puerto-varas": {
+      "2026": {
+        "athleteCount": 961,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 1
+          },
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 92
+          }
+        ]
+      }
+    },
+    "punta-del-este": {
+      "2015": {
+        "athleteCount": 1082,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 10
+          }
+        ]
+      },
+      "2016": {
+        "athleteCount": 561,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 1
+          },
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 10
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 2
+          }
+        ]
+      },
+      "2017": {
+        "athleteCount": 674,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 0
+          },
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 9
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 1
+          }
+        ]
+      },
+      "2018": {
+        "athleteCount": 550,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 0
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 0
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 8
+          }
+        ]
+      },
+      "2019": {
+        "athleteCount": 943,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 0
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 2
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 652,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 7
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 746,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 9
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 10
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 866,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 9
+          }
+        ]
+      }
+    },
+    "rio-de-janeiro": {
+      "2019": {
+        "athleteCount": 875,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 97
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 1532,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 98
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 1390,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 99
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 1446,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 2
+          },
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 99
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 1331,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 98
+          }
+        ]
+      }
+    },
+    "rockford-illinois": {
+      "2025": {
+        "athleteCount": 1763,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 97
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 99
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 98
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 1644,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 4
+          }
+        ]
+      }
+    },
+    "ruidoso-new-mexico": {
+      "2026": {
+        "athleteCount": 764,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 92
+          },
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 91
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 90
+          }
+        ]
+      }
+    },
+    "san-juan": {
+      "2022": {
+        "athleteCount": 496,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 5
+          },
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 8
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 1
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 874,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 6
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 625,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 4
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 9
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 994,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 5
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 10
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 7
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 830,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 3
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 6
+          }
+        ]
+      }
+    },
+    "san-salvador": {
+      "2026": {
+        "athleteCount": 654,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 95
+          },
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 100
+          }
+        ]
+      }
+    },
+    "santa-cruz": {
+      "2015": {
+        "athleteCount": 1472,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 93
+          }
+        ]
+      },
+      "2016": {
+        "athleteCount": 1892,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 97
+          }
+        ]
+      },
+      "2017": {
+        "athleteCount": 1833,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 1
+          }
+        ]
+      },
+      "2018": {
+        "athleteCount": 1564,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 91
+          }
+        ]
+      },
+      "2019": {
+        "athleteCount": 1747,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 95
+          }
+        ]
+      },
+      "2021": {
+        "athleteCount": 1663,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 97
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 2549,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 91
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 2134,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 95
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 2070,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 95
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 2216,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 96
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 2228,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 98
+          }
+        ]
+      }
+    },
+    "sao-paulo": {
+      "2019": {
+        "athleteCount": 1329,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 3
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 1484,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 10
+          }
+        ]
+      }
+    },
+    "shanghai-chongming": {
+      "2018": {
+        "athleteCount": 907,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 93
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 1070,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 96
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 778,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 97
+          }
+        ]
+      }
+    },
+    "subic-bay-philippines": {
+      "2015": {
+        "athleteCount": 548,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 6
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 91
+          }
+        ]
+      },
+      "2016": {
+        "athleteCount": 477,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 4
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 94
+          }
+        ]
+      },
+      "2017": {
+        "athleteCount": 544,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 90
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 96
+          }
+        ]
+      },
+      "2018": {
+        "athleteCount": 241,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 97
+          }
+        ]
+      },
+      "2019": {
+        "athleteCount": 518,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 3
+          },
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 96
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 99
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 255,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 94
+          },
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 94
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 99
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 100
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 278,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 100
+          },
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 93
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 419,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 93
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 97
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 305,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 98
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 96
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 97
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 398,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 94
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 98
+          }
+        ]
+      }
+    },
+    "sunshine-coast": {
+      "2013": {
+        "athleteCount": 1375,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 7
+          },
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 7
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 3
+          }
+        ]
+      },
+      "2014": {
+        "athleteCount": 1435,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 8
+          },
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 9
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 3
+          }
+        ]
+      },
+      "2015": {
+        "athleteCount": 1574,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 7
+          },
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 7
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 1
+          }
+        ]
+      },
+      "2018": {
+        "athleteCount": 1159,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 8
+          }
+        ]
+      },
+      "2020": {
+        "athleteCount": 727,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 7
+          }
+        ]
+      },
+      "2021": {
+        "athleteCount": 1078,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 8
+          },
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 9
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 1497,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 7
+          },
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 2
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 1237,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 10
+          }
+        ]
+      }
+    },
+    "swansea": {
+      "2022": {
+        "athleteCount": 1558,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 94
+          },
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 95
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 1456,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 98
+          },
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 98
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 1642,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 97
+          },
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 93
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 1462,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 95
+          },
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 95
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 1753,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 98
+          },
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 98
+          }
+        ]
+      }
+    },
+    "switzerland": {
+      "2011": {
+        "athleteCount": 1714,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 7
+          }
+        ]
+      },
+      "2012": {
+        "athleteCount": 1915,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 8
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 7
+          }
+        ]
+      },
+      "2014": {
+        "athleteCount": 1670,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 3
+          }
+        ]
+      },
+      "2016": {
+        "athleteCount": 1747,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 7
+          }
+        ]
+      },
+      "2021": {
+        "athleteCount": 1035,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 4
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 2033,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 1
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 6
+          }
+        ]
+      }
+    },
+    "tallinn": {
+      "2020": {
+        "athleteCount": 517,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 6
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 916,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 7
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 1093,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 6
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 1565,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 91
+          }
+        ]
+      }
+    },
+    "texas": {
+      "2010": {
+        "athleteCount": 1339,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 94
+          },
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 8
+          }
+        ]
+      },
+      "2011": {
+        "athleteCount": 1818,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 8
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 10
+          }
+        ]
+      },
+      "2012": {
+        "athleteCount": 2226,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 10
+          }
+        ]
+      },
+      "2019": {
+        "athleteCount": 384,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 3
+          },
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 2
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 0
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 2
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 1453,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 97
+          }
+        ]
+      }
+    },
+    "valdivia": {
+      "2024": {
+        "athleteCount": 1502,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 95
+          },
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 10
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 93
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 1471,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 10
+          },
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 92
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 93
+          }
+        ]
+      }
+    },
+    "valencia": {
+      "2024": {
+        "athleteCount": 2329,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 4
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 2149,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 6
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 2284,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 92
+          }
+        ]
+      }
+    },
+    "venice-jesolo": {
+      "2021": {
+        "athleteCount": 1028,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 3
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 1190,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 6
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 2364,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 5
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 8
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 2413,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 4
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 6
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 2312,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 3
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 6
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 2347,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 8
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 7
+          }
+        ]
+      }
+    },
+    "vichy": {
+      "2018": {
+        "athleteCount": 1764,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 6
+          }
+        ]
+      },
+      "2019": {
+        "athleteCount": 1695,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 91
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 1498,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 9
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 2077,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 8
+          }
+        ]
+      }
+    },
+    "victoria": {
+      "2014": {
+        "athleteCount": 463,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 3
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 4
+          }
+        ]
+      },
+      "2015": {
+        "athleteCount": 1364,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 4
+          }
+        ]
+      },
+      "2016": {
+        "athleteCount": 1439,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 5
+          }
+        ]
+      },
+      "2017": {
+        "athleteCount": 1180,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 8
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 1624,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 91
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 1380,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 98
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 90
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 1304,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 94
+          }
+        ]
+      }
+    },
+    "virginia-blue-ridge": {
+      "2021": {
+        "athleteCount": 1416,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 99
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 93
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 1574,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 99
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 811,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 98
+          }
+        ]
+      }
+    },
+    "waco": {
+      "2018": {
+        "athleteCount": 2096,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 91
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 97
+          }
+        ]
+      },
+      "2019": {
+        "athleteCount": 2127,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 97
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 96
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 91
+          }
+        ]
+      },
+      "2021": {
+        "athleteCount": 3056,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 91
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 98
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 97
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 1282,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 90
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 99
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 1491,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 96
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 97
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 1823,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 92
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 90
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 94
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 1796,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "slow",
+            "percentile": 93
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 93
+          },
+          {
+            "split": "run",
+            "direction": "slow",
+            "percentile": 93
+          }
+        ]
+      }
+    },
+    "warsaw": {
+      "2021": {
+        "athleteCount": 550,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 2
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 6
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 737,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 2
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 9
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 1009,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 2
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 1236,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 2
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 1695,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 2
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 1978,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 8
+          }
+        ]
+      }
+    },
+    "washington-tri-cities": {
+      "2021": {
+        "athleteCount": 1345,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 90
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 95
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 1174,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 90
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 2027,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 3
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 1650,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 3
+          },
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 93
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 1930,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 4
+          },
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 94
+          }
+        ]
+      }
+    },
+    "western-australia": {
+      "2016": {
+        "athleteCount": 517,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 9
+          }
+        ]
+      }
+    },
+    "western-massachusetts": {
+      "2023": {
+        "athleteCount": 1086,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 99
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 96
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 1184,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 97
+          }
+        ]
+      }
+    },
+    "western-sydney": {
+      "2014": {
+        "athleteCount": 1183,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 2
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 3
+          }
+        ]
+      },
+      "2015": {
+        "athleteCount": 1059,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 1
+          },
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 8
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 1
+          }
+        ]
+      },
+      "2016": {
+        "athleteCount": 833,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 1
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 3
+          }
+        ]
+      },
+      "2017": {
+        "athleteCount": 796,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 1
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 2
+          }
+        ]
+      },
+      "2018": {
+        "athleteCount": 1000,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 3
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 3
+          }
+        ]
+      },
+      "2019": {
+        "athleteCount": 1302,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 3
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 9
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 821,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 6
+          }
+        ]
+      }
+    },
+    "westfriesland": {
+      "2023": {
+        "athleteCount": 1238,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 9
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 1627,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 10
+          }
+        ]
+      }
+    },
+    "weymouth": {
+      "2017": {
+        "athleteCount": 1872,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 92
+          }
+        ]
+      },
+      "2018": {
+        "athleteCount": 1875,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 3
+          },
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 99
+          },
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 98
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 97
+          }
+        ]
+      },
+      "2019": {
+        "athleteCount": 1975,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 1
+          },
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 90
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 1976,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 93
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 2060,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 95
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 1773,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 96
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 1723,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 92
+          },
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 92
+          }
+        ]
+      }
+    },
+    "wisconsin": {
+      "2017": {
+        "athleteCount": 1771,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 94
+          }
+        ]
+      },
+      "2018": {
+        "athleteCount": 1618,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 94
+          }
+        ]
+      },
+      "2021": {
+        "athleteCount": 778,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 96
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 1277,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 92
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 1443,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 92
+          },
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 90
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 96
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 1527,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 94
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 94
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 1708,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "slow",
+            "percentile": 97
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 94
+          }
+        ]
+      }
+    },
+    "world-championship-2026": {
+      "2006": {
+        "athleteCount": 1322,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 5
+          },
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 1
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 10
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 3
+          }
+        ]
+      },
+      "2009": {
+        "athleteCount": 1386,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 9
+          },
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 6
+          },
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 1
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 9
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 2
+          }
+        ]
+      },
+      "2011": {
+        "athleteCount": 1464,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 9
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 1
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 3
+          }
+        ]
+      },
+      "2012": {
+        "athleteCount": 1672,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 2
+          }
+        ]
+      },
+      "2013": {
+        "athleteCount": 1971,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 2
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 4
+          }
+        ]
+      },
+      "2014": {
+        "athleteCount": 2180,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 7
+          },
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 3
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 0
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 2
+          }
+        ]
+      },
+      "2015": {
+        "athleteCount": 2236,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 7
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 6
+          }
+        ]
+      },
+      "2016": {
+        "athleteCount": 2608,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 8
+          },
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 9
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 3
+          }
+        ]
+      },
+      "2017": {
+        "athleteCount": 2357,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 7
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 8
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 2
+          }
+        ]
+      },
+      "2018": {
+        "athleteCount": 2328,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 9
+          },
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 5
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 1
+          }
+        ]
+      },
+      "2019": {
+        "athleteCount": 3234,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "fast",
+            "percentile": 7
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 1
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 3549,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 4
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 2
+          }
+        ]
+      },
+      "2023": {
+        "athleteCount": 3308,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 1
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 90
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 1
+          }
+        ]
+      },
+      "2024": {
+        "athleteCount": 3081,
+        "signals": [
+          {
+            "split": "swim",
+            "direction": "fast",
+            "percentile": 8
+          },
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 3
+          },
+          {
+            "split": "t2",
+            "direction": "fast",
+            "percentile": 5
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 2
+          }
+        ]
+      },
+      "2025": {
+        "athleteCount": 3336,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 1
+          }
+        ]
+      },
+      "2026": {
+        "athleteCount": 3156,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 2
+          }
+        ]
+      }
+    },
+    "world-championship-2027": {
+      "2026": {
+        "athleteCount": 3156,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 2
+          }
+        ]
+      }
+    },
+    "zell-am-see": {
+      "2012": {
+        "athleteCount": 1514,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 2
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 5
+          }
+        ]
+      },
+      "2013": {
+        "athleteCount": 1591,
+        "signals": [
+          {
+            "split": "bike",
+            "direction": "fast",
+            "percentile": 7
+          },
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 8
+          }
+        ]
+      },
+      "2014": {
+        "athleteCount": 1898,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 9
+          }
+        ]
+      },
+      "2018": {
+        "athleteCount": 1965,
+        "signals": [
+          {
+            "split": "run",
+            "direction": "fast",
+            "percentile": 3
+          }
+        ]
+      },
+      "2021": {
+        "athleteCount": 1121,
+        "signals": [
+          {
+            "split": "t1",
+            "direction": "slow",
+            "percentile": 90
+          },
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 90
+          }
+        ]
+      },
+      "2022": {
+        "athleteCount": 1875,
+        "signals": [
+          {
+            "split": "t2",
+            "direction": "slow",
+            "percentile": 94
+          }
+        ]
+      }
+    }
+  }
+}

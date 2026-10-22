@@ -1,0 +1,237 @@
+{
+  "schemaVersion": 1,
+  "retrievedAt": "2026-10-22",
+  "races": {
+    "new-york": {
+      "profile": {
+        "swimType": "Bay",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-new-york",
+      "editions": {
+        "2025": {
+          "swimLaps": 1,
+          "bikeLaps": 2,
+          "runLaps": 2,
+          "bikeElevationGainFt": 756,
+          "runElevationGainFt": 65,
+          "features": [
+            "Protected Zach's Bay swim",
+            "Fully closed parkway bike course"
+          ],
+          "source": "2025-athlete-guide"
+        }
+      },
+      "sources": {
+        "2025-athlete-guide": {
+          "label": "2025 athlete guide",
+          "type": "athlete-guide",
+          "url": "https://www.ironman.com/sites/default/files/2025-09/2025%2070.3%20NY%20Athlete%20Guide%20R6.pdf"
+        }
+      }
+    },
+    "north-carolina": {
+      "profile": {
+        "swimType": "Tidal river",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Rolling"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-north-carolina",
+      "editions": {
+        "2025": {
+          "swimLaps": 1,
+          "bikeLaps": 1,
+          "runLaps": 1,
+          "bikeElevationGainFt": 643,
+          "runElevationGainFt": 261,
+          "transitionCount": 2,
+          "transitionLocations": [
+            "Wrightsville Beach",
+            "Wilmington Convention Center"
+          ],
+          "features": [
+            "Current-assisted point-to-point swim",
+            "Separate T1 and T2 locations"
+          ],
+          "source": "2025-course-maps"
+        }
+      },
+      "sources": {
+        "2025-course-maps": {
+          "label": "2025 course maps",
+          "type": "course-map",
+          "url": "https://www.ironman.com/sites/default/files/2025-08/IM25_703NorthCarolina_CourseMaps_8.5x11_V3.pdf"
+        }
+      }
+    },
+    "western-massachusetts": {
+      "profile": {
+        "swimType": "River",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Rolling"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-western-massachusetts",
+      "editions": {
+        "2025": {
+          "swimLaps": 1,
+          "bikeLaps": 1,
+          "runLaps": 2,
+          "bikeElevationGainFt": 2521,
+          "runElevationGainFt": 742,
+          "features": [
+            "Connecticut River swim",
+            "Two-loop riverfront run"
+          ],
+          "source": "2025-athlete-guide"
+        }
+      },
+      "sources": {
+        "2025-athlete-guide": {
+          "label": "2025 athlete guide",
+          "type": "athlete-guide",
+          "url": "https://www.ironman.com/sites/default/files/2025-05/2025%20IM%2070.3%20Western%20Massachusetts%20Athlete%20Guide.pdf"
+        }
+      }
+    },
+    "oregon": {
+      "profile": {
+        "swimType": "River",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-oregon",
+      "editions": {
+        "2025": {
+          "swimLaps": 1,
+          "bikeLaps": 1,
+          "runLaps": 2,
+          "bikeElevationGainFt": 1149,
+          "runElevationGainFt": 341,
+          "features": [
+            "Current-assisted downriver swim",
+            "Out-and-back bike course"
+          ],
+          "source": "2025-athlete-guide"
+        }
+      },
+      "sources": {
+        "2025-athlete-guide": {
+          "label": "2025 athlete guide",
+          "type": "athlete-guide",
+          "url": "https://www.ironman.com/sites/default/files/2025-06/2025%20Oregon%20Athlete%20Guide.pdf"
+        }
+      }
+    },
+    "chattanooga": {
+      "profile": {
+        "swimType": "River",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Rolling"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-chattanooga",
+      "editions": {
+        "2025": {
+          "swimLaps": 1,
+          "swimDistanceMi": 1.4,
+          "bikeLaps": 1,
+          "runLaps": 2.25,
+          "runElevationGainFt": 627,
+          "features": [
+            "Current-assisted downriver swim",
+            "Longer-than-standard 1.4-mile swim"
+          ],
+          "source": "2025-athlete-guide"
+        }
+      },
+      "sources": {
+        "2025-athlete-guide": {
+          "label": "2025 athlete guide",
+          "type": "athlete-guide",
+          "url": "https://www.ironman.com/sites/default/files/2025-05/2025%20IM%2070.3%20Chattanooga%20Athlete%20Guide.pdf"
+        }
+      }
+    },
+    "oceanside": {
+      "profile": {
+        "swimType": "Harbor",
+        "bikeTerrain": "Hilly",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-oceanside",
+      "editions": {
+        "2025": {
+          "swimLaps": 1,
+          "bikeLaps": 1,
+          "runLaps": 2,
+          "bikeElevationGainFt": 2720,
+          "runElevationGainFt": 277,
+          "transitionCount": 2,
+          "features": [
+            "Saltwater harbor swim",
+            "Separate T1 and T2 zones"
+          ],
+          "source": "2025-athlete-guide"
+        }
+      },
+      "sources": {
+        "2025-athlete-guide": {
+          "label": "2025 athlete guide",
+          "type": "athlete-guide",
+          "url": "https://www.ironman.com/sites/default/files/2025-03/2025%20Oceanside%20Athlete%20Guide.pdf"
+        }
+      }
+    },
+    "nice": {
+      "profile": {
+        "swimType": "Sea",
+        "bikeTerrain": "Hilly",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-nice",
+      "editions": {
+        "2025": {
+          "swimLaps": 1,
+          "bikeLaps": 1,
+          "bikeElevationGainFt": 4026,
+          "features": [
+            "Col de Vence climb",
+            "Technical bike descent"
+          ],
+          "source": "2025-course-map"
+        }
+      },
+      "sources": {
+        "2025-course-map": {
+          "label": "2025 course map",
+          "type": "course-map",
+          "url": "https://www.ironman.com/sites/default/files/2025-05/IM25_703Nice_CourseMap_Bike_0.pdf"
+        }
+      }
+    },
+    "pennsylvania": {
+      "profile": {
+        "swimType": "Lake",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Rolling",
+        "typicalHighAirF": 76,
+        "typicalLowAirF": 56,
+        "typicalWaterF": 76
+      },
+      "officialPage": "https://www.ironman.com/races/im703-pennsylvania",
+      "sources": {}
+    },
+    "new-zealand": {
+      "profile": {
+        "swimType": "Lake",
+        "bikeTerrain": "Rolling",
+        "runTerrain": "Flat",
+        "typicalHighAirF": 66,
+        "typicalLowAirF": 43,
+        "typicalWaterF": 66
+      },
+      "officialPage": "https://www.ironman.com/races/im703-new-zealand",
+      "sources": {}
+    }
+  }
+}

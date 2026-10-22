@@ -9,6 +9,7 @@ Interactive visualization of Ironman 70.3 triathlon race results. View split tim
 ## Features
 
 - **Single Race View**: Responsive split distributions with quartile ranges, pace summaries, and athlete markers
+- **Course Profiles**: Source-backed course details plus cautious result-derived outlier notes for selected races
 - **Race Comparison**: Normalized overlays for comparing distribution shape across two races
 - **Race List**: Sortable table of all races with percentile-based split times (5th–95th)
 - **Athlete Search**: Look up any athlete across all races with per-split percentile rankings
@@ -54,11 +55,20 @@ npm run fetch-new-results
 # Fetch registered historical events whose original race pages are unavailable
 npm run fetch-historical-results
 
-# Regenerate races.json, race-stats.json, and athlete index shards
+# Regenerate races.json, race-stats.json, course observations, and athlete index shards
 npm run update-manifest
 ```
 
 CSV files are saved to `results/` and the manifest at `results/races.json` lists available races.
+
+### Course profiles
+
+`results/course-metadata.json` stores curated facts from official Ironman race
+pages, athlete guides, and course maps. `npm run update-manifest` separately
+generates `results/course-observations.json` from race-year medians so observed
+patterns are never presented as official course facts. See
+[`docs/course-metadata.md`](docs/course-metadata.md) for the schema, provenance,
+fallback, and signal rules.
 
 ### Historical and retired races
 
@@ -124,12 +134,15 @@ tri-times/
 ├── results/
 │   ├── races.json          # Race manifest (names, years)
 │   ├── race-stats.json     # Pre-computed percentile stats per race
+│   ├── course-metadata.json # Curated official course profiles and sources
+│   ├── course-observations.json # Generated race-year result signals
 │   ├── athletes/           # Full athlete records (by first-name initial)
 │   ├── athlete-search/     # Compact name search index (by token prefix)
 │   └── *.csv               # Race data files
 └── scripts/
     ├── scraper.js          # Fetch race results
     ├── scraper.test.js     # Scraper and historical registry tests
+    ├── course-observations.js # Generate conservative race-year signals
     ├── fetch-race-list.js  # Update races.txt
     └── update-manifest.js  # Regenerate races.json, stats, and athlete index
 ```

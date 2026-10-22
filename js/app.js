@@ -82,9 +82,82 @@ async function loadAndDisplayRace(race, year) {
     updateDivisions();
     clearAthlete(false);
     filterData('ALL');
+    renderCourseProfile(race, year);
     drawCharts();
     setPageTitle(`${RACES[race].name} · ${year}`, `${RACES[race].name} ${year}`);
     updateUrl();
+}
+
+async function renderCourseProfile(race, year) {
+    const element = document.getElementById('course-profile');
+
+    try {
+        const [metadata, observations] = await Promise.all([
+            loadCourseMetadata(),
+            loadCourseObservations(),
+        ]);
+        const raceMetadata = metadata.races?.[race];
+        if (race !== currentRace || year !== currentYear) return;
+        if (!raceMetadata) {
+            element.hidden = true;
+            element.innerHTML = '';
+            return;
+        }
+
+        const edition = CourseProfile.selectEdition(raceMetadata, year);
+        const source = edition?.data?.source
+            ? raceMetadata.sources?.[edition.data.source]
+            : null;
+        const sourceUrl = source?.url || raceMetadata.officialPage;
+        const sourceLabel = source?.label || 'Official race profile';
+        const legs = CourseProfile.buildLegDetails(raceMetadata.profile || {}, edition?.data);
+        const conditions = CourseProfile.buildConditions(raceMetadata.profile || {});
+        const features = edition?.data?.features || [];
+        const observed = observations.races?.[race]?.[year];
+        const observedSignals = CourseProfile.formatObservationSignals(observed);
+        const courseCaveat = edition
+            ? edition.exact
+                ? `${edition.year} official course details`
+                : `Latest official course details are from ${edition.year}; routes can change by year`
+            : 'Current official race profile; routes can change by year';
+
+        const legMarkup = legs.map(leg => `
+            <div class="course-leg">
+                <span class="course-leg-label">${escapeHtml(leg.label)}</span>
+                ${leg.primary ? `<strong>${escapeHtml(leg.primary)}</strong>` : ''}
+                ${leg.details.map(detail => `<span>${escapeHtml(detail)}</span>`).join('')}
+            </div>
+        `).join('');
+        const factMarkup = [...conditions, ...features].map(fact =>
+            `<span class="course-fact">${escapeHtml(fact)}</span>`
+        ).join('');
+        const observedMarkup = observedSignals.length ? `
+            <div class="course-observed">
+                <span class="course-observed-label">Observed from results · ${escapeHtml(year)}</span>
+                <span>${observedSignals.map(escapeHtml).join(' · ')}</span>
+                <span class="course-observed-caveat">Unadjusted for field strength.</span>
+            </div>
+        ` : '';
+
+        element.innerHTML = `
+            <div class="course-profile-head">
+                <div>
+                    <span class="course-profile-kicker">Official profile</span>
+                    <h2 id="course-profile-title">Course &amp; conditions</h2>
+                </div>
+                ${sourceUrl ? `<a class="course-source" href="${escapeHtml(sourceUrl)}" target="_blank" rel="noopener">${escapeHtml(sourceLabel)} ↗</a>` : ''}
+            </div>
+            <div class="course-legs">${legMarkup}</div>
+            ${factMarkup ? `<div class="course-facts">${factMarkup}</div>` : ''}
+            ${observedMarkup}
+            <p class="course-caveat">${escapeHtml(courseCaveat)}.${conditions.length ? ' Typical temperatures are climate values, not race-day readings.' : ''}</p>
+        `;
+        element.hidden = false;
+    } catch (error) {
+        element.hidden = true;
+        element.innerHTML = '';
+        console.error('Unable to render course profile:', error);
+    }
 }
 
 function renderChart(field) {

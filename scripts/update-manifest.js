@@ -4,6 +4,7 @@
  * Scans the results/ directory for CSV files and regenerates:
  *   - results/races.json  (race manifest)
  *   - results/race-stats.json  (pre-computed decile stats per race)
+ *   - results/course-observations.json  (race-year result signals)
  *   - results/athletes/*.json  (athlete index sharded by first letter)
  *   - results/athlete-search/*.json  (name search index by token prefix)
  *
@@ -14,10 +15,15 @@
 
 const fs = require("fs");
 const path = require("path");
+const {
+  buildCourseObservations,
+  summarizeRaceYear,
+} = require("./course-observations");
 
 const RESULTS_DIR = path.join(__dirname, "..", "results");
 const MANIFEST_PATH = path.join(RESULTS_DIR, "races.json");
 const STATS_PATH = path.join(RESULTS_DIR, "race-stats.json");
+const COURSE_OBSERVATIONS_PATH = path.join(RESULTS_DIR, "course-observations.json");
 const ATHLETES_DIR = path.join(RESULTS_DIR, "athletes");
 const ATHLETE_SEARCH_DIR = path.join(RESULTS_DIR, "athlete-search");
 
@@ -179,18 +185,20 @@ function updateManifest() {
   // Compute race stats
   console.log("\nComputing race stats...");
   const raceStats = {};
+  const raceYearSummaries = [];
 
   for (const [raceId, race] of Object.entries(races)) {
     const yearResults = [];
     let totalAthletes = 0;
 
-    for (const { file } of raceFiles[raceId]) {
+    for (const { year, file } of raceFiles[raceId]) {
       const csv = fs.readFileSync(path.join(RESULTS_DIR, file), "utf-8");
       const rows = parseCsv(csv);
       const result = computeYearPercentiles(rows);
       if (result) {
         yearResults.push(result.pctiles);
         totalAthletes += result.athleteCount;
+        raceYearSummaries.push(summarizeRaceYear(raceId, year, rows, SPLIT_COLUMNS));
       }
     }
 
@@ -216,6 +224,13 @@ function updateManifest() {
 
   fs.writeFileSync(STATS_PATH, JSON.stringify(raceStats, null, 2) + "\n");
   console.log(`Updated ${STATS_PATH}`);
+
+  const courseObservations = buildCourseObservations(raceYearSummaries.filter(Boolean));
+  fs.writeFileSync(
+    COURSE_OBSERVATIONS_PATH,
+    JSON.stringify(courseObservations, null, 2) + "\n"
+  );
+  console.log(`Updated ${COURSE_OBSERVATIONS_PATH}`);
 
   // Print summary
   const raceCount = Object.keys(raceStats).length;
