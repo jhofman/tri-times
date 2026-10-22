@@ -188,6 +188,13 @@ select:focus {
     font-weight: 650;
 }
 
+.course-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.35rem 0.9rem;
+}
+
 .course-source {
     color: var(--accent);
     font-size: 0.75rem;
@@ -197,6 +204,17 @@ select:focus {
 
 .course-source:hover {
     text-decoration: underline;
+}
+
+.course-profile .fa-solid {
+    width: 1.15em;
+    margin-right: 0.3em;
+    text-align: center;
+    opacity: 0.75;
+}
+
+.course-leg-label .fa-solid {
+    font-size: 0.8rem;
 }
 
 .course-legs {
@@ -1379,6 +1397,10 @@ select,
         align-items: flex-start;
         flex-direction: column;
         gap: 0.25rem;
+    }
+
+    .course-links {
+        justify-content: flex-start;
     }
 
     .course-legs {

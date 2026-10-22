@@ -162,6 +162,7 @@ CSV files contain the following columns:
 
 - [D3.js](https://d3js.org/) v7 for data visualization
 - [Choices.js](https://choices-js.github.io/Choices/) for searchable dropdowns
+- [Font Awesome Free](https://fontawesome.com/) icons for course profiles
 - Vanilla JavaScript (no build step required)
 - CSS custom properties for theming
 - Inline SVG icons

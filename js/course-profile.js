@@ -11,6 +11,38 @@
         run: 'Run',
     };
 
+    // Font Awesome Free (solid) icon names
+    const LEG_ICONS = {
+        Swim: 'person-swimming',
+        Bike: 'person-biking',
+        Run: 'person-running',
+    };
+    const TERRAIN_ICONS = {
+        flat: 'minus',
+        rolling: 'mound',
+        hilly: 'mountain',
+    };
+    const FEATURE_ICONS = [
+        [/current|downriver|tidal/i, 'forward'],
+        [/T1 and T2|transition/i, 'location-dot'],
+        [/climb/i, 'mountain'],
+        [/descent/i, 'triangle-exclamation'],
+        [/closed/i, 'road-barrier'],
+        [/out-and-back/i, 'arrows-left-right'],
+        [/loop/i, 'rotate'],
+        [/longer|distance/i, 'ruler-horizontal'],
+        [/swim/i, 'water'],
+    ];
+
+    function terrainIcon(value) {
+        return TERRAIN_ICONS[String(value || '').toLowerCase()] || null;
+    }
+
+    function featureIcon(text) {
+        const match = FEATURE_ICONS.find(([pattern]) => pattern.test(text));
+        return match ? match[1] : 'circle-info';
+    }
+
     function selectEdition(metadata, selectedYear) {
         const editions = metadata?.editions || {};
         if (editions[selectedYear]) {
@@ -23,49 +55,51 @@
     }
 
     function formatElevation(feet) {
-        return feet ? `${Number(feet).toLocaleString()} ft gain` : null;
+        return feet ? { text: `${Number(feet).toLocaleString()} ft gain`, icon: 'arrow-trend-up' } : null;
     }
 
     function formatLaps(value) {
         if (!value) return null;
-        return `${value} ${Number(value) === 1 ? 'lap' : 'laps'}`;
+        return { text: `${value} ${Number(value) === 1 ? 'lap' : 'laps'}`, icon: 'rotate' };
+    }
+
+    function buildLeg(label, primary, primaryIcon, details) {
+        return {
+            label,
+            icon: LEG_ICONS[label],
+            primary,
+            primaryIcon: primary ? primaryIcon : null,
+            details: details.filter(Boolean),
+        };
     }
 
     function buildLegDetails(profile, edition) {
         return [
-            {
-                label: 'Swim',
-                primary: profile.swimType,
-                details: [
-                    edition?.swimDistanceMi ? `${edition.swimDistanceMi} mi` : null,
-                    formatLaps(edition?.swimLaps),
-                ].filter(Boolean),
-            },
-            {
-                label: 'Bike',
-                primary: profile.bikeTerrain,
-                details: [
-                    formatElevation(edition?.bikeElevationGainFt),
-                    formatLaps(edition?.bikeLaps),
-                ].filter(Boolean),
-            },
-            {
-                label: 'Run',
-                primary: profile.runTerrain,
-                details: [
-                    formatElevation(edition?.runElevationGainFt),
-                    formatLaps(edition?.runLaps),
-                ].filter(Boolean),
-            },
+            buildLeg('Swim', profile.swimType, 'water', [
+                edition?.swimDistanceMi ? { text: `${edition.swimDistanceMi} mi`, icon: 'ruler-horizontal' } : null,
+                formatLaps(edition?.swimLaps),
+            ]),
+            buildLeg('Bike', profile.bikeTerrain, terrainIcon(profile.bikeTerrain), [
+                formatElevation(edition?.bikeElevationGainFt),
+                formatLaps(edition?.bikeLaps),
+            ]),
+            buildLeg('Run', profile.runTerrain, terrainIcon(profile.runTerrain), [
+                formatElevation(edition?.runElevationGainFt),
+                formatLaps(edition?.runLaps),
+            ]),
         ].filter(leg => leg.primary || leg.details.length);
     }
 
     function buildConditions(profile) {
         return [
-            profile.typicalHighAirF ? `Typical high ${profile.typicalHighAirF}°F` : null,
-            profile.typicalLowAirF ? `Typical low ${profile.typicalLowAirF}°F` : null,
-            profile.typicalWaterF ? `Typical water ${profile.typicalWaterF}°F` : null,
+            profile.typicalHighAirF ? { text: `Typical high ${profile.typicalHighAirF}°F`, icon: 'temperature-high' } : null,
+            profile.typicalLowAirF ? { text: `Typical low ${profile.typicalLowAirF}°F`, icon: 'temperature-low' } : null,
+            profile.typicalWaterF ? { text: `Typical water ${profile.typicalWaterF}°F`, icon: 'temperature-half' } : null,
         ].filter(Boolean);
+    }
+
+    function buildFeatures(features) {
+        return (features || []).map(text => ({ text, icon: featureIcon(text) }));
     }
 
     function formatObservationSignals(observation, limit = 3) {
@@ -88,6 +122,7 @@
 
     return {
         buildConditions,
+        buildFeatures,
         buildLegDetails,
         formatObservationSignals,
         selectEdition,

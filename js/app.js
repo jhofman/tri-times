@@ -108,11 +108,13 @@ async function renderCourseProfile(race, year) {
         const source = edition?.data?.source
             ? raceMetadata.sources?.[edition.data.source]
             : null;
-        const sourceUrl = source?.url || raceMetadata.officialPage;
-        const sourceLabel = source?.label || 'Official race profile';
+        const links = [
+            raceMetadata.officialPage ? { url: raceMetadata.officialPage, label: 'Race page', icon: 'globe' } : null,
+            source?.url ? { url: source.url, label: source.label, icon: 'file-pdf' } : null,
+        ].filter(Boolean);
         const legs = CourseProfile.buildLegDetails(raceMetadata.profile || {}, edition?.data);
         const conditions = CourseProfile.buildConditions(raceMetadata.profile || {});
-        const features = edition?.data?.features || [];
+        const features = CourseProfile.buildFeatures(edition?.data?.features);
         const observed = observations.races?.[race]?.[year];
         const observedSignals = CourseProfile.formatObservationSignals(observed);
         const courseCaveat = edition
@@ -121,23 +123,27 @@ async function renderCourseProfile(race, year) {
                 : `Latest official course details are from ${edition.year}; routes can change by year`
             : 'Current official race profile; routes can change by year';
 
+        const icon = name => name ? `<i class="fa-solid fa-${name}" aria-hidden="true"></i>` : '';
         const legMarkup = legs.map(leg => `
             <div class="course-leg">
-                <span class="course-leg-label">${escapeHtml(leg.label)}</span>
-                ${leg.primary ? `<strong>${escapeHtml(leg.primary)}</strong>` : ''}
-                ${leg.details.map(detail => `<span>${escapeHtml(detail)}</span>`).join('')}
+                <span class="course-leg-label">${icon(leg.icon)}${escapeHtml(leg.label)}</span>
+                ${leg.primary ? `<strong>${icon(leg.primaryIcon)}${escapeHtml(leg.primary)}</strong>` : ''}
+                ${leg.details.map(detail => `<span>${icon(detail.icon)}${escapeHtml(detail.text)}</span>`).join('')}
             </div>
         `).join('');
         const factMarkup = [...conditions, ...features].map(fact =>
-            `<span class="course-fact">${escapeHtml(fact)}</span>`
+            `<span class="course-fact">${icon(fact.icon)}${escapeHtml(fact.text)}</span>`
         ).join('');
         const observedMarkup = observedSignals.length ? `
             <div class="course-observed">
-                <span class="course-observed-label">Observed from results · ${escapeHtml(year)}</span>
+                <span class="course-observed-label">${icon('chart-simple')}Observed from results · ${escapeHtml(year)}</span>
                 <span>${observedSignals.map(escapeHtml).join(' · ')}</span>
                 <span class="course-observed-caveat">Unadjusted for field strength.</span>
             </div>
         ` : '';
+        const linkMarkup = links.map(link =>
+            `<a class="course-source" href="${escapeHtml(link.url)}" target="_blank" rel="noopener">${icon(link.icon)}${escapeHtml(link.label)} ↗</a>`
+        ).join('');
 
         element.innerHTML = `
             <div class="course-profile-head">
@@ -145,7 +151,7 @@ async function renderCourseProfile(race, year) {
                     <span class="course-profile-kicker">Official profile</span>
                     <h2 id="course-profile-title">Course &amp; conditions</h2>
                 </div>
-                ${sourceUrl ? `<a class="course-source" href="${escapeHtml(sourceUrl)}" target="_blank" rel="noopener">${escapeHtml(sourceLabel)} ↗</a>` : ''}
+                ${linkMarkup ? `<div class="course-links">${linkMarkup}</div>` : ''}
             </div>
             <div class="course-legs">${legMarkup}</div>
             ${factMarkup ? `<div class="course-facts">${factMarkup}</div>` : ''}
