@@ -34,7 +34,7 @@ test("percentile includes tied values at or below the observation", () => {
   assert.equal(percentile([], 20), null);
 });
 
-test("buildCourseObservations emits only well-supported tail signals", () => {
+test("course signals rank each race's typical split against other races", () => {
   const summaries = Array.from({ length: 10 }, (_, index) => ({
     raceId: `race-${index}`,
     year: "2025",
@@ -58,15 +58,16 @@ test("buildCourseObservations emits only well-supported tail signals", () => {
 
   const result = buildCourseObservations(summaries);
 
-  assert.deepEqual(result.races["race-0"]["2025"].signals, [
+  assert.deepEqual(result.courses["race-0"].signals, [
     { split: "swim", direction: "fast", percentile: 10 },
     { split: "t1", direction: "fast", percentile: 10 },
     { split: "bike", direction: "fast", percentile: 10 },
     { split: "t2", direction: "fast", percentile: 10 },
     { split: "run", direction: "fast", percentile: 10 },
   ]);
-  assert.equal(result.races["race-9"]["2025"].signals.length, 5);
-  assert.equal(result.races["small-race"], undefined);
+  assert.equal(result.courses["race-9"].signals.length, 5);
+  assert.equal(result.courses["race-5"], undefined);
+  assert.equal(result.courses["small-race"], undefined);
 });
 
 test("year signals compare a race-year to the same race's other years", () => {
@@ -90,4 +91,45 @@ test("year signals compare a race-year to the same race's other years", () => {
   assert.deepEqual(buildYearSignals(shortened, [...twoSiblings, shortened], options), [
     { split: "swim", deltaSeconds: -1120, typicalSeconds: 2020, otherYears: 2, likelyShortened: true },
   ]);
+});
+
+test("course signals use the median across years and ignore shortened legs", () => {
+  const summary = (raceId, year, swim, step = 4.5) => ({
+    raceId,
+    year,
+    athleteCount: 300,
+    medians: { swim, t1: 300 + step * 10, bike: 10000 + step * 100, t2: 200 + step * 10, run: 7000 + step * 100 },
+    coverage: { swim: 1, t1: 1, bike: 1, t2: 1, run: 1 },
+  });
+  const summaries = Array.from({ length: 9 }, (_, index) => summary(`race-${index}`, "2025", 2000 + index * 100, index));
+  // Typical 1700 is the fastest; the shortened 2023 swim and a slow 2024 year do not move it.
+  summaries.push(
+    summary("fast-race", "2021", 1700),
+    summary("fast-race", "2022", 1700),
+    summary("fast-race", "2023", 600),
+    summary("fast-race", "2024", 2500),
+  );
+
+  const result = buildCourseObservations(summaries);
+
+  assert.deepEqual(result.courses["fast-race"], {
+    years: 4,
+    signals: [{ split: "swim", direction: "fast", percentile: 10 }],
+  });
+  assert.equal(result.races["fast-race"]["2023"].yearSignals[0].likelyShortened, true);
+});
+
+test("rotating World Championship venues get no course or year signals", () => {
+  const summaries = Array.from({ length: 10 }, (_, index) => ({
+    raceId: index ? `race-${index}` : "world-championship-2026",
+    year: "2025",
+    athleteCount: 300,
+    medians: { swim: 100 + index, t1: 20 + index, bike: 300 + index, t2: 15 + index, run: 200 + index },
+    coverage: { swim: 1, t1: 1, bike: 1, t2: 1, run: 1 },
+  }));
+
+  const result = buildCourseObservations(summaries);
+
+  assert.equal(result.courses["world-championship-2026"], undefined);
+  assert.equal(result.courses["race-9"].signals[0].direction, "slow");
 });

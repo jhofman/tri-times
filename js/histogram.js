@@ -67,6 +67,11 @@ function renderHistogram(card, opts) {
         visibleMin = Math.min(visibleMin, athleteValue);
         visibleMax = Math.max(visibleMax, athleteValue);
     }
+    const reference = opts.markers?.reference;
+    if (Number.isFinite(reference?.value) && reference.value > 0) {
+        visibleMin = Math.min(visibleMin, reference.value);
+        visibleMax = Math.max(visibleMax, reference.value);
+    }
 
     const targetBins = Math.max(12, Math.min(40, Math.round(1.6 * Math.sqrt(allValues.length))));
     const binWidth = chooseBinWidth(visibleMin, visibleMax, targetBins);
@@ -207,6 +212,31 @@ function renderHistogram(card, opts) {
                 .attr('y1', 0).attr('y2', innerHeight)
                 .attr('stroke', item.color);
         });
+    }
+
+    if (reference && Number.isFinite(reference.value)) {
+        const refX = x(reference.value);
+        const marker = g.append('g').attr('class', 'reference-marker');
+        interactiveMarkers.push(marker);
+        marker.append('line')
+            .attr('x1', refX).attr('x2', refX)
+            .attr('y1', 0).attr('y2', innerHeight);
+        marker.append('text')
+            .attr('x', refX - 3).attr('y', 9)
+            .attr('text-anchor', 'end')
+            .text(reference.label);
+        marker.append('line')
+            .attr('x1', refX).attr('x2', refX)
+            .attr('y1', 0).attr('y2', innerHeight)
+            .attr('stroke', 'transparent')
+            .attr('stroke-width', 10)
+            .on('mouseenter', event => showHistogramTooltip(
+                tooltip,
+                event,
+                `<div class="time-range">${escapeHtml(reference.title)}</div><div>${formatChartTime(field, reference.value)}${histogramPace(field, reference.value)}</div>`
+            ))
+            .on('mousemove', event => positionHistogramTooltip(tooltip, event))
+            .on('mouseleave', () => tooltip.classed('visible', false));
     }
 
     if (opts.markers?.athlete && Number.isFinite(athleteValue)) {

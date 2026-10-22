@@ -136,14 +136,14 @@ tri-times/
 │   ├── races.json          # Race manifest (names, years)
 │   ├── race-stats.json     # Pre-computed percentile stats per race
 │   ├── course-metadata.json # Curated official course profiles and sources
-│   ├── course-observations.json # Generated race-year result signals
+│   ├── course-observations.json # Generated course and race-year result signals
 │   ├── athletes/           # Full athlete records (by first-name initial)
 │   ├── athlete-search/     # Compact name search index (by token prefix)
 │   └── *.csv               # Race data files
 └── scripts/
     ├── scraper.js          # Fetch race results
     ├── scraper.test.js     # Scraper and historical registry tests
-    ├── course-observations.js # Generate conservative race-year signals
+    ├── course-observations.js # Generate conservative course and year signals
     ├── fetch-race-list.js  # Update races.txt
     └── update-manifest.js  # Regenerate races.json, stats, and athlete index
 ```

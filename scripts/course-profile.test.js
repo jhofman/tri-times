@@ -64,6 +64,7 @@ test("typical temperatures fold into an air range and the swim leg", () => {
 
 test("observed signals are capped, prioritize transitions, and become short chips", () => {
   const chips = formatObservationSignals({
+    years: 8,
     signals: [
       { split: "run", direction: "slow", percentile: 95 },
       { split: "t1", direction: "slow", percentile: 99 },
@@ -77,12 +78,11 @@ test("observed signals are capped, prioritize transitions, and become short chip
     ["Fast swim course", "bolt"],
     ["Slow bike course", "hourglass-half"],
   ]);
-  assert.match(chips[0].title, /slowest 1% of all 70.3 race-years.*unadjusted for field strength/);
+  assert.match(chips[0].title, /Typical T1 median across 8 years is among the slowest 1% of 70.3 races.*unadjusted for field strength/);
 });
 
-test("year chips name the year, size the gap, and replace a shortened leg's course chip", () => {
+test("year chips name the year and size the gap", () => {
   const observation = {
-    signals: [{ split: "swim", direction: "fast", percentile: 1 }],
     yearSignals: [
       { split: "run", deltaSeconds: -470, typicalSeconds: 7492, otherYears: 3 },
       { split: "t2", deltaSeconds: 69, typicalSeconds: 302, otherYears: 8 },
@@ -94,6 +94,5 @@ test("year chips name the year, size the gap, and replace a shortened leg's cour
     ["2023 T2 69 sec longer than usual", "arrow-up"],
     ["2023 run 8 min faster than usual", "arrow-down"],
   ]);
-  assert.deepEqual(formatObservationSignals(observation), []);
   assert.match(formatYearSignals(observation, "2023", "New York")[2].title, /2:04:52 typical across 3 other New York years/);
 });

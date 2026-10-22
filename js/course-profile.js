@@ -106,7 +106,7 @@
         return (features || []).map(text => ({ text, icon: featureIcon(text) }));
     }
 
-    function describeSignal(signal) {
+    function describeSignal(signal, years) {
         const fast = signal.direction === 'fast';
         const tail = fast ? signal.percentile : Math.max(1, 100 - signal.percentile);
         const label = SPLIT_LABELS[signal.split];
@@ -115,9 +115,12 @@
         const strength = tail <= 3 ? 'Very ' + word : word[0].toUpperCase() + word.slice(1);
         return {
             text: isTransition ? `${strength} ${label} setup` : `${strength} ${label.toLowerCase()} course`,
+            short: isTransition ? `${strength} setup` : `${strength} course`,
+            split: signal.split,
+            kind: 'course',
             icon: fast ? 'bolt' : 'hourglass-half',
             direction: signal.direction,
-            title: `${label} median is among the ${fast ? 'fastest' : 'slowest'} ${tail}% of all 70.3 race-years. Inferred from results; unadjusted for field strength.`,
+            title: `Typical ${label.startsWith('T') ? label : label.toLowerCase()} median${years > 1 ? ` across ${years} years` : ''} is among the ${fast ? 'fastest' : 'slowest'} ${tail}% of 70.3 races. Inferred from results; unadjusted for field strength.`,
         };
     }
 
@@ -142,6 +145,11 @@
         if (signal.likelyShortened) {
             return {
                 text: `${year} ${name} much faster than usual`,
+                short: 'Much faster than usual',
+                chartText: `Much faster than usual in ${year}`,
+                split: signal.split,
+                kind: 'year',
+                typicalSeconds: signal.typicalSeconds,
                 icon: 'triangle-exclamation',
                 direction: 'shortened',
                 title: `${context} A gap this large often means a shortened or altered course, a strong current, or a timing issue.`,
@@ -152,13 +160,18 @@
         const word = isTransition ? (slower ? 'longer' : 'quicker') : (slower ? 'slower' : 'faster');
         return {
             text: `${year} ${name} ${formatDuration(signal.deltaSeconds)} ${word} than usual`,
+            short: `${slower ? '+' : '−'}${formatDuration(signal.deltaSeconds)} vs usual`,
+            chartText: `${formatDuration(signal.deltaSeconds)} ${word} than usual in ${year}`,
+            split: signal.split,
+            kind: 'year',
+            typicalSeconds: signal.typicalSeconds,
             icon: slower ? 'arrow-up' : 'arrow-down',
             direction: slower ? 'slow' : 'fast',
             title: `${context} Unadjusted for weather or field strength.`,
         };
     }
 
-    function formatYearSignals(observation, year, raceName, limit = 3) {
+    function formatYearSignals(observation, year, raceName, limit = 5) {
         if (!observation?.yearSignals?.length) return [];
         return [...observation.yearSignals]
             .sort((a, b) => Math.abs(b.deltaSeconds / b.typicalSeconds) - Math.abs(a.deltaSeconds / a.typicalSeconds))
@@ -166,21 +179,17 @@
             .map(signal => describeYearSignal(signal, year, raceName));
     }
 
-    function formatObservationSignals(observation, limit = 3) {
-        if (!observation?.signals?.length) return [];
-        const shortened = new Set((observation.yearSignals || [])
-            .filter(signal => signal.likelyShortened)
-            .map(signal => signal.split));
-        return observation.signals
-            .filter(signal => !shortened.has(signal.split))
+    function formatObservationSignals(course, limit = 5) {
+        if (!course?.signals?.length) return [];
+        const priority = { t1: 0, t2: 1, swim: 2, bike: 3, run: 4 };
+        return [...course.signals]
             .sort((a, b) => {
-                const priority = { t1: 0, t2: 1, swim: 2, bike: 3, run: 4 };
                 const extremityA = Math.min(a.percentile, 100 - a.percentile);
                 const extremityB = Math.min(b.percentile, 100 - b.percentile);
                 return extremityA - extremityB || priority[a.split] - priority[b.split];
             })
             .slice(0, limit)
-            .map(describeSignal);
+            .map(signal => describeSignal(signal, course.years));
     }
 
     return {

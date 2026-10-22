@@ -281,9 +281,67 @@ select:focus {
     cursor: help;
 }
 
-.course-fact-observed.shortened .fa-solid {
+.course-leg-top {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+}
+
+.course-leg-top .course-leg-label {
+    width: auto;
+}
+
+.course-leg-chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.25rem;
+    margin-left: auto;
+}
+
+.course-leg-chips .course-fact {
+    padding: 0.05rem 0.4rem;
+    font-size: 0.625rem;
+    white-space: nowrap;
+}
+
+.chart-notes {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.15rem 0.4rem;
+    white-space: normal;
+}
+
+.chart-note-text {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    white-space: nowrap;
+    cursor: help;
+}
+
+.chart-note-text .fa-solid {
+    width: 1em;
+    font-size: 0.625rem;
+    text-align: center;
+}
+
+.chart-note-text.shortened .fa-solid {
     color: var(--warning);
-    opacity: 1;
+}
+
+.reference-marker line:first-child {
+    stroke: var(--text-muted);
+    stroke-dasharray: 3 3;
+}
+
+.reference-marker text {
+    fill: var(--text-muted);
+    font-size: 9px;
 }
 
 .course-hint {

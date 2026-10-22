@@ -1,4 +1,6 @@
 const OBSERVED_SPLITS = ["swim", "t1", "bike", "t2", "run"];
+// World Championship venues rotate, so neither a course nor a "usual" year exists.
+const ROTATING_VENUE = /^world-championship/;
 
 function percentile(sorted, value) {
   if (!sorted.length || value <= 0) return null;
@@ -66,61 +68,63 @@ function buildYearSignals(summary, siblings, options) {
   return signals;
 }
 
+// A race's typical split is the median of its eligible race-year medians,
+// skipping years where that leg looks shortened. Course signals rank these
+// per-race values against every other race, so they do not change by year.
 function buildCourseObservations(summaries, options = {}) {
   const minAthletes = options.minAthletes || 200;
   const minCoverage = options.minCoverage || 0.9;
   const minOtherYears = options.minOtherYears || 3;
-  const eligible = summaries.filter(summary => summary.athleteCount >= minAthletes);
-  const distributions = {};
+  const eligible = summaries.filter(summary => summary.athleteCount >= minAthletes && !ROTATING_VENUE.test(summary.raceId));
   const byRace = {};
   for (const summary of eligible) {
     (byRace[summary.raceId] ||= []).push(summary);
   }
 
-  for (const split of OBSERVED_SPLITS) {
-    distributions[split] = eligible
-      .filter(summary => summary.coverage[split] >= minCoverage && summary.medians[split] > 0)
-      .map(summary => summary.medians[split])
-      .sort((a, b) => a - b);
-  }
-
-  const observations = {};
-  for (const summary of summaries) {
-    const signals = [];
-
+  const races = {};
+  const courseValues = {};
+  for (const [raceId, raceYears] of Object.entries(byRace)) {
+    const yearSignals = {};
+    for (const summary of raceYears) {
+      const signals = buildYearSignals(summary, raceYears, { minCoverage, minOtherYears });
+      if (signals.length) yearSignals[summary.year] = signals;
+    }
+    const typical = {};
     for (const split of OBSERVED_SPLITS) {
-      if (
-        summary.athleteCount < minAthletes ||
-        summary.coverage[split] < minCoverage ||
-        summary.medians[split] <= 0
-      ) {
-        continue;
-      }
+      const values = raceYears
+        .filter(summary => summary.coverage[split] >= minCoverage && summary.medians[split] > 0)
+        .filter(summary => !yearSignals[summary.year]?.some(signal => signal.split === split && signal.likelyShortened))
+        .map(summary => summary.medians[split]);
+      if (!values.length) continue;
+      typical[split] = median(values);
+      (courseValues[split] ||= []).push(typical[split]);
+    }
+    races[raceId] = { typical, years: raceYears.length, yearSignals };
+  }
+  for (const split of OBSERVED_SPLITS) (courseValues[split] ||= []).sort((a, b) => a - b);
 
-      const rank = percentile(distributions[split], summary.medians[split]);
+  const courses = {};
+  const observations = {};
+  for (const [raceId, race] of Object.entries(races)) {
+    const signals = [];
+    for (const split of OBSERVED_SPLITS) {
+      if (!race.typical[split]) continue;
+      const rank = percentile(courseValues[split], race.typical[split]);
       if (rank <= 10) signals.push({ split, direction: "fast", percentile: rank });
       if (rank >= 90) signals.push({ split, direction: "slow", percentile: rank });
     }
-
-    const yearSignals = summary.athleteCount >= minAthletes
-      ? buildYearSignals(summary, byRace[summary.raceId], { minCoverage, minOtherYears })
-      : [];
-
-    if (!signals.length && !yearSignals.length) continue;
-    if (!observations[summary.raceId]) observations[summary.raceId] = {};
-    observations[summary.raceId][summary.year] = {
-      athleteCount: summary.athleteCount,
-      signals,
-      ...(yearSignals.length ? { yearSignals } : {}),
-    };
+    if (signals.length) courses[raceId] = { years: race.years, signals };
+    for (const [year, yearSignals] of Object.entries(race.yearSignals)) {
+      (observations[raceId] ||= {})[year] = { yearSignals };
+    }
   }
 
   return {
     methodology: {
-      comparisonUnit: "race-year median",
+      comparisonUnit: "race (median of race-year medians) vs. all races; race-year vs. same race's other years",
       minimumAthletes: minAthletes,
       minimumSplitCoverage: minCoverage,
-      signalThresholds: {
+      courseSignalThresholds: {
         fastAtOrBelowPercentile: 10,
         slowAtOrAbovePercentile: 90
       },
@@ -135,6 +139,7 @@ function buildCourseObservations(summaries, options = {}) {
       },
       caveat: "Result distributions reflect both the course and the athletes who raced it."
     },
+    courses,
     races: observations,
   };
 }
