@@ -5,6 +5,10 @@
  * Venue-specific detail (e.g. "Saltwater harbor swim") lives in edition
  * features, so the headline labels stay on Ironman's consistent scale.
  *
+ * Races without metadata are discovered by trying their im703-<id> race
+ * page; retired races (no page, or a redirect elsewhere) and World
+ * Championships (rotating venues) are skipped.
+ *
  * Usage: node scripts/fetch-course-conditions.js
  */
 
@@ -12,6 +16,14 @@ const fs = require("fs");
 const path = require("path");
 
 const METADATA_PATH = path.join(__dirname, "..", "results", "course-metadata.json");
+const RACES_PATH = path.join(__dirname, "..", "results", "races.json");
+const RACE_PAGE_ALIASES = { "aracaju-sergipe": "sergipe" };
+// World Championship results span rotating venues, so no single page describes them.
+const ROTATING_VENUE = /^world-championship/;
+
+function racePageUrl(race) {
+  return `https://www.ironman.com/races/im703-${RACE_PAGE_ALIASES[race] || race}`;
+}
 
 function pageText(html) {
   return html
@@ -42,14 +54,21 @@ function parseConditions(text) {
 
 async function main() {
   const metadata = JSON.parse(fs.readFileSync(METADATA_PATH, "utf8"));
-  for (const [race, entry] of Object.entries(metadata.races)) {
-    if (!entry.officialPage) continue;
-    const response = await fetch(entry.officialPage, { headers: { "User-Agent": "Mozilla/5.0" } });
-    if (!response.ok) {
-      console.warn(`${race}: HTTP ${response.status}`);
+  const races = JSON.parse(fs.readFileSync(RACES_PATH, "utf8"));
+  for (const race of Object.keys(races).sort()) {
+    if (ROTATING_VENUE.test(race)) continue;
+    const existing = metadata.races[race];
+    const url = existing?.officialPage || racePageUrl(race);
+    const response = await fetch(url, { headers: { "User-Agent": "Mozilla/5.0" } });
+    const redirected = new URL(response.url).pathname !== new URL(url).pathname;
+    if (!response.ok || redirected) {
+      if (existing) console.warn(`${race}: ${redirected ? `redirected to ${response.url}` : `HTTP ${response.status}`}`);
       continue;
     }
     const found = parseConditions(pageText(await response.text()));
+    if (!existing && Object.values(found).every(value => value == null)) continue;
+
+    const entry = existing || (metadata.races[race] = { profile: {}, officialPage: url });
     const profile = entry.profile || (entry.profile = {});
     const changes = [];
     for (const [key, value] of Object.entries(found)) {
@@ -57,8 +76,9 @@ async function main() {
       changes.push(`${key} ${profile[key] ?? "–"} → ${value}`);
       profile[key] = value;
     }
-    console.log(`${race}: ${changes.length ? changes.join(", ") : "unchanged"}`);
+    console.log(`${race}: ${existing ? "" : "added; "}${changes.length ? changes.join(", ") : "unchanged"}`);
   }
+  metadata.races = Object.fromEntries(Object.entries(metadata.races).sort(([a], [b]) => a.localeCompare(b)));
   metadata.retrievedAt = new Date().toISOString().slice(0, 10);
   fs.writeFileSync(METADATA_PATH, JSON.stringify(metadata, null, 2) + "\n");
 }
