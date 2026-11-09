@@ -2,6 +2,7 @@
   "agadir": {
     "name": "Agadir",
     "years": [
+      "2026",
       "2025"
     ]
   },
@@ -197,6 +198,7 @@
   "campeche": {
     "name": "Campeche",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2020",
@@ -319,6 +321,7 @@
   "croatia": {
     "name": "Croatia",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -377,6 +380,7 @@
   "dhofar": {
     "name": "Dhofar",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -582,6 +586,7 @@
   "greece": {
     "name": "Greece",
     "years": [
+      "2026",
       "2025",
       "2024"
     ]
@@ -659,6 +664,7 @@
   "kenting": {
     "name": "Kenting",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -797,6 +803,12 @@
       "2017"
     ]
   },
+  "malaga": {
+    "name": "Malaga",
+    "years": [
+      "2026"
+    ]
+  },
   "mallorca": {
     "name": "Mallorca",
     "years": [
@@ -820,6 +832,7 @@
   "melbourne": {
     "name": "Melbourne",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023",
@@ -925,6 +938,7 @@
   "new-york": {
     "name": "New York",
     "years": [
+      "2026",
       "2025",
       "2024",
       "2023"

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "retrievedAt": "2026-10-22",
+  "retrievedAt": "2026-11-02",
   "races": {
     "agadir": {
       "profile": {
@@ -689,6 +689,16 @@
         "runTerrain": "Rolling"
       },
       "officialPage": "https://www.ironman.com/races/im703-maine"
+    },
+    "malaga": {
+      "profile": {
+        "typicalHighAirF": 74,
+        "typicalLowAirF": 60,
+        "swimType": "Ocean",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-malaga"
     },
     "mallorca": {
       "profile": {
