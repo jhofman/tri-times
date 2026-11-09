@@ -35,7 +35,7 @@
         {
           "split": "bike",
           "direction": "fast",
-          "percentile": 10
+          "percentile": 9
         }
       ]
     },
@@ -135,7 +135,7 @@
       ]
     },
     "campeche": {
-      "years": 6,
+      "years": 7,
       "signals": [
         {
           "split": "t1",
@@ -180,7 +180,7 @@
         {
           "split": "t2",
           "direction": "fast",
-          "percentile": 7
+          "percentile": 6
         }
       ]
     },
@@ -200,7 +200,7 @@
         {
           "split": "run",
           "direction": "fast",
-          "percentile": 10
+          "percentile": 9
         }
       ]
     },
@@ -210,7 +210,7 @@
         {
           "split": "t2",
           "direction": "fast",
-          "percentile": 4
+          "percentile": 3
         }
       ]
     },
@@ -350,7 +350,7 @@
         {
           "split": "t2",
           "direction": "fast",
-          "percentile": 5
+          "percentile": 4
         }
       ]
     },
@@ -361,6 +361,11 @@
           "split": "bike",
           "direction": "fast",
           "percentile": 2
+        },
+        {
+          "split": "run",
+          "direction": "fast",
+          "percentile": 10
         }
       ]
     },
@@ -580,7 +585,7 @@
       ]
     },
     "melbourne": {
-      "years": 3,
+      "years": 4,
       "signals": [
         {
           "split": "swim",
@@ -588,19 +593,9 @@
           "percentile": 8
         },
         {
-          "split": "bike",
-          "direction": "fast",
-          "percentile": 10
-        },
-        {
           "split": "t2",
           "direction": "fast",
-          "percentile": 2
-        },
-        {
-          "split": "run",
-          "direction": "fast",
-          "percentile": 9
+          "percentile": 7
         }
       ]
     },
@@ -765,7 +760,7 @@
         {
           "split": "t2",
           "direction": "fast",
-          "percentile": 6
+          "percentile": 5
         },
         {
           "split": "run",
@@ -810,7 +805,7 @@
         {
           "split": "t2",
           "direction": "fast",
-          "percentile": 3
+          "percentile": 2
         }
       ]
     },
@@ -865,7 +860,7 @@
         {
           "split": "t2",
           "direction": "fast",
-          "percentile": 6
+          "percentile": 5
         }
       ]
     },
@@ -1096,6 +1091,16 @@
           "split": "t2",
           "direction": "fast",
           "percentile": 1
+        }
+      ]
+    },
+    "westfriesland": {
+      "years": 6,
+      "signals": [
+        {
+          "split": "bike",
+          "direction": "fast",
+          "percentile": 10
         }
       ]
     },
@@ -2424,10 +2429,10 @@
       "2017": {
         "yearSignals": [
           {
-            "split": "swim",
-            "deltaSeconds": 220,
-            "typicalSeconds": 2371,
-            "otherYears": 5
+            "split": "run",
+            "deltaSeconds": -466,
+            "typicalSeconds": 8079,
+            "otherYears": 6
           }
         ]
       },
@@ -2435,21 +2440,21 @@
         "yearSignals": [
           {
             "split": "swim",
-            "deltaSeconds": -135,
-            "typicalSeconds": 2506,
-            "otherYears": 5
+            "deltaSeconds": -220,
+            "typicalSeconds": 2591,
+            "otherYears": 6
+          },
+          {
+            "split": "t1",
+            "deltaSeconds": -43,
+            "typicalSeconds": 198,
+            "otherYears": 6
           },
           {
             "split": "t2",
-            "deltaSeconds": -51,
-            "typicalSeconds": 231,
-            "otherYears": 5
-          },
-          {
-            "split": "run",
-            "deltaSeconds": 466,
-            "typicalSeconds": 7613,
-            "otherYears": 5
+            "deltaSeconds": -53,
+            "typicalSeconds": 233,
+            "otherYears": 6
           }
         ]
       },
@@ -2457,21 +2462,27 @@
         "yearSignals": [
           {
             "split": "swim",
-            "deltaSeconds": 290,
-            "typicalSeconds": 2371,
-            "otherYears": 5
+            "deltaSeconds": 155,
+            "typicalSeconds": 2506,
+            "otherYears": 6
+          },
+          {
+            "split": "t1",
+            "deltaSeconds": -31,
+            "typicalSeconds": 198,
+            "otherYears": 6
           },
           {
             "split": "bike",
-            "deltaSeconds": -567,
-            "typicalSeconds": 11219,
-            "otherYears": 5
+            "deltaSeconds": -638,
+            "typicalSeconds": 11290,
+            "otherYears": 6
           },
           {
             "split": "run",
-            "deltaSeconds": -493,
-            "typicalSeconds": 7976,
-            "otherYears": 5
+            "deltaSeconds": -596,
+            "typicalSeconds": 8079,
+            "otherYears": 6
           }
         ]
       },
@@ -2479,37 +2490,21 @@
         "yearSignals": [
           {
             "split": "swim",
-            "deltaSeconds": -285,
-            "typicalSeconds": 2506,
-            "otherYears": 5
+            "deltaSeconds": -370,
+            "typicalSeconds": 2591,
+            "otherYears": 6
           },
           {
             "split": "t2",
-            "deltaSeconds": -50,
-            "typicalSeconds": 231,
-            "otherYears": 5
-          }
-        ]
-      },
-      "2024": {
-        "yearSignals": [
-          {
-            "split": "swim",
-            "deltaSeconds": 135,
-            "typicalSeconds": 2371,
-            "otherYears": 5
-          },
-          {
-            "split": "t2",
-            "deltaSeconds": 37,
-            "typicalSeconds": 216,
-            "otherYears": 5
+            "deltaSeconds": -52,
+            "typicalSeconds": 233,
+            "otherYears": 6
           },
           {
             "split": "run",
-            "deltaSeconds": 639,
-            "typicalSeconds": 7613,
-            "otherYears": 5
+            "deltaSeconds": -495,
+            "typicalSeconds": 8079,
+            "otherYears": 6
           }
         ]
       },
@@ -2517,15 +2512,31 @@
         "yearSignals": [
           {
             "split": "swim",
-            "deltaSeconds": -136,
-            "typicalSeconds": 2506,
-            "otherYears": 5
+            "deltaSeconds": -221,
+            "typicalSeconds": 2591,
+            "otherYears": 6
           },
           {
             "split": "t1",
-            "deltaSeconds": 114,
-            "typicalSeconds": 169,
-            "otherYears": 5
+            "deltaSeconds": 113,
+            "typicalSeconds": 170,
+            "otherYears": 6
+          }
+        ]
+      },
+      "2026": {
+        "yearSignals": [
+          {
+            "split": "swim",
+            "deltaSeconds": 283,
+            "typicalSeconds": 2506,
+            "otherYears": 6
+          },
+          {
+            "split": "t1",
+            "deltaSeconds": 50,
+            "typicalSeconds": 170,
+            "otherYears": 6
           }
         ]
       }
@@ -6652,14 +6663,74 @@
       }
     },
     "melbourne": {
+      "2022": {
+        "yearSignals": [
+          {
+            "split": "t2",
+            "deltaSeconds": -41,
+            "typicalSeconds": 177,
+            "otherYears": 3
+          }
+        ]
+      },
       "2023": {
         "yearSignals": [
           {
             "split": "swim",
             "deltaSeconds": -1012,
             "typicalSeconds": 2142,
-            "otherYears": 2,
+            "otherYears": 3,
             "likelyShortened": true
+          },
+          {
+            "split": "t2",
+            "deltaSeconds": -34,
+            "typicalSeconds": 177,
+            "otherYears": 3
+          }
+        ]
+      },
+      "2024": {
+        "yearSignals": [
+          {
+            "split": "t1",
+            "deltaSeconds": 71,
+            "typicalSeconds": 319,
+            "otherYears": 3
+          },
+          {
+            "split": "t2",
+            "deltaSeconds": 34,
+            "typicalSeconds": 143,
+            "otherYears": 3
+          }
+        ]
+      },
+      "2026": {
+        "yearSignals": [
+          {
+            "split": "swim",
+            "deltaSeconds": 443,
+            "typicalSeconds": 2104,
+            "otherYears": 3
+          },
+          {
+            "split": "bike",
+            "deltaSeconds": 889,
+            "typicalSeconds": 9944,
+            "otherYears": 3
+          },
+          {
+            "split": "t2",
+            "deltaSeconds": 36,
+            "typicalSeconds": 143,
+            "otherYears": 3
+          },
+          {
+            "split": "run",
+            "deltaSeconds": 362,
+            "typicalSeconds": 6813,
+            "otherYears": 3
           }
         ]
       }

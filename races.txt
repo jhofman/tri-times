@@ -11,7 +11,6 @@ https://www.ironman.com/races/im703-boulder
 https://www.ironman.com/races/im703-brasilia
 https://www.ironman.com/races/im703-cairns
 https://www.ironman.com/races/im703-calgary
-https://www.ironman.com/races/im703-campeche
 https://www.ironman.com/races/im703-cartagena
 https://www.ironman.com/races/im703-cascais
 https://www.ironman.com/races/im703-cebu-philippines
@@ -37,6 +36,7 @@ https://www.ironman.com/races/im703-florianopolis
 https://www.ironman.com/races/im703-florida
 https://www.ironman.com/races/im703-geelong
 https://www.ironman.com/races/im703-gulf-coast
+https://www.ironman.com/races/im703-ha-long-bay
 https://www.ironman.com/races/im703-hawaii
 https://www.ironman.com/races/im703-hengqin
 https://www.ironman.com/races/im703-jonkoping
