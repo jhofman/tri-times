@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "retrievedAt": "2026-10-22",
+  "retrievedAt": "2026-11-16",
   "races": {
     "agadir": {
       "profile": {
@@ -690,6 +690,16 @@
       },
       "officialPage": "https://www.ironman.com/races/im703-maine"
     },
+    "malaga": {
+      "profile": {
+        "typicalHighAirF": 74,
+        "typicalLowAirF": 60,
+        "swimType": "Ocean",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-malaga"
+    },
     "mallorca": {
       "profile": {
         "typicalHighAirF": 71,
@@ -733,6 +743,17 @@
         "runTerrain": "Rolling"
       },
       "officialPage": "https://www.ironman.com/races/im703-mont-tremblant"
+    },
+    "monterrey": {
+      "profile": {
+        "typicalHighAirF": 94,
+        "typicalLowAirF": 62,
+        "typicalWaterF": 77,
+        "swimType": "River",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-monterrey"
     },
     "mossel-bay": {
       "profile": {
@@ -1029,6 +1050,17 @@
         "runTerrain": "Flat"
       },
       "officialPage": "https://www.ironman.com/races/im703-peru"
+    },
+    "phu-quoc": {
+      "profile": {
+        "typicalHighAirF": 89,
+        "typicalLowAirF": 79,
+        "typicalWaterF": 84,
+        "swimType": "Ocean",
+        "bikeTerrain": "Flat",
+        "runTerrain": "Flat"
+      },
+      "officialPage": "https://www.ironman.com/races/im703-phu-quoc"
     },
     "port-macquarie": {
       "profile": {
