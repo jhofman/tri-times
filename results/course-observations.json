@@ -53,11 +53,6 @@
       "years": 3,
       "signals": [
         {
-          "split": "swim",
-          "direction": "slow",
-          "percentile": 90
-        },
-        {
           "split": "t1",
           "direction": "slow",
           "percentile": 91
@@ -85,7 +80,7 @@
         {
           "split": "swim",
           "direction": "slow",
-          "percentile": 92
+          "percentile": 91
         },
         {
           "split": "t1",
@@ -100,7 +95,7 @@
         {
           "split": "bike",
           "direction": "slow",
-          "percentile": 91
+          "percentile": 92
         }
       ]
     },
@@ -153,11 +148,6 @@
           "percentile": 94
         },
         {
-          "split": "t2",
-          "direction": "slow",
-          "percentile": 90
-        },
-        {
           "split": "run",
           "direction": "slow",
           "percentile": 98
@@ -190,7 +180,7 @@
         {
           "split": "run",
           "direction": "slow",
-          "percentile": 93
+          "percentile": 92
         }
       ]
     },
@@ -265,7 +255,7 @@
         {
           "split": "swim",
           "direction": "slow",
-          "percentile": 99
+          "percentile": 98
         },
         {
           "split": "run",
@@ -325,7 +315,7 @@
         {
           "split": "run",
           "direction": "fast",
-          "percentile": 9
+          "percentile": 8
         }
       ]
     },
@@ -395,7 +385,7 @@
         {
           "split": "swim",
           "direction": "fast",
-          "percentile": 6
+          "percentile": 5
         },
         {
           "split": "t1",
@@ -410,7 +400,7 @@
         {
           "split": "run",
           "direction": "slow",
-          "percentile": 91
+          "percentile": 90
         }
       ]
     },
@@ -450,7 +440,7 @@
         {
           "split": "swim",
           "direction": "slow",
-          "percentile": 97
+          "percentile": 96
         },
         {
           "split": "t1",
@@ -530,7 +520,7 @@
         {
           "split": "swim",
           "direction": "slow",
-          "percentile": 96
+          "percentile": 95
         }
       ]
     },
@@ -630,7 +620,7 @@
         {
           "split": "t2",
           "direction": "fast",
-          "percentile": 9
+          "percentile": 8
         }
       ]
     },
@@ -670,7 +660,7 @@
         {
           "split": "swim",
           "direction": "slow",
-          "percentile": 98
+          "percentile": 97
         }
       ]
     },
@@ -680,7 +670,7 @@
         {
           "split": "swim",
           "direction": "slow",
-          "percentile": 93
+          "percentile": 92
         }
       ]
     },
@@ -734,6 +724,26 @@
         }
       ]
     },
+    "phu-quoc": {
+      "years": 1,
+      "signals": [
+        {
+          "split": "swim",
+          "direction": "slow",
+          "percentile": 99
+        },
+        {
+          "split": "t2",
+          "direction": "slow",
+          "percentile": 91
+        },
+        {
+          "split": "run",
+          "direction": "slow",
+          "percentile": 95
+        }
+      ]
+    },
     "port-macquarie": {
       "years": 13,
       "signals": [
@@ -769,16 +779,6 @@
         }
       ]
     },
-    "puerto-rico": {
-      "years": 14,
-      "signals": [
-        {
-          "split": "run",
-          "direction": "slow",
-          "percentile": 90
-        }
-      ]
-    },
     "puerto-varas": {
       "years": 1,
       "signals": [
@@ -800,7 +800,7 @@
         {
           "split": "t1",
           "direction": "fast",
-          "percentile": 10
+          "percentile": 9
         },
         {
           "split": "t2",
@@ -835,7 +835,7 @@
         {
           "split": "swim",
           "direction": "slow",
-          "percentile": 92
+          "percentile": 91
         },
         {
           "split": "t1",
@@ -845,7 +845,7 @@
         {
           "split": "run",
           "direction": "slow",
-          "percentile": 94
+          "percentile": 93
         }
       ]
     },
@@ -870,7 +870,7 @@
         {
           "split": "swim",
           "direction": "slow",
-          "percentile": 94
+          "percentile": 93
         },
         {
           "split": "t1",
@@ -890,7 +890,7 @@
         {
           "split": "t1",
           "direction": "slow",
-          "percentile": 94
+          "percentile": 95
         }
       ]
     },
@@ -940,12 +940,12 @@
         {
           "split": "t1",
           "direction": "fast",
-          "percentile": 6
+          "percentile": 5
         },
         {
           "split": "bike",
           "direction": "fast",
-          "percentile": 9
+          "percentile": 8
         },
         {
           "split": "t2",
@@ -990,7 +990,7 @@
         {
           "split": "t2",
           "direction": "slow",
-          "percentile": 91
+          "percentile": 90
         },
         {
           "split": "run",
@@ -1035,7 +1035,7 @@
         {
           "split": "run",
           "direction": "slow",
-          "percentile": 95
+          "percentile": 94
         }
       ]
     },
@@ -1065,7 +1065,7 @@
         {
           "split": "swim",
           "direction": "fast",
-          "percentile": 10
+          "percentile": 9
         },
         {
           "split": "t1",
@@ -1110,7 +1110,7 @@
         {
           "split": "t1",
           "direction": "slow",
-          "percentile": 90
+          "percentile": 91
         }
       ]
     },

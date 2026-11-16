@@ -869,6 +869,12 @@
       "2012"
     ]
   },
+  "monterrey": {
+    "name": "Monterrey",
+    "years": [
+      "2026"
+    ]
+  },
   "morro-bay": {
     "name": "Morro Bay",
     "years": [
@@ -1092,6 +1098,12 @@
       "2019",
       "2018",
       "2017"
+    ]
+  },
+  "phu-quoc": {
+    "name": "Phu Quoc",
+    "years": [
+      "2026"
     ]
   },
   "port-macquarie": {
